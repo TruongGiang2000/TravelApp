@@ -9,12 +9,12 @@ class TraTe extends Component<any, any> {
             i18n: I18n
         }
     }
-    componentWillMount(){
+    componentDidMount(){
         const {language} = this.props;
         if (language) this.setMainLocaleLanguage(language);
     }
     
-    componentWillReceiveProps = nextProps => {
+    UNSAFE_componentWillReceiveProps = nextProps => {
         const {language} = nextProps;
         if (language) this.setMainLocaleLanguage(language);
     }
