@@ -51,7 +51,8 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: "bold",
     lineHeight: 21,
-    letterSpacing: 0.8
+    letterSpacing: 0.8,
+    fontFamily: 'RobotoSlab-Regular',
   },
   textplace:{
     color: '#353b50',
@@ -59,7 +60,8 @@ const styles = StyleSheet.create({
     fontWeight: 'normal',
     fontSize: 10,
     lineHeight: 12,
-    letterSpacing: 0.5  
+    letterSpacing: 0.5 ,
+    fontFamily: 'RobotoSlab-Regular', 
 },
   styleview:{
     position: 'absolute',

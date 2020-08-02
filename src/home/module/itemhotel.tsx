@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
     fontStyle: 'normal',
     fontSize: 12,
     fontWeight: "bold",
+    fontFamily: 'RobotoSlab-Regular',
     lineHeight: 19,
     opacity: 0.6,
   },
@@ -64,6 +65,7 @@ const styles = StyleSheet.create({
     fontStyle: 'normal',
     fontSize: 12,
     lineHeight: 19,
+    fontFamily: 'RobotoSlab-Regular',
     opacity: 0.6,
   },
   styleview:{
