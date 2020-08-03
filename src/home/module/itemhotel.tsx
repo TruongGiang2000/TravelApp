@@ -12,11 +12,12 @@ class ButtonCustom extends Component<any, any> {
 }
 
   render() {
+    const {style, onPress, imageStyle, titleStyle, contentStyle} = this.props;
      return (
-          <TouchableOpacity style={[styles.MainContainer, this.props.style]}>
+          <TouchableOpacity style={[styles.MainContainer, style]} onPress={onPress} >
           <View>
               <Image
-                style={styles.styleImage}
+                style={[styles.styleImage, imageStyle]}
                 source={this.props.source}
               />
               <View style={styles.styleview}>
@@ -27,10 +28,10 @@ class ButtonCustom extends Component<any, any> {
               style={styles.styleitem}/>
               </View>
               
-              <Text style={styles.texthotel}>
+              <Text style={[styles.texthotel, titleStyle]}>
                     {this.props.titlehotel}
               </Text>
-              <Text style={styles.textplace}>
+              <Text style={[styles.textplace, contentStyle]}>
                   {this.props.titleplace}
               </Text>
           </View>
@@ -40,7 +41,6 @@ class ButtonCustom extends Component<any, any> {
 }
 const styles = StyleSheet.create({
   MainContainer: {
-    backgroundColor: '#F2F2F2',
     borderRadius: 8,
     width: wp('35'),
     height: hp('38'),
@@ -48,23 +48,19 @@ const styles = StyleSheet.create({
   },
   styleImage:{
     borderRadius: 5,
-    width: wp('35'),
+    width: '100%',
     height: hp('30'),
   },
   texthotel:{
     color: '#353b50',
-    fontStyle: 'normal',
-    fontSize: 12,
+    fontSize: wp('3'),
     fontWeight: "bold",
     fontFamily: 'RobotoSlab-Regular',
-    lineHeight: 19,
     opacity: 0.6,
   },
   textplace:{
     color: '#353b50',
-    fontStyle: 'normal',
-    fontSize: 12,
-    lineHeight: 19,
+    fontSize: wp('3'),
     fontFamily: 'RobotoSlab-Regular',
     opacity: 0.6,
   },
@@ -75,7 +71,7 @@ const styles = StyleSheet.create({
     opacity: 0.74,
     borderRadius: 5,
     position: 'absolute',
-    marginTop: 120,
+    marginTop: hp('17'),
     marginLeft: 10
   },
   styleview1:{
@@ -83,15 +79,15 @@ const styles = StyleSheet.create({
     height: hp('10'),
     borderRadius: 5,
     position: 'absolute',
-    marginTop: 120,
-    marginLeft: 10
+    marginTop: hp('16'),
+    marginLeft: 10,
   },
   styleitem:{
     position: 'absolute',
     width: wp('5'),
     height: hp('3'),
     borderRadius: 1,
-    marginTop: hp('5'),
+    marginTop: hp('6'),
     marginLeft: wp('3')
     
   },
