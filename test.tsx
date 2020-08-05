@@ -9,12 +9,12 @@ class index extends Component<any, any> {
     return (
       <View>
         <Itemhotel 
-            source={require('./src/home/images/angiang.jpg')}
+            source={require('./src/assets/images/angiang.jpg')}
             titlehotel="ha noi"
             titleplace="noi dep"
         />
-        <Itemnew 
-            source={require('./src/home/images/angiang.jpg')}
+        <Itemnew
+            source={require('./src/assets/images/angiang.jpg')}
             titlehotel="ha noi"
             titleplace="noi depasdas dasda asvdas dva sdavsd as asf asf afa fasfas fsa f"
         />

@@ -24,7 +24,7 @@ class ButtonCustom extends Component<any, any> {
 
               </View>
               <View style={styles.styleview1}>
-              <Image source={require('../images/ngoisao.png')}
+              <Image source={require('../../assets/images/ngoisao.png')}
               style={styles.styleitem}/>
               </View>
               
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     height: hp('3'),
     borderRadius: 1,
     marginTop: hp('6'),
-    marginLeft: wp('3')
+    marginLeft: wp('3'),
     
   },
 });

@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
-import PropTypes from 'prop-types';
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
-
 class ButtonCustom extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -14,7 +12,7 @@ class ButtonCustom extends Component<any, any> {
   render() {
      return (
           <TouchableOpacity style={[styles.MainContainer, this.props.style]}>
-          <View>
+          
               <Image
                 style={styles.styleImage}
                 source={this.props.source}
@@ -27,18 +25,16 @@ class ButtonCustom extends Component<any, any> {
                   {this.props.titleplace}
               </Text>
               </View>
-          </View>
+          
           </TouchableOpacity>
      )
   }
 }
 const styles = StyleSheet.create({
   MainContainer: {
-    backgroundColor: '#F2F2F2',
     borderRadius: 8,
     width: wp('90'),
     height: hp('15'),
-
   },
   styleImage:{
     borderRadius: 5,
