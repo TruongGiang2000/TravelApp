@@ -1,30 +1,30 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
+import PropTypes from 'prop-types';
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
-class ButtonCustom extends Component<any, any> {
+
+class ItemImage extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
+      isShow: this.props.isShow,
       
   }
 }
-
   render() {
      return (
           <TouchableOpacity style={[styles.MainContainer, this.props.style]}>
-              <Image
+             {( this.state.isShow && <Image 
+                style={[styles.styleImageAfter, this.props.styleImage]}
+                source={this.props.source}
+              />)}
+              <Image 
                 style={[styles.styleImage, this.props.styleImage]}
                 source={this.props.source}
               />
-              <View style={styles.styleview}>
-              <Text style={[styles.textTitle, this.props.styleTitle]}>
-                    {this.props.titlehotel}
+              <Text style={[styles.text, this.props.style] }>
+                    {this.props.title}
               </Text>
-              <Text style={[styles.textContent, this.props.styleContent]}>
-                  {this.props.titleplace}
-              </Text>
-              </View>
-          
           </TouchableOpacity>
      )
   }
@@ -32,31 +32,30 @@ class ButtonCustom extends Component<any, any> {
 const styles = StyleSheet.create({
   MainContainer: {
     borderRadius: 8,
-    width: wp('90'),
-    height: hp('15'),
+    width: wp('35'),
+    height: hp('38'),
+
   },
   styleImage:{
-    borderRadius: 3,
-    width: wp('25'),
-    height: hp('15'),
+    borderRadius: 10,
+    width: wp('35'),
+    height: hp('30'),
   },
-  textTitle:{
-    color: '#00162b',
+  text:{
+    color: '#FFFFFF',
     fontSize: wp('4'),
+    marginHorizontal: wp('3'),
+    marginVertical: hp('25'),
     fontWeight: "bold",
-    letterSpacing: 0.8,
+    position:'absolute',
     fontFamily: 'RobotoSlab-Regular',
   },
-  textContent:{
-    color: '#353b50',
-    fontSize: wp('3'),
-    letterSpacing: 0.5 ,
-    fontFamily: 'RobotoSlab-Regular', 
-},
-  styleview:{
+  styleImageAfter:{
     position: 'absolute',
-    marginLeft: wp('30'),
-    marginTop: 10
+    borderRadius: 8,
+    width: wp('30'),
+    height: hp('31'),
+    marginHorizontal: 10
   },
 });
-export default ButtonCustom;
+export default ItemImage;

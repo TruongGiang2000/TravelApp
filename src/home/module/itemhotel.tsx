@@ -3,7 +3,7 @@ import {View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
 import PropTypes from 'prop-types';
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
-class ButtonCustom extends Component<any, any> {
+class ItemHotel extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,10 +20,10 @@ class ButtonCustom extends Component<any, any> {
                 style={[styles.styleImage, imageStyle]}
                 source={this.props.source}
               />
-              <View style={styles.styleview}>
+              <View style={styles.styleBackground}>
 
               </View>
-              <View style={styles.styleview1}>
+              <View style={styles.styleBackground1}>
               <Image source={require('../../assets/images/ngoisao.png')}
               style={styles.styleitem}/>
               </View>
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     fontFamily: 'RobotoSlab-Regular',
     opacity: 0.6,
   },
-  styleview:{
+  styleBackground:{
     width: wp('12'),
     height: hp('10'),
     backgroundColor: '#292929',
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     marginTop: hp('17'),
     marginLeft: 10
   },
-  styleview1:{
+  styleBackground1:{
     width: wp('12'),
     height: hp('10'),
     borderRadius: 5,
@@ -92,4 +92,4 @@ const styles = StyleSheet.create({
     
   },
 });
-export default ButtonCustom;
+export default ItemHotel;
