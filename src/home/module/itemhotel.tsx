@@ -12,11 +12,17 @@ class ItemHotel extends Component<any, any> {
 }
 
   render() {
+    const {style, onPress, imageStyle, titleStyle, contentStyle} = this.props;
      return (
-          <TouchableOpacity style={[styles.MainContainer, this.props.style]}>
+          <TouchableOpacity style={[styles.MainContainer, style]} onPress={onPress} >
           <View>
+<<<<<<< HEAD
               <Image 
                 style={[styles.styleImage, this.props.styleImage]}
+=======
+              <Image
+                style={[styles.styleImage, imageStyle]}
+>>>>>>> 6cb9045d421b9356d67eed8d5fbee18b3815d1ff
                 source={this.props.source}
               />
               <View style={styles.styleBackground}>
@@ -27,10 +33,17 @@ class ItemHotel extends Component<any, any> {
               style={styles.styleitem}/>
               </View>
               
+<<<<<<< HEAD
               <Text style={[styles.texthotel, this.props.styleHotel] }>
                     {this.props.titlehotel}
               </Text>
               <Text style={[styles.textplace, this.props.styleHotel]}>
+=======
+              <Text style={[styles.texthotel, titleStyle]}>
+                    {this.props.titlehotel}
+              </Text>
+              <Text style={[styles.textplace, contentStyle]}>
+>>>>>>> 6cb9045d421b9356d67eed8d5fbee18b3815d1ff
                   {this.props.titleplace}
               </Text>
           </View>
@@ -47,7 +60,7 @@ const styles = StyleSheet.create({
   },
   styleImage:{
     borderRadius: 5,
-    width: wp('35'),
+    width: '100%',
     height: hp('30'),
   },
   texthotel:{
@@ -70,7 +83,11 @@ const styles = StyleSheet.create({
     opacity: 0.74,
     borderRadius: 5,
     position: 'absolute',
+<<<<<<< HEAD
     marginTop: hp('18'),
+=======
+    marginTop: hp('17'),
+>>>>>>> 6cb9045d421b9356d67eed8d5fbee18b3815d1ff
     marginLeft: 10
   },
   styleBackground1:{
@@ -78,15 +95,20 @@ const styles = StyleSheet.create({
     height: hp('10'),
     borderRadius: 5,
     position: 'absolute',
+<<<<<<< HEAD
     marginTop: hp('18'),
     marginLeft: 10
+=======
+    marginTop: hp('16'),
+    marginLeft: 10,
+>>>>>>> 6cb9045d421b9356d67eed8d5fbee18b3815d1ff
   },
   styleitem:{
     position: 'absolute',
     width: wp('5'),
     height: hp('3'),
     borderRadius: 1,
-    marginTop: hp('5'),
+    marginTop: hp('6'),
     marginLeft: wp('3')
     
   },
