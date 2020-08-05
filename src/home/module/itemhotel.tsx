@@ -3,7 +3,7 @@ import {View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
 import PropTypes from 'prop-types';
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
-class ButtonCustom extends Component<any, any> {
+class ItemHotel extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,22 +15,22 @@ class ButtonCustom extends Component<any, any> {
      return (
           <TouchableOpacity style={[styles.MainContainer, this.props.style]}>
           <View>
-              <Image
-                style={styles.styleImage}
+              <Image 
+                style={[styles.styleImage, this.props.styleImage]}
                 source={this.props.source}
               />
-              <View style={styles.styleview}>
+              <View style={styles.styleBackground}>
 
               </View>
-              <View style={styles.styleview1}>
-              <Image source={require('../images/ngoisao.png')}
+              <View style={styles.styleBackground1}>
+              <Image source={require('../../assets/images/ngoisao.png')}
               style={styles.styleitem}/>
               </View>
               
-              <Text style={styles.texthotel}>
+              <Text style={[styles.texthotel, this.props.styleHotel] }>
                     {this.props.titlehotel}
               </Text>
-              <Text style={styles.textplace}>
+              <Text style={[styles.textplace, this.props.styleHotel]}>
                   {this.props.titleplace}
               </Text>
           </View>
@@ -40,7 +40,6 @@ class ButtonCustom extends Component<any, any> {
 }
 const styles = StyleSheet.create({
   MainContainer: {
-    backgroundColor: '#F2F2F2',
     borderRadius: 8,
     width: wp('35'),
     height: hp('38'),
@@ -53,37 +52,33 @@ const styles = StyleSheet.create({
   },
   texthotel:{
     color: '#353b50',
-    fontStyle: 'normal',
-    fontSize: 12,
+    fontSize: wp('3'),
     fontWeight: "bold",
     fontFamily: 'RobotoSlab-Regular',
-    lineHeight: 19,
     opacity: 0.6,
   },
   textplace:{
     color: '#353b50',
-    fontStyle: 'normal',
-    fontSize: 12,
-    lineHeight: 19,
+    fontSize: wp('3'),
     fontFamily: 'RobotoSlab-Regular',
     opacity: 0.6,
   },
-  styleview:{
+  styleBackground:{
     width: wp('12'),
     height: hp('10'),
     backgroundColor: '#292929',
     opacity: 0.74,
     borderRadius: 5,
     position: 'absolute',
-    marginTop: 120,
+    marginTop: hp('18'),
     marginLeft: 10
   },
-  styleview1:{
+  styleBackground1:{
     width: wp('12'),
     height: hp('10'),
     borderRadius: 5,
     position: 'absolute',
-    marginTop: 120,
+    marginTop: hp('18'),
     marginLeft: 10
   },
   styleitem:{
@@ -96,4 +91,4 @@ const styles = StyleSheet.create({
     
   },
 });
-export default ButtonCustom;
+export default ItemHotel;

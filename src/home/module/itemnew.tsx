@@ -13,17 +13,18 @@ class ButtonCustom extends Component<any, any> {
 
   render() {
      return (
-          <TouchableOpacity style={[styles.MainContainer, this.props.style]}>
+          <TouchableOpacity style={[styles.MainContainer, this.props.style ]}
+          >
           <View>
               <Image
-                style={styles.styleImage}
+                style={[styles.styleImage, this.props.styleImage]}
                 source={this.props.source}
               />
               <View style={styles.styleview}>
-              <Text style={styles.texthotel}>
+              <Text style={[styles.textTitle, this.props.styleTitle]}>
                     {this.props.titlehotel}
               </Text>
-              <Text style={styles.textplace}>
+              <Text style={[styles.textContent, this.props.styleContent]}>
                   {this.props.titleplace}
               </Text>
               </View>
@@ -34,32 +35,26 @@ class ButtonCustom extends Component<any, any> {
 }
 const styles = StyleSheet.create({
   MainContainer: {
-    backgroundColor: '#F2F2F2',
     borderRadius: 8,
     width: wp('90'),
     height: hp('15'),
 
   },
   styleImage:{
-    borderRadius: 5,
+    borderRadius: 3,
     width: wp('25'),
     height: hp('15'),
   },
-  texthotel:{
+  textTitle:{
     color: '#00162b',
-    fontStyle: 'normal',
-    fontSize: 13,
+    fontSize: wp('4'),
     fontWeight: "bold",
-    lineHeight: 21,
     letterSpacing: 0.8,
     fontFamily: 'RobotoSlab-Regular',
   },
-  textplace:{
+  textContent:{
     color: '#353b50',
-    fontStyle: 'normal',
-    fontWeight: 'normal',
-    fontSize: 10,
-    lineHeight: 12,
+    fontSize: wp('3'),
     letterSpacing: 0.5 ,
     fontFamily: 'RobotoSlab-Regular', 
 },
