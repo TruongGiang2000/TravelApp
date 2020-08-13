@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
 import PropTypes from 'prop-types';
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import Gradient from '../../components/GradientOpacity';
 
 class ItemImage extends Component<any, any> {
   constructor(props) {
@@ -12,18 +13,24 @@ class ItemImage extends Component<any, any> {
   }
 }
   render() {
+    const {style, styleImage, source, styletitle, title}= this.props;
      return (
-          <TouchableOpacity style={[styles.MainContainer, this.props.style]}>
+          <TouchableOpacity style={[styles.MainContainer, style]}>
+            
              {( this.state.isShow && <Image 
-                style={[styles.styleImageAfter, this.props.styleImage]}
-                source={this.props.source}
+                style={[styles.styleImageAfter, styleImage]}
+                source={source}
               />)}
+              
               <Image 
-                style={[styles.styleImage, this.props.styleImage]}
-                source={this.props.source}
+                style={[styles.styleImage, styleImage]}
+                source={source}
               />
-              <Text style={[styles.text, this.props.style] }>
-                    {this.props.title}
+               <Gradient 
+               styleGradient = {styles.stylegradient}
+              />
+              <Text style={[styles.text, styletitle] }>
+                    {title}
               </Text>
           </TouchableOpacity>
      )
@@ -31,14 +38,17 @@ class ItemImage extends Component<any, any> {
 }
 const styles = StyleSheet.create({
   MainContainer: {
-    borderRadius: 8,
     width: wp('35'),
-    height: hp('38'),
-
+    height: hp('32'),
   },
   styleImage:{
     borderRadius: 10,
-    width: wp('35'),
+    width: '100%',
+    height: hp('30'),
+  },
+  stylegradient:{
+    borderRadius: 10,
+    width: '100%',
     height: hp('30'),
   },
   text:{
@@ -46,7 +56,6 @@ const styles = StyleSheet.create({
     fontSize: wp('4'),
     marginHorizontal: wp('3'),
     marginVertical: hp('25'),
-    fontWeight: "bold",
     position:'absolute',
     fontFamily: 'RobotoSlab-Regular',
   },
@@ -54,8 +63,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     borderRadius: 8,
     width: wp('30'),
-    height: hp('31'),
-    marginHorizontal: 10
+    height: hp('30'),
+    margin: wp('2')
   },
 });
 export default ItemImage;
