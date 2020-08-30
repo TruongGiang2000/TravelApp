@@ -12,18 +12,13 @@ class ItemHotel extends Component<any, any> {
 }
 
   render() {
-    const {style, onPress, imageStyle, titleStyle, contentStyle} = this.props;
+    const {style, onPress, imageStyle, titleStyle, contentStyle, source, titleplace,titlehotel} = this.props;
      return (
           <TouchableOpacity style={[styles.MainContainer, style]} onPress={onPress} >
           <View>
-<<<<<<< HEAD
-              <Image 
-                style={[styles.styleImage, this.props.styleImage]}
-=======
               <Image
                 style={[styles.styleImage, imageStyle]}
->>>>>>> 6cb9045d421b9356d67eed8d5fbee18b3815d1ff
-                source={this.props.source}
+                source={source}
               />
               <View style={styles.styleBackground}>
 
@@ -33,18 +28,11 @@ class ItemHotel extends Component<any, any> {
               style={styles.styleitem}/>
               </View>
               
-<<<<<<< HEAD
-              <Text style={[styles.texthotel, this.props.styleHotel] }>
-                    {this.props.titlehotel}
-              </Text>
-              <Text style={[styles.textplace, this.props.styleHotel]}>
-=======
               <Text style={[styles.texthotel, titleStyle]}>
-                    {this.props.titlehotel}
+                    {titlehotel}
               </Text>
               <Text style={[styles.textplace, contentStyle]}>
->>>>>>> 6cb9045d421b9356d67eed8d5fbee18b3815d1ff
-                  {this.props.titleplace}
+                  {titleplace}
               </Text>
           </View>
           </TouchableOpacity>
@@ -66,7 +54,6 @@ const styles = StyleSheet.create({
   texthotel:{
     color: '#353b50',
     fontSize: wp('3'),
-    fontWeight: "bold",
     fontFamily: 'RobotoSlab-Regular',
     opacity: 0.6,
   },
@@ -83,34 +70,25 @@ const styles = StyleSheet.create({
     opacity: 0.74,
     borderRadius: 5,
     position: 'absolute',
-<<<<<<< HEAD
-    marginTop: hp('18'),
-=======
     marginTop: hp('17'),
->>>>>>> 6cb9045d421b9356d67eed8d5fbee18b3815d1ff
-    marginLeft: 10
+    marginLeft: wp('3')
   },
   styleBackground1:{
     width: wp('12'),
     height: hp('10'),
     borderRadius: 5,
     position: 'absolute',
-<<<<<<< HEAD
-    marginTop: hp('18'),
-    marginLeft: 10
-=======
-    marginTop: hp('16'),
-    marginLeft: 10,
->>>>>>> 6cb9045d421b9356d67eed8d5fbee18b3815d1ff
+    marginTop: hp('17'),
+    marginLeft: wp('3')
+
   },
   styleitem:{
     position: 'absolute',
     width: wp('5'),
     height: hp('3'),
     borderRadius: 1,
-    marginTop: hp('6'),
-    marginLeft: wp('3')
-    
+    marginTop: hp('5'),
+    marginLeft: wp('3'),
   },
 });
 export default ItemHotel;
