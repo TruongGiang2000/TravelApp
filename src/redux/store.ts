@@ -17,7 +17,4 @@ const configureStore = createStore(
     persistedReducer,
 );
 export const persistor = persistStore(configureStore);
-// configureStore.subscribe(() =>
-//   console.log('configureStore.getState()', configureStore.getState()),
-// );
 export default configureStore;

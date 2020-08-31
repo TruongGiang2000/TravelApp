@@ -22,4 +22,4 @@ const styles = StyleSheet.create({
    justifyContent: 'center',
   },
 });
-export default ButtonCustom;
+export default index;
