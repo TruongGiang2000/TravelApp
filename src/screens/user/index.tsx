@@ -2,7 +2,7 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import User from './User';
 const UserStack = {
-    User: {
+  User: {
     screen: User,
     path: 'User',
     navigationOptions: {
@@ -14,7 +14,11 @@ const UserStack = {
 const Stack = createStackNavigator();
 const UserRouter = () => {
   return (
-    <Stack.Navigator initialRouteName="User">
+    <Stack.Navigator
+      initialRouteName="User"
+      screenOptions={{
+        headerShown: false,
+      }}>
       {Object.keys(UserStack).map((key) => {
         return (
           <Stack.Screen

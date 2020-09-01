@@ -14,7 +14,11 @@ const HotelStack = {
 const Stack = createStackNavigator();
 const HotelRouter = () => {
   return (
-    <Stack.Navigator initialRouteName="Hotel">
+    <Stack.Navigator
+      initialRouteName="Hotel"
+      screenOptions={{
+        headerShown: false,
+      }}>
       {Object.keys(HotelStack).map((key) => {
         return (
           <Stack.Screen

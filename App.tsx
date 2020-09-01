@@ -5,11 +5,17 @@ import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import 'react-native-gesture-handler';
 import IonIcon from 'react-native-vector-icons/Ionicons';
+import SimpleIcon from 'react-native-vector-icons/SimpleLineIcons';
+import SimpleLineIcon from 'react-native-vector-icons/SimpleLineIcons';
 import Home from './src/screens/home';
 import Hotel from './src/screens/hotel';
 import Location from './src/screens/location';
 import Notification from './src/screens/notification';
 import User from './src/screens/user';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
@@ -19,16 +25,21 @@ function MyTabs() {
       tabBarOptions={{
         inactiveBackgroundColor: '#ffffff',
         inactiveTintColor: '#000000',
+        activeTintColor: '#000000',
+        showLabel: false,
       }}>
       <Tab.Screen
         name="Home"
         component={Home}
         options={{
-          tabBarIcon: () => (
-            <Image
-              source={require('./src/assets/images/Stroke1.png')}
-              style={{width: 24, height: 24}}
-            />
+          tabBarIcon: ({focused}) => (
+            <View style={styles.view}>
+              <Image
+                source={require('./src/assets/images/Stroke1.png')}
+                style={styles.img}
+              />
+              <View style={focused ? styles.active : undefined} />
+            </View>
           ),
         }}
       />
@@ -36,11 +47,14 @@ function MyTabs() {
         name="Hotel"
         component={Hotel}
         options={{
-          tabBarIcon: () => (
-            <Image
-              source={require('./src/assets/images/YourBooking.png')}
-              style={{width: 24, height: 24}}
-            />
+          tabBarIcon: ({focused}) => (
+            <View style={styles.view}>
+              <Image
+                source={require('./src/assets/images/YourBooking.png')}
+                style={styles.img}
+              />
+              <View style={focused ? styles.active : undefined} />
+            </View>
           ),
         }}
       />
@@ -48,11 +62,11 @@ function MyTabs() {
         name="Location"
         component={Location}
         options={{
-          tabBarIcon: () => (
-            <Image
-              source={require('./src/assets/images/Explore.png')}
-              style={{width: 24, height: 24}}
-            />
+          tabBarIcon: ({color, size, focused}) => (
+            <View style={styles.view}>
+              <SimpleIcon name="location-pin" color={color} size={size} />
+              <View style={focused ? styles.active : undefined} />
+            </View>
           ),
         }}
       />
@@ -60,8 +74,11 @@ function MyTabs() {
         name="Notification"
         component={Notification}
         options={{
-          tabBarIcon: ({color, size}) => (
-            <IonIcon name="notifications-outline" color={color} size={size} />
+          tabBarIcon: ({color, size, focused}) => (
+            <View style={styles.view}>
+              <IonIcon name="notifications-outline" color={color} size={size} />
+              <View style={focused ? styles.active : undefined} />
+            </View>
           ),
         }}
       />
@@ -69,11 +86,11 @@ function MyTabs() {
         name="User"
         component={User}
         options={{
-          tabBarIcon: () => (
-            <Image
-              source={require('./src/assets/images/Feed.png')}
-              style={{width: 24, height: 24}}
-            />
+          tabBarIcon: ({color, size, focused}) => (
+            <View style={styles.view}>
+              <SimpleLineIcon name="user" color={color} size={size} />
+              <View style={focused ? styles.active : undefined} />
+            </View>
           ),
         }}
       />
@@ -90,5 +107,19 @@ class App extends Component<any, any> {
     );
   }
 }
-
+const styles = StyleSheet.create({
+  active: {
+    backgroundColor: '#FA2A00',
+    width: wp('10'),
+    height: 5,
+    marginTop: 10,
+  },
+  img: {
+    width: 22,
+    height: 22,
+  },
+  view: {
+    alignItems: 'center',
+  },
+});
 export default App;

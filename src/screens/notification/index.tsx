@@ -2,7 +2,7 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import Notification from './Notification';
 const NotificationStack = {
-    Notification: {
+  Notification: {
     screen: Notification,
     path: 'Notification',
     navigationOptions: {
@@ -14,7 +14,11 @@ const NotificationStack = {
 const Stack = createStackNavigator();
 const NotificationRouter = () => {
   return (
-    <Stack.Navigator initialRouteName="Notification">
+    <Stack.Navigator
+      initialRouteName="Notification"
+      screenOptions={{
+        headerShown: false,
+      }}>
       {Object.keys(NotificationStack).map((key) => {
         return (
           <Stack.Screen

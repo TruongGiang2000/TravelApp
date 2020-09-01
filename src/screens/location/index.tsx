@@ -14,7 +14,11 @@ const LocationStack = {
 const Stack = createStackNavigator();
 const LocationRouter = () => {
   return (
-    <Stack.Navigator initialRouteName="Location">
+    <Stack.Navigator
+      initialRouteName="Location"
+      screenOptions={{
+        headerShown: false,
+      }}>
       {Object.keys(LocationStack).map((key) => {
         return (
           <Stack.Screen
