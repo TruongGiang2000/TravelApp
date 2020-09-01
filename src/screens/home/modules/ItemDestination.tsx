@@ -18,7 +18,16 @@ export default class itemdestination extends Component<any, any> {
     });
   }
   render() {
-    const {style, ImageStyle, number, place, title, name, starCount, onPress} = this.props;
+    const {
+      style,
+      ImageStyle,
+      number,
+      place,
+      title,
+      name,
+      starCount,
+      onPress,
+    } = this.props;
     return (
       <TouchableOpacity onPress={onPress}>
         <View style={[styles.container, style]}>
@@ -59,13 +68,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    height: hp('50'),
   },
   imgstyle: {
     width: wp('70'),
     height: hp('50'),
     borderRadius: 5,
-    opacity: 0.8,
   },
   title: {
     fontSize: 14,
@@ -88,26 +96,21 @@ const styles = StyleSheet.create({
     height: hp('9'),
     flexDirection: 'column',
     opacity: 0.75,
-    right: wp(5),
+    right: wp(7),
   },
   down2: {
     flexDirection: 'column',
-    right: wp(1),
+    right: wp(2),
     top: wp(2),
   },
   number: {
     color: '#FFFFFF',
     fontSize: 18,
-    fontWeight: 'normal',
-    fontStyle: 'normal',
     textAlign: 'center',
   },
   place: {
     fontSize: 8,
     color: '#FFFFFF',
-    fontStyle: 'normal',
-    fontWeight: 'normal',
-    lineHeight: 11,
     textAlign: 'center',
   },
   hearto: {
@@ -121,7 +124,9 @@ const styles = StyleSheet.create({
     right: wp('25'),
     top: hp('2'),
   },
-  linearGradient: {
-    borderRadius: 5,
+  styleGradient: {
+    position: 'absolute',
+    width: wp('60'),
+    height: hp('50'),
   },
 });

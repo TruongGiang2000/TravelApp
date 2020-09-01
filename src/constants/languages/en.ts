@@ -1,4 +1,6 @@
 export default {
-    school: 'School',
-    book_room: 'Book',
+  school: 'School',
+  rate: 'Rating',
+  review: 'Location reviews',
+  book_room: 'Book',
 };
