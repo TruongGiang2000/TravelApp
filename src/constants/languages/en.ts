@@ -1,3 +1,5 @@
 export default {
-    school: 'School',
+  school: 'School',
+  rate: 'Rating',
+  review: 'Location reviews',
 };
