@@ -6,7 +6,6 @@ import {
 } from 'react-native-responsive-screen';
 import StarRating from 'react-native-star-rating';
 import Icon from 'react-native-vector-icons/dist/AntDesign';
-import LinearGradient from 'react-native-linear-gradient';
 
 export default class itemdestination extends Component<any, any> {
   constructor(prop) {
@@ -19,38 +18,46 @@ export default class itemdestination extends Component<any, any> {
     });
   }
   render() {
+    const {
+      style,
+      ImageStyle,
+      number,
+      place,
+      title,
+      name,
+      starCount,
+      onPress,
+    } = this.props;
     return (
-      <TouchableOpacity style={styles.container}>
-        <Image
-          source={this.props.source}
-          style={[styles.imgstyle, this.props.ImageStyle]}></Image>
-        <LinearGradient
-          style={[styles.styleGradient, this.props.styleGradient]}
-          colors={['#0000', '#0000', '#F6F4F4', '#FFFFFF']}
-          start={{x: 0, y: 0}}
-          end={{x: 0, y: 1.1}}></LinearGradient>
-
-        <View style={styles.hearto}>
-          <Icon name="hearto" size={27} color="#FFFFFF" />
-        </View>
-
-        <View style={styles.down}>
-          <View style={styles.down1}>
-            <Text style={styles.number}>{this.props.number}</Text>
-            <Text style={styles.place}>{this.props.place}</Text>
+      <TouchableOpacity onPress={onPress}>
+        <View style={[styles.container, style]}>
+          <View>
+            <Image
+              source={this.props.source}
+              style={[styles.imgstyle, this.props.ImageStyle]}></Image>
+          </View>
+          <View style={styles.hearto}>
+            <Icon name="hearto" size={27} color="#FFFFFF" />
           </View>
 
-          <View style={styles.down2}>
-            <Text style={styles.title}>{this.props.title}</Text>
-            <Text style={styles.name}>{this.props.name}</Text>
-            <StarRating
-              disabled={false}
-              maxStars={5}
-              rating={this.props.starCount}
-              selectedStar={(rating) => this.onStarRatingPress(rating)}
-              fullStarColor={'#F0C909'}
-              starSize={15}
-            />
+          <View style={styles.down}>
+            <View style={styles.down1}>
+              <Text style={styles.number}>{number}</Text>
+              <Text style={styles.place}>{place}</Text>
+            </View>
+
+            <View style={styles.down2}>
+              <Text style={styles.title}>{title}</Text>
+              <Text style={styles.name}>{name}</Text>
+              <StarRating
+                disabled={false}
+                maxStars={5}
+                rating={starCount}
+                selectedStar={(rating) => this.onStarRatingPress(rating)}
+                fullStarColor={'#F0C909'}
+                starSize={13}
+              />
+            </View>
           </View>
         </View>
       </TouchableOpacity>
@@ -64,15 +71,18 @@ const styles = StyleSheet.create({
     height: hp('50'),
   },
   imgstyle: {
-    width: wp('60'),
+    width: wp('70'),
     height: hp('50'),
     borderRadius: 5,
   },
   title: {
     fontSize: 14,
+    lineHeight: 21,
+    fontFamily: 'roboto-slab-bold',
   },
   name: {
-    fontSize: 11,
+    fontSize: wp('3'),
+    fontFamily: 'roboto-slab.regular',
   },
   down: {
     position: 'absolute',
