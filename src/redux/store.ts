@@ -1,20 +1,23 @@
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import {persistStore, persistReducer} from 'redux-persist';
 import AsyncStorage from '@react-native-community/async-storage';
-import reducers from './reducers/index';
+import {createEpicMiddleware} from 'redux-observable';
 import {createWhitelistFilter} from 'redux-persist-transform-filter';
-
+import rootReducers from './reducer';
+import rootEpic from './epic';
 const lang = createWhitelistFilter('languageReducer', ['language']);
-
+const epicMiddleware = createEpicMiddleware();
 const persistConfig: any = {
-    key: 'root',
-    transforms: [lang],
-    storage: AsyncStorage,
-    timeout: 0,
+  key: 'root',
+  transforms: [lang],
+  storage: AsyncStorage,
+  timeout: 0,
 };
-const persistedReducer = persistReducer(persistConfig, reducers);
+const persistedReducer = persistReducer(persistConfig, rootReducers);
 const configureStore = createStore(
-    persistedReducer,
+  persistedReducer,
+  applyMiddleware(epicMiddleware),
 );
+epicMiddleware.run(rootEpic);
 export const persistor = persistStore(configureStore);
 export default configureStore;
