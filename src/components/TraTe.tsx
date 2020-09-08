@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {Text} from 'react-native';
 import {connect} from 'react-redux';
 import I18n from '../constants/languages/i18n';
 class TraTe extends Component<any, any> {
@@ -29,15 +29,19 @@ class TraTe extends Component<any, any> {
     const {i18n} = this.state;
     return (
       <Text style={style}>
-        {i18nKey ? i18n.t(i18nKey) : this.props.children}
+        {i18nKey && this.props.children
+          ? i18n.t(i18nKey) + this.props.children
+          : i18nKey
+          ? i18n.t(i18nKey)
+          : this.props.children}
       </Text>
     );
   }
 }
-const mapStateToProps = (state) => {
+const mapStateFromProps = (state: any) => {
   return {
     language: state.system.language,
   };
 };
 
-export default connect(mapStateToProps, null)(TraTe);
+export default connect(mapStateFromProps, null)(TraTe);

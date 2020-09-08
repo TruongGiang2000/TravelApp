@@ -6,9 +6,9 @@ import {
 } from 'react-native-responsive-screen';
 import StarRating from 'react-native-star-rating';
 import Icon from 'react-native-vector-icons/dist/AntDesign';
-import TraTe from '../../components/TraTe';
+import TraTe from '../../../components/TraTe';
 
-export default class itemassess extends Component<any, any> {
+export default class ItemMassess extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {};

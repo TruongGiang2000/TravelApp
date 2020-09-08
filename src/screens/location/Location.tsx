@@ -22,7 +22,7 @@ class Location extends Component<any, any> {
         <View style={styles.header}>
           <MaterialIcon
             name={'keyboard-backspace'}
-            size={wp('8')}
+            size={wp('7')}
             color={'#000'}
           />
           <TraTe i18nKey={'discover'} style={styles.title} />
@@ -61,21 +61,21 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: wp('4'),
+    padding: wp('3'),
   },
   imgHeader: {
-    width: wp('6'),
-    height: hp('3'),
+    width: wp('4'),
+    height: hp('2'),
   },
   title: {
     fontFamily: 'roboto-slab-bold',
-    fontSize: wp('4.5'),
+    fontSize: wp('4'),
   },
   viewSearchBar: {
     flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'center',
-    padding: wp('2'),
+    marginBottom: hp('2'),
   },
   textInput: {
     width: wp('70'),
@@ -90,11 +90,11 @@ const styles = StyleSheet.create({
   },
   moutainList: {
     paddingLeft: wp('6'),
-    marginTop: hp('3'),
+    marginTop: hp('2'),
   },
   famousList: {
     paddingHorizontal: wp('6'),
-    marginTop: hp('3'),
+    marginTop: hp('2'),
   },
 });
 export default Location;

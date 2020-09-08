@@ -6,7 +6,7 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import Gradient from '../../../components/GradientOpacity';
-import CustomCirle from '../../../components/CustomCircle';
+import CircleImage from '../../../components/CircleImage';
 class ItemImage extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -16,7 +16,11 @@ class ItemImage extends Component<any, any> {
     const {style, stylecore, source, stylename, core, name} = this.props;
     return (
       <TouchableOpacity style={[styles.MainContainer, style]}>
-        <CustomCirle source={source} size={50} style={{    alignItems: 'flex-end',justifyContent: 'center'}} />
+        <CircleImage
+          source={source}
+          size={50}
+          style={{alignItems: 'flex-end', justifyContent: 'center'}}
+        />
         <Text style={[styles.name, stylename]}>{name}</Text>
 
         <Text style={[styles.core, stylecore]}>{core}</Text>

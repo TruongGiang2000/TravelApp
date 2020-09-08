@@ -6,7 +6,7 @@ import {
 } from 'react-native-responsive-screen';
 import StarRating from 'react-native-star-rating';
 
-export default class itemhotel1 extends Component<any, any> {
+export default class ItemHotel1 extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {};

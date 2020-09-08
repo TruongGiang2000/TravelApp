@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
-import Itemdestination from './src/home/module/itemdestination';
-import Itemhotel1 from './src/home/module/itemhotel1';
-import Itemassess from './src/home/module/itemassess';
-import Kindofroom from './src/home/module/kindofroom';
+import Kindofroom from './src/screens/home/modules/KindOfRoom';
 import {Provider} from 'react-redux';
 import configureStore from './src/redux/store';
 

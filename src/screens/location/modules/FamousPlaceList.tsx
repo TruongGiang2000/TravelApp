@@ -23,7 +23,6 @@ class FamousPlace extends Component<any, any> {
       title={item.Title}
       source={{uri: item.uriList[0]}}
       style={styles.itemContainer}
-      styleImage={{borderRadius: 16}}
     />
     )
   };
@@ -39,14 +38,14 @@ class FamousPlace extends Component<any, any> {
 }
 const styles = StyleSheet.create({
   title: {
-    fontSize: wp('5'),
+    fontSize: wp('3.8'),
     fontFamily: 'roboto-slab-bold',
   },
   itemContainer: {
     marginTop: hp('1'),
     alignSelf: 'center',
     width: wp('90'),
-    height: hp('25'),
+    height: hp('18'),
   },
 });
 const mapStateFromProps = (state: any) => {
