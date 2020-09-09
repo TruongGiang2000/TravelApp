@@ -1,0 +1,48 @@
+import React, {Component} from 'react';
+import {
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  ActivityIndicator,
+} from 'react-native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+import shadow from './shadow';
+class CircleImage extends Component<any, any> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      border: this.props.size / 2,
+    };
+  }
+  render() {
+    const {source, size, onPress} = this.props;
+    return (
+      <TouchableOpacity
+        style={[styles.MainContainer, this.props.style]}
+        onPress={onPress}>
+        <ActivityIndicator size={100} />
+        <Image
+          {...this.props}
+          source={source}
+          style={[
+            {
+              width: size || wp('20'),
+              height: size || wp('20'),
+              borderRadius: this.state.border || wp('20') / 2,
+            },
+            this.props.style,
+          ]}
+        />
+      </TouchableOpacity>
+    );
+  }
+}
+const styles = StyleSheet.create({
+  MainContainer: {
+    flex: 1,
+  },
+});
+export default CircleImage;

@@ -5,17 +5,16 @@ import TraTe from './TraTe';
 class ButtonCustom extends Component<any, any> {
   constructor(props) {
     super(props);
-    this.state = {
-      
+    this.state = {};
   }
-}
 
   render() {
-     return (
-          <TouchableOpacity style={[styles.MainContainer, this.props.style]}>
-            <TraTe style={[styles.title,this.props.titleStyle]} i18nKey={this.props.title}/>
-          </TouchableOpacity>
-     )
+    const {onPress, title, titleStyle, style} = this.props;
+    return (
+      <TouchableOpacity style={[styles.MainContainer, style]} onPress={onPress}>
+        <TraTe style={[styles.title, titleStyle]} i18nKey={title} />
+      </TouchableOpacity>
+    );
   }
 }
 const styles = StyleSheet.create({
@@ -27,8 +26,8 @@ const styles = StyleSheet.create({
   },
   title: {
     color: '#fff',
-    fontWeight: 'bold',
     textAlign: 'center',
-  }
+    fontFamily: 'roboto-slab-bold',
+  },
 });
 export default ButtonCustom;

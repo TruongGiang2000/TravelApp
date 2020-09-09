@@ -7,7 +7,7 @@ import {
 } from 'react-native-responsive-screen';
 import Gradient from '../../../components/GradientOpacity';
 import ButtonCustom from '../../../components/custombutton';
-import CustomCirle from '../../../components/CustomCircle';
+import CircleImage from '../../../components/CircleImage';
 
 class ItemImage extends Component<any, any> {
   constructor(props) {
@@ -33,7 +33,7 @@ class ItemImage extends Component<any, any> {
     return (
       <TouchableOpacity style={[styles.MainContainer, style]}>
         <View style={{marginTop:wp('2')}}>
-        <CustomCirle
+        <CircleImage
           source={source}
           size={100}
           style={{}}

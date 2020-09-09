@@ -7,7 +7,11 @@ import {name as appName} from './app.json';
 
 const app = () => (
   <Provider store={configureStore}>
-    <StatusBar backgroundColor={'transparent'}/>
+    <StatusBar
+      backgroundColor={'#ffffff'}
+      barStyle={'dark-content'}
+      animated={true}
+    />
     <App />
   </Provider>
 );

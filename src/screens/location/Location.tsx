@@ -1,11 +1,20 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, TextInput, Image, ScrollView} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  TextInput,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  Modal,
+} from 'react-native';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import TraTe from '../../components/TraTe';
 import MoutainPlaceList from './modules/MoutainPlaceList';
 import OfferPlaceList from './modules/OfferPlaceList';
 import FamousPlaceList from './modules/FamousPlaceList';
+import ModalFilter from './modules/ModalFilter';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -13,23 +22,32 @@ import {
 class Location extends Component<any, any> {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isShowModalFilter: false,
+    };
   }
-
+  showModalFilter = () => {
+    this.setState({isShowModalFilter: true});
+  };
+  hideModalFilter = (value: boolean) => {
+    this.setState({isShowModalFilter: value});
+  }
   render() {
     return (
       <ScrollView style={styles.MainContainer}>
         <View style={styles.header}>
           <MaterialIcon
             name={'keyboard-backspace'}
-            size={wp('8')}
+            size={wp('7')}
             color={'#000'}
           />
           <TraTe i18nKey={'discover'} style={styles.title} />
-          <Image
-            source={require('../../assets/images/filter.png')}
-            style={styles.imgHeader}
-          />
+          <TouchableOpacity onPress={this.showModalFilter}>
+            <Image
+              source={require('../../assets/images/filter.png')}
+              style={styles.imgHeader}
+            />
+          </TouchableOpacity>
         </View>
         <View style={styles.viewSearchBar}>
           <AntDesignIcon
@@ -48,6 +66,9 @@ class Location extends Component<any, any> {
         <OfferPlaceList style={styles.offerList} />
         <MoutainPlaceList style={styles.moutainList} />
         <FamousPlaceList style={styles.famousList} />
+        <Modal visible={this.state.isShowModalFilter} animated={true} animationType={"slide"} >
+          <ModalFilter backSpace={this.hideModalFilter} />
+        </Modal>
       </ScrollView>
     );
   }
@@ -61,21 +82,21 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: wp('4'),
+    padding: wp('3'),
   },
   imgHeader: {
-    width: wp('6'),
-    height: hp('3'),
+    width: wp('4'),
+    height: hp('2'),
   },
   title: {
     fontFamily: 'roboto-slab-bold',
-    fontSize: wp('4.5'),
+    fontSize: wp('4'),
   },
   viewSearchBar: {
     flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'center',
-    padding: wp('2'),
+    marginBottom: hp('2'),
   },
   textInput: {
     width: wp('70'),
@@ -90,11 +111,11 @@ const styles = StyleSheet.create({
   },
   moutainList: {
     paddingLeft: wp('6'),
-    marginTop: hp('3'),
+    marginTop: hp('2'),
   },
   famousList: {
     paddingHorizontal: wp('6'),
-    marginTop: hp('3'),
+    marginTop: hp('2'),
   },
 });
 export default Location;

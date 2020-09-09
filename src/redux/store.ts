@@ -5,7 +5,7 @@ import {createEpicMiddleware} from 'redux-observable';
 import {createWhitelistFilter} from 'redux-persist-transform-filter';
 import rootReducers from './reducer';
 import rootEpic from './epic';
-const lang = createWhitelistFilter('languageReducer', ['language']);
+const lang = createWhitelistFilter('system', ['language']);
 const epicMiddleware = createEpicMiddleware();
 const persistConfig: any = {
   key: 'root',

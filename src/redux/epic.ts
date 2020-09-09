@@ -4,11 +4,9 @@ import {
   getOfferProvinces,
   getFamousProvinces,
 } from './places/epic';
-import {changeLanguages} from './system/epic';
 
 const rootEpics = combineEpics(
   getMountainProvinces,
-  changeLanguages,
   getOfferProvinces,
   getFamousProvinces,
 );

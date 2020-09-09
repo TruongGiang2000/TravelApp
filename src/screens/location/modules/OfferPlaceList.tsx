@@ -40,7 +40,7 @@ class OfferPlace extends Component<any, any> {
 }
 const styles = StyleSheet.create({
   title: {
-    fontSize: wp('5'),
+    fontSize: wp('3.8'),
     fontFamily: 'roboto-slab-bold',
   },
   flatList: {
