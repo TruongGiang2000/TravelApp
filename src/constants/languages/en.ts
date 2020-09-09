@@ -8,4 +8,12 @@ export default {
   offer: 'Offer',
   moutainPlace: 'Moutain destination in Viet Nam',
   famousPlace: 'Famous destination',
+  hotelSeacrh: 'hotel Seacrh',
+  reset: 'Set again',
+  price: 'Price',
+  information: 'information',
+  checkin: 'check-in',
+  rooms: 'Rooms',
+  passengets: 'Passengets',
+  passengers:'Passengers',
 };

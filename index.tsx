@@ -1,6 +1,6 @@
 import {Provider} from 'react-redux';
 import configureStore from './src/redux/store';
-import App from './App';
+import App from './test';
 import React from 'react';
 import {AppRegistry, StatusBar} from 'react-native';
 import {name as appName} from './app.json';
