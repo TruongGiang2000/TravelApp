@@ -8,6 +8,16 @@ export default {
   offer: 'Đề xuất',
   moutainPlace: 'Vẻ đẹp rừng núi Việt Nam',
   famousPlace: 'Thành phố nổi tiếng',
+
+  hotelSeacrh: 'Tìm khách sạn',
+  reset: 'Đặt lại',
+  price: 'Mức giá',
+  information: 'Thông tin',
+  checkin: 'check-in',
+  rooms: 'Phòng',
+  passengets:'không biết',
+  passengers: 'Chưa biết',
+
   personal: 'Cá nhân',
   address: 'Địa chỉ',
   email: 'E-mail',
@@ -37,4 +47,5 @@ export default {
   relics: 'Di tích',
   find: 'Tìm kiếm',
   set_again: 'Đặt lại',
+
 };
