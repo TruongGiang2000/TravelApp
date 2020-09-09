@@ -1,11 +1,20 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, TextInput, Image, ScrollView} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  TextInput,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  Modal,
+} from 'react-native';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import TraTe from '../../components/TraTe';
 import MoutainPlaceList from './modules/MoutainPlaceList';
 import OfferPlaceList from './modules/OfferPlaceList';
 import FamousPlaceList from './modules/FamousPlaceList';
+import ModalFilter from './modules/ModalFilter';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -13,9 +22,16 @@ import {
 class Location extends Component<any, any> {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isShowModalFilter: false,
+    };
   }
-
+  showModalFilter = () => {
+    this.setState({isShowModalFilter: true});
+  };
+  hideModalFilter = (value: boolean) => {
+    this.setState({isShowModalFilter: value});
+  }
   render() {
     return (
       <ScrollView style={styles.MainContainer}>
@@ -26,10 +42,12 @@ class Location extends Component<any, any> {
             color={'#000'}
           />
           <TraTe i18nKey={'discover'} style={styles.title} />
-          <Image
-            source={require('../../assets/images/filter.png')}
-            style={styles.imgHeader}
-          />
+          <TouchableOpacity onPress={this.showModalFilter}>
+            <Image
+              source={require('../../assets/images/filter.png')}
+              style={styles.imgHeader}
+            />
+          </TouchableOpacity>
         </View>
         <View style={styles.viewSearchBar}>
           <AntDesignIcon
@@ -48,6 +66,9 @@ class Location extends Component<any, any> {
         <OfferPlaceList style={styles.offerList} />
         <MoutainPlaceList style={styles.moutainList} />
         <FamousPlaceList style={styles.famousList} />
+        <Modal visible={this.state.isShowModalFilter} animated={true} animationType={"slide"} >
+          <ModalFilter backSpace={this.hideModalFilter} />
+        </Modal>
       </ScrollView>
     );
   }

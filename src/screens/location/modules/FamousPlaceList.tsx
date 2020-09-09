@@ -8,30 +8,32 @@ import {
 import ItemImage from '../../../components/ItemImage';
 import {connect} from 'react-redux';
 import {places} from '../../../redux';
+import lodash from 'lodash';
 class FamousPlace extends Component<any, any> {
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     this.state = {};
   }
-  componentDidMount(){
-    const {getFamousProvinces} = this.props;
-    getFamousProvinces();
+  componentDidMount() {
+    this.props.getFamousProvinces();
   }
   renderItem = ({item}) => {
-    return(
-    <ItemImage
-      title={item.Title}
-      source={{uri: item.uriList[0]}}
-      style={styles.itemContainer}
-    />
-    )
+    return (
+      <ItemImage
+        title={item.Title}
+        source={{uri: item.uriList[0]}}
+        style={styles.itemContainer}
+      />
+    );
   };
   render() {
-    console.log('this.props.famousProvinces',this.props.famousProvinces);
     return (
       <View style={this.props.style}>
         <TraTe i18nKey={'famousPlace'} style={styles.title} />
-        <FlatList data={this.props.famousProvinces} renderItem={this.renderItem} />
+        <FlatList
+          data={this.props.famousProvinces}
+          renderItem={this.renderItem}
+        />
       </View>
     );
   }

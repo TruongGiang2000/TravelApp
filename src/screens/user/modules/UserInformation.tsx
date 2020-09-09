@@ -17,8 +17,7 @@ import CircleImage from '../../../components/CircleImage';
 import FieldUser from './FieldUser';
 import ImagePicker from 'react-native-image-picker';
 import Modal from 'react-native-modal';
-import {systemActions} from '../../../redux/system/actions';
-import {system} from '../../../redux/';
+import {system, places} from '../../../redux/';
 import {connect} from 'react-redux';
 class UserInformation extends Component<any, any> {
   constructor(props) {
@@ -27,6 +26,7 @@ class UserInformation extends Component<any, any> {
       isEnabled: false,
       avatarSource: require('../../../assets/images/Bitmap.png'),
       isShow: false,
+      language: this.props.language,
     };
   }
   toggleSwitch = () => {
@@ -61,7 +61,13 @@ class UserInformation extends Component<any, any> {
   setLanguage = (language: any) => {
     this.props.changeLanguages(language);
   };
-
+  componentDidUpdate(preProps: any) {
+    if (this.props.language !== preProps.language) {
+      this.props.getFamousProvinces();
+      this.props.getMountainProvinces();
+      this.props.getOfferProvinces();
+    }
+  }
   render() {
     const {style, language} = this.props;
     const {isEnabled, avatarSource, isShow} = this.state;
@@ -100,7 +106,9 @@ class UserInformation extends Component<any, any> {
           color={'#000'}
         />
         <View style={styles.viewRowStraCoin}>
-          <TraTe i18nKey={'stra_core'} style={styles.textStracoin}>: 7000</TraTe>
+          <TraTe i18nKey={'stra_core'} style={styles.textStracoin}>
+            : 7000
+          </TraTe>
           <Image
             source={require('../../../assets/images/s_coin.png')}
             style={styles.imageCoin}
@@ -207,12 +215,11 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   circleImage: {
-    marginTop: hp('-4.3'),
+    marginTop: '-6%',
   },
   viewTouchIconCamera: {
     marginTop: hp('-14'),
     marginLeft: wp('22'),
-    zIndex: 999,
   },
   iconCamera: {
     backgroundColor: '#ffffff',
@@ -310,11 +317,12 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(0, 0, 0, 0.301961)',
   },
 });
-const mapStateFromProps = state => {
-  console.log('state', state);
-	return {
-		language: state.system.language
-	};
+const mapStateFromProps = (state) => {
+  return {
+    language: state.system.language,
+  };
 };
 
-export default connect(mapStateFromProps, {...system})(UserInformation);
+export default connect(mapStateFromProps, {...system, ...places})(
+  UserInformation,
+);
