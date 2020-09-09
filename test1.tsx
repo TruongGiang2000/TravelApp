@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
 // import Itemdestination from './src/home/module/itemdestination';
 // import Itemhotel1 from './src/home/module/itemhotel1';
-import Itemassess from './src/screens/home/modules/itemassess';
 // import Kindofroom from './src/home/module/kindofroom';
 import Hotel from './src/screens/home/modules/hotelinfo';
 

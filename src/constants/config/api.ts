@@ -4,6 +4,6 @@ const api = axios.create({
     headers: {
       'Content-Type': 'application/json',
     },
-    baseURL: main.BASE_URL,
+     baseURL: main.BASE_URL,
   });
   export const $axios = {api};

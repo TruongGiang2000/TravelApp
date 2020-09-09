@@ -19,10 +19,18 @@ class ItemImage extends Component<any, any> {
     return (
       <TouchableOpacity style={[styles.MainContainer, style]} onPress={onPress}>
         {this.state.isShow && (
-          <Image style={[styles.styleImageAfter, styleImage]} source={source} />
+          <Image
+            style={[styles.styleImageAfter, styleImage]}
+            source={source}
+            resizeMode={'cover'}
+          />
         )}
 
-        <Image style={[styles.styleImage, styleImage]} source={source} />
+        <Image
+          style={[styles.styleImage, styleImage]}
+          source={source}
+          resizeMode={'cover'}
+        />
         <Gradient styleGradient={styles.stylegradient} />
         <Text style={[styles.text, styletitle]}>{title}</Text>
       </TouchableOpacity>
@@ -31,8 +39,8 @@ class ItemImage extends Component<any, any> {
 }
 const styles = StyleSheet.create({
   MainContainer: {
-    width: wp('42'),
-    height: hp('32'),
+    width: wp('25'),
+    height: hp('20'),
   },
   styleImage: {
     borderRadius: 10,
@@ -43,14 +51,14 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: '100%',
     height: '93%',
-  },  
+  },
   text: {
     color: '#FFFFFF',
-    fontSize: wp('4'),
+    fontSize: wp('2.4'),
     marginHorizontal: wp('3'),
     height: '100%',
-    textAlignVertical: "bottom",
-    paddingBottom: hp('4'),
+    textAlignVertical: 'bottom',
+    paddingBottom: hp('3.5'),
     position: 'absolute',
     fontFamily: 'roboto-slab-bold',
   },
@@ -58,7 +66,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     borderRadius: 8,
     width: '85%',
-    height: '94%',
+    height: '92%',
     margin: wp('2'),
     alignSelf: 'center',
   },

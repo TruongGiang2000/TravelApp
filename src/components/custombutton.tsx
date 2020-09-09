@@ -9,12 +9,10 @@ class ButtonCustom extends Component<any, any> {
   }
 
   render() {
+    const {onPress, title, titleStyle, style} = this.props;
     return (
-      <TouchableOpacity style={[styles.MainContainer, this.props.style]}>
-        <TraTe
-          style={[styles.title, this.props.titleStyle]}
-          i18nKey={this.props.title}
-        />
+      <TouchableOpacity style={[styles.MainContainer, style]} onPress={onPress}>
+        <TraTe style={[styles.title, titleStyle]} i18nKey={title} />
       </TouchableOpacity>
     );
   }
@@ -30,7 +28,7 @@ const styles = StyleSheet.create({
   title: {
     color: '#fff',
     textAlign: 'center',
-    fontFamily: 'roboto-slab-light',
+    fontFamily: 'roboto-slab-bold',
   },
 });
 export default ButtonCustom;
