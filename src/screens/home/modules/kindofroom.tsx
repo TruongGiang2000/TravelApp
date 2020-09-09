@@ -4,7 +4,6 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import TraTe from '../../components/TraTe';
 import Icon from 'react-native-vector-icons/dist/FontAwesome5';
 
 export default class kindofroom extends Component<any, any> {

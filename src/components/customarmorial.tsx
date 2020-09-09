@@ -21,7 +21,6 @@ class ButtonCustom extends Component<any, any> {
 }
 const styles = StyleSheet.create({
   MainContainer: {
-    backgroundColor: '#FA2A00',
     borderRadius: 8,
     paddingHorizontal: 14,
     paddingVertical: 8,

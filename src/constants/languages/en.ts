@@ -8,4 +8,8 @@ export default {
   offer: 'Offer',
   moutainPlace: 'Moutain destination in Viet Nam',
   famousPlace: 'Famous destination',
+  endow: 'Secret deals',
+  detail: 'Detail',
+  numberofreview: '230 rating',
+  convenient: 'Facilities are most popular',
 };

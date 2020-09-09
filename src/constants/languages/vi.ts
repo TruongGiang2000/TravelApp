@@ -8,4 +8,8 @@ export default {
   offer: 'Đề xuất',
   moutainPlace: 'Vẻ đẹp rừng núi Việt Nam',
   famousPlace: 'Thành phố nổi tiếng',
+  endow: 'Ưu đãi bí mật',
+  detail: 'Chi tiết',
+  numberofreview: '230 đánh giá',
+  convenient: 'Tiện nghi được ưa chuộng nhất',
 };
