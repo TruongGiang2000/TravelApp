@@ -5,17 +5,17 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import ItemImage from '../../../components/ItemImage';
-import {places} from '../../../redux';
 import {connect} from 'react-redux';
-class MountainPlace extends Component<any, any> {
+import {places} from '../../../redux';
+import ItemImage from '../../../components/ItemImage';
+class OfferPlace extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {};
   }
   componentDidMount() {
-    const {getMountainProvinces} = this.props;
-    getMountainProvinces();
+    const data = {key: 'Offer', TypesArea: ['Mountain', 'Sea']};
+    this.props.getOfferProvinces(data);
   }
   renderItem = ({item}) => (
     <ItemImage
@@ -28,12 +28,13 @@ class MountainPlace extends Component<any, any> {
   render() {
     return (
       <View style={this.props.style}>
-        <TraTe i18nKey={'moutainPlace'} style={styles.title} />
+        <TraTe i18nKey={'offer'} style={styles.title} />
         <FlatList
-          data={this.props.mountainProvinces}
+          data={this.props.offerProvinces}
           style={styles.flatList}
           renderItem={this.renderItem}
           horizontal={true}
+          keyExtractor={(item) => item.Title}
         />
       </View>
     );
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
 });
 const mapStateFromProps = (state: any) => {
   return {
-    mountainProvinces: state.places.mountainProvinces,
+    offerProvinces: state.places.offerProvinces,
   };
 };
-export default connect(mapStateFromProps, places)(MountainPlace);
+export default connect(mapStateFromProps, places)(OfferPlace);

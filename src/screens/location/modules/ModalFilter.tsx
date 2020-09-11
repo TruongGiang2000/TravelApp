@@ -14,44 +14,47 @@ import {
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import TraTe from '../../../components/TraTe';
 import Button from '../../../components/CustomButton';
+import {connect} from 'react-redux';
+import {places} from '../../../redux';
 class ModalFilter extends Component<any, any> {
+  data: any;
   constructor(props) {
     super(props);
     this.state = {
       keyActiveArea: '',
       dataArea: [
         {
-          key: 'north',
+          key: 'North',
           titleKey: 'north',
         },
         {
-          key: 'south',
+          key: 'South',
           titleKey: 'south',
         },
         {
-          key: 'central',
+          key: 'Central',
           titleKey: 'central',
         },
         {
-          key: 'western',
+          key: 'West',
           titleKey: 'western',
         },
       ],
       dataTypeArea: [
         {
-          key: 'mountain',
+          key: 'Mountain',
           titleKey: 'moutain',
         },
         {
-          key: 'sea',
+          key: 'Sea',
           titleKey: 'sea',
         },
         {
-          key: 'old_town',
+          key: 'Old town',
           titleKey: 'old_town',
         },
         {
-          key: 'relics',
+          key: 'Relics',
           titleKey: 'relics',
         },
       ],
@@ -80,14 +83,24 @@ class ModalFilter extends Component<any, any> {
   setAgain = () => {
     this.setState({keyActiveArea: '', active: {}});
   };
-  backSpace = () => {
-    this.props.backSpace(false);
-  }
+  searchProvinces = () => {
+    const {active, keyActiveArea} = this.state;
+    let array = [];
+    Object.values(active).map((item) => {
+      array.push(item);
+    });
+    this.data = {
+      Area: keyActiveArea,
+      TypesArea: array,
+    };
+    this.props.searchProvinces(this.data);
+    this.props.onFindPress();
+  };
   render() {
     const renderItemArea = ({item}) => {
-      let activeItem = this.state.keyActiveArea === item.titleKey;
+      let activeItem = this.state.keyActiveArea === item.key;
       return (
-        <TouchableOpacity onPress={this.activeArea(item.titleKey)}>
+        <TouchableOpacity onPress={this.activeArea(item.key)}>
           <TraTe
             style={activeItem ? styles.itemFilterActive : styles.itemFilter}
             i18nKey={item.titleKey}
@@ -97,9 +110,9 @@ class ModalFilter extends Component<any, any> {
     };
     const renderItemTypeArea = ({item, index}) => {
       const {active} = this.state;
-      let activeItem = Object.values(active).some((it) => it === item.titleKey);
+      let activeItem = Object.values(active).some((it) => it === item.key);
       return (
-        <TouchableOpacity onPress={this.activeTypeArea(item.titleKey, index)}>
+        <TouchableOpacity onPress={this.activeTypeArea(item.key, index)}>
           <TraTe
             style={activeItem ? styles.itemFilterActive : styles.itemFilter}
             i18nKey={item.titleKey}
@@ -111,7 +124,7 @@ class ModalFilter extends Component<any, any> {
       <View style={styles.MainContainer}>
         <ScrollView style={styles.viewTop}>
           <View style={styles.rowHeader}>
-            <TouchableOpacity onPress={this.backSpace}>
+            <TouchableOpacity onPress={this.props.backSpace}>
               <MaterialIcon
                 name={'keyboard-backspace'}
                 size={wp('7')}
@@ -140,6 +153,7 @@ class ModalFilter extends Component<any, any> {
         <View style={styles.viewBottom}>
           <Button
             style={styles.styleButton}
+            onPress={this.searchProvinces}
             title={'find'}
             titleStyle={styles.titleButtonStyle}
           />
@@ -194,7 +208,6 @@ const styles = StyleSheet.create({
     fontSize: wp('3.6'),
   },
   itemFilterActive: {
-    padding: wp('3'),
     color: '#323B45',
     fontFamily: 'roboto-slab.regular',
     backgroundColor: '#ffffff',
@@ -203,6 +216,10 @@ const styles = StyleSheet.create({
     fontSize: wp('3.6'),
     borderWidth: 2,
     borderColor: '#FA2A00',
+    textAlign: 'center',
+    paddingHorizontal: wp('3'),
+    paddingBottom: hp('0.8'),
+    paddingTop: wp('3'),
   },
   flatListArea: {
     marginTop: hp('2'),
@@ -224,4 +241,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
 });
-export default ModalFilter;
+const mapStateFromProps = (state) => {
+  return {
+    language: state.system.language,
+  };
+};
+export default connect(mapStateFromProps, {...places})(ModalFilter);

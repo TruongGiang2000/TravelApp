@@ -15,7 +15,8 @@ class FamousPlace extends Component<any, any> {
     this.state = {};
   }
   componentDidMount() {
-    this.props.getFamousProvinces();
+    const data = {key: 'Famous', TypesArea: ['Relics']}
+    this.props.getFamousProvinces(data);
   }
   renderItem = ({item}) => {
     return (
@@ -33,6 +34,8 @@ class FamousPlace extends Component<any, any> {
         <FlatList
           data={this.props.famousProvinces}
           renderItem={this.renderItem}
+          keyExtractor={(item) => item.Title}
+          scrollEnabled={false}
         />
       </View>
     );
@@ -47,7 +50,7 @@ const styles = StyleSheet.create({
     marginTop: hp('1'),
     alignSelf: 'center',
     width: wp('90'),
-    height: hp('18'),
+    height: hp('15'),
   },
 });
 const mapStateFromProps = (state: any) => {
