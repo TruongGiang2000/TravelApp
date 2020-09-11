@@ -20,7 +20,7 @@ export default class ItemMassess extends Component<any, any> {
   }
 
   render() {
-    const {starCount, title, review} = this.props;
+    const {starCount, title, review, numberofreview} = this.props;
     return (
       <TouchableOpacity style={styles.MainItem}>
         <TraTe style={styles.title} i18nKey={title} />
@@ -40,14 +40,15 @@ export default class ItemMassess extends Component<any, any> {
             <Icon name="arrowright" style={styles.icon} />
           </View>
         </View>
+        <TraTe style={styles.numberofreview} i18nKey={numberofreview} />
       </TouchableOpacity>
     );
   }
 }
 const styles = StyleSheet.create({
   MainItem: {
-    width: '100%',
-    height: hp('10'),
+    width: wp('90'),
+    height: hp('15'),
     flexDirection: 'column',
   },
   down: {
@@ -55,22 +56,31 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   rating: {
-    marginLeft: wp(5),
+    marginLeft: wp(3),
     width: wp('35'),
   },
   title: {
     fontSize: wp('5'),
     color: '#323B45',
-    margin: wp('5'),
+    marginBottom: hp('2'),
+    marginTop: hp('2'),
+    fontFamily: 'roboto-slab-bold',
   },
-  reviews: {flexDirection: 'row', marginRight: wp('3'), alignItems: 'center'},
+  reviews: {
+    flexDirection: 'row',
+    marginRight: wp('3'),
+  },
   review: {
     color: '#5C6979',
     fontSize: wp('4'),
   },
   icon: {
-    fontSize: wp('7'),
+    fontSize: wp('6'),
     color: '#A8B6C8',
     marginLeft: wp('4'),
+  },
+  numberofreview: {
+    color: '#5C6979',
+    fontSize: wp('3'),
   },
 });
