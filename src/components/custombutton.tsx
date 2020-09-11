@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {View, StyleSheet, Text, TouchableOpacity, Button} from 'react-native';
 import PropTypes from 'prop-types';
 import TraTe from './TraTe';
+import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 class ButtonCustom extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -20,15 +21,14 @@ class ButtonCustom extends Component<any, any> {
 const styles = StyleSheet.create({
   MainContainer: {
     backgroundColor: '#FA2A00',
-    borderRadius: 8,
-    paddingHorizontal: 14,
-    paddingVertical: 8,
-    justifyContent: 'center',
+    borderRadius: wp('2'),
+    paddingVertical: wp('3'),
   },
   title: {
     color: '#fff',
     textAlign: 'center',
     fontFamily: 'roboto-slab-bold',
+    fontSize: wp('3.8'),
   },
 });
 export default ButtonCustom;

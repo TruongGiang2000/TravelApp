@@ -1,13 +1,5 @@
 import {combineEpics} from 'redux-observable';
-import {
-  getMountainProvinces,
-  getOfferProvinces,
-  getFamousProvinces,
-} from './places/epic';
+import {getProvinces, searchProvinces} from './places/epic';
 
-const rootEpics = combineEpics(
-  getMountainProvinces,
-  getOfferProvinces,
-  getFamousProvinces,
-);
+const rootEpics = combineEpics(getProvinces, searchProvinces);
 export default rootEpics;

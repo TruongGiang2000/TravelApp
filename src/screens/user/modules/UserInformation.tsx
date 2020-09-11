@@ -6,6 +6,7 @@ import {
   Image,
   Switch,
   TouchableOpacity,
+  Modal,
 } from 'react-native';
 import {
   heightPercentageToDP as hp,
@@ -16,9 +17,9 @@ import TraTe from '../../../components/TraTe';
 import CircleImage from '../../../components/CircleImage';
 import FieldUser from './FieldUser';
 import ImagePicker from 'react-native-image-picker';
-import Modal from 'react-native-modal';
-import {system, places} from '../../../redux/';
-import {connect} from 'react-redux';
+import ModalCustom from 'react-native-modal';
+import ManageAccountModal from './ManageAccountModal';
+import ModalChooseLang from './ModalChooseLang';
 class UserInformation extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -27,6 +28,7 @@ class UserInformation extends Component<any, any> {
       avatarSource: require('../../../assets/images/Bitmap.png'),
       isShow: false,
       language: this.props.language,
+      isShowManageAccModal: false,
     };
   }
   toggleSwitch = () => {
@@ -58,19 +60,16 @@ class UserInformation extends Component<any, any> {
   onClose = () => {
     this.setState({isShow: false});
   };
-  setLanguage = (language: any) => {
-    this.props.changeLanguages(language);
+
+  showManageAccountModal = () => {
+    this.setState({isShowManageAccModal: true});
   };
-  componentDidUpdate(preProps: any) {
-    if (this.props.language !== preProps.language) {
-      this.props.getFamousProvinces();
-      this.props.getMountainProvinces();
-      this.props.getOfferProvinces();
-    }
-  }
+  hideManageAccountModal = () => {
+    this.setState({isShowManageAccModal: false});
+  };
   render() {
-    const {style, language} = this.props;
-    const {isEnabled, avatarSource, isShow} = this.state;
+    const {style} = this.props;
+    const {isEnabled, avatarSource, isShow, isShowManageAccModal} = this.state;
     return (
       <View style={[styles.MainContainer, style]}>
         <Image
@@ -80,11 +79,11 @@ class UserInformation extends Component<any, any> {
           blurRadius={7}
         />
         <TraTe i18nKey={'personal'} style={styles.personal} />
-        <TouchableOpacity style={styles.viewAvatarImage}>
+        <View style={styles.viewAvatarImage}>
           <CircleImage
             source={avatarSource}
             style={styles.circleImage}
-            size={wp('28')}
+            size={wp('27')}
             resizeMode={'cover'}
           />
           <TouchableOpacity
@@ -97,14 +96,18 @@ class UserInformation extends Component<any, any> {
               style={styles.iconCamera}
             />
           </TouchableOpacity>
-        </TouchableOpacity>
+        </View>
         <Text style={styles.fullName}>Nguyễn Vũ Trường Giang</Text>
-        <EntypoIcon
-          style={styles.iconThreeDot}
-          name={'dots-three-horizontal'}
-          size={wp('4')}
-          color={'#000'}
-        />
+        <TouchableOpacity
+          onPress={this.showManageAccountModal}
+          style={styles.touchIconThreeDot}>
+          <EntypoIcon
+            style={styles.iconThreeDot}
+            name={'dots-three-horizontal'}
+            size={wp('4')}
+            color={'#000'}
+          />
+        </TouchableOpacity>
         <View style={styles.viewRowStraCoin}>
           <TraTe i18nKey={'stra_core'} style={styles.textStracoin}>
             : 7000
@@ -150,44 +153,14 @@ class UserInformation extends Component<any, any> {
             />
           </View>
         </View>
-        <Modal isVisible={isShow} onBackdropPress={this.onClose}>
-          {isShow && (
-            <View style={styles.modalStyle}>
-              <View style={styles.formChooseLang}>
-                <TraTe style={styles.chooseLang} i18nKey={'choose_lang'} />
-                <TouchableOpacity
-                  style={styles.viewRowModal}
-                  onPress={() => this.setLanguage('vi')}>
-                  <TraTe style={styles.lang} i18nKey={'vi_lang'} />
-                  {language === 'vi' ? (
-                    <EntypoIcon
-                      style={styles.iconCheck}
-                      name={'check'}
-                      color={'#008A1F'}
-                      size={wp('5')}
-                    />
-                  ) : (
-                    <View style={styles.viewCircle} />
-                  )}
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={styles.viewRowModal}
-                  onPress={() => this.setLanguage('en')}>
-                  <TraTe style={styles.lang} i18nKey={'en_lang'} />
-                  {language === 'en' ? (
-                    <EntypoIcon
-                      style={styles.iconCheck}
-                      name={'check'}
-                      color={'#008A1F'}
-                      size={wp('5')}
-                    />
-                  ) : (
-                    <View style={styles.viewCircle} />
-                  )}
-                </TouchableOpacity>
-              </View>
-            </View>
-          )}
+        <ModalCustom isVisible={isShow} onBackdropPress={this.onClose}>
+          <ModalChooseLang show={isShow} />
+        </ModalCustom>
+        <Modal
+          visible={isShowManageAccModal}
+          animated={true}
+          animationType={'slide'}>
+          <ManageAccountModal onPressBackSpace={this.hideManageAccountModal} />
         </Modal>
       </View>
     );
@@ -206,7 +179,7 @@ const styles = StyleSheet.create({
     fontFamily: 'roboto-slab-bold',
     position: 'absolute',
     alignSelf: 'center',
-    marginTop: hp('2'),
+    marginTop: hp('3'),
     fontSize: wp('4'),
   },
   viewAvatarImage: {
@@ -215,7 +188,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   circleImage: {
-    marginTop: '-6%',
+    marginTop: wp('-10'),
   },
   viewTouchIconCamera: {
     marginTop: hp('-14'),
@@ -231,11 +204,13 @@ const styles = StyleSheet.create({
     fontFamily: 'roboto-slab-bold',
     fontSize: wp('4'),
     textAlign: 'center',
-    marginTop: hp('3'),
+    marginTop: hp('3.5'),
+  },
+  touchIconThreeDot: {
+    position: 'absolute',
+    marginTop: hp('22.5'),
   },
   iconThreeDot: {
-    position: 'absolute',
-    marginTop: hp('22'),
     padding: wp('2'),
     backgroundColor: '#E0E6EE',
     marginRight: wp('2'),
@@ -247,16 +222,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'center',
     backgroundColor: '#5C6979',
-    borderRadius: 10,
-    paddingHorizontal: wp('1'),
+    borderRadius: wp('3'),
+    paddingLeft: wp('2'),
+    paddingVertical: wp('0.3'),
   },
   imageCoin: {
-    width: wp('3'),
-    height: hp('3'),
+    width: wp('5'),
+    height: wp('5'),
   },
   textStracoin: {
     color: '#fff',
     fontFamily: 'roboto-slab.regular',
+    fontSize: wp('3.4'),
   },
   viewField: {
     paddingHorizontal: wp('5.5'),
@@ -275,54 +252,6 @@ const styles = StyleSheet.create({
     fontFamily: 'roboto-slab-bold',
     fontSize: wp('3.8'),
   },
-  modalStyle: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    paddingBottom: hp('5'),
-  },
-  formChooseLang: {
-    paddingVertical: hp('2'),
-    paddingHorizontal: wp('4'),
-    backgroundColor: '#fff',
-    borderRadius: 10,
-  },
-  chooseLang: {
-    color: '#323B45',
-    fontFamily: 'roboto-slab-bold',
-    fontSize: wp('4'),
-    alignSelf: 'center',
-    textTransform: 'uppercase',
-  },
-  viewRowModal: {
-    marginTop: hp('2'),
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  lang: {
-    fontSize: wp('4'),
-    fontFamily: 'roboto-slab-bold',
-    color: '#323B45',
-  },
-  iconCheck: {
-    padding: wp('0.5'),
-    borderWidth: 2,
-    borderRadius: 20,
-    borderColor: 'rgba(0, 0, 0, 0.301961)',
-  },
-  viewCircle: {
-    padding: wp('3'),
-    borderWidth: 2,
-    borderRadius: 20,
-    borderColor: 'rgba(0, 0, 0, 0.301961)',
-  },
 });
-const mapStateFromProps = (state) => {
-  return {
-    language: state.system.language,
-  };
-};
 
-export default connect(mapStateFromProps, {...system, ...places})(
-  UserInformation,
-);
+export default UserInformation;

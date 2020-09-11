@@ -1,5 +1,13 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Text, Image, FlatList} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Text,
+  Image,
+  FlatList,
+  TouchableOpacity,
+  Modal,
+} from 'react-native';
 import TraTe from '../../../components/TraTe';
 import {
   heightPercentageToDP as hp,
@@ -8,10 +16,13 @@ import {
 import shawdow from '../../../components/shadow';
 import Octicons from 'react-native-vector-icons/Octicons';
 import ItemArmotial from './ItemArmorial';
+import EntypoIcon from 'react-native-vector-icons/Entypo';
+import ModalHelping from './ModalHelping';
 class UserAchievement extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
+      showModalHelping: false,
       data: [
         {
           source: require('../../../assets/images/vali.png'),
@@ -35,14 +46,28 @@ class UserAchievement extends Component<any, any> {
   renderItem = ({item}) => (
     <ItemArmotial style={styles.item} source={item.source} title={item.title} />
   );
+  showModalHelping = () => {
+    this.setState({showModalHelping: true});
+  };
+  hideModalHelping = () => {
+    this.setState({showModalHelping: false});
+  };
   render() {
     const {style} = this.props;
+    const {showModalHelping} = this.state;
     return (
       <View style={[styles.MainContainer, style]}>
         <View style={styles.viewRowHeader}>
           <TraTe style={styles.title} i18nKey={'achievement'} />
           <View>
-            <Image source={require('../../../assets/images/iconInfo.png')} />
+            <View style={styles.viewCircle}>
+              <EntypoIcon
+                style={styles.iconInfo}
+                name={'info'}
+                color={'#FA2A00'}
+                size={wp('3.3')}
+              />
+            </View>
             <Image
               style={styles.kingHat}
               source={require('../../../assets/images/kinghat.png')}
@@ -86,8 +111,16 @@ class UserAchievement extends Component<any, any> {
             renderItem={this.renderItem}
             horizontal={true}
           />
-          <TraTe style={styles.textNeedHelp} i18nKey={'helping'} />
+          <TouchableOpacity onPress={this.showModalHelping}>
+            <TraTe style={styles.textNeedHelp} i18nKey={'helping'} />
+          </TouchableOpacity>
         </View>
+        <Modal
+          visible={showModalHelping}
+          animated={true}
+          animationType={'slide'}>
+          <ModalHelping onPressBackSpace={this.hideModalHelping} />
+        </Modal>
       </View>
     );
   }
@@ -115,6 +148,17 @@ const styles = StyleSheet.create({
     marginLeft: wp('3'),
     width: wp('4'),
     height: hp('4'),
+  },
+  iconInfo: {
+    position: 'absolute',
+  },
+  viewCircle: {
+    padding: wp('2.2'),
+    borderWidth: 2,
+    borderRadius: wp('4'),
+    borderColor: '#FA2A00',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   imageBanner: {
     width: '100%',

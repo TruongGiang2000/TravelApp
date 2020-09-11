@@ -1,20 +1,12 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import User from './User';
-import ModalChooseLanguage from './modules/ModalChooseLanguage';
 const UserStack = {
   User: {
     screen: User,
     path: 'User',
     navigationOptions: {
       title: 'User',
-    },
-  },
-  ModalChooseLanguage: {
-    screen: ModalChooseLanguage,
-    path: 'ModalChooseLanguage',
-    navigationOptions: {
-      title: 'ModalChooseLanguage',
     },
   },
 };

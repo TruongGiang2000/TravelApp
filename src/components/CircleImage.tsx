@@ -18,7 +18,7 @@ class CircleImage extends Component<any, any> {
     };
   }
   render() {
-    const {source, size, onPress} = this.props;
+    const {source, size, onPress, styleImage} = this.props;
     return (
       <TouchableOpacity
         style={[styles.MainContainer, this.props.style]}
@@ -33,7 +33,7 @@ class CircleImage extends Component<any, any> {
               height: size || wp('20'),
               borderRadius: this.state.border || wp('20') / 2,
             },
-            this.props.style,
+            styleImage,
           ]}
         />
       </TouchableOpacity>
