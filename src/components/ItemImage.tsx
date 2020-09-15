@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import elevation from '../components/shadow';
 import Gradient from './GradientOpacity';
 
 class ItemImage extends Component<any, any> {

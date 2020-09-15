@@ -21,12 +21,15 @@ import ModalChooseNumber from './ModalChooseNumber';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import Octicons from 'react-native-vector-icons/Octicons';
 import shawdow from '../../../components/shadow';
+import NumberFormat from 'react-number-format';
 class HotelSeacrhing extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
       date: moment(),
       isShowModal: false,
+      moneyStart: 0,
+      moneyEnd: 10000000,
     };
   }
   selectDate = (date) => {
@@ -38,8 +41,16 @@ class HotelSeacrhing extends Component<any, any> {
   hideModal = () => {
     this.setState({isShowModal: false});
   };
+  formatMoney = (money: number) => {
+    let moneyFinal = '';
+    moneyFinal =
+      money.toString().slice(0, 4) +
+      ',' +
+      money.toString().slice(4, money.toString.length);
+    return moneyFinal;
+  };
   render() {
-    const {date, isShowModal} = this.state;
+    const {date, isShowModal, moneyStart, moneyEnd} = this.state;
     return (
       <View style={styles.MainContainer}>
         <ScrollView style={styles.viewTop}>
@@ -144,13 +155,14 @@ class HotelSeacrhing extends Component<any, any> {
             allowOverlap={false}
             containerStyle={{alignSelf: 'center', marginHorizontal: wp('1')}}
             snapped={true}
-            values={[0, 100]}
-            max={100}
-            minMarkerOverlapDistance={20}
+            values={[0, 1]}
+            max={1}
+            minMarkerOverlapDistance={wp('10')}
             sliderLength={wp('80')}
-            step={0.1}
+            step={0.01}
             isMarkersSeparated={true}
             customMarkerLeft={(e) => {
+              console.log('e', e);
               return (
                 <Octicons
                   style={styles.iconCircleActive}
@@ -176,7 +188,7 @@ class HotelSeacrhing extends Component<any, any> {
               {': '}
             </TraTe>
             <Text style={[styles.price, {fontFamily: 'roboto-slab-bold'}]}>
-              {'đ100.000 - đ10.000.000'}
+              {`đ${moneyStart} - đ${this.formatMoney(moneyEnd)}`}
             </Text>
           </View>
         </ScrollView>

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Text, TouchableOpacity, Button} from 'react-native';
-import PropTypes from 'prop-types';
+import {StyleSheet, TouchableOpacity} from 'react-native';
 import TraTe from './TraTe';
 class ButtonCustom extends Component<any, any> {
   constructor(props) {

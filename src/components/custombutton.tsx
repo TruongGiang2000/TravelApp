@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Text, TouchableOpacity, Button} from 'react-native';
-import PropTypes from 'prop-types';
 import TraTe from './TraTe';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 class ButtonCustom extends Component<any, any> {
