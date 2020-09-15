@@ -6,7 +6,7 @@ import {
 } from 'react-native-responsive-screen';
 import TraTe from '../../../components/TraTe';
 import ButtonCustom from '../../../components/custombutton';
-import Itenassess from './itemassess';
+import Itenassess from './ItemMassess';
 
 class Hotel extends Component<any, any> {
   constructor(props) {

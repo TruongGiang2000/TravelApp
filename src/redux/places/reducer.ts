@@ -32,6 +32,14 @@ export const placesReducer: any = (state = initState, actions: any) => {
       return {...state, searchingProvinces: payload};
     case types.SEARCH_PROVINCES_FAIL:
       return {...state, searchingProvinces: []};
+    case types.MAP_PROVINCES_AGAIN:
+      return {
+        ...state,
+        mountainProvinces: payload.mountainProvinces,
+        offerProvinces: payload.offerProvinces,
+        famousProvinces: payload.famousProvinces,
+        searchingProvinces: payload.searchingProvinces,
+      };
     default:
       return state;
   }

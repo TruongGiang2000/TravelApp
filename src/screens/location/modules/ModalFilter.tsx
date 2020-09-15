@@ -21,7 +21,7 @@ class ModalFilter extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
-      keyActiveArea: '',
+      keyActiveArea: this.props.keyActiveArea,
       dataArea: [
         {
           key: 'North',
@@ -58,7 +58,7 @@ class ModalFilter extends Component<any, any> {
           titleKey: 'relics',
         },
       ],
-      active: {},
+      activeTypesArea: this.props.activeTypesArea,
     };
   }
   activeArea = (key: any) => () => {
@@ -69,24 +69,28 @@ class ModalFilter extends Component<any, any> {
     }
     this.setState({keyActiveArea: key});
   };
-  activeTypeArea = (key: any, index: number) => async () => {
-    const {active} = this.state;
-    if (Object.values(active).some((it) => it === key)) {
-      const filterItem = await Object.values(active).filter(
-        (item) => item != key,
-      );
-      this.setState({active: filterItem});
-      return;
+  activeTypeArea = (key: any) => async () => {
+    const {activeTypesArea} = this.state;
+    if (activeTypesArea) {
+      if (Object.values(activeTypesArea).some((it) => it === key)) {
+        const filterItem = await Object.values(activeTypesArea).filter(
+          (item) => item != key,
+        );
+        this.setState({activeTypesArea: filterItem});
+        return;
+      }
     }
-    this.setState((state: any) => ({active: {...state.active, [key]: key}}));
+    this.setState((state: any) => ({
+      activeTypesArea: {...state.activeTypesArea, [key]: key},
+    }));
   };
   setAgain = () => {
-    this.setState({keyActiveArea: '', active: {}});
+    this.setState({keyActiveArea: '', activeTypesArea: {}});
   };
   searchProvinces = () => {
-    const {active, keyActiveArea} = this.state;
+    const {activeTypesArea, keyActiveArea} = this.state;
     let array = [];
-    Object.values(active).map((item) => {
+    Object.values(activeTypesArea).map((item) => {
       array.push(item);
     });
     this.data = {
@@ -94,9 +98,14 @@ class ModalFilter extends Component<any, any> {
       TypesArea: array,
     };
     this.props.searchProvinces(this.data);
-    this.props.onFindPress();
+    this.props.onFindPress(keyActiveArea, activeTypesArea);
+  };
+  backSpace = () => {
+    const {activeTypesArea, keyActiveArea} = this.state;
+    this.props.backSpace(keyActiveArea, activeTypesArea);
   };
   render() {
+    const {activeTypesArea, keyActiveArea} = this.state;
     const renderItemArea = ({item}) => {
       let activeItem = this.state.keyActiveArea === item.key;
       return (
@@ -109,10 +118,12 @@ class ModalFilter extends Component<any, any> {
       );
     };
     const renderItemTypeArea = ({item, index}) => {
-      const {active} = this.state;
-      let activeItem = Object.values(active).some((it) => it === item.key);
+      const {activeTypesArea} = this.state;
+      let activeItem = Object.values(activeTypesArea).some(
+        (it) => it === item.key,
+      );
       return (
-        <TouchableOpacity onPress={this.activeTypeArea(item.key, index)}>
+        <TouchableOpacity onPress={this.activeTypeArea(item.key)}>
           <TraTe
             style={activeItem ? styles.itemFilterActive : styles.itemFilter}
             i18nKey={item.titleKey}
@@ -124,7 +135,7 @@ class ModalFilter extends Component<any, any> {
       <View style={styles.MainContainer}>
         <ScrollView style={styles.viewTop}>
           <View style={styles.rowHeader}>
-            <TouchableOpacity onPress={this.props.backSpace}>
+            <TouchableOpacity onPress={this.backSpace}>
               <MaterialIcon
                 name={'keyboard-backspace'}
                 size={wp('7')}
