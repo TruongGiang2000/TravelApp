@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     marginTop: hp('1'),
     alignSelf: 'center',
     width: wp('90'),
-    height: hp('15'),
+    height: hp('18'),
     ...shadow(4),
   },
   viewEmpty: {

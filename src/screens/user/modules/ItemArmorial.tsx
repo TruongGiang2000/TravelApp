@@ -14,7 +14,7 @@ class index extends Component<any, any> {
     const {style, source, title, imageStyle, titleStyle} = this.props;
     return (
       <View style={[styles.MainContainer, style]}>
-        <Image resizeMode={'cover'} style={imageStyle} source={source} />
+        <Image resizeMode={'cover'} style={[styles.imageStyle, imageStyle]} source={source} />
         <Text style={[styles.title, titleStyle]}>{title}</Text>
       </View>
     );
@@ -32,7 +32,12 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: 'roboto-slab.regular',
     fontSize: wp('3.2'),
+    marginTop: hp('1'),
     color: '#323B45',
   },
+  imageStyle: {
+    width: wp('16'),
+    height: hp('8'),
+  }
 });
 export default index;

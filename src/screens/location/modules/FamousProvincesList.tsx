@@ -49,8 +49,8 @@ const styles = StyleSheet.create({
   itemContainer: {
     marginTop: hp('1'),
     alignSelf: 'center',
-    width: wp('90'),
-    height: hp('15'),
+    width: '100%',
+    height: hp('18'),
   },
 });
 const mapStateFromProps = (state: any) => {

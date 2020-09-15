@@ -18,4 +18,3 @@ const app = () => (
 );
 
 AppRegistry.registerComponent(appName, () => app);
-console.disableYellowBox = true;

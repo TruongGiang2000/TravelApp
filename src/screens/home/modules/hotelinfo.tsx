@@ -1,20 +1,19 @@
-import React, {Component} from 'react';
-import {View, StyleSheet, ScrollView, Text} from 'react-native';
+import React, { Component } from 'react';
+import { View, StyleSheet, ScrollView, Text } from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import TraTe from '../../../components/TraTe';
-import ButtonCustom from '../../../components/custombutton';
-import Itenassess from './itemassess';
-
+import ButtonCustom from '../../../components/CustomButton';
+import ItemMassess from './ItemMassess';
 class Hotel extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {};
   }
   render() {
-    const {title, price, content} = this.props;
+    const { title, price, content } = this.props;
     return (
       <View style={styles.MainContainer}>
         <ScrollView>
@@ -27,10 +26,10 @@ class Hotel extends Component<any, any> {
           </View>
           <Text style={styles.content}>{content}</Text>
           <TraTe i18nKey={'detail'} style={styles.detail}></TraTe>
-          <Itenassess
+          <ItemMassess
             title={'rate'}
             review={'review'}
-            numberofreview={'numberofreview'}></Itenassess>
+            numberofreview={'numberofreview'}></ItemMassess>
           <TraTe i18nKey={'convenient'} style={styles.convenient}></TraTe>
         </ScrollView>
       </View>

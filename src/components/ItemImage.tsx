@@ -39,22 +39,22 @@ class ItemImage extends Component<any, any> {
 }
 const styles = StyleSheet.create({
   MainContainer: {
-    width: wp('25'),
-    height: hp('20'),
+    width: wp('36'),
+    height: hp('26'),
   },
   styleImage: {
-    borderRadius: 10,
+    borderRadius: 6, 
     width: '100%',
     height: '93%',
   },
   stylegradient: {
-    borderRadius: 10,
+    borderRadius: 6,
     width: '100%',
     height: '93%',
   },
   text: {
     color: '#FFFFFF',
-    fontSize: wp('2.4'),
+    fontSize: wp('3.3'),
     marginHorizontal: wp('3'),
     height: '100%',
     textAlignVertical: 'bottom',
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
   styleImageAfter: {
     position: 'absolute',
-    borderRadius: 8,
+    borderRadius: 6,
     width: '85%',
     height: '92%',
     margin: wp('2'),
