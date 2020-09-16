@@ -13,9 +13,10 @@ import {
 } from 'react-native-responsive-screen';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import TraTe from '../../../components/TraTe';
-import Button from '../../../components/CustomButton';
+import Button from '../../../components/ButtonCustom';
 import {connect} from 'react-redux';
 import {places} from '../../../redux';
+import {forEach} from 'lodash';
 class ModalFilter extends Component<any, any> {
   data: any;
   constructor(props) {
@@ -69,11 +70,11 @@ class ModalFilter extends Component<any, any> {
     }
     this.setState({keyActiveArea: key});
   };
-  activeTypeArea = (key: any) => async () => {
+  activeTypeArea = (key: any) => () => {
     const {activeTypesArea} = this.state;
     if (activeTypesArea) {
       if (Object.values(activeTypesArea).some((it) => it === key)) {
-        const filterItem = await Object.values(activeTypesArea).filter(
+        const filterItem = Object.values(activeTypesArea).filter(
           (item) => item != key,
         );
         this.setState({activeTypesArea: filterItem});
@@ -90,7 +91,10 @@ class ModalFilter extends Component<any, any> {
   searchProvinces = () => {
     const {activeTypesArea, keyActiveArea} = this.state;
     let array = [];
-    Object.values(activeTypesArea).map((item) => {
+    // Object.values(activeTypesArea).map((item) => {
+    //   array.push(item);
+    // });
+    forEach(Object.values(activeTypesArea), (item) => {
       array.push(item);
     });
     this.data = {
@@ -105,7 +109,6 @@ class ModalFilter extends Component<any, any> {
     this.props.backSpace(keyActiveArea, activeTypesArea);
   };
   render() {
-    const {activeTypesArea, keyActiveArea} = this.state;
     const renderItemArea = ({item}) => {
       let activeItem = this.state.keyActiveArea === item.key;
       return (
@@ -118,8 +121,7 @@ class ModalFilter extends Component<any, any> {
       );
     };
     const renderItemTypeArea = ({item, index}) => {
-      const {activeTypesArea} = this.state;
-      let activeItem = Object.values(activeTypesArea).some(
+      let activeItem = Object.values(this.state.activeTypesArea).some(
         (it) => it === item.key,
       );
       return (

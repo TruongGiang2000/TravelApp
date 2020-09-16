@@ -22,9 +22,14 @@ class ModalChooseNumber extends Component<any, any> {
       ],
     };
   }
+  onPressItem = (value: number) => {
+    this.props.onItemChange(value);
+  };
   renderItem = ({item}) => {
     return (
-      <TouchableOpacity style={styles.itemContainer}>
+      <TouchableOpacity
+        style={styles.itemContainer}
+        onPress={() => this.onPressItem(item.key)}>
         <Text style={styles.itemText}>{item.key}</Text>
       </TouchableOpacity>
     );

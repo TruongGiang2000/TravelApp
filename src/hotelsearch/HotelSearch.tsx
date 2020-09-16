@@ -12,7 +12,7 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import ButtonCustom from '../components/CustomButton';
+import ButtonCustom from '../components/ButtonCustom';
 import TraTe from '../components/TraTe';
 import Icon from 'react-native-vector-icons/dist/AntDesign';
 import DatePicker from 'react-native-datepicker';

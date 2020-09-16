@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {createEpicMiddleware} from 'redux-observable';
 import {createWhitelistFilter} from 'redux-persist-transform-filter';
 import rootReducers from './reducer';
-import rootEpic from './epic';
+import rootEpic from './rootEpics';
 const lang = createWhitelistFilter('system', ['language']);
 const epicMiddleware = createEpicMiddleware();
 const persistConfig: any = {

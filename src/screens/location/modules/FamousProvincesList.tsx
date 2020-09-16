@@ -8,14 +8,13 @@ import {
 import ItemImage from '../../../components/ItemImage';
 import {connect} from 'react-redux';
 import {places} from '../../../redux';
-import lodash from 'lodash';
 class FamousPlace extends Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {};
   }
   componentDidMount() {
-    const data = {key: 'Famous', TypesArea: ['Relics']}
+    const data = {key: 'Famous', TypesArea: ['Relics']};
     this.props.getFamousProvinces(data);
   }
   renderItem = ({item}) => {

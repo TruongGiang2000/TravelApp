@@ -1,6 +1,6 @@
 projectKey=Stravel
-serverUrl=http://localhost:9000
+serverUrl=http://demonoras.dx.am
 serverVersion=8.4.2.36762
-dashboardUrl=http://localhost:9000/dashboard?id=Stravel
-ceTaskId=AXSPsS_RkIE4Jcukkh8r
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AXSPsS_RkIE4Jcukkh8r
+dashboardUrl=http://demonoras.dx.am/dashboard?id=Stravel
+ceTaskId=AXSWf2XtynnoTGPdWQmQ
+ceTaskUrl=http://demonoras.dx.am/api/ce/task?id=AXSWf2XtynnoTGPdWQmQ

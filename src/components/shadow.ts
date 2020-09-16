@@ -1,4 +1,4 @@
-export default function elevationShadowStyle(elevation: number) {
+export default function shadow(elevation: number) {
   return {
     elevation,
     shadowColor: 'black',

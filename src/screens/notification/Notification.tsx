@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Text} from 'react-native';
-class Location extends Component<any, any> {
+class Notification extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {};
@@ -19,4 +19,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-export default Location;
+export default Notification;

@@ -10,7 +10,7 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import ButtonCustom from '../../../components/CustomButton';
+import ButtonCustom from '../../../components/ButtonCustom';
 import TraTe from '../../../components/TraTe';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import DatePicker from 'react-native-datepicker';
@@ -21,41 +21,84 @@ import ModalChooseNumber from './ModalChooseNumber';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import Octicons from 'react-native-vector-icons/Octicons';
 import shawdow from '../../../components/shadow';
-import NumberFormat from 'react-number-format';
-class HotelSeacrhing extends Component<any, any> {
+class HotelSearching extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
-      date: moment(),
+      date: this.props.date,
       isShowModal: false,
       moneyStart: 0,
       moneyEnd: 10000000,
+      room: this.props.room,
+      adult: this.props.adult,
+      child: this.props.child,
+      keyShowModal: '',
     };
   }
-  selectDate = (date) => {
+  selectDate = (date: Date) => {
     this.setState({date: date});
   };
-  showModal = () => {
-    this.setState({isShowModal: true});
+  showModal = (keyShowModal: string) => {
+    this.setState({isShowModal: true, keyShowModal});
   };
   hideModal = () => {
     this.setState({isShowModal: false});
   };
   formatMoney = (money: number) => {
-    let moneyFinal = '';
-    moneyFinal =
-      money.toString().slice(0, 4) +
-      ',' +
-      money.toString().slice(4, money.toString.length);
-    return moneyFinal;
+    let moneyFormat = '';
+    moneyFormat = money.toLocaleString('vi', {
+      style: 'currency',
+      currency: 'VND',
+    });
+    return moneyFormat;
+  };
+  onItemChange = (value) => {
+    const {keyShowModal} = this.state;
+    switch (keyShowModal) {
+      case 'room':
+        this.setState({room: value});
+        this.hideModal();
+        return;
+      case 'passengerAdult':
+        this.setState({adult: value});
+        this.hideModal();
+        return;
+      case 'passengerChild':
+        this.setState({child: value});
+        this.hideModal();
+        return;
+      default:
+        return null;
+    }
+  };
+  setAgain = () => {
+    this.setState({
+      date: moment(),
+      moneyStart: 0,
+      moneyEnd: 10000000,
+      room: 1,
+      adult: 1,
+      child: 1,
+    });
   };
   render() {
-    const {date, isShowModal, moneyStart, moneyEnd} = this.state;
+    const {
+      date,
+      isShowModal,
+      moneyStart,
+      moneyEnd,
+      room,
+      adult,
+      child,
+    } = this.state;
     return (
       <View style={styles.MainContainer}>
         <ScrollView style={styles.viewTop}>
           <View style={styles.rowHeader}>
-            <TouchableOpacity onPress={this.props.onBackSpacePress}>
+            <TouchableOpacity
+              onPress={() =>
+                this.props.onBackSpacePress(date, room, adult, child)
+              }>
               <MaterialIcon
                 name={'keyboard-backspace'}
                 size={wp('7')}
@@ -84,7 +127,6 @@ class HotelSeacrhing extends Component<any, any> {
                 <DatePicker
                   hideText={true}
                   showIcon={false}
-                  format="DD/MM/yyyy"
                   date={this.state.date}
                   onDateChange={this.selectDate}
                   mode={'date'}
@@ -95,10 +137,12 @@ class HotelSeacrhing extends Component<any, any> {
                   }}
                 />
               </View>
-              <TouchableOpacity style={styles.viewRow} onPress={this.showModal}>
+              <TouchableOpacity
+                style={styles.viewRow}
+                onPress={() => this.showModal('room')}>
                 <View style={[styles.contentColumn, {marginRight: wp('4')}]}>
                   <TraTe style={styles.titleEachField} i18nKey={'room'} />
-                  <Text style={styles.contentEachField}>1</Text>
+                  <Text style={styles.contentEachField}>{room}</Text>
                 </View>
                 <Fontisto
                   name={'angle-down'}
@@ -109,11 +153,13 @@ class HotelSeacrhing extends Component<any, any> {
               </TouchableOpacity>
             </View>
             <View style={[styles.viewRowSpaceBetween, {marginTop: hp('2')}]}>
-              <TouchableOpacity style={styles.viewRow} onPress={this.showModal}>
+              <TouchableOpacity
+                style={styles.viewRow}
+                onPress={() => this.showModal('passengerAdult')}>
                 <View style={[styles.contentColumn, {marginRight: wp('4')}]}>
                   <TraTe style={styles.titleEachField} i18nKey={'passenger'} />
                   <View style={{flexDirection: 'row'}}>
-                    <Text style={styles.contentEachField}>{'1 '}</Text>
+                    <Text style={styles.contentEachField}>{`${adult} `}</Text>
                     <TraTe style={styles.contentEachField} i18nKey={'adult'} />
                   </View>
                 </View>
@@ -124,12 +170,17 @@ class HotelSeacrhing extends Component<any, any> {
                   style={styles.arrowDown}
                 />
               </TouchableOpacity>
-              <TouchableOpacity style={styles.viewRow} onPress={this.showModal}>
+              <TouchableOpacity
+                style={styles.viewRow}
+                onPress={() => this.showModal('passengerChild')}>
                 <View style={[styles.contentColumn, {marginRight: wp('4')}]}>
                   <TraTe style={styles.titleEachField} i18nKey={'passenger'} />
                   <View style={{flexDirection: 'row'}}>
-                    <Text style={styles.contentEachField}>{'1 '}</Text>
-                    <TraTe style={styles.contentEachField} i18nKey={'child'} />
+                    <Text style={styles.contentEachField}>{`${child} `}</Text>
+                    <TraTe
+                      style={styles.contentEachField}
+                      i18nKey={child > 1 ? 'children' : 'child'}
+                    />
                   </View>
                 </View>
                 <Fontisto
@@ -157,12 +208,19 @@ class HotelSeacrhing extends Component<any, any> {
             snapped={true}
             values={[0, 1]}
             max={1}
-            minMarkerOverlapDistance={wp('10')}
+            minMarkerOverlapDistance={wp('8')}
             sliderLength={wp('80')}
             step={0.01}
             isMarkersSeparated={true}
+            onValuesChange={(value) => {
+              const moneyStartChange = 10000000 * value[0];
+              const moneyEndChange = 10000000 * value[1];
+              this.setState({
+                moneyStart: moneyStartChange,
+                moneyEnd: moneyEndChange,
+              });
+            }}
             customMarkerLeft={(e) => {
-              console.log('e', e);
               return (
                 <Octicons
                   style={styles.iconCircleActive}
@@ -188,7 +246,9 @@ class HotelSeacrhing extends Component<any, any> {
               {': '}
             </TraTe>
             <Text style={[styles.price, {fontFamily: 'roboto-slab-bold'}]}>
-              {`đ${moneyStart} - đ${this.formatMoney(moneyEnd)}`}
+              {`${this.formatMoney(moneyStart)} - ${this.formatMoney(
+                moneyEnd,
+              )}`}
             </Text>
           </View>
         </ScrollView>
@@ -198,12 +258,14 @@ class HotelSeacrhing extends Component<any, any> {
             title={'find'}
             titleStyle={styles.titleButtonStyle}
           />
-          <TouchableOpacity>
+          <TouchableOpacity onPress={this.setAgain}>
             <TraTe style={styles.set_again} i18nKey={'set_again'} />
           </TouchableOpacity>
         </View>
         <CustomModal isVisible={isShowModal} onBackdropPress={this.hideModal}>
-          {isShowModal && <ModalChooseNumber />}
+          {isShowModal && (
+            <ModalChooseNumber onItemChange={this.onItemChange} />
+          )}
         </CustomModal>
       </View>
     );
@@ -307,4 +369,4 @@ const styles = StyleSheet.create({
     color: '#323B45',
   },
 });
-export default HotelSeacrhing;
+export default HotelSearching;

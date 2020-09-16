@@ -65,9 +65,6 @@ const mapData = (data: any) => {
   return data.map((item: any) => {
     const {system}: any = store.getState();
     const {language} = system;
-    item.ID = item.ID;
-    item.Stars = item.Starts;
-    item.Lovers = item.Lovers;
     let uriList = [];
     item.Images.map((uri) => {
       uriList.push(

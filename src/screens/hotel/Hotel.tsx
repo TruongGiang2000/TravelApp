@@ -16,11 +16,16 @@ import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import HotelSearchingModal from './modules/HotelSearching';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import TraTe from '../../components/TraTe';
+import moment from 'moment';
 class Hotel extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
       isShowFilterModal: false,
+      date: moment(),
+      room: 1,
+      adult: 1,
+      child: 1,
     };
   }
   showModalFilter = () => {
@@ -29,11 +34,15 @@ class Hotel extends Component<any, any> {
   hideModalFilter = () => {
     this.setState({isShowFilterModal: false});
   };
+  onBackSpace = (date, room, adult, child) => {
+    this.setState({date, room, adult, child});
+    this.hideModalFilter();
+  };
   onPressBackSpace = () => {
     this.props.navigation.goBack();
   };
   render() {
-    const {isShowFilterModal} = this.state;
+    const {isShowFilterModal, date, room, adult, child} = this.state;
     return (
       <ScrollView style={styles.MainContainer}>
         <View style={styles.header}>
@@ -72,9 +81,14 @@ class Hotel extends Component<any, any> {
         <Modal
           visible={isShowFilterModal}
           animated={true}
-          animationType={"slide"}
-          >
-          <HotelSearchingModal onBackSpacePress={this.hideModalFilter} />
+          animationType={'slide'}>
+          <HotelSearchingModal
+            onBackSpacePress={this.onBackSpace}
+            date={date}
+            room={room}
+            adult={adult}
+            child={child}
+          />
         </Modal>
       </ScrollView>
     );

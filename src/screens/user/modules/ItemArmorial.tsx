@@ -4,7 +4,7 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-class index extends Component<any, any> {
+class ItemArmorial extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {};
@@ -14,7 +14,11 @@ class index extends Component<any, any> {
     const {style, source, title, imageStyle, titleStyle} = this.props;
     return (
       <View style={[styles.MainContainer, style]}>
-        <Image resizeMode={'cover'} style={[styles.imageStyle, imageStyle]} source={source} />
+        <Image
+          resizeMode={'cover'}
+          style={[styles.imageStyle, imageStyle]}
+          source={source}
+        />
         <Text style={[styles.title, titleStyle]}>{title}</Text>
       </View>
     );
@@ -38,6 +42,6 @@ const styles = StyleSheet.create({
   imageStyle: {
     width: wp('16'),
     height: hp('8'),
-  }
+  },
 });
-export default index;
+export default ItemArmorial;

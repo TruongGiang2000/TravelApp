@@ -9,7 +9,6 @@ import {connect} from 'react-redux';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import {system, places} from '../../../redux/';
 import store from '../../../redux/store';
-import lodash from 'lodash';
 class ModalChooseLang extends Component<any, any> {
   constructor(props) {
     super(props);
