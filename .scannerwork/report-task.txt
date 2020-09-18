@@ -2,5 +2,5 @@ projectKey=Stravel
 serverUrl=http://demonoras.dx.am
 serverVersion=8.4.2.36762
 dashboardUrl=http://demonoras.dx.am/dashboard?id=Stravel
-ceTaskId=AXSWf2XtynnoTGPdWQmQ
-ceTaskUrl=http://demonoras.dx.am/api/ce/task?id=AXSWf2XtynnoTGPdWQmQ
+ceTaskId=AXSWlaIQynnoTGPdWQ13
+ceTaskUrl=http://demonoras.dx.am/api/ce/task?id=AXSWlaIQynnoTGPdWQ13

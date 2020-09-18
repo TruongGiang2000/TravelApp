@@ -19,13 +19,13 @@ class ModalChooseLang extends Component<any, any> {
   };
   componentDidUpdate(preProps: any) {
     if (this.props.language !== preProps.language) {
-      const {places}: any = store.getState();
+      const placesStore: any = store.getState().places;
       const {
         mountainProvinces,
         offerProvinces,
         famousProvinces,
         searchingProvinces,
-      } = places;
+      } = placesStore;
       let initSearchingProvinces = searchingProvinces;
       if (initSearchingProvinces === undefined) {
         initSearchingProvinces = [];
