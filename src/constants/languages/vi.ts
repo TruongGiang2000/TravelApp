@@ -12,7 +12,7 @@ export default {
   detail: 'Chi tiết',
   numberofreview: '230 đánh giá',
   convenient: 'Tiện nghi được ưa chuộng nhất',
-
+  allconvenient: 'XEM TẤT CẢ TIỆN NGHI',
   hotelSeacrh: 'Tìm khách sạn',
   reset: 'Đặt lại',
   price: 'Mức giá',
@@ -21,7 +21,7 @@ export default {
   rooms: 'Phòng',
   passengets: 'không biết',
   passengers: 'Chưa biết',
-
+  picture: 'Hình ảnh',
   personal: 'Cá nhân',
   address: 'Địa chỉ',
   email: 'E-mail',

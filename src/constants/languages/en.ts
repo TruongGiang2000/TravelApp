@@ -12,8 +12,9 @@ export default {
   detail: 'Detail',
   numberofreview: '230 rating',
   convenient: 'Facilities are most popular',
-
+  allconvenient: 'VIEW ALL FACILITIES',
   hotelSeacrh: 'hotel Seacrh',
+  picture: 'Picture',
   reset: 'Set again',
   price: 'Price',
   information: 'information',

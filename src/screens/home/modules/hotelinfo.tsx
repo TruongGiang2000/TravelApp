@@ -1,18 +1,48 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, ScrollView, Text} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  ScrollView,
+  Text,
+  FlatList,
+  TouchableOpacity,
+} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import TraTe from '../../../components/TraTe';
-import ButtonCustom from '../../../components/custombutton';
-import Itenassess from './itemassess';
+import ButtonCustom from '../../../components/CustomButton';
+import Itenassess from './ItemMassess';
+import ItemUtilities from '../../../components/ItemUtilities';
 
 class Hotel extends Component<any, any> {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      data: [
+        {
+          Title: 'Giữ Xe',
+          Icon: require('../../../assets/images/parking-ticket.png'),
+        },
+        {
+          Title: 'TV',
+          Icon: require('../../../assets/images/television.png'),
+        },
+        {
+          Title: 'Bồn Tắm',
+          Icon: require('../../../assets/images/bathtub.png'),
+        },
+        {
+          Title: 'Máy Giặt',
+          Icon: require('../../../assets/images/laundry.png'),
+        },
+      ],
+    };
   }
+  renderItem = ({item}) => (
+    <ItemUtilities title={item.Title} source={item.Icon} isShow={true} />
+  );
   render() {
     const {title, price, content} = this.props;
     return (
@@ -32,6 +62,13 @@ class Hotel extends Component<any, any> {
             review={'review'}
             numberofreview={'numberofreview'}></Itenassess>
           <TraTe i18nKey={'convenient'} style={styles.convenient}></TraTe>
+          <FlatList
+            data={this.state.data}
+            renderItem={this.renderItem}
+            horizontal={true}
+          />
+          <TraTe i18nKey={'allconvenient'} style={styles.allconvenient}></TraTe>
+          <TraTe i18nKey={'picture'} style={styles.picture}></TraTe>
         </ScrollView>
       </View>
     );
@@ -53,8 +90,8 @@ const styles = StyleSheet.create({
   },
   buttoncustom: {
     marginTop: hp('1.5'),
-    height: hp('4'),
     width: wp('30'),
+    paddingVertical: wp('1'),
   },
   content: {
     marginRight: wp('10'),
@@ -68,6 +105,17 @@ const styles = StyleSheet.create({
   convenient: {
     fontFamily: 'roboto-slab-bold',
     fontSize: wp('5'),
+  },
+  allconvenient: {
+    fontFamily: 'roboto-slab-bold',
+    color: '#5C6979',
+    textAlign: 'center',
+    fontSize: wp('2.5'),
+  },
+  picture: {
+    color: '#323B45',
+    fontSize: wp('5'),
+    fontFamily: 'roboto-slab-bold',
   },
 });
 export default Hotel;

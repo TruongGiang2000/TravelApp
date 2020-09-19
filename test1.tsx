@@ -4,6 +4,7 @@ import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
 // import Itemhotel1 from './src/home/module/itemhotel1';
 // import Kindofroom from './src/home/module/kindofroom';
 import Hotel from './src/screens/home/modules/hotelinfo';
+import ItemUtilities from './src/components/ItemUtilities';
 
 import {Provider} from 'react-redux';
 import configureStore from './src/redux/store';
@@ -47,6 +48,10 @@ class index extends Component<any, any> {
             'Tọa lạc ở thành phố Vũng Tàu, cách Bãi Sau chưa đầy 1 km và Bãi Trước 13 phút đi bộ, O Dau Day Boutique Hotel cung cấp chỗ nghỉ với khu vườn, WiFi miễn phí cũng như chỗ đỗ xe riêng miễn phí cho khách lái xe. Khách sạn này có các phòng gia đình và sân hiên. Chỗ nghỉ cũng cung cấp dịch vụ lễ tân 24 giờ và dịch vụ phòng cho khách.'
           }
         />
+        {/* <ItemUtilities
+          image={require('./src/assets/images/parking-ticket.png')}
+          title={'Giữ xe'}
+        /> */}
       </View>
     );
   }

@@ -1,6 +1,6 @@
 import {Provider} from 'react-redux';
 import configureStore from './src/redux/store';
-import App from './test';
+import App from './App';
 import React from 'react';
 import Test1 from './test1';
 import {AppRegistry, StatusBar} from 'react-native';
@@ -13,7 +13,7 @@ const app = () => (
       barStyle={'dark-content'}
       animated={true}
     />
-    <Test1 />
+    <App />
   </Provider>
 );
 
