@@ -91,9 +91,6 @@ class ModalFilter extends Component<any, any> {
   searchProvinces = () => {
     const {activeTypesArea, keyActiveArea} = this.state;
     let array = [];
-    // Object.values(activeTypesArea).map((item) => {
-    //   array.push(item);
-    // });
     forEach(Object.values(activeTypesArea), (item) => {
       array.push(item);
     });
