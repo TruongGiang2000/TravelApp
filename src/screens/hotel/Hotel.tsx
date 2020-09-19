@@ -1,22 +1,131 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+  TextInput,
+  Modal,
+} from 'react-native';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
+import AntDesignIcon from 'react-native-vector-icons/AntDesign';
+import HotelSearchingModal from './modules/HotelSearching';
+import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import TraTe from '../../components/TraTe';
+import moment from 'moment';
 class Hotel extends Component<any, any> {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isShowFilterModal: false,
+      date: moment(),
+      room: 1,
+      adult: 1,
+      child: 1,
+    };
   }
+  showModalFilter = () => {
+    this.setState({isShowFilterModal: true});
+  };
+  hideModalFilter = () => {
+    this.setState({isShowFilterModal: false});
+  };
+  onBackSpace = (date, room, adult, child) => {
+    this.setState({date, room, adult, child});
+    this.hideModalFilter();
+  };
+  onPressBackSpace = () => {
+    this.props.navigation.goBack();
+  };
   render() {
+    const {isShowFilterModal, date, room, adult, child} = this.state;
     return (
-      <View style={styles.MainContainer}>
-        <Text>Hotel</Text>
-      </View>
+      <ScrollView style={styles.MainContainer}>
+        <View style={styles.header}>
+          <TouchableOpacity onPress={this.onPressBackSpace}>
+            <MaterialIcon
+              name={'keyboard-backspace'}
+              size={wp('7')}
+              color={'#000'}
+            />
+          </TouchableOpacity>
+          <TraTe i18nKey={'hotelSearching'} style={styles.title} />
+          <TouchableOpacity onPress={this.showModalFilter}>
+            <Image
+              source={require('../../assets/images/filter.png')}
+              resizeMode={'contain'}
+              style={styles.imgHeader}
+            />
+          </TouchableOpacity>
+        </View>
+        <View>
+          <View style={styles.viewSearchBar}>
+            <AntDesignIcon
+              name={'search1'}
+              color={'#A8B6C8'}
+              size={wp('6')}
+              style={styles.iconSearchBar}
+            />
+            <TextInput
+              placeholder={'Search'}
+              placeholderTextColor={'#A8B6C8'}
+              style={styles.textInput}
+              defaultValue={''}
+            />
+          </View>
+        </View>
+        <Modal
+          visible={isShowFilterModal}
+          animated={true}
+          animationType={'slide'}>
+          <HotelSearchingModal
+            onBackSpacePress={this.onBackSpace}
+            date={date}
+            room={room}
+            adult={adult}
+            child={child}
+          />
+        </Modal>
+      </ScrollView>
     );
   }
 }
 const styles = StyleSheet.create({
   MainContainer: {
+    flex: 1,
+    backgroundColor: '#ffffff',
+  },
+  header: {
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
+    padding: wp('6'),
+  },
+  imgHeader: {
+    width: wp('4'),
+    height: hp('2'),
+  },
+  title: {
+    fontFamily: 'roboto-slab-bold',
+    fontSize: wp('4'),
+  },
+  viewSearchBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'center',
+    marginBottom: hp('2'),
+  },
+  textInput: {
+    width: wp('70'),
+    fontFamily: 'roboto-slab.regular',
+    fontSize: wp('4'),
+  },
+  iconSearchBar: {
+    marginRight: 10,
   },
 });
 export default Hotel;

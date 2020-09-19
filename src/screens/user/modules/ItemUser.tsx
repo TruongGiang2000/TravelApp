@@ -1,13 +1,9 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
-import PropTypes from 'prop-types';
-import {
-  heightPercentageToDP as hp,
-  widthPercentageToDP as wp,
-} from 'react-native-responsive-screen';
+import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import CircleImage from '../../../components/CircleImage';
 import TraTe from '../../../components/TraTe';
-class ItemImage extends Component<any, any> {
+class ItemUser extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
@@ -89,4 +85,4 @@ const styles = StyleSheet.create({
     height: wp('5.5'),
   },
 });
-export default ItemImage;
+export default ItemUser;

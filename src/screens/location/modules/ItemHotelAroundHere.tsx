@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
-import PropTypes from 'prop-types';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import ButtonCustom from '../../../components/CustomButton';
+import ButtonCustom from '../../../components/ButtonCustom';
 import StarRating from 'react-native-star-rating';
-import GraddientOpacity from '../../../components/GradientOpacity';
-
 class ItemHotelAroundHere extends Component<any, any> {
   constructor(props) {
     super(props);

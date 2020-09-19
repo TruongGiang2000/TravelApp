@@ -146,7 +146,7 @@ class UserInformation extends Component<any, any> {
             <Text style={styles.darkMode}>Dark mode</Text>
             <Switch
               trackColor={{false: '#767577', true: '#FA2A00'}}
-              thumbColor={isEnabled ? '#f4f3f4' : '#f4f3f4'}
+              thumbColor={'#f4f3f4'}
               ios_backgroundColor="#3e3e3e"
               onValueChange={this.toggleSwitch}
               value={isEnabled}

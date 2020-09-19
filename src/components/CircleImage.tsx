@@ -5,11 +5,7 @@ import {
   Image,
   ActivityIndicator,
 } from 'react-native';
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
-import shadow from './shadow';
+import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 class CircleImage extends Component<any, any> {
   constructor(props) {
     super(props);

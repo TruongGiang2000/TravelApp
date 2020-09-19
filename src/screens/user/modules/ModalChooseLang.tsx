@@ -8,6 +8,7 @@ import TraTe from '../../../components/TraTe';
 import {connect} from 'react-redux';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import {system, places} from '../../../redux/';
+import store from '../../../redux/store';
 class ModalChooseLang extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -18,12 +19,24 @@ class ModalChooseLang extends Component<any, any> {
   };
   componentDidUpdate(preProps: any) {
     if (this.props.language !== preProps.language) {
-      const dataMoutain = {key: 'Mountain', TypesArea: ['Mountain']};
-      const dataOffer = {key: 'Offer', TypesArea: ['Mountain', 'Sea']};
-      const dataFamous = {key: 'Famous', TypesArea: ['Relics']};
-      this.props.getFamousProvinces(dataFamous);
-      this.props.getMountainProvinces(dataMoutain);
-      this.props.getOfferProvinces(dataOffer);
+      const placesStore: any = store.getState().places;
+      const {
+        mountainProvinces,
+        offerProvinces,
+        famousProvinces,
+        searchingProvinces,
+      } = placesStore;
+      let initSearchingProvinces = searchingProvinces;
+      if (initSearchingProvinces === undefined) {
+        initSearchingProvinces = [];
+      }
+      const data = {
+        mountainProvinces,
+        offerProvinces,
+        famousProvinces,
+        searchingProvinces: initSearchingProvinces,
+      };
+      this.props.mapProvincesAgain(data);
     }
   }
   render() {

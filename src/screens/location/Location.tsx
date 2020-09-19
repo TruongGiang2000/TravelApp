@@ -26,16 +26,27 @@ class Location extends Component<any, any> {
     this.state = {
       isShowModalFilter: false,
       isSearching: false,
+      keyActiveArea: '',
+      activeTypesArea: {},
     };
   }
   showModalFilter = () => {
     this.setState({isShowModalFilter: true});
   };
-  hideModalFilter = () => {
-    this.setState({isShowModalFilter: false});
+  hideModalFilter = (areaActive: any, typesAreaActive: any) => {
+    this.setState({
+      isShowModalFilter: false,
+      keyActiveArea: areaActive,
+      activeTypesArea: typesAreaActive,
+    });
   };
-  onFindPress = () => {
-    this.setState({isSearching: true, isShowModalFilter: false});
+  onFindPress = (areaActive: any, typesAreaActive: any) => {
+    this.setState({
+      isSearching: true,
+      isShowModalFilter: false,
+      keyActiveArea: areaActive,
+      activeTypesArea: typesAreaActive,
+    });
   };
   onPressBackSpace = () => {
     const {isSearching} = this.state;
@@ -46,7 +57,12 @@ class Location extends Component<any, any> {
     this.props.navigation.goBack();
   };
   render() {
-    const {isSearching} = this.state;
+    const {
+      isSearching,
+      keyActiveArea,
+      activeTypesArea,
+      isShowModalFilter,
+    } = this.state;
     return (
       <ScrollView style={styles.MainContainer}>
         <View style={styles.header}>
@@ -61,6 +77,7 @@ class Location extends Component<any, any> {
           <TouchableOpacity onPress={this.showModalFilter}>
             <Image
               source={require('../../assets/images/filter.png')}
+              resizeMode={'contain'}
               style={styles.imgHeader}
             />
           </TouchableOpacity>
@@ -87,12 +104,14 @@ class Location extends Component<any, any> {
           </View>
         )}
         <Modal
-          visible={this.state.isShowModalFilter}
+          visible={isShowModalFilter}
           animated={true}
           animationType={'slide'}>
           <ModalFilter
             backSpace={this.hideModalFilter}
             onFindPress={this.onFindPress}
+            keyActiveArea={keyActiveArea}
+            activeTypesArea={activeTypesArea}
           />
         </Modal>
         {isSearching && (

@@ -18,16 +18,7 @@ export default class itemdestination extends Component<any, any> {
     });
   }
   render() {
-    const {
-      style,
-      ImageStyle,
-      number,
-      place,
-      title,
-      name,
-      starCount,
-      onPress,
-    } = this.props;
+    const {style, number, place, title, name, starCount, onPress} = this.props;
     return (
       <TouchableOpacity onPress={onPress}>
         <View style={[styles.container, style]}>

@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import TraTe from '../../../components/TraTe';
 import Entypo from 'react-native-vector-icons/Entypo';
-import {
-  heightPercentageToDP as hp,
-  widthPercentageToDP as wp,
-} from 'react-native-responsive-screen';
+import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 class ItemRow extends Component<any, any> {
   constructor(props) {
     super(props);

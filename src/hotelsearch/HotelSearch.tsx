@@ -12,7 +12,7 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import ButtonCustom from '../components/custombutton';
+import ButtonCustom from '../components/ButtonCustom';
 import TraTe from '../components/TraTe';
 import Icon from 'react-native-vector-icons/dist/AntDesign';
 import DatePicker from 'react-native-datepicker';
@@ -110,7 +110,7 @@ class HotelSeacrh extends Component<any, any> {
             
             data={this.data1}
             keyExtractor={item => item.id}
-            firstTitleText='123'
+            firstTitleText={'123'}
           >
             <View style={styles.downsquare2}>
             <Icon name="downsquare" size={30} color="#000" />

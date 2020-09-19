@@ -21,9 +21,7 @@ class ItemNew extends Component<any, any> {
         <Image style={[styles.styleImage, styleImage]} source={source} />
         <View style={styles.styleview}>
           <Text style={[styles.textTitle, styleTitle]}> {title} </Text>
-          <Text style={[styles.textContent, styleContent]}>
-            {titleContent}
-          </Text>
+          <Text style={[styles.textContent, styleContent]}>{titleContent}</Text>
         </View>
       </TouchableOpacity>
     );

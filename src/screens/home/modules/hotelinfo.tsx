@@ -12,8 +12,8 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import TraTe from '../../../components/TraTe';
-import ButtonCustom from '../../../components/CustomButton';
-import Itenassess from './ItemMassess';
+import ButtonCustom from '../../../components/ButtonCustom';
+import Itenassess from './ItemRating';
 import ItemUtilities from '../../../components/ItemUtilities';
 
 class Hotel extends Component<any, any> {

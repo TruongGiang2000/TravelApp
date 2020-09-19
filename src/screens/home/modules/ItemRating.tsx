@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, TouchableOpacity, StyleSheet} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -8,7 +8,7 @@ import StarRating from 'react-native-star-rating';
 import Icon from 'react-native-vector-icons/dist/AntDesign';
 import TraTe from '../../../components/TraTe';
 
-export default class ItemMassess extends Component<any, any> {
+export default class ItemRating extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {};

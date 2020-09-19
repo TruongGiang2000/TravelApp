@@ -13,7 +13,7 @@ import {
 } from 'react-native-responsive-screen';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import TraTe from '../../../components/TraTe';
-import Button from '../../../components/CustomButton';
+import Button from '../../../components/ButtonCustom';
 import {connect} from 'react-redux';
 import {places} from '../../../redux';
 class ModalFilter extends Component<any, any> {

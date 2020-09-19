@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
-import PropTypes from 'prop-types';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,

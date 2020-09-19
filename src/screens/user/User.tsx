@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, ScrollView} from 'react-native';
+import {StyleSheet, ScrollView} from 'react-native';
 import UserInformation from './modules/UserInformation';
 import UserAchievement from './modules/UserAchievement';
-import {
-  heightPercentageToDP as hp,
-  widthPercentageToDP as wp,
-} from 'react-native-responsive-screen';
+import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 class User extends Component<any, any> {
   constructor(props) {
     super(props);
