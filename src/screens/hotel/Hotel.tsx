@@ -26,6 +26,10 @@ class Hotel extends Component<any, any> {
       room: 1,
       adult: 1,
       child: 1,
+      minValue: 0,
+      maxValue: 1,
+      moneyStart: 0,
+      moneyEnd: 10000000,
     };
   }
   showModalFilter = () => {
@@ -34,15 +38,43 @@ class Hotel extends Component<any, any> {
   hideModalFilter = () => {
     this.setState({isShowFilterModal: false});
   };
-  onBackSpace = (date, room, adult, child) => {
-    this.setState({date, room, adult, child});
+  onBackSpace = (
+    date,
+    room,
+    adult,
+    child,
+    minValue,
+    maxValue,
+    moneyStart,
+    moneyEnd,
+  ) => {
+    this.setState({
+      date,
+      room,
+      adult,
+      child,
+      minValue,
+      maxValue,
+      moneyStart,
+      moneyEnd,
+    });
     this.hideModalFilter();
   };
   onPressBackSpace = () => {
     this.props.navigation.goBack();
   };
   render() {
-    const {isShowFilterModal, date, room, adult, child} = this.state;
+    const {
+      isShowFilterModal,
+      date,
+      room,
+      adult,
+      child,
+      minValue,
+      maxValue,
+      moneyStart,
+      moneyEnd,
+    } = this.state;
     return (
       <ScrollView style={styles.MainContainer}>
         <View style={styles.header}>
@@ -88,6 +120,10 @@ class Hotel extends Component<any, any> {
             room={room}
             adult={adult}
             child={child}
+            minValue={minValue}
+            maxValue={maxValue}
+            moneyStart={moneyStart}
+            moneyEnd={moneyEnd}
           />
         </Modal>
       </ScrollView>

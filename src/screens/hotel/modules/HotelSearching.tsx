@@ -21,18 +21,31 @@ import ModalChooseNumber from './ModalChooseNumber';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import Octicons from 'react-native-vector-icons/Octicons';
 import shawdow from '../../../components/shadow';
+import {max} from 'lodash';
 class HotelSearching extends Component<any, any> {
   constructor(props) {
     super(props);
+    const {
+      date,
+      room,
+      adult,
+      child,
+      minValue,
+      maxValue,
+      moneyStart,
+      moneyEnd,
+    } = this.props;
     this.state = {
-      date: this.props.date,
+      date: date,
       isShowModal: false,
-      moneyStart: 0,
-      moneyEnd: 10000000,
-      room: this.props.room,
-      adult: this.props.adult,
-      child: this.props.child,
+      moneyStart: moneyStart,
+      moneyEnd: moneyEnd,
+      room: room,
+      adult: adult,
+      child: child,
       keyShowModal: '',
+      minValue: minValue,
+      maxValue: maxValue,
     };
   }
   selectDate = (date: Date) => {
@@ -79,6 +92,18 @@ class HotelSearching extends Component<any, any> {
       room: 1,
       adult: 1,
       child: 1,
+      minValue: 0,
+      maxValue: 1,
+    });
+  };
+  onChangeValue = (value: any) => {
+    const moneyStart = 10000000 * value[0];
+    const moneyEnd = 10000000 * value[1];
+    this.setState({
+      moneyStart,
+      moneyEnd,
+      minValue: value[0],
+      maxValue: value[1],
     });
   };
   render() {
@@ -90,6 +115,8 @@ class HotelSearching extends Component<any, any> {
       room,
       adult,
       child,
+      minValue,
+      maxValue,
     } = this.state;
     return (
       <View style={styles.MainContainer}>
@@ -97,7 +124,16 @@ class HotelSearching extends Component<any, any> {
           <View style={styles.rowHeader}>
             <TouchableOpacity
               onPress={() =>
-                this.props.onBackSpacePress(date, room, adult, child)
+                this.props.onBackSpacePress(
+                  date,
+                  room,
+                  adult,
+                  child,
+                  minValue,
+                  maxValue,
+                  moneyStart,
+                  moneyEnd,
+                )
               }>
               <MaterialIcon
                 name={'keyboard-backspace'}
@@ -160,7 +196,10 @@ class HotelSearching extends Component<any, any> {
                   <TraTe style={styles.titleEachField} i18nKey={'passenger'} />
                   <View style={{flexDirection: 'row'}}>
                     <Text style={styles.contentEachField}>{`${adult} `}</Text>
-                    <TraTe style={styles.contentEachField} i18nKey={'adult'} />
+                    <TraTe
+                      style={styles.contentEachField}
+                      i18nKey={adult > 1 ? 'adults' : 'adult'}
+                    />
                   </View>
                 </View>
                 <Fontisto
@@ -206,20 +245,13 @@ class HotelSearching extends Component<any, any> {
             allowOverlap={false}
             containerStyle={{alignSelf: 'center', marginHorizontal: wp('1')}}
             snapped={true}
-            values={[0, 1]}
+            values={[minValue, maxValue]}
             max={1}
             minMarkerOverlapDistance={wp('8')}
             sliderLength={wp('80')}
             step={0.01}
             isMarkersSeparated={true}
-            onValuesChange={(value) => {
-              const moneyStartChange = 10000000 * value[0];
-              const moneyEndChange = 10000000 * value[1];
-              this.setState({
-                moneyStart: moneyStartChange,
-                moneyEnd: moneyEndChange,
-              });
-            }}
+            onValuesChange={(value) => this.onChangeValue(value)}
             customMarkerLeft={(e) => {
               return (
                 <Octicons
