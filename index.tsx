@@ -13,7 +13,7 @@ const app = () => (
       barStyle={'dark-content'}
       animated={true}
     />
-    <App />
+    <Test1 />
   </Provider>
 );
 
