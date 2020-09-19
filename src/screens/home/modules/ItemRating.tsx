@@ -13,16 +13,17 @@ export default class ItemRating extends Component<any, any> {
     super(props);
     this.state = {};
   }
-  onStarRatingPress(rating) {
-    this.setState({
-      starCount: rating,
-    });
-  }
-
   render() {
-    const {starCount, title, review, numberofreview} = this.props;
+    const {
+      starCount,
+      title,
+      review,
+      numberofreview,
+      style,
+      onPress,
+    } = this.props;
     return (
-      <TouchableOpacity style={styles.MainItem}>
+      <TouchableOpacity style={style} onPress={onPress}>
         <TraTe style={styles.title} i18nKey={title} />
         <View style={styles.down}>
           <View style={styles.rating}>
@@ -30,57 +31,57 @@ export default class ItemRating extends Component<any, any> {
               disabled={false}
               maxStars={5}
               rating={starCount}
-              selectedStar={(rating) => this.onStarRatingPress(rating)}
               fullStarColor={'#F0C909'}
-              starSize={wp('4')}
+              starSize={wp('5')}
             />
+            <TraTe style={styles.numberofreview} i18nKey={numberofreview} />
           </View>
           <View style={styles.reviews}>
             <TraTe style={styles.review} i18nKey={review} />
-            <Icon name="arrowright" style={styles.icon} />
+            <Icon
+              name="arrowright"
+              style={styles.icon}
+              size={wp('5')}
+              color={'#A8B6C8'}
+            />
           </View>
         </View>
-        <TraTe style={styles.numberofreview} i18nKey={numberofreview} />
       </TouchableOpacity>
     );
   }
 }
 const styles = StyleSheet.create({
-  MainItem: {
-    width: wp('90'),
-    height: hp('15'),
-    flexDirection: 'column',
-  },
   down: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
   rating: {
-    marginLeft: wp(3),
+    marginLeft: wp('1.5'),
     width: wp('35'),
   },
   title: {
     fontSize: wp('5'),
+    marginBottom: wp('1.5'),
     color: '#323B45',
-    marginBottom: hp('2'),
-    marginTop: hp('2'),
     fontFamily: 'roboto-slab-bold',
   },
   reviews: {
     flexDirection: 'row',
     marginRight: wp('3'),
+    justifyContent: 'center',
   },
   review: {
     color: '#5C6979',
-    fontSize: wp('4'),
+    fontSize: wp('3.4'),
+    fontFamily: 'roboto-slab.regular',
   },
   icon: {
-    fontSize: wp('6'),
-    color: '#A8B6C8',
-    marginLeft: wp('4'),
+    marginLeft: wp('2'),
   },
   numberofreview: {
     color: '#5C6979',
     fontSize: wp('3'),
+    marginTop: wp('2'),
+    fontFamily: 'roboto-slab.regular',
   },
 });

@@ -70,4 +70,5 @@ export default {
   child: 'Child',
   children: 'Children',
   price_from: 'Price from',
+  choosing_room: 'Choose room',
 };

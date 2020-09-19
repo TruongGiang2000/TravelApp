@@ -71,4 +71,5 @@ export default {
   child: 'Trẻ em',
   children: 'Trẻ em',
   price_from: 'Giá từ',
+  choosing_room: 'Chọn phòng',
 };
