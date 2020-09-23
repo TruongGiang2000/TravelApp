@@ -18,6 +18,7 @@ import {
 import CircleImage from '../../../components/CircleImage';
 import ModalCustom from 'react-native-modal';
 import ModalHelping from './ModalHelping';
+import ModalAuth from './ModalAuth';
 class UserNotLogin extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -25,6 +26,7 @@ class UserNotLogin extends Component<any, any> {
       isShow: false,
       isEnabled: false,
       showModalHelping: false,
+      showModaAuth: false,
     };
   }
   showModalChooseLanguage = () => {
@@ -42,9 +44,15 @@ class UserNotLogin extends Component<any, any> {
   hideModalHelping = () => {
     this.setState({showModalHelping: false});
   };
+  showModalAuth = () => {
+    this.setState({showModaAuth: true});
+  };
+  hideModalAuth = () => {
+    this.setState({showModaAuth: false});
+  };
   render() {
     const {style} = this.props;
-    const {isShow, isEnabled, showModalHelping} = this.state;
+    const {isShow, isEnabled, showModalHelping, showModaAuth} = this.state;
     return (
       <View style={[styles.MainContainer, style]}>
         <Image
@@ -60,7 +68,11 @@ class UserNotLogin extends Component<any, any> {
           size={wp('27')}
           resizeMode={'cover'}
         />
-        <TraTe style={styles.siggUpText} i18nKey={'manage_account'} />
+        <TraTe
+          onPress={this.showModalAuth}
+          style={styles.siggUpText}
+          i18nKey={'signin'}
+        />
         <View style={styles.viewFieldUser}>
           <FieldUser
             style={styles.fieldUser}
@@ -92,6 +104,9 @@ class UserNotLogin extends Component<any, any> {
           animated={true}
           animationType={'slide'}>
           <ModalHelping onPressBackSpace={this.hideModalHelping} />
+        </Modal>
+        <Modal visible={showModaAuth} animated={true} animationType={'slide'}>
+          <ModalAuth onPress={this.hideModalAuth} />
         </Modal>
       </View>
     );

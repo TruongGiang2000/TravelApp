@@ -78,4 +78,6 @@ export default {
   or: 'Hoặc',
   facebock: 'Tiếp tục với Facebook',
   createaccount: 'Tạo tài khoản',
+  dont_have_an_account: 'Bạn không có tài khoản?',
+  have_an_account: 'Bạn có tài khoản?',
 };

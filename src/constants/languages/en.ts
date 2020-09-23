@@ -77,4 +77,6 @@ export default {
   or: 'Or',
   facebock: 'Continue with Facebook',
   createaccount: 'Create account',
+  dont_have_an_account: "Don't have an account?",
+  have_an_account: 'You have an account?',
 };

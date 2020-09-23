@@ -25,10 +25,10 @@ class TraTe extends Component<any, any> {
     this.setState({i18n});
   };
   render() {
-    const {i18nKey, style} = this.props;
+    const {i18nKey, style, onPress} = this.props;
     const {i18n} = this.state;
     return (
-      <Text style={style}>
+      <Text onPress={onPress} style={style}>
         {i18nKey && this.props.children
           ? i18n.t(i18nKey) + this.props.children
           : i18nKey
