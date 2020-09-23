@@ -70,4 +70,11 @@ export default {
   child: 'Child',
   children: 'Children',
   price_from: 'Price from',
+  choosing_room: 'Choose room',
+  signin: 'Sign in',
+  signup: 'Sign up',
+  welcome: 'Welcome',
+  or: 'Or',
+  facebock: 'Continue with Facebook',
+  createaccount: 'Create account',
 };
