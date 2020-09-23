@@ -15,8 +15,7 @@ class Notification extends Component<any, any> {
 }
 const styles = StyleSheet.create({
   MainContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    flex: 1,
   },
 });
 export default Notification;
