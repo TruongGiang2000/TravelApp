@@ -12,4 +12,4 @@ class index extends Component<any, any> {
   }
 }
 
-export default index;
+export default test;

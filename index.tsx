@@ -1,6 +1,6 @@
 import {Provider} from 'react-redux';
 import configureStore from './src/redux/store';
-import App from './App';
+import App from './test';
 import React from 'react';
 import Test1 from './test1';
 import Test2 from './src/screens/user/modules/UserNotLogin';
@@ -14,7 +14,7 @@ const app = () => (
       barStyle={'dark-content'}
       animated={true}
     />
-    <Test2 />
+    <App />
   </Provider>
 );
 
