@@ -72,4 +72,10 @@ export default {
   children: 'Trẻ em',
   price_from: 'Giá từ',
   choosing_room: 'Chọn phòng',
+  signin: 'Đăng nhập',
+  signup: 'Đăng ký',
+  welcome: 'Chào mừng',
+  or: 'Hoặc',
+  facebock: 'Tiếp tục với Facebook',
+  createaccount: 'Tạo tài khoản',
 };
