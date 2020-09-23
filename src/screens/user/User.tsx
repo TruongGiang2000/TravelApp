@@ -3,6 +3,7 @@ import {StyleSheet, ScrollView} from 'react-native';
 import UserInformation from './modules/UserInformation';
 import UserAchievement from './modules/UserAchievement';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import UserNotLogin from './modules/UserNotLogin';
 class User extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -11,8 +12,7 @@ class User extends Component<any, any> {
   render() {
     return (
       <ScrollView style={styles.MainContainer}>
-        <UserInformation navigation={this.props.navigation} />
-        <UserAchievement style={styles.userAward} />
+        <UserNotLogin />
       </ScrollView>
     );
   }
