@@ -1,6 +1,6 @@
 import {Provider} from 'react-redux';
 import configureStore from './src/redux/store';
-import App from './test';
+import App from './App';
 import React from 'react';
 import Test1 from './test1';
 import Test2 from './src/screens/user/modules/UserNotLogin';

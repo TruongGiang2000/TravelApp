@@ -103,4 +103,6 @@ export default {
   finalprice: 'Final price',
   textname: 'Khi khách đến, họ cần xuất trình giấy tờ tùy thân trùng khớp với tên được ghi ở đây. Bạn không thể thay đổi tên ở đây',
   textemail: 'Thư xác nhận đặt phòng sẽ được gửi đến đây',
+  dont_have_an_account: "Don't have an account?",
+  have_an_account: 'You have an account?',
 };

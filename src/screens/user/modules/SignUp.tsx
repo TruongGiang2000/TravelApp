@@ -7,9 +7,7 @@ import {
 import TraTe from '../../../components/TraTe';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
 import ButtonCustom from '../../../components/ButtonCustom';
-import ButtonFBCustom from '../../../components/ButtonFBCustom';
 class index extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -20,26 +18,43 @@ class index extends Component<any, any> {
     return (
       <View style={styles.MainContainer}>
         <View style={styles.viewContent}>
-          <TraTe i18nKey={'signup'} style={styles.signinText} />
+          <TraTe i18nKey={'signup'} style={styles.signupText} />
           <View style={styles.textInput}>
-            <FontAwesome name={'user'} size={20} style={styles.icon} />
-            <TextInput placeholder={'Tài khoản'} />
+            <FontAwesome name={'user'} size={wp('5')} color={'#A8B6C8'} />
+            <TextInput
+              style={styles.inputText}
+              placeholder={'Tài khoản'}
+              placeholderTextColor={'#A8B6C8'}
+            />
           </View>
           <View style={styles.textInput}>
-            <FontAwesome name={'lock'} size={20} style={styles.icon} />
-            <TextInput placeholder={'Mật khẩu'} autoCompleteType={'password'} />
+            <FontAwesome name={'lock'} size={wp('5')} color={'#A8B6C8'} />
+            <TextInput
+              style={styles.inputText}
+              placeholderTextColor={'#A8B6C8'}
+              placeholder={'Mật khẩu'}
+              textContentType={'password'}
+            />
           </View>
           <View style={styles.textInput}>
-            <FontAwesome name={'lock'} size={20} style={styles.icon} />
-            <TextInput placeholder={'Nhập lại mật khẩu'} />
+            <FontAwesome name={'lock'} size={wp('5')} color={'#A8B6C8'} />
+            <TextInput
+              style={styles.inputText}
+              placeholderTextColor={'#A8B6C8'}
+              placeholder={'Nhập lại mật khẩu'}
+            />
           </View>
           <View style={styles.textInput}>
             <MaterialCommunityIcons
               name={'email'}
-              size={20}
-              style={styles.icon}
+              size={wp('5')}
+              color={'#A8B6C8'}
             />
-            <TextInput placeholder={'Email'} />
+            <TextInput
+              placeholderTextColor={'#A8B6C8'}
+              style={styles.inputText}
+              placeholder={'Email'}
+            />
           </View>
           <ButtonCustom title="createaccount" style={styles.buttonCustom} />
         </View>
@@ -48,7 +63,7 @@ class index extends Component<any, any> {
           <TraTe i18nKey={'or'} style={styles.orText} />
           <View style={styles.dash1}></View>
         </View>
-        <ButtonFBCustom title={'facebock'} />
+        <TraTe onPress={this.props.onPressHaveAccount} i18nKey={'have_an_account'} style={styles.haveAccount} />
       </View>
     );
   }
@@ -56,15 +71,16 @@ class index extends Component<any, any> {
 const styles = StyleSheet.create({
   MainContainer: {
     flex: 1,
-    paddingHorizontal: wp('3'),
+    paddingHorizontal: wp('4'),
   },
   viewContent: {
     backgroundColor: '#FFFFFF',
-    padding: wp('3'),
+    paddingHorizontal: wp('4'),
+    paddingVertical: hp('3'),
     marginTop: hp('7'),
     borderRadius: wp('2'),
   },
-  signinText: {
+  signupText: {
     textTransform: 'uppercase',
     fontFamily: 'roboto-slab-bold',
     fontSize: wp('4'),
@@ -73,41 +89,46 @@ const styles = StyleSheet.create({
   },
   textInput: {
     marginTop: hp('2'),
-    borderWidth: 3,
+    borderWidth: 2,
     borderRadius: wp('2'),
     borderColor: ' rgba(168, 182, 200, 0.196078)',
     height: hp('7'),
     flexDirection: 'row',
-    padding: wp('1'),
-  },
-  icon: {
-    marginRight: wp('2'),
-    marginTop: hp('1.2'),
+    paddingHorizontal: wp('4'),
+    alignItems: 'center',
   },
   buttonCustom: {
     marginTop: hp('2'),
-    height: wp('15'),
-    width: wp('80'),
-    alignSelf: 'center',
-    justifyContent: 'center',
+    paddingVertical: hp('2.5'),
   },
   dash: {
+    marginVertical: hp('2'),
     flexDirection: 'row',
     justifyContent: 'center',
-    alignContent: 'center',
+    alignItems: 'center',
+    opacity: 0.4,
   },
   dash1: {
-    marginTop: hp('5'),
     height: hp('0.1'),
-    width: wp('30'),
+    width: wp('37'),
     backgroundColor: '#FFFFFF',
   },
   orText: {
-    marginTop: hp('3'),
-    fontSize: wp('5'),
+    fontSize: wp('3.8'),
     color: '#FFFFFF',
-    margin: wp('2'),
-    fontFamily: 'roboto-slab-light',
+    marginHorizontal: wp('2'),
+    fontFamily: 'roboto-slab.regular',
+  },
+  inputText: {
+    width: wp('70'),
+    marginLeft: wp('2'),
+    fontSize: wp('3.8'),
+  },
+  haveAccount: {
+    color: '#fff',
+    fontFamily: 'roboto-slab-bold',
+    fontSize: wp('4'),
+    alignSelf: 'center',
   },
 });
 export default index;
