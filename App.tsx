@@ -56,6 +56,7 @@ function MyTabs() {
               <View style={focused ? styles.active : undefined} />
             </View>
           ),
+          tabBarVisible: false,
         }}
       />
       <Tab.Screen

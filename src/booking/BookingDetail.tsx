@@ -14,7 +14,7 @@ import {
 import TraTe from '../components/TraTe';
 import Icon from 'react-native-vector-icons/dist/AntDesign';
 import InputComponent from './modules/InputComponent';
-import ButtonCustom from '../components/CustomButton';
+import ButtonCustom from '../components/ButtonCustom';
 import ItemImage from '../components/ItemImage';
 import StarRating from 'react-native-star-rating';
 import { elementAt } from 'rxjs/operators';

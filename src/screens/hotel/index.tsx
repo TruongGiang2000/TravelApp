@@ -1,10 +1,18 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import Hotel from './Hotel';
+import ProfileCustomer from '../../booking/ProfileCustomer';
 const HotelStack = {
   Hotel: {
     screen: Hotel,
     path: 'Hotel',
+    navigationOptions: {
+      title: 'Hotel',
+    },
+  },
+  ProfileCustomer: {
+    screen: ProfileCustomer,
+    path: 'ProfileCustomer',
     navigationOptions: {
       title: 'Hotel',
     },

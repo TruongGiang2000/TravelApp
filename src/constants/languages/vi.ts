@@ -78,19 +78,17 @@ export default {
   or: 'Hoặc',
   facebock: 'Tiếp tục với Facebook',
   createaccount: 'Tạo tài khoản',
-
-  customername: 'Tên khách hàng',
+  customername: 'Tên của khách hàng',
   yourinformation: 'Thông tin của bạn',
+  customer_infomation: 'Thông tin khách hàng',
   customersurname: 'Họ của khách hàng',
   nextstep: 'Bước tiếp theo',
   saveyourinfoforlater: 'Lưu thông tin của bạn cho những lần sau!',
   emailaddress: 'Địa chỉ E-mail',
   includingtaxesandfees: ' Bao gồm thuế và phí',
-
   bookingdetail: 'Chi tiêt đặt phòng',
   booknow: 'Đặt ngay!',
   secretdeal: 'Ưu đãi bí mật',
-
   successfullyplaced: 'Đặt thành công!',
   choosetocontinue: 'Chọn "tiếp tục" để xem các địa điểm quanh nhé!',
   offline: 'nhé!',
@@ -107,4 +105,8 @@ export default {
   textemail: 'Thư xác nhận đặt phòng sẽ được gửi đến đây',
   dont_have_an_account: 'Bạn không có tài khoản?',
   have_an_account: 'Bạn có tài khoản?',
+  valid_firstName: 'Tên không hợp lệ',
+  valid_lastName: 'Họ không hợp lệ',
+  valid_email: 'Địa chỉ email không hợp lệ',
+  valid_phone: 'Điện thoại không hợp lệ',
 };

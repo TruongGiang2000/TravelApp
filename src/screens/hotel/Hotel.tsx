@@ -61,7 +61,7 @@ class Hotel extends Component<any, any> {
     this.hideModalFilter();
   };
   onPressBackSpace = () => {
-    this.props.navigation.goBack();
+    this.props.navigation.navigate('ProfileCustomer');
   };
   render() {
     const {
