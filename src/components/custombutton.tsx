@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   },
   title: {
     color: '#fff',
-    fontFamily: 'roboto-slab-bold',
+    fontWeight: 'bold',
     textAlign: 'center',
   }
 });
