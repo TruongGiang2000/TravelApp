@@ -28,7 +28,7 @@ class index extends Component<any, any> {
           </View>
           <View style={styles.textInput}>
             <FontAwesome name={'lock'} size={20} style={styles.icon} />
-            <TextInput placeholder={'Mật khẩu'} autoCompleteType={'password'} />
+            <TextInput placeholder={'Mật khẩu'} secureTextEntry={true} />
           </View>
           <ButtonCustom title="signin" style={styles.buttonCustom} />
         </View>

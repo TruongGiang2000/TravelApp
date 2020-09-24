@@ -16,11 +16,32 @@ import ButtonCustom from '../../../components/ButtonCustom';
 import Itenassess from './ItemRating';
 import ItemUtilities from '../../../components/ItemUtilities';
 import ItemImage from '../../../components/ItemImage';
+import SlideShow from '../../../components/SlideShow';
 class Hotel extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
       data: [
+        {
+          srcImage: require('../../../assets/images/angiang.jpg'),
+        },
+        {
+          srcImage: require('../../../assets/images/angiang.jpg'),
+        },
+        {
+          srcImage: require('../../../assets/images/angiang.jpg'),
+        },
+        {
+          srcImage: require('../../../assets/images/angiang.jpg'),
+        },
+        {
+          srcImage: require('../../../assets/images/angiang.jpg'),
+        },
+        {
+          srcImage: require('../../../assets/images/angiang.jpg'),
+        },
+      ],
+      data1: [
         {
           Title: 'Giữ Xe',
           Icon: require('../../../assets/images/parking-ticket.png'),
@@ -88,6 +109,7 @@ class Hotel extends Component<any, any> {
     return (
       <View style={styles.MainContainer}>
         <ScrollView>
+          <SlideShow isSpot={true} data={this.state.data}></SlideShow>
           <View style={{padding: wp('5')}}>
             <Text style={styles.title}>{title}</Text>
             <Text style={styles.price}>{price}</Text>
@@ -108,7 +130,7 @@ class Hotel extends Component<any, any> {
             <TraTe i18nKey={'convenient'} style={styles.convenient}></TraTe>
             <FlatList
               style={styles.flatList}
-              data={this.state.data}
+              data={this.state.data1}
               renderItem={this.renderItem}
               horizontal={true}
             />

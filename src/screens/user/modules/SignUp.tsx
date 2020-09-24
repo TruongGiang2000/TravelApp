@@ -27,11 +27,14 @@ class index extends Component<any, any> {
           </View>
           <View style={styles.textInput}>
             <FontAwesome name={'lock'} size={20} style={styles.icon} />
-            <TextInput placeholder={'Mật khẩu'} autoCompleteType={'password'} />
+            <TextInput placeholder={'Mật khẩu'} secureTextEntry={true} />
           </View>
           <View style={styles.textInput}>
             <FontAwesome name={'lock'} size={20} style={styles.icon} />
-            <TextInput placeholder={'Nhập lại mật khẩu'} />
+            <TextInput
+              placeholder={'Nhập lại mật khẩu'}
+              secureTextEntry={true}
+            />
           </View>
           <View style={styles.textInput}>
             <MaterialCommunityIcons
