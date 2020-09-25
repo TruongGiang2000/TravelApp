@@ -77,7 +77,6 @@ export default {
   or: 'Or',
   facebock: 'Continue with Facebook',
   createaccount: 'Create account',
-
   customername: 'Customer name',
   yourinformation: 'Your information',
   customersurname: 'Customer surname',
@@ -85,11 +84,9 @@ export default {
   saveyourinfoforlater: 'Save your info for later!',
   emailaddress: 'Address E-mail',
   includingtaxesandfees: 'Including taxes and fees',
-
   bookingdetail: 'Booking detail',
   booknow: 'Book now!',
   secretdeal: 'Secret deals',
-
   successfullyplaced: 'Successfully placed!',
   choosetocontinue: 'Choose to continue to see locations around offline',
   next: 'Next',
@@ -101,8 +98,13 @@ export default {
   taxesandfees: 'Taxes and fees',
   totalincentives: 'Total incentives',
   finalprice: 'Final price',
-  textname: 'Khi khách đến, họ cần xuất trình giấy tờ tùy thân trùng khớp với tên được ghi ở đây. Bạn không thể thay đổi tên ở đây',
+  textname:
+    'Khi khách đến, họ cần xuất trình giấy tờ tùy thân trùng khớp với tên được ghi ở đây. Bạn không thể thay đổi tên ở đây',
   textemail: 'Thư xác nhận đặt phòng sẽ được gửi đến đây',
   dont_have_an_account: "Don't have an account?",
   have_an_account: 'You have an account?',
+  valid_firstName: 'First name is not valid',
+  valid_lastName: 'Last name is not valid',
+  valid_email: 'Email address is not valid',
+  valid_phone: 'Phone number is not valid',
 };

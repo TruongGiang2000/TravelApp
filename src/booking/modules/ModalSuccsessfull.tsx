@@ -5,7 +5,7 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import TraTe from '../../components/TraTe';
-import ButtonCustom from '../../components/CustomButton';
+import ButtonCustom from '../../components/ButtonCustom';
 class ModalChooseLang extends Component<any, any> {
   constructor(props) {
     super(props);

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Text} from 'react-native';
-import { widthPercentageToDP } from 'react-native-responsive-screen';
 import TraTe from '../../components/TraTe';
 import {
     widthPercentageToDP as wp,

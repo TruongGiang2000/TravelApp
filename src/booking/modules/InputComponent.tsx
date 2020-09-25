@@ -16,60 +16,79 @@ class InputComponent extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
-      isShow: this.props.isShow,
-
+      onFocus: false,
+      valid: false,
     };
   }
-
+  onFocus = () => {
+    this.setState({onFocus: true});
+  };
+  onBlur = () => {
+    this.setState({onFocus: false});
+  };
+  onChangeText = async (value: any) => {
+    const {regex} = this.props;
+    const valid = regex.test(value);
+    this.setState({valid: !valid});
+    // this.props.onChangeText(value);
+  };
   render() {
-    const {titleStyle,secureTextEntry, value,onChangeText, nkey,onBlur, placeholder, styleInput, maxLength, keyboardType} = this.props;
+    const {onFocus, valid} = this.state;
+    const {titleStyle, labelKey, styleInput, style, keyTxtError} = this.props;
     return (
-      <TouchableOpacity
-        style={[styles.MainContainer, this.props.style]}>
-            <TraTe
-            style={[styles.title, titleStyle]}
-            i18nKey={nkey}
-          />
-          
-          <TextInput
-                placeholder={placeholder}
-                //placeholderTextColor={'#A8B6C8'}
-                style={[styles.textInput, styleInput]}
-                value={value}
-                keyboardType={keyboardType}
-                maxLength={maxLength}
-                onBlur={onBlur}
-                onChangeText={onChangeText}
-                secureTextEntry={secureTextEntry}
-              />
-             
-              <View style={styles.view}/>
+      <TouchableOpacity style={style}>
+        <TraTe
+          style={[
+            valid
+              ? [styles.label, {color: '#ED4337'}]
+              : onFocus
+              ? [styles.label, {color: '#0052A2'}]
+              : styles.label,
+            titleStyle,
+          ]}
+          i18nKey={labelKey}
+        />
+
+        <TextInput
+          {...this.props}
+          secureTextEntry
+          style={[
+            valid
+              ? [styles.textInput, {borderBottomColor: '#ED4337'}]
+              : onFocus
+              ? [styles.textInput, {borderBottomColor: '#3B00DD'}]
+              : styles.textInput,
+            styleInput,
+          ]}
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
+          onChangeText={this.onChangeText}
+        />
+        {valid && <TraTe style={styles.txtError} i18nKey={keyTxtError} />}
       </TouchableOpacity>
     );
   }
 }
 const styles = StyleSheet.create({
-  MainContainer: {
-    flex: 1,
-    top: wp('3')
-  },
-  title: {
+  label: {
     color: '#5c6979',
     fontSize: wp('3'),
-    fontFamily: 'roboto-slab-light',
+    fontFamily: 'roboto-slab.regular',
   },
-  textInput:{
-    position: "absolute",
-    marginTop: hp('2'),
+  textInput: {
     fontSize: wp('4'),
-    color:'#00162b',
+    color: '#00162b',
     fontFamily: 'roboto-slab-bold',
-    width: "100%",
+    borderBottomWidth: 2,
+    borderBottomColor: 'rgba(0, 0, 0, 0.541176)',
+    height: hp('5'),
+    paddingBottom: wp('-1'),
   },
-  view:{
-    backgroundColor: '#000',
-    height: hp('0.1'), 
-    marginTop: wp('8')
+  txtError: {
+    color: '#ED4337',
+    fontSize: wp('3'),
+    fontFamily: 'roboto-slab.regular',
+    marginTop: hp('1'),
   },
 });
 export default InputComponent;
