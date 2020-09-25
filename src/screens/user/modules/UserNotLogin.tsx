@@ -1,73 +1,175 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Text, ImageBackground} from 'react-native';
-import ButtonCustom from '../../../components/ButtonCustom';
+import {
+  View,
+  StyleSheet,
+  Text,
+  Switch,
+  Image,
+  TouchableOpacity,
+  Modal,
+} from 'react-native';
+import ModalChooseLang from './ModalChooseLang';
+import FieldUser from './FieldUser';
+import TraTe from '../../../components/TraTe';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
+import CircleImage from '../../../components/CircleImage';
 import ModalCustom from 'react-native-modal';
-import SignIn from './SignIn';
-import SignUp from './SignUp';
-
+import ModalHelping from './ModalHelping';
+import ModalAuth from './ModalAuth';
 class UserNotLogin extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
-      showModalLogin: false,
-      showModalRegister: false,
+      isShow: false,
+      isEnabled: false,
+      showModalHelping: false,
+      showModaAuth: false,
     };
   }
-  showModalLogin = () => {
-    this.setState({showModalLogin: true});
+  showModalChooseLanguage = () => {
+    this.setState({isShow: true});
   };
-  hideModalLogin = () => {
-    this.setState({showModalLogin: false});
+  onClose = () => {
+    this.setState({isShow: false});
   };
-  showModalRegister = () => {
-    this.setState({showModalRegister: true});
+  toggleSwitch = () => {
+    this.setState({isEnabled: !this.state.isEnabled});
   };
-  hideModalRegister = () => {
-    this.setState({showModalRegister: false});
+  showModalHelping = () => {
+    this.setState({showModalHelping: true});
+  };
+  hideModalHelping = () => {
+    this.setState({showModalHelping: false});
+  };
+  showModalAuth = () => {
+    this.setState({showModaAuth: true});
+  };
+  hideModalAuth = () => {
+    this.setState({showModaAuth: false});
   };
   render() {
-    const {showModalLogin, showModalRegister} = this.state;
+    const {style} = this.props;
+    const {isShow, isEnabled, showModalHelping, showModaAuth} = this.state;
     return (
-      <ImageBackground
-        source={require('../../../assets/images/background.jpg')}
-        resizeMode={'cover'}
-        style={styles.MainContainer}>
-        <ButtonCustom
-          style={styles.buttonCustom}
-          title={'signin'}
-          onPress={this.showModalLogin}
+      <View style={[styles.MainContainer, style]}>
+        <Image
+          source={require('../../../assets/images/congtamquan.jpg')}
+          style={styles.headerImage}
+          resizeMode={'cover'}
+          blurRadius={7}
         />
-        <ButtonCustom
-          style={[styles.buttonCustom, {marginTop: hp('2')}]}
-          title={'signup'}
-          onPress={this.showModalRegister}
+        <TraTe i18nKey={'personal'} style={styles.personal} />
+        <CircleImage
+          source={require('../../../assets/images/Bitmap.png')}
+          style={styles.circleImage}
+          size={wp('27')}
+          resizeMode={'cover'}
         />
-        <ModalCustom
-          isVisible={showModalLogin}
-          onBackdropPress={this.hideModalLogin}>
-          <SignIn />
+        <TraTe
+          onPress={this.showModalAuth}
+          style={styles.siggUpText}
+          i18nKey={'signin'}
+        />
+        <View style={styles.viewFieldUser}>
+          <FieldUser
+            style={styles.fieldUser}
+            titleKey={'language'}
+            contentKey={'lang'}
+            onPress={this.showModalChooseLanguage}
+          />
+          <View style={styles.viewRowDarkMode}>
+            <Text style={styles.darkMode}>Dark mode</Text>
+            <Switch
+              trackColor={{false: '#767577', true: '#FA2A00'}}
+              thumbColor={'#f4f3f4'}
+              ios_backgroundColor="#3e3e3e"
+              onValueChange={this.toggleSwitch}
+              value={isEnabled}
+            />
+          </View>
+        </View>
+        <View style={styles.viewHelping}>
+          <TouchableOpacity onPress={this.showModalHelping}>
+            <TraTe style={styles.textNeedHelp} i18nKey={'helping'} />
+          </TouchableOpacity>
+        </View>
+        <ModalCustom isVisible={isShow} onBackdropPress={this.onClose}>
+          <ModalChooseLang show={isShow} />
         </ModalCustom>
-        <ModalCustom
-          isVisible={showModalRegister}
-          onBackdropPress={this.hideModalRegister}>
-          <SignUp />
-        </ModalCustom>
-      </ImageBackground>
+        <Modal
+          visible={showModalHelping}
+          animated={true}
+          animationType={'slide'}>
+          <ModalHelping onPressBackSpace={this.hideModalHelping} />
+        </Modal>
+        <Modal visible={showModaAuth} animated={true} animationType={'slide'}>
+          <ModalAuth onPress={this.hideModalAuth} />
+        </Modal>
+      </View>
     );
   }
 }
 const styles = StyleSheet.create({
   MainContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    height: hp('90'),
+    backgroundColor: '#ffffff',
   },
-  buttonCustom: {
-    width: wp('70'),
+  headerImage: {
+    width: '100%',
+    height: hp('20'),
+  },
+  personal: {
+    color: 'white',
+    fontFamily: 'roboto-slab-bold',
+    position: 'absolute',
+    alignSelf: 'center',
+    marginTop: hp('3'),
+    fontSize: wp('4'),
+  },
+  circleImage: {
+    marginTop: wp('-10'),
+    position: 'absolute',
+    alignSelf: 'center',
+  },
+  siggUpText: {
+    marginTop: hp('4'),
+    fontFamily: 'roboto-slab-bold',
+    color: '#FA2A00',
+    fontSize: wp('4'),
+    alignSelf: 'center',
+  },
+  fieldUser: {
+    marginTop: hp('2'),
+  },
+  viewFieldUser: {
+    paddingHorizontal: wp('5.5'),
+  },
+  viewRowDarkMode: {
+    flexDirection: 'row',
+    marginVertical: hp('2'),
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  darkMode: {
+    color: '#5C6979',
+    fontFamily: 'roboto-slab-bold',
+    fontSize: wp('3.8'),
+  },
+  textNeedHelp: {
+    fontFamily: 'roboto-slab.regular',
+    color: '#FA2A00',
+    fontSize: wp('3.8'),
+    alignSelf: 'center',
+    marginTop: hp('3'),
+    textDecorationLine: 'underline',
+  },
+  viewHelping: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    paddingBottom: hp('4'),
   },
 });
 export default UserNotLogin;

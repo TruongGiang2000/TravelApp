@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   line: {
     marginTop: hp('2'),
     width: '100%',
-    height: 2,
+    height: 1.5,
     backgroundColor: '#E0E6EE',
   },
 });

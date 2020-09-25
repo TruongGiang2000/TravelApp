@@ -5,29 +5,30 @@ import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 class ButtonCustom extends Component<any, any> {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      
   }
+}
 
   render() {
-    const {onPress, title, titleStyle, style} = this.props;
-    return (
-      <TouchableOpacity style={[styles.MainContainer, style]} onPress={onPress}>
-        <TraTe style={[styles.title, titleStyle]} i18nKey={title} />
-      </TouchableOpacity>
-    );
+     return (
+          <TouchableOpacity style={[styles.MainContainer, this.props.style]}>
+            <TraTe style={[styles.title,this.props.titleStyle]} i18nKey={this.props.title}/>
+          </TouchableOpacity>
+     )
   }
 }
 const styles = StyleSheet.create({
   MainContainer: {
     backgroundColor: '#FA2A00',
-    borderRadius: wp('2'),
-    paddingVertical: wp('3'),
+    borderRadius: 8,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
   },
   title: {
     color: '#fff',
-    textAlign: 'center',
     fontFamily: 'roboto-slab-bold',
-    fontSize: wp('3.8'),
-  },
+    textAlign: 'center',
+  }
 });
 export default ButtonCustom;

@@ -52,7 +52,7 @@ class Hotel extends Component<any, any> {
         },
         {
           Title: 'Bồn Tắm',
-          Icon: require('../../../assets/images/bathtub.png'),
+          Icon: require('../../../assets/images/laundry.png'),
         },
         {
           Title: 'Máy Giặt',
@@ -146,9 +146,10 @@ class Hotel extends Component<any, any> {
               horizontal={true}
             />
           </View>
+          <View style={styles.viewLine1} />
         </ScrollView>
         <View style={styles.viewButon}>
-          <ButtonCustom style={styles.buttonStyle} title={'choosing_room'} />
+          <ButtonCustom title={'choosing_room'} />
         </View>
       </View>
     );
@@ -225,7 +226,12 @@ const styles = StyleSheet.create({
     height: hp('14'),
     padding: wp('2.5'),
   },
-
-  buttonStyle: {},
+  viewLine1: {
+    width: wp('100'),
+    height: hp('1.5'),
+    backgroundColor: '#E0E6EE',
+    alignSelf: 'center',
+    marginVertical: hp('2'),
+  },
 });
 export default Hotel;

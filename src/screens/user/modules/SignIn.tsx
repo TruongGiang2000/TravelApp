@@ -23,21 +23,34 @@ class index extends Component<any, any> {
         <View style={styles.viewContent}>
           <TraTe i18nKey={'signin'} style={styles.signinText} />
           <View style={styles.textInput}>
-            <FontAwesome name={'user'} size={20} style={styles.icon} />
-            <TextInput placeholder={'Tài khoản'} />
+            <FontAwesome name={'user'} size={wp('4')} color={'#A8B6C8'} />
+            <TextInput
+              style={styles.textInputStyle}
+              placeholderTextColor={'#A8B6C8'}
+              placeholder={'Tài khoản'}
+            />
           </View>
           <View style={styles.textInput}>
             <FontAwesome name={'lock'} size={20} style={styles.icon} />
             <TextInput placeholder={'Mật khẩu'} secureTextEntry={true} />
           </View>
-          <ButtonCustom title="signin" style={styles.buttonCustom} />
+          <ButtonCustom
+            titleStyle={styles.ButtonText}
+            title="signin"
+            style={styles.buttonCustom}
+          />
         </View>
+        <TraTe
+          onPress={this.props.onPressDontAccount}
+          style={styles.dontHaveAccount}
+          i18nKey={'dont_have_an_account'}
+        />
         <View style={styles.dash}>
           <View style={styles.dash1}></View>
           <TraTe i18nKey={'or'} style={styles.orText} />
           <View style={styles.dash1}></View>
         </View>
-        <ButtonFBCustom title={'facebock'} />
+        <ButtonFBCustom titleStyle={styles.ButtonText} title={'facebock'} />
       </View>
     );
   }
@@ -45,7 +58,7 @@ class index extends Component<any, any> {
 const styles = StyleSheet.create({
   MainContainer: {
     flex: 1,
-    paddingHorizontal: wp('3'),
+    paddingHorizontal: wp('4.5'),
   },
   welcomeText: {
     fontFamily: 'roboto-slab-bold',
@@ -60,9 +73,10 @@ const styles = StyleSheet.create({
   },
   viewContent: {
     backgroundColor: '#FFFFFF',
-    padding: wp('3'),
     marginTop: hp('7'),
     borderRadius: wp('2'),
+    paddingHorizontal: wp('5'),
+    paddingVertical: hp('3'),
   },
   signinText: {
     textTransform: 'uppercase',
@@ -73,41 +87,53 @@ const styles = StyleSheet.create({
   },
   textInput: {
     marginTop: hp('2'),
-    borderWidth: 3,
+    borderWidth: 2,
     borderRadius: wp('2'),
     borderColor: ' rgba(168, 182, 200, 0.196078)',
-    height: hp('7'),
     flexDirection: 'row',
-    padding: wp('1'),
+    alignItems: 'center',
+    paddingHorizontal: wp('4'),
   },
   icon: {
     marginRight: wp('2'),
-    marginTop: hp('1.2'),
   },
   buttonCustom: {
     marginTop: hp('2'),
-    height: wp('15'),
-    width: wp('80'),
-    alignSelf: 'center',
-    justifyContent: 'center',
+    paddingVertical: hp('2.5'),
   },
   dash: {
+    marginVertical: hp('2'),
     flexDirection: 'row',
     justifyContent: 'center',
-    alignContent: 'center',
+    alignItems: 'center',
+    opacity: 0.4,
   },
   dash1: {
-    marginTop: hp('5'),
     height: hp('0.1'),
-    width: wp('30'),
+    width: wp('37'),
     backgroundColor: '#FFFFFF',
   },
   orText: {
-    marginTop: hp('3'),
-    fontSize: wp('5'),
+    fontSize: wp('3.8'),
     color: '#FFFFFF',
-    margin: wp('2'),
-    fontFamily: 'roboto-slab-light',
+    marginHorizontal: wp('2'),
+    fontFamily: 'roboto-slab.regular',
+  },
+  textInputStyle: {
+    fontFamily: 'roboto-slab.regular',
+    width: '95%',
+    marginLeft: wp('2'),
+    fontSize: wp('3.8'),
+  },
+  ButtonText: {
+    fontSize: wp('4'),
+  },
+  dontHaveAccount: {
+    color: '#fff',
+    fontFamily: 'roboto-slab-bold',
+    fontSize: wp('4'),
+    alignSelf: 'center',
+    marginTop: hp('2'),
   },
 });
 export default index;
