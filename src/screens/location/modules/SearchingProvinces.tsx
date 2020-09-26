@@ -7,7 +7,7 @@ import {
 } from 'react-native-responsive-screen';
 import ItemImage from '../../../components/ItemImage';
 import {connect} from 'react-redux';
-import Button from '../../../components/CustomButton';
+import Button from '../../../components/ButtonCustom';
 import shadow  from '../../../components/shadow';
 class SearchingProvinces extends Component<any, any> {
   constructor(props) {

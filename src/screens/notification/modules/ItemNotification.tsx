@@ -1,15 +1,13 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
-import PropTypes from 'prop-types';
+import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import Gradient from '../../../components/GradientOpacity';
-import ButtonCustom from '../../../components/custombutton';
+import ButtonCustom from '../../../components/ButtonCustom';
 import CircleImage from '../../../components/CircleImage';
 
-class ItemImage extends Component<any, any> {
+class ItemNotification extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,12 +30,8 @@ class ItemImage extends Component<any, any> {
     } = this.props;
     return (
       <TouchableOpacity style={[styles.MainContainer, style]}>
-        <View style={{marginTop:wp('2')}}>
-        <CircleImage
-          source={source}
-          size={100}
-          style={{}}
-        />
+        <View style={{marginTop: wp('2')}}>
+          <CircleImage source={source} size={100} style={{}} />
         </View>
         <View style={styles.center}>
           <Text style={[styles.title, styletitle]}>{title}</Text>
@@ -50,7 +44,6 @@ class ItemImage extends Component<any, any> {
             <Text style={[styles.day, styleday]}>{day}</Text>
           </View>
         </View>
-        
       </TouchableOpacity>
     );
   }
@@ -63,7 +56,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: wp('5'),
     color: '#00162B',
-    marginTop:wp('2')
+    marginTop: wp('2'),
   },
   calendar: {
     marginTop: wp('2'),
@@ -86,8 +79,7 @@ const styles = StyleSheet.create({
   },
   center: {
     width: wp('70'),
-    alignSelf:'flex-end',  
+    alignSelf: 'flex-end',
   },
-  
 });
-export default ItemImage;
+export default ItemNotification;

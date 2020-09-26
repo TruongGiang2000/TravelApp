@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Text, TouchableOpacity, Button} from 'react-native';
-import PropTypes from 'prop-types';
+import {StyleSheet, TouchableOpacity} from 'react-native';
 import TraTe from './TraTe';
-class ButtonCustom extends Component<any, any> {
+class CustomArmorial extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {};
@@ -32,4 +31,4 @@ const styles = StyleSheet.create({
     fontFamily: 'roboto-slab-light',
   },
 });
-export default ButtonCustom;
+export default CustomArmorial;

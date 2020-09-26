@@ -1,163 +1,108 @@
 import React, {Component} from 'react';
-import {
-  StyleSheet,
-  TouchableOpacity,
-  View,
-  Text,
-  CheckBox,
-} from 'react-native';
+import {StyleSheet, ScrollView, View, Text, CheckBox} from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import TraTe from '../components/TraTe';
-import Icon from 'react-native-vector-icons/dist/AntDesign';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import InputComponent from './modules/InputComponent';
-import ButtonCustom from '../components/CustomButton';
+import ButtonCustom from '../components/ButtonCustom';
+import {validName, validEmail, validPhone} from '../constants/systems/validate';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import Stepindicator from 'react-native-step-indicator';
+import {getStepIndicatorIconConfig, customStyles} from '../constants/systems/step';
+import Header from '../components/HeaderStep';
+import HeaderStep from '../components/HeaderStep';
 
-class Profilecustomer extends Component<any, any> {
+const renderStepIndicator = (params: any) => (
+  <Icon {...getStepIndicatorIconConfig(params)} />
+);
+class ProfileCustomer extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
-      name:'',
-      nameError:'',
-      lastname:'',
-      lastnameError:'',
-      email:'',
-      emailError:'',
-      phone:'',
-      phoneError:'',
-      isNameValid: true,
+      name: '',
+      lastname: '',
+      email: '',
+      phone: '',
+      CurrentPosition: '',
     };
   }
-
-  phoneValidator(){
-    const regexp = /^\d{10,11}$/;
-      if(this.state.phone !== regexp){
-          this.setState({phoneError:"Số điện thoại phải có 10 - 11 chữ số."});    
-      }else{
-          this.setState({phoneError: ""});
-      }
-  }
-  lastnameValidator(){
-    const regexp = /^[a-zA-Z]+$/;
-
-    // if(!isNameValid){
-    //   this.setState({lastnameError: "Tên chỉ được có chữ"});
-    // }else{
-    //   this.setState({lastnameError: ""});
-    // }
-    if(this.state.lastname == ""){
-      this.setState({lastnameError:"Không được để trống"})
-    }
-    else if(this.state.lastname !== regexp){
-      this.setState({lastnameError:"Tên chỉ được chứa chữ cái", isNameValid: true,})
-      
-    }
-    else if(this.state.lastname == regexp){
-      this.setState({lastnameError:"hợp lệ!", isNameValid: false,})
-    }
-    else{
-      this.setState({isNameValid: false,})
-    }
-  }
-  nameValidator(){
-    const regexp = /^[a-z,A-Z]+$/;
-    if(this.state.name !== regexp){
-      this.setState({nameError:"Tên chỉ được chứa chữ cái"})
-    }
-    else{
-      this.setState({nameError:""})
-    }
-  }
-  emailValidator(){
-    const regexp = /^[A-Za-z0-9]+([_\.\-]?[A-Za-z0-9])*@[A-Za-z0-9]+([\.\-]?[A-Za-z0-9]+)*(\.[A-Za-z]+)+$/;
-    if(this.state.email == regexp){
-      this.setState({emailError:"Không được để trống"})
-    }
-    else{
-      this.setState({emailError:""})
-    }
-  }
+  onPressBookingDetal = () => {
+    this.props.navigation.navigate('BookingDetail');
+    setCurrentPosition:{currentPosition: +1}
+  };
   render() {
-    const {titleStyle, onPress} = this.props;
+    const {name} = this.state;
     return (
-      <TouchableOpacity
-        style={[styles.MainContainer, this.props.style]}
-        >
+      <View style={[styles.MainContainer, this.props.style]}>
+        <ScrollView>
           <View style={[styles.header]}>
-          <View style={[styles.arrowleft]}>
-          <Icon name="arrowleft" size={27} color="#000" />
-        </View>
-          <TraTe
-            style={[styles.title]}
-            i18nKey="yourinformation"/>
+            <Icon name="keyboard-backspace" size={wp('7')} color="#000" />
+            <TraTe style={[styles.title]} i18nKey="yourinformation" />
+            <View style={[styles.styleStep]}>
+            <Header
+            />
+      </View>
           </View>
-          <View style={{backgroundColor: '#000', height: hp('0.1')}}/>
+          <View style={{backgroundColor: '#000', height: hp('0.1')}} />
           <View style={styles.content}>
-          <TraTe
-            style={[styles.titles]}
-            i18nKey="yourinformation"/>
-              <InputComponent
-                nkey="customername"
-                onChangeText={(text)=>{this.setState({name: text})}}
-                onBlur={() => {this.nameValidator()}}
-              />
+            <TraTe style={[styles.titles]} i18nKey={'customer_infomation'} />
+            <InputComponent
+              style={styles.inputComponent}
+              labelKey={'customername'}
+              regex={validName}
+              keyTxtError={'valid_firstName'}
+            />
+            <InputComponent
+              style={styles.inputComponent}
+              labelKey={'customersurname'}
+              regex={validName}
+              keyTxtError={'valid_lastName'}
+            />
+            <TraTe style={[styles.description]} i18nKey={'textname'} />
+            <InputComponent
+              style={styles.inputComponent}
+              labelKey={'emailaddress'}
+              regex={validEmail}
+              keyTxtError={'valid_email'}
+            />
+            <TraTe style={[styles.description]} i18nKey={'textemail'} />
+            <InputComponent
+              style={styles.inputComponent}
+              labelKey={'phone'}
+              keyboardType={'numeric'}
+              regex={validPhone}
+              keyTxtError={'valid_phone'}
+            />
+            <View style={styles.viewCheckBox}>
+              <CheckBox 
               
-             <Text style={{color: '#ff0000'}}>{this.state.nameError}</Text>
-              <InputComponent
-                nkey="customersurname"
-                onChangeText={(text)=>{this.setState({lastname: text})}}
-                onBlur={() => {this.lastnameValidator()}}
-              />
-              <Text style={{color: '#ff0000'}}>{this.state.lastnameError}</Text>
-              <TraTe
-            style={[styles.titlename]}
-            i18nKey="textname"/>
-              <InputComponent
-                nkey="emailaddress"
-                onChangeText={(text)=>{this.setState({email: text})}}
-                onBlur={() => {this.emailValidator()}}
-              />
-               <Text style={{color: '#ff0000'}}>{this.state.emailError}</Text>
-              <TraTe
-            style={[styles.titleemail]}
-            i18nKey="textemail"/>
-              <InputComponent
-                // maxLength={11}
-                nkey="phone"
-                keyboardType="numeric"
-                onChangeText={(Number)=>{this.setState({phone: Number})}}
-                onBlur={() => {this.phoneValidator()}}
-              />
-              <Text style={{color: '#ff0000'}}>{this.state.phoneError}</Text>
-              <View>
-              <CheckBox
-                style={styles.checkbox}
               />
               <TraTe
-            style={[styles.titlecheckbox]}
-            i18nKey="saveyourinfoforlater"/>
+                style={[styles.titlecheckbox]}
+                i18nKey="saveyourinfoforlater"
+              />
             </View>
           </View>
-          <View style={[styles.image]}>
-
+        </ScrollView>
+        <View style={styles.footer}>
+          <View>
+            <Text style={styles.price}>đ1.000.000</Text>
+            <TraTe
+              style={[styles.descriptionFooter]}
+              i18nKey="includingtaxesandfees"
+            />
           </View>
-          <View style={[styles.footer]}>
-              <Text style={{top: wp('2'), fontSize: wp('3.5'), fontFamily: 'roboto-slab-bold', }}>đ1.000.000</Text>
-              <TraTe
-            style={[styles.titlefooter]}
-            i18nKey="includingtaxesandfees"/>
-            <View style={{position: "absolute"}}>
-            <ButtonCustom
+          <ButtonCustom
+            style={styles.buttonStyle}
             title="nextstep"
-            style={{height: hp('7'), width: wp('50'), top: wp('2'), left: wp('40')}}
-            titleStyle={{fontSize: wp('5')}}
+            titleStyle={styles.buttonText}
+            onPress={this.onPressBookingDetal}
           />
-          </View>
-          </View>
-          
-      </TouchableOpacity>
+        </View>
+      </View>
     );
   }
 }
@@ -166,75 +111,77 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
+    justifyContent: 'flex-end',
+    backgroundColor: '#DFDFDF',
   },
-  titlename:{
-    color: '#ff0',
+  description: {
+    color: '#F0C909',
     fontSize: wp('3'),
-    fontFamily: 'roboto-slab-light'
+    fontFamily: 'roboto-slab.regular',
+    marginTop: hp('1'),
   },
-  titleemail:{
-    color: '#ff0',
-    fontSize: wp('3'),
-    fontFamily: 'roboto-slab-light'
-  },
-  title:{
-    position: "absolute",
-    fontFamily: "roboto-slab-bold",
-    color: "#00162b",
-    fontSize: wp('5'),
-    textAlign: "center",
-    alignSelf: "center"
-  },
-  titles:{
+  title: {
+    fontFamily: 'roboto-slab-bold',
+    color: '#00162b',
     fontSize: wp('4'),
+  },
+  titles: {
+    fontSize: wp('3.8'),
     fontFamily: 'roboto-slab-bold',
     color: '#323b45',
-    top: wp('2')
+    top: wp('2'),
   },
-  header:{
-    width: "100%",
-    height: hp('8'),
-    justifyContent: "center",
-    
+  header: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: hp('2'),
+    paddingHorizontal: wp('4'),
+    backgroundColor: '#ffffff',
   },
-  arrowleft: {
-    position: 'absolute',
-    backgroundColor: 'rgba(255, 255, 255, 0.396078)',
-    left: wp('8'),
+  content: {
+    paddingHorizontal: wp('4'),
+    paddingVertical: hp('2'),
+    backgroundColor: '#ffffff',
   },
-  content:{
-    width: "90%",
-    height: hp('65'),
-    alignSelf: "center",
-    top: wp('1')
+  footer: {
+    flexDirection: 'row',
+    paddingHorizontal: wp('4'),
+    paddingVertical: hp('2'),
+    alignItems: 'center',
+    backgroundColor: '#ffffff',
+    justifyContent: 'space-between',
   },
-  image:{
-    width: "100%",
-    height: hp('13'),
-    backgroundColor: '#0003',
-    top: wp('1')
-  },
-  footer:{
-    width: "90%",
-    height: hp('10'),
-    alignSelf: "center",
-    top: wp('1')
-  },
-  checkbox:{
-
-  },
-  titlecheckbox:{
-    position: "absolute",
-    left: wp('10'),
-    top: wp('1'),
+  titlecheckbox: {
     fontFamily: 'roboto-slab-bold',
     fontSize: wp('4'),
   },
-  titlefooter:{
-    top: wp('2'),
+  descriptionFooter: {
     color: '#585858',
-    fontSize: wp('3.5'),
+    fontSize: wp('3.7'),
     fontFamily: 'roboto-slab-bold',
   },
+  inputComponent: {
+    marginTop: hp('1'),
+  },
+  viewCheckBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: hp('2'),
+  },
+  buttonText: {
+    fontSize: wp('4'),
+  },
+  price: {
+    fontSize: wp('3.7'),
+    fontFamily: 'roboto-slab-bold',
+  },
+  buttonStyle: {
+    paddingHorizontal: wp('10'),
+    paddingVertical: hp('2'),
+  },
+  styleStep:{
+  width: wp('30')
+  },
 });
-export default Profilecustomer;
+export default ProfileCustomer;

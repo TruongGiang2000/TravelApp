@@ -13,7 +13,7 @@ export const getProvinces = (action$: any) => {
     mergeMap((act: any) => {
       const {payload} = act;
       return $axios.api
-        .post('api/getProvinces?TypesArea=', payload)
+        .post('api/getProvinces', payload)
         .then((rs: any) => {
           const {data} = rs;
           switch (payload.key) {
@@ -47,13 +47,11 @@ export const searchProvinces = (action$: any) => {
   return action$.pipe(
     ofType(types.SEARCH_PROVINCES),
     mergeMap((act: any) => {
-      console.log('act', act.payload);
       const {payload} = act;
       return $axios.api
         .post('api/searchProvinces', payload)
         .then((rs: any) => {
           const {data} = rs;
-          console.log('data', data);
           return placesActions.searchProvincesSuccess(mapData(data));
         })
         .catch((err: any) => {
@@ -66,10 +64,7 @@ export const searchProvinces = (action$: any) => {
 const mapData = (data: any) => {
   return data.map((item: any) => {
     const {system}: any = store.getState();
-    const language = system.language;
-    item.ID = item.ID;
-    item.Stars = item.Starts;
-    item.Lovers = item.Lovers;
+    const {language} = system;
     let uriList = [];
     item.Images.map((uri) => {
       uriList.push(

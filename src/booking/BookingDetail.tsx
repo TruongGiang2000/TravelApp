@@ -12,17 +12,23 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import TraTe from '../components/TraTe';
-import Icon from 'react-native-vector-icons/dist/AntDesign';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import InputComponent from './modules/InputComponent';
-import ButtonCustom from '../components/CustomButton';
+import ButtonCustom from '../components/ButtonCustom';
 import ItemImage from '../components/ItemImage';
 import StarRating from 'react-native-star-rating';
 import { elementAt } from 'rxjs/operators';
 import PaddingComponent from './modules/PaddingComponent';
+import Header from '../components/HeaderStep';
+import { ScrollView } from 'react-native-gesture-handler';
+import ModalCustom from 'react-native-modal';
+import ModalSuccessfull from '../booking/modules/ModalSuccsessfull';
+
 class BookingDetail extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
+      isShow: false,
     };
   }
   onStarRatingPress(rating) {
@@ -30,19 +36,34 @@ class BookingDetail extends Component<any, any> {
       starCount: rating,
     });
   }
+  onBack =() => {
+    this.props.navigation.goBack();
+
+    };
+  onPressSuccessfullyPlaced = () => {
+    this.props.navigation.navigate('SuccessfullyPlace');
+  };
+  showModalSuccessfully = () => {
+    this.setState({isShow: true});
+  };
+  onClose = () => {
+    this.setState({isShow: false});
+  };
   render() {
+    const {isShow} = this.state;
     const {titleStyle, onPress} = this.props;
     return (
       <TouchableOpacity
         style={[styles.MainContainer, this.props.style]}
         >
+          <ScrollView>
           <View style={[styles.header]}>
-          <View style={[styles.arrowleft]}>
-          <Icon name="arrowleft" size={27} color="#000" />
-        </View>
-          <TraTe
-            style={[styles.title]}
-            i18nKey="bookingdetail"/>
+            <Icon onPress={this.onBack} name="keyboard-backspace" size={wp('7')} color="#000" />
+            <TraTe style={[styles.title]} i18nKey="bookingdetail" />
+            <View style={[styles.styleStep]}>
+            <Header
+            />
+      </View>
           </View>
           <View style={{backgroundColor: '#000', height: hp('0.1')}}/>
           <View style={styles.content}>
@@ -153,10 +174,14 @@ class BookingDetail extends Component<any, any> {
             title="booknow"
             style={{height: hp('7'), width: wp('50'), top: wp('2'), left: wp('40')}}
             titleStyle={{fontSize: wp('5')}}
+            onPress={this.showModalSuccessfully}
           />
           </View>
           </View>
-          
+          <ModalCustom isVisible={isShow} onBackdropPress={this.onClose}>
+          <ModalSuccessfull show={isShow} />
+        </ModalCustom>
+          </ScrollView>
       </TouchableOpacity>
     );
   }
@@ -166,14 +191,13 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
+    justifyContent: 'flex-end',
+    backgroundColor: '#DFDFDF',
   },
-  title:{
-    position: "absolute",
-    fontFamily: "roboto-slab-bold",
-    color: "#00162b",
-    fontSize: wp('5'),
-    textAlign: "center",
-    alignSelf: "center"
+  title: {
+    fontFamily: 'roboto-slab-bold',
+    color: '#00162b',
+    fontSize: wp('4'),
   },
   titles:{
     fontSize: wp('4'),
@@ -181,11 +205,13 @@ const styles = StyleSheet.create({
     color: '#323b45',
     top: wp('2')
   },
-  header:{
-    width: "100%",
-    height: hp('8'),
-    justifyContent: "center",
-    
+  header: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: hp('2'),
+    paddingHorizontal: wp('4'),
+    backgroundColor: '#ffffff',
   },
   arrowleft: {
     position: 'absolute',
@@ -231,5 +257,8 @@ const styles = StyleSheet.create({
     color: "#00162b",
     top: wp('2')
   },
+  styleStep:{
+    width: wp('30')
+    },
 });
 export default BookingDetail;

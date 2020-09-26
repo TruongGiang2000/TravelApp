@@ -8,7 +8,7 @@ import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import TraTe from '../../../components/TraTe';
 import ItemUser from './ItemUser';
 import ItemRow from './ItemRow';
-import Button from '../../../components/CustomButton';
+import Button from '../../../components/ButtonCustom';
 class ManageAccountModal extends Component<any, any> {
   constructor(props) {
     super(props);
