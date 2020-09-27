@@ -4,6 +4,7 @@ import UserInformation from './modules/UserInformation';
 import UserAchievement from './modules/UserAchievement';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import UserNotLogin from './modules/UserNotLogin';
+import {withPages} from '../../components/withPages';
 class User extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -12,7 +13,8 @@ class User extends Component<any, any> {
   render() {
     return (
       <ScrollView style={styles.MainContainer}>
-        <UserNotLogin />
+        <UserInformation />
+        <UserAchievement style={styles.userAward} />
       </ScrollView>
     );
   }
@@ -26,4 +28,4 @@ const styles = StyleSheet.create({
     marginTop: hp('2'),
   },
 });
-export default User;
+export default withPages(User);

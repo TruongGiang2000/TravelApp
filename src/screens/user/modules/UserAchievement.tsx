@@ -8,7 +8,6 @@ import {
   TouchableOpacity,
   Modal,
 } from 'react-native';
-import TraTe from '../../../components/TraTe';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -18,6 +17,7 @@ import Octicons from 'react-native-vector-icons/Octicons';
 import ItemArmotial from './ItemArmorial';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import ModalHelping from './ModalHelping';
+import {translate} from '../../../components/translate';
 class UserAchievement extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -58,7 +58,7 @@ class UserAchievement extends Component<any, any> {
     return (
       <View style={[styles.MainContainer, style]}>
         <View style={styles.viewRowHeader}>
-          <TraTe style={styles.title} i18nKey={'achievement'} />
+          <Text style={styles.title}>{translate('achievement')}</Text>
           <View>
             <View style={styles.viewCircle}>
               <EntypoIcon
@@ -80,9 +80,9 @@ class UserAchievement extends Component<any, any> {
           source={require('../../../assets/images/archivement_banner.png')}
         />
         <View style={styles.viewStraCoin}>
-          <TraTe i18nKey={'you_are'} style={styles.textCoinStraNormal}>
-            {' Genius cấp 0 '}
-          </TraTe>
+          <Text style={styles.textCoinStraNormal}>{`${translate(
+            'you_are',
+          )} Genius level 0`}</Text>
           <View style={styles.viewRowStraCoin}>
             <Text style={styles.textCoinStra}>0 S-tra</Text>
             <Text style={styles.textCoinStra}>10.000 S-tra</Text>
@@ -99,12 +99,16 @@ class UserAchievement extends Component<any, any> {
             </View>
           </View>
           <View style={styles.viewRowTextAchievement}>
-            <TraTe i18nKey={'you_achieve'} style={styles.textCoinStraNormal} />
+            <Text style={styles.textCoinStraNormal}>
+              {translate('you_achieve')}
+            </Text>
             <Text style={styles.textCoinStraBold}> 7.000 S-tra</Text>
           </View>
         </View>
         <View style={styles.viewArmorial}>
-          <TraTe style={styles.titleYourArmorial} i18nKey={'your_armorial'} />
+          <Text style={styles.titleYourArmorial}>
+            {translate('your_armorial')}
+          </Text>
           <FlatList
             style={styles.flatListHorital}
             data={this.state.data}
@@ -112,7 +116,7 @@ class UserAchievement extends Component<any, any> {
             horizontal={true}
           />
           <TouchableOpacity onPress={this.showModalHelping}>
-            <TraTe style={styles.textNeedHelp} i18nKey={'helping'} />
+            <Text style={styles.textNeedHelp}>{translate('helping')}</Text>
           </TouchableOpacity>
         </View>
         <Modal

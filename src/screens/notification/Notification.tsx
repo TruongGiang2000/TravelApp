@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Text} from 'react-native';
-import ProfileCustomer from '../../booking/ProfileCustomer';
 class Notification extends Component<any, any> {
   constructor(props) {
     super(props);

@@ -92,7 +92,7 @@ export default {
   successfullyplaced: 'Đặt thành công!',
   choosetocontinue: 'Chọn "tiếp tục" để xem các địa điểm quanh nhé!',
   offline: 'nhé!',
-  next: 'Tiếp tục',
+  next: 'Tiếp tục xem',
   close: 'Đóng',
   takeroom: 'Nhận phòng',
   payroom: 'Trả phòng',
@@ -100,8 +100,9 @@ export default {
   standardroompillowbed: 'Phòng tiêu chuẩn giường gối',
   taxesandfees: 'Thuế và phí',
   totalincentives: 'Tổng ưu đãi',
-  finalprice:'Giá cuối cùng',
-  textname: 'Khi khách đến, họ cần xuất trình giấy tờ tùy thân trùng khớp với tên được ghi ở đây. Bạn không thể thay đổi tên ở đây',
+  finalprice: 'Giá cuối cùng',
+  textname:
+    'Khi khách đến, họ cần xuất trình giấy tờ tùy thân trùng khớp với tên được ghi ở đây. Bạn không thể thay đổi tên ở đây',
   textemail: 'Thư xác nhận đặt phòng sẽ được gửi đến đây',
   dont_have_an_account: 'Bạn không có tài khoản?',
   have_an_account: 'Bạn có tài khoản?',
@@ -109,4 +110,7 @@ export default {
   valid_lastName: 'Họ không hợp lệ',
   valid_email: 'Địa chỉ email không hợp lệ',
   valid_phone: 'Điện thoại không hợp lệ',
+  account: 'Tài khoản',
+  password: 'Mật khẩu',
+  re_password: 'Nhập lại mật khẩu',
 };

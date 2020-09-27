@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import TraTe from '../../../components/TraTe';
+import {translate, configTranslation} from '../../../components/translate';
 import {connect} from 'react-redux';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import {system, places} from '../../../redux/';
@@ -14,7 +14,7 @@ class ModalChooseLang extends Component<any, any> {
     super(props);
     this.state = {};
   }
-  setLanguage = (language: any) => {
+  setLanguage = (language: any) => () => {
     this.props.changeLanguages(language);
   };
   componentDidUpdate(preProps: any) {
@@ -45,11 +45,11 @@ class ModalChooseLang extends Component<any, any> {
       this.props.show && (
         <View style={styles.modalStyle}>
           <View style={styles.formChooseLang}>
-            <TraTe style={styles.chooseLang} i18nKey={'choose_lang'} />
+            <Text style={styles.chooseLang}>{translate('choose_lang')}</Text>
             <TouchableOpacity
               style={styles.viewRowModal}
-              onPress={() => this.setLanguage('vi')}>
-              <TraTe style={styles.lang} i18nKey={'vi_lang'} />
+              onPress={this.setLanguage('vi')}>
+              <Text style={styles.lang}>{translate('vi_lang')}</Text>
               {language === 'vi' ? (
                 <View style={styles.viewCircle}>
                   <EntypoIcon
@@ -65,8 +65,8 @@ class ModalChooseLang extends Component<any, any> {
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.viewRowModal}
-              onPress={() => this.setLanguage('en')}>
-              <TraTe style={styles.lang} i18nKey={'en_lang'} />
+              onPress={this.setLanguage('en')}>
+              <Text style={styles.lang}>{translate('en_lang')}</Text>
               {language === 'en' ? (
                 <View style={styles.viewCircle}>
                   <EntypoIcon

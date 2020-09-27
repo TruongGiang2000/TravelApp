@@ -6,6 +6,7 @@ import {
 } from 'react-native-responsive-screen';
 import ButtonCustom from '../../../components/ButtonCustom';
 import StarRating from 'react-native-star-rating';
+import {translate} from '../../../components/translate';
 class ItemHotelAroundHere extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -52,7 +53,7 @@ class ItemHotelAroundHere extends Component<any, any> {
             <Text style={styles.styleUSD}>{titleUSD}</Text>
             <Text style={styles.styleprice}>{titlePrice}</Text>
           </View>
-          <ButtonCustom title="book_room" />
+          <ButtonCustom title={translate('book_room')} />
         </View>
       </TouchableOpacity>
     );

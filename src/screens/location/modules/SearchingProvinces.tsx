@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, FlatList, Image} from 'react-native';
-import TraTe from '../../../components/TraTe';
+import {View, StyleSheet, FlatList, Image, Text} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import ItemImage from '../../../components/ItemImage';
 import {connect} from 'react-redux';
-import Button from '../../../components/ButtonCustom';
-import shadow  from '../../../components/shadow';
+import ButtonCustom from '../../../components/ButtonCustom';
+import shadow from '../../../components/shadow';
+import {translate} from '../../../components/translate';
 class SearchingProvinces extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -27,9 +27,11 @@ class SearchingProvinces extends Component<any, any> {
     return (
       <View style={styles.viewEmpty}>
         <Image source={require('../../../assets/images/sleep.png')} />
-        <TraTe style={styles.textDescription} i18nKey={'description_null'} />
-        <Button
-          title={'try_again'}
+        <Text style={styles.textDescription}>
+          {translate('description_null')}
+        </Text>
+        <ButtonCustom
+          title={translate('try_again')}
           style={styles.styleButton}
           titleStyle={styles.titleButtonStyle}
           onPress={this.props.onTryAgainPress}
@@ -46,7 +48,9 @@ class SearchingProvinces extends Component<any, any> {
         scrollEnabled={false}
         ListEmptyComponent={this.renderItemEmpty}
         ListHeaderComponent={() => {
-          return <TraTe style={styles.title} i18nKey={'filtered_result'} />;
+          return (
+            <Text style={styles.title}>{translate('filtered_result')}</Text>
+          );
         }}
       />
     );

@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   TextInput,
   Modal,
+  Text,
 } from 'react-native';
 import {
   heightPercentageToDP as hp,
@@ -15,8 +16,9 @@ import {
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import HotelSearchingModal from './modules/HotelSearching';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import TraTe from '../../components/TraTe';
 import moment from 'moment';
+import {translate} from '../../components/translate';
+import {withPages} from '../../components/withPages';
 class Hotel extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -61,7 +63,7 @@ class Hotel extends Component<any, any> {
     this.hideModalFilter();
   };
   onPressBackSpace = () => {
-    this.props.navigation.navigate('ProfileCustomer');
+    this.props.navigation.navigate('Booking');
   };
   render() {
     const {
@@ -85,7 +87,7 @@ class Hotel extends Component<any, any> {
               color={'#000'}
             />
           </TouchableOpacity>
-          <TraTe i18nKey={'hotelSearching'} style={styles.title} />
+          <Text style={styles.title}>{translate('hotelSearching')}</Text>
           <TouchableOpacity onPress={this.showModalFilter}>
             <Image
               source={require('../../assets/images/filter.png')}
@@ -103,7 +105,7 @@ class Hotel extends Component<any, any> {
               style={styles.iconSearchBar}
             />
             <TextInput
-              placeholder={'Search'}
+              placeholder={translate('search')}
               placeholderTextColor={'#A8B6C8'}
               style={styles.textInput}
               defaultValue={''}
@@ -164,4 +166,4 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
 });
-export default Hotel;
+export default withPages(Hotel);

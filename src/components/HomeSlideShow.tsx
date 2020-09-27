@@ -8,6 +8,7 @@ import {
 import ButtonCustom from './ButtonCustom';
 import shadow from './shadow';
 import GradientOpacity from './GradientOpacity';
+import {translate} from '../components/translate';
 class HomeSlideShow extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -28,7 +29,7 @@ class HomeSlideShow extends Component<any, any> {
             size={wp('6')}
           />
           <TextInput
-            placeholder={'Search'}
+            placeholder={translate('search')}
             placeholderTextColor={'#A8B6C8'}
             style={styles.textInputStyle}
           />
@@ -42,7 +43,10 @@ class HomeSlideShow extends Component<any, any> {
           />
           <Text style={styles.titleStyle}>{data.title}</Text>
           <Text style={styles.content}>{data.content}</Text>
-          <ButtonCustom style={styles.buttonStyle} title={'discover'} />
+          <ButtonCustom
+            style={styles.buttonStyle}
+            title={translate('discover')}
+          />
         </View>
       </ImageBackground>
     );

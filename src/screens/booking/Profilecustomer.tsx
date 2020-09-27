@@ -4,20 +4,17 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import TraTe from '../components/TraTe';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import InputComponent from './modules/InputComponent';
-import ButtonCustom from '../components/ButtonCustom';
-import {validName, validEmail, validPhone} from '../constants/systems/validate';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import Stepindicator from 'react-native-step-indicator';
-import {getStepIndicatorIconConfig, customStyles} from '../constants/systems/step';
-import Header from '../components/HeaderStep';
-import HeaderStep from '../components/HeaderStep';
-
-const renderStepIndicator = (params: any) => (
-  <Icon {...getStepIndicatorIconConfig(params)} />
-);
+import ButtonCustom from '../../components/ButtonCustom';
+import {
+  validName,
+  validEmail,
+  validPhone,
+} from '../../constants/systems/validate';
+import Header from './modules/HeaderStep';
+import {translate} from '../../components/translate';
+import {withPages} from '../../components/withPages';
 class ProfileCustomer extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -26,78 +23,70 @@ class ProfileCustomer extends Component<any, any> {
       lastname: '',
       email: '',
       phone: '',
-      CurrentPosition: '',
     };
   }
   onPressBookingDetal = () => {
     this.props.navigation.navigate('BookingDetail');
-    setCurrentPosition:{currentPosition: +1}
   };
   render() {
-    const {name} = this.state;
     return (
       <View style={[styles.MainContainer, this.props.style]}>
         <ScrollView>
-          <View style={[styles.header]}>
-            <Icon name="keyboard-backspace" size={wp('7')} color="#000" />
-            <TraTe style={[styles.title]} i18nKey="yourinformation" />
-            <View style={[styles.styleStep]}>
-            <Header
-            />
-      </View>
-          </View>
+          <Header
+            currentPosition={1}
+            title={translate('yourinformation')}
+            navigation={this.props.navigation}
+          />
           <View style={{backgroundColor: '#000', height: hp('0.1')}} />
           <View style={styles.content}>
-            <TraTe style={[styles.titles]} i18nKey={'customer_infomation'} />
+            <Text style={styles.titles}>
+              {translate('customer_infomation')}
+            </Text>
             <InputComponent
               style={styles.inputComponent}
-              labelKey={'customername'}
+              label={translate('customername')}
               regex={validName}
-              keyTxtError={'valid_firstName'}
+              txtError={translate('valid_firstName')}
             />
             <InputComponent
               style={styles.inputComponent}
-              labelKey={'customersurname'}
+              label={translate('customersurname')}
               regex={validName}
-              keyTxtError={'valid_lastName'}
+              txtError={translate('valid_lastName')}
             />
-            <TraTe style={[styles.description]} i18nKey={'textname'} />
+            <Text style={styles.description}>{translate('textname')}</Text>
             <InputComponent
               style={styles.inputComponent}
-              labelKey={'emailaddress'}
+              label={translate('emailaddress')}
               regex={validEmail}
-              keyTxtError={'valid_email'}
+              txtError={translate('valid_email')}
             />
-            <TraTe style={[styles.description]} i18nKey={'textemail'} />
+            <Text style={styles.description}>{translate('textemail')}</Text>
             <InputComponent
               style={styles.inputComponent}
-              labelKey={'phone'}
+              label={translate('phone')}
               keyboardType={'numeric'}
               regex={validPhone}
-              keyTxtError={'valid_phone'}
+              txtError={translate('valid_phone')}
             />
             <View style={styles.viewCheckBox}>
-              <CheckBox 
-              
-              />
-              <TraTe
-                style={[styles.titlecheckbox]}
-                i18nKey="saveyourinfoforlater"
-              />
+              <CheckBox />
+              <Text style={styles.titlecheckbox}>
+                {translate('saveyourinfoforlater')}
+              </Text>
             </View>
           </View>
         </ScrollView>
         <View style={styles.footer}>
           <View>
             <Text style={styles.price}>đ1.000.000</Text>
-            <TraTe
-              style={[styles.descriptionFooter]}
-              i18nKey="includingtaxesandfees"
-            />
+            <Text style={styles.descriptionFooter}>
+              {translate('includingtaxesandfees')}
+            </Text>
           </View>
           <ButtonCustom
             style={styles.buttonStyle}
-            title="nextstep"
+            title={translate('nextstep')}
             titleStyle={styles.buttonText}
             onPress={this.onPressBookingDetal}
           />
@@ -120,24 +109,11 @@ const styles = StyleSheet.create({
     fontFamily: 'roboto-slab.regular',
     marginTop: hp('1'),
   },
-  title: {
-    fontFamily: 'roboto-slab-bold',
-    color: '#00162b',
-    fontSize: wp('4'),
-  },
   titles: {
     fontSize: wp('3.8'),
     fontFamily: 'roboto-slab-bold',
     color: '#323b45',
     top: wp('2'),
-  },
-  header: {
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: hp('2'),
-    paddingHorizontal: wp('4'),
-    backgroundColor: '#ffffff',
   },
   content: {
     paddingHorizontal: wp('4'),
@@ -180,8 +156,5 @@ const styles = StyleSheet.create({
     paddingHorizontal: wp('10'),
     paddingVertical: hp('2'),
   },
-  styleStep:{
-  width: wp('30')
-  },
 });
-export default ProfileCustomer;
+export default withPages(ProfileCustomer);

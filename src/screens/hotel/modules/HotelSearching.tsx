@@ -11,7 +11,6 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import ButtonCustom from '../../../components/ButtonCustom';
-import TraTe from '../../../components/TraTe';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import DatePicker from 'react-native-datepicker';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -22,6 +21,7 @@ import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import Octicons from 'react-native-vector-icons/Octicons';
 import shawdow from '../../../components/shadow';
 import {max} from 'lodash';
+import {translate} from '../../../components/translate';
 class HotelSearching extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -141,10 +141,10 @@ class HotelSearching extends Component<any, any> {
                 color={'#000'}
               />
             </TouchableOpacity>
-            <TraTe i18nKey={'hotelSearching'} style={styles.title} />
+            <Text style={styles.title}>{translate('hotelSearching')}</Text>
             <Text></Text>
           </View>
-          <TraTe style={styles.titlePart} i18nKey={'information'} />
+          <Text style={styles.titlePart}>{translate('information')}</Text>
           <View style={styles.contentInformation}>
             <View style={styles.viewRowSpaceBetween}>
               <View style={styles.viewRow}>
@@ -155,7 +155,9 @@ class HotelSearching extends Component<any, any> {
                   style={{marginTop: wp('2')}}
                 />
                 <View style={[styles.contentColumn, {marginLeft: wp('2')}]}>
-                  <TraTe style={styles.titleEachField} i18nKey={'checkin'} />
+                  <Text style={styles.titleEachField}>
+                    {translate('checkin')}
+                  </Text>
                   <Text style={styles.contentEachField}>
                     {moment(date).format('DD MMM, YYYY')}
                   </Text>
@@ -177,7 +179,7 @@ class HotelSearching extends Component<any, any> {
                 style={styles.viewRow}
                 onPress={() => this.showModal('room')}>
                 <View style={[styles.contentColumn, {marginRight: wp('4')}]}>
-                  <TraTe style={styles.titleEachField} i18nKey={'room'} />
+                  <Text style={styles.titleEachField}>{translate('room')}</Text>
                   <Text style={styles.contentEachField}>{room}</Text>
                 </View>
                 <Fontisto
@@ -193,14 +195,12 @@ class HotelSearching extends Component<any, any> {
                 style={styles.viewRow}
                 onPress={() => this.showModal('passengerAdult')}>
                 <View style={[styles.contentColumn, {marginRight: wp('4')}]}>
-                  <TraTe style={styles.titleEachField} i18nKey={'passenger'} />
-                  <View style={{flexDirection: 'row'}}>
-                    <Text style={styles.contentEachField}>{`${adult} `}</Text>
-                    <TraTe
-                      style={styles.contentEachField}
-                      i18nKey={adult > 1 ? 'adults' : 'adult'}
-                    />
-                  </View>
+                  <Text style={styles.titleEachField}>
+                    {translate('passenger')}
+                  </Text>
+                  <Text style={styles.contentEachField}>{`${adult} ${translate(
+                    adult > 1 ? 'adults' : 'adult',
+                  )}`}</Text>
                 </View>
                 <Fontisto
                   name={'angle-down'}
@@ -213,14 +213,12 @@ class HotelSearching extends Component<any, any> {
                 style={styles.viewRow}
                 onPress={() => this.showModal('passengerChild')}>
                 <View style={[styles.contentColumn, {marginRight: wp('4')}]}>
-                  <TraTe style={styles.titleEachField} i18nKey={'passenger'} />
-                  <View style={{flexDirection: 'row'}}>
-                    <Text style={styles.contentEachField}>{`${child} `}</Text>
-                    <TraTe
-                      style={styles.contentEachField}
-                      i18nKey={child > 1 ? 'children' : 'child'}
-                    />
-                  </View>
+                  <Text style={styles.titleEachField}>
+                    {translate('passenger')}
+                  </Text>
+                  <Text style={styles.contentEachField}>
+                    {`${child} ${translate(child > 1 ? 'children' : 'child')}`}
+                  </Text>
                 </View>
                 <Fontisto
                   name={'angle-down'}
@@ -231,10 +229,9 @@ class HotelSearching extends Component<any, any> {
               </TouchableOpacity>
             </View>
           </View>
-          <TraTe
-            style={[styles.titlePart, {marginTop: hp('4')}]}
-            i18nKey={'price'}
-          />
+          <Text style={[styles.titlePart, {marginTop: hp('4')}]}>
+            {translate('price')}
+          </Text>
           <View style={[styles.viewRowSpaceBetween, {marginTop: hp('2')}]}>
             <Text style={styles.textPrice}>đ0</Text>
             <Text style={styles.textPrice}>đ10.000.000</Text>
@@ -274,9 +271,7 @@ class HotelSearching extends Component<any, any> {
             }}
           />
           <View style={styles.viewRow}>
-            <TraTe style={styles.price} i18nKey={'price_from'}>
-              {': '}
-            </TraTe>
+            <Text style={styles.price}>{`${translate('price_from')}: `}</Text>
             <Text style={[styles.price, {fontFamily: 'roboto-slab-bold'}]}>
               {`${this.formatMoney(moneyStart)} - ${this.formatMoney(
                 moneyEnd,
@@ -287,11 +282,11 @@ class HotelSearching extends Component<any, any> {
         <View style={styles.viewBottom}>
           <ButtonCustom
             style={styles.styleButton}
-            title={'find'}
+            title={translate('find')}
             titleStyle={styles.titleButtonStyle}
           />
           <TouchableOpacity onPress={this.setAgain}>
-            <TraTe style={styles.set_again} i18nKey={'set_again'} />
+            <Text style={styles.set_again}>{translate('set_again')}</Text>
           </TouchableOpacity>
         </View>
         <CustomModal isVisible={isShowModal} onBackdropPress={this.hideModal}>

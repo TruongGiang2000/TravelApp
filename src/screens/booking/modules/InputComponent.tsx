@@ -10,7 +10,6 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import TraTe from '../../components/TraTe';
 
 class InputComponent extends Component<any, any> {
   constructor(props) {
@@ -34,24 +33,23 @@ class InputComponent extends Component<any, any> {
   };
   render() {
     const {onFocus, valid} = this.state;
-    const {titleStyle, labelKey, styleInput, style, keyTxtError} = this.props;
+    const {labelStyle, label, styleInput, style, txtError} = this.props;
     return (
       <TouchableOpacity style={style}>
-        <TraTe
+        <Text
           style={[
             valid
               ? [styles.label, {color: '#ED4337'}]
               : onFocus
               ? [styles.label, {color: '#0052A2'}]
               : styles.label,
-            titleStyle,
-          ]}
-          i18nKey={labelKey}
-        />
+              labelStyle,
+          ]}>
+          {label}
+        </Text>
 
         <TextInput
           {...this.props}
-          
           style={[
             valid
               ? [styles.textInput, {borderBottomColor: '#ED4337'}]
@@ -64,7 +62,7 @@ class InputComponent extends Component<any, any> {
           onBlur={this.onBlur}
           onChangeText={this.onChangeText}
         />
-        {valid && <TraTe style={styles.txtError} i18nKey={keyTxtError} />}
+        {valid && <Text style={styles.txtError}>{txtError}</Text>}
       </TouchableOpacity>
     );
   }
