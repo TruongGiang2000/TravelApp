@@ -111,4 +111,5 @@ export default {
   password: 'Password',
   re_password: 'Re-password',
   customer_infomation: 'Customer infomation',
+  nofitication: 'Nofitication',
 };

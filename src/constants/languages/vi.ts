@@ -113,4 +113,5 @@ export default {
   account: 'Tài khoản',
   password: 'Mật khẩu',
   re_password: 'Nhập lại mật khẩu',
+  nofitication: 'Thông báo',
 };
