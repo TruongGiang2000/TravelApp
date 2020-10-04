@@ -58,7 +58,6 @@ class UserInformation extends Component<any, any> {
     this.setState({isShow: true});
   };
   onClose = () => {
-    console.log('dadad');
     this.setState({isShow: false});
   };
 

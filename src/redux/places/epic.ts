@@ -65,15 +65,6 @@ const mapData = (data: any) => {
   return data.map((item: any) => {
     const {system}: any = store.getState();
     const {language} = system;
-    let uriList = [];
-    item.Images.map((uri) => {
-      uriList.push(
-        `https://stravelapp.herokuapp.com/${uri
-          .toString()
-          .replace('public', '')}`,
-      );
-    });
-    item.uriList = uriList;
     if (language === 'vi') {
       item.Title = item.vi.Title;
       item.Content = item.vi.Content;

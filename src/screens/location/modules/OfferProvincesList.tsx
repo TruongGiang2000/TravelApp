@@ -20,7 +20,7 @@ class OfferPlace extends Component<any, any> {
   renderItem = ({item}) => (
     <ItemImage
       title={item.Title}
-      source={{uri: item.uriList[0]}}
+      source={{uri: item.Images[1]}}
       isShow={true}
       style={styles.itemImage}
     />
