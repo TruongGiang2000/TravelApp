@@ -20,55 +20,46 @@ export default class KindOfRoom extends Component<any, any> {
       internet,
     } = this.props;
     return (
-      <View style={styles.test}>
-        <TouchableOpacity style={styles.MainItem}>
-          <View style={styles.down}>
-            <View style={styles.down1}>
-              <View style={styles.a}>
-                <Icon name="warehouse" style={styles.icon} />
-                <Text style={styles.text}>{size}</Text>
-              </View>
-              <View style={styles.b}>
-                <Icon name="user" style={styles.icon} />
-                <Text style={styles.text}>{bed}</Text>
-              </View>
-              <View style={styles.c}>
-                <Icon name="user" style={styles.icon} />
-                <Text style={styles.text}>{amount}</Text>
-              </View>
+      <TouchableOpacity style={styles.MainItem}>
+        <View style={styles.down}>
+          <View style={styles.down1}>
+            <View style={styles.a}>
+              <Icon name="warehouse" style={styles.icon} />
+              <Text style={styles.text}>{size}</Text>
             </View>
-            <View style={styles.down2}>
-              <Text style={styles.title}>{title}</Text>
-              <Text style={styles.policy}>{policy}</Text>
-              <Text style={styles.quantum}>{quantum}</Text>
-              <View style={styles.Internet}>
-                <Image
-                  source={iconinternet}
-                  style={[styles.iconinternet]}></Image>
-                <Text style={styles.internet}>{internet}</Text>
-              </View>
+            <View style={styles.b}>
+              <Icon name="user" style={styles.icon} />
+              <Text style={styles.text}>{bed}</Text>
+            </View>
+            <View style={styles.c}>
+              <Icon name="user" style={styles.icon} />
+              <Text style={styles.text}>{amount}</Text>
             </View>
           </View>
-          <Image source={source} style={[styles.imgstyle]}></Image>
-        </TouchableOpacity>
-      </View>
+          <View style={styles.down2}>
+            <Text style={styles.title}>{title}</Text>
+            <Text style={styles.policy}>{policy}</Text>
+            <Text style={styles.quantum}>{quantum}</Text>
+            <View style={styles.Internet}>
+              <Image
+                source={iconinternet}
+                style={[styles.iconinternet]}></Image>
+              <Text style={styles.internet}>{internet}</Text>
+            </View>
+          </View>
+        </View>
+        <Image source={source} style={[styles.imgstyle]}></Image>
+      </TouchableOpacity>
     );
   }
 }
 const styles = StyleSheet.create({
-  test: {
-    flex: 1,
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'green',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   MainItem: {
     width: wp('70'),
     height: hp('60'),
     justifyContent: 'flex-end',
     alignItems: 'center',
+    marginBottom: hp('10'),
   },
   down: {
     position: 'absolute',

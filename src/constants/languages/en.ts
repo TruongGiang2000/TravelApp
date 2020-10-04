@@ -107,4 +107,5 @@ export default {
   valid_lastName: 'Last name is not valid',
   valid_email: 'Email address is not valid',
   valid_phone: 'Phone number is not valid',
+  numbertyperoom: 'There are 4 types of rooms here',
 };
