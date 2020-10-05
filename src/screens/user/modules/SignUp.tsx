@@ -4,10 +4,10 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import TraTe from '../../../components/TraTe';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import ButtonCustom from '../../../components/ButtonCustom';
+import {translate} from '../../../components/translate';
 class index extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -18,23 +18,39 @@ class index extends Component<any, any> {
     return (
       <View style={styles.MainContainer}>
         <View style={styles.viewContent}>
-          <TraTe i18nKey={'signup'} style={styles.signupText} />
+          <Text style={styles.signupText}>{translate('signup')}</Text>
           <View style={styles.textInput}>
             <FontAwesome name={'user'} size={wp('5')} color={'#A8B6C8'} />
             <TextInput
               style={styles.inputText}
-              placeholder={'Tài khoản'}
+              placeholder={translate('account')}
               placeholderTextColor={'#A8B6C8'}
             />
           </View>
           <View style={styles.textInput}>
+<<<<<<< HEAD
             <FontAwesome name={'lock'} size={20} style={styles.icon} />
             <TextInput placeholder={'Mật khẩu'} secureTextEntry={true} />
+=======
+            <FontAwesome name={'lock'} size={wp('5')} color={'#A8B6C8'} />
+            <TextInput
+              style={styles.inputText}
+              placeholderTextColor={'#A8B6C8'}
+              placeholder={translate('password')}
+              secureTextEntry={true}
+            />
+>>>>>>> 1b2c933522913770d938521e6b247d64ef215456
           </View>
           <View style={styles.textInput}>
             <FontAwesome name={'lock'} size={20} style={styles.icon} />
             <TextInput
+<<<<<<< HEAD
               placeholder={'Nhập lại mật khẩu'}
+=======
+              style={styles.inputText}
+              placeholderTextColor={'#A8B6C8'}
+              placeholder={translate('re_password')}
+>>>>>>> 1b2c933522913770d938521e6b247d64ef215456
               secureTextEntry={true}
             />
           </View>
@@ -47,21 +63,33 @@ class index extends Component<any, any> {
             <TextInput
               placeholderTextColor={'#A8B6C8'}
               style={styles.inputText}
-              placeholder={'Email'}
+              placeholder={translate('email')}
+              secureTextEntry={true}
             />
           </View>
-          <ButtonCustom title="createaccount" style={styles.buttonCustom} />
+          <ButtonCustom
+            title={translate('createaccount')}
+            style={styles.buttonCustom}
+          />
         </View>
         <View style={styles.dash}>
           <View style={styles.dash1}></View>
-          <TraTe i18nKey={'or'} style={styles.orText} />
+          <Text style={styles.orText}>{translate('or')}</Text>
           <View style={styles.dash1}></View>
         </View>
+<<<<<<< HEAD
         <TraTe
           onPress={this.props.onPressHaveAccount}
           i18nKey={'have_an_account'}
           style={styles.haveAccount}
         />
+=======
+        <Text
+          style={styles.haveAccount}
+          onPress={this.props.onPressHaveAccount}>
+          {translate('have_an_account')}
+        </Text>
+>>>>>>> 1b2c933522913770d938521e6b247d64ef215456
       </View>
     );
   }

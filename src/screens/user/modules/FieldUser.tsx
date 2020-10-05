@@ -4,7 +4,6 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import TraTe from '../../../components/TraTe';
 class FieldUser extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -12,15 +11,11 @@ class FieldUser extends Component<any, any> {
   }
 
   render() {
-    const {style, titleKey, content, onPress, contentKey} = this.props;
+    const {style, title, content, onPress} = this.props;
     return (
       <TouchableOpacity style={style} onPress={onPress}>
-        <TraTe i18nKey={titleKey} style={styles.title} />
-        {contentKey ? (
-          <TraTe style={styles.content} i18nKey={contentKey} />
-        ) : (
+        <Text style={styles.title}>{title}</Text>
           <Text style={styles.content}>{content}</Text>
-        )}
         <View style={styles.line} />
       </TouchableOpacity>
     );

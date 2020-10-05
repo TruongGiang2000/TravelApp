@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
-import {View, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, TouchableOpacity, StyleSheet, Text} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import StarRating from 'react-native-star-rating';
 import Icon from 'react-native-vector-icons/dist/AntDesign';
-import TraTe from '../../../components/TraTe';
-
+import {translate} from '../../../components/translate';
 export default class ItemRating extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -17,14 +16,14 @@ export default class ItemRating extends Component<any, any> {
     const {
       starCount,
       title,
-      review,
+      content,
       numberofreview,
       style,
       onPress,
     } = this.props;
     return (
       <TouchableOpacity style={style} onPress={onPress}>
-        <TraTe style={styles.title} i18nKey={title} />
+        <Text style={styles.title}>{title}</Text>
         <View style={styles.down}>
           <View style={styles.rating}>
             <StarRating
@@ -34,10 +33,12 @@ export default class ItemRating extends Component<any, any> {
               fullStarColor={'#F0C909'}
               starSize={wp('5')}
             />
-            <TraTe style={styles.numberofreview} i18nKey={numberofreview} />
+            <Text style={styles.numberofreview}>{`${numberofreview} ${translate(
+              'rate',
+            )}`}</Text>
           </View>
           <View style={styles.reviews}>
-            <TraTe style={styles.review} i18nKey={review} />
+            <Text style={styles.review}>{content}</Text>
             <Icon
               name="arrowright"
               style={styles.icon}
@@ -83,5 +84,6 @@ const styles = StyleSheet.create({
     fontSize: wp('3'),
     marginTop: wp('2'),
     fontFamily: 'roboto-slab.regular',
+    textTransform: 'lowercase',
   },
 });

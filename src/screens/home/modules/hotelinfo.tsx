@@ -11,12 +11,12 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import TraTe from '../../../components/TraTe';
 import ButtonCustom from '../../../components/ButtonCustom';
 import Itenassess from './ItemRating';
 import ItemUtilities from '../../../components/ItemUtilities';
 import ItemImage from '../../../components/ItemImage';
 import SlideShow from '../../../components/SlideShow';
+import {translate} from '../../../components/translate';
 class Hotel extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -115,19 +115,20 @@ class Hotel extends Component<any, any> {
             <Text style={styles.price}>{price}</Text>
             <View>
               <ButtonCustom
-                title={'endow'}
-                style={styles.buttoncustom}></ButtonCustom>
+                title={translate('endow')}
+                style={styles.buttoncustom}
+              />
             </View>
             <Text style={styles.content}>{content}</Text>
-            <TraTe i18nKey={'detail'} style={styles.detail}></TraTe>
+            <Text style={styles.detail}>{translate('detail')}</Text>
             <Itenassess
               style={{marginTop: wp('3')}}
-              title={'rate'}
-              review={'review'}
-              numberofreview={'numberofreview'}></Itenassess>
+              title={translate('rate')}
+              content={translate('review')}
+              numberofreview={10}></Itenassess>
           </View>
           <View style={{paddingLeft: wp('5')}}>
-            <TraTe i18nKey={'convenient'} style={styles.convenient}></TraTe>
+            <Text style={styles.convenient}>{translate('convenient')}</Text>
             <FlatList
               style={styles.flatList}
               data={this.state.data1}
@@ -135,10 +136,10 @@ class Hotel extends Component<any, any> {
               horizontal={true}
             />
           </View>
-          <TraTe i18nKey={'allconvenient'} style={styles.allconvenient}></TraTe>
+          <Text style={styles.allconvenient}>{translate('allconvenient')}</Text>
           <View style={styles.viewLine} />
           <View style={styles.viewPicture}>
-            <TraTe i18nKey={'picture'} style={styles.picture}></TraTe>
+            <Text style={styles.picture}>{translate('picture')}</Text>
             <FlatList
               style={styles.flatListItemImage}
               data={this.state.dataImage}
@@ -150,6 +151,7 @@ class Hotel extends Component<any, any> {
         </ScrollView>
         <View style={styles.viewButon}>
           <ButtonCustom title={'choosing_room'} />
+          <ButtonCustom title={translate('choosing_room')} />
         </View>
       </View>
     );

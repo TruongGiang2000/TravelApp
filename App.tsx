@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Text, Image} from 'react-native';
+import {View, StyleSheet, Image} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
@@ -16,6 +16,8 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
+import {configTranslation} from './src/components/translate';
+import {connect} from 'react-redux';
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
@@ -56,7 +58,6 @@ function MyTabs() {
               <View style={focused ? styles.active : undefined} />
             </View>
           ),
-          tabBarVisible: false,
         }}
       />
       <Tab.Screen
@@ -100,6 +101,14 @@ function MyTabs() {
 }
 
 class App extends Component<any, any> {
+  componentDidMount() {
+    configTranslation(this.props.language);
+  }
+  componentDidUpdate(preProps: any) {
+    if (this.props.language != preProps) {
+      configTranslation(this.props.language);
+    }
+  }
   render() {
     return (
       <NavigationContainer>
@@ -113,14 +122,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#FA2A00',
     width: wp('10'),
     height: 5,
-    marginTop: 10,
+    marginTop: wp('3'),
   },
   img: {
-    width: 22,
-    height: 22,
+    width: wp('6'),
+    height: wp('6'),
   },
   view: {
     alignItems: 'center',
   },
 });
-export default App;
+const mapStateFromProps = (state) => {
+  return {
+    language: state.system.language,
+  };
+};
+export default connect(mapStateFromProps, null)(App);

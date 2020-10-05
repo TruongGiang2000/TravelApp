@@ -7,10 +7,10 @@ import {
   ScrollView,
   TouchableOpacity,
   Modal,
+  Text,
 } from 'react-native';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
-import TraTe from '../../components/TraTe';
 import MoutainPlaceList from './modules/MoutainProvincesList';
 import OfferPlaceList from './modules/OfferProvincesList';
 import FamousPlaceList from './modules/FamousProvincesList';
@@ -20,6 +20,8 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import SearchingProvinces from './modules/SearchingProvinces';
+import {translate} from '../../components/translate';
+import {withPages} from '../../components/withPages';
 class Location extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -73,7 +75,7 @@ class Location extends Component<any, any> {
               color={'#000'}
             />
           </TouchableOpacity>
-          <TraTe i18nKey={'discover'} style={styles.title} />
+          <Text style={styles.title}>{translate('discover')}</Text>
           <TouchableOpacity onPress={this.showModalFilter}>
             <Image
               source={require('../../assets/images/filter.png')}
@@ -92,7 +94,7 @@ class Location extends Component<any, any> {
                 style={styles.iconSearchBar}
               />
               <TextInput
-                placeholder={'Search'}
+                placeholder={translate('search')}
                 placeholderTextColor={'#A8B6C8'}
                 style={styles.textInput}
                 defaultValue={''}
@@ -166,4 +168,4 @@ const styles = StyleSheet.create({
     marginTop: hp('2'),
   },
 });
-export default Location;
+export default withPages(Location);

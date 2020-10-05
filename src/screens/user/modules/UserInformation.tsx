@@ -13,13 +13,13 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
-import TraTe from '../../../components/TraTe';
 import CircleImage from '../../../components/CircleImage';
 import FieldUser from './FieldUser';
 import ImagePicker from 'react-native-image-picker';
 import ModalCustom from 'react-native-modal';
 import ManageAccountModal from './ManageAccountModal';
 import ModalChooseLang from './ModalChooseLang';
+import {translate} from '../../../components/translate';
 class UserInformation extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -58,6 +58,7 @@ class UserInformation extends Component<any, any> {
     this.setState({isShow: true});
   };
   onClose = () => {
+    console.log('dadad');
     this.setState({isShow: false});
   };
 
@@ -78,7 +79,7 @@ class UserInformation extends Component<any, any> {
           resizeMode={'cover'}
           blurRadius={7}
         />
-        <TraTe i18nKey={'personal'} style={styles.personal} />
+        <Text style={styles.personal}>{translate('personal')}</Text>
         <View style={styles.viewAvatarImage}>
           <CircleImage
             source={avatarSource}
@@ -109,9 +110,9 @@ class UserInformation extends Component<any, any> {
           />
         </TouchableOpacity>
         <View style={styles.viewRowStraCoin}>
-          <TraTe i18nKey={'stra_core'} style={styles.textStracoin}>
-            : 7000
-          </TraTe>
+          <Text style={styles.textStracoin}>{`${translate(
+            'stra_core',
+          )}: 7000`}</Text>
           <Image
             source={require('../../../assets/images/s_coin.png')}
             style={styles.imageCoin}
@@ -120,26 +121,26 @@ class UserInformation extends Component<any, any> {
         <View style={styles.viewField}>
           <FieldUser
             style={styles.fieldUser}
-            titleKey={'address'}
+            title={translate('address')}
             content={
               '201/26 ấp Phú Hiệp, xã Phú Hoà Đông, huyện Củ Chi, TP.HCM'
             }
           />
           <FieldUser
             style={styles.fieldUser}
-            titleKey={'email'}
+            title={translate('email')}
             content={'stella.summers@gmail.com'}
           />
           <FieldUser
             style={styles.fieldUser}
-            titleKey={'phone'}
+            title={translate('phone')}
             content={'097.123.1131'}
           />
 
           <FieldUser
             style={styles.fieldUser}
-            titleKey={'language'}
-            contentKey={'lang'}
+            title={translate('language')}
+            content={translate('lang')}
             onPress={this.showModalChooseLanguage}
           />
           <View style={styles.viewRowDarkMode}>
@@ -154,7 +155,10 @@ class UserInformation extends Component<any, any> {
           </View>
         </View>
         <ModalCustom isVisible={isShow} onBackdropPress={this.onClose}>
-          <ModalChooseLang show={isShow} />
+          <ModalChooseLang
+            hideModal={() => this.setState({isShow: false})}
+            show={isShow}
+          />
         </ModalCustom>
         <Modal
           visible={isShowManageAccModal}

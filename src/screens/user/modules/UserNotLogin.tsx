@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import ModalChooseLang from './ModalChooseLang';
 import FieldUser from './FieldUser';
-import TraTe from '../../../components/TraTe';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -19,6 +18,7 @@ import CircleImage from '../../../components/CircleImage';
 import ModalCustom from 'react-native-modal';
 import ModalHelping from './ModalHelping';
 import ModalAuth from './ModalAuth';
+import {translate} from '../../../components/translate';
 class UserNotLogin extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -61,23 +61,21 @@ class UserNotLogin extends Component<any, any> {
           resizeMode={'cover'}
           blurRadius={7}
         />
-        <TraTe i18nKey={'personal'} style={styles.personal} />
+        <Text style={styles.personal}>{translate('personal')}</Text>
         <CircleImage
           source={require('../../../assets/images/Bitmap.png')}
           style={styles.circleImage}
           size={wp('27')}
           resizeMode={'cover'}
         />
-        <TraTe
-          onPress={this.showModalAuth}
-          style={styles.siggUpText}
-          i18nKey={'signin'}
-        />
+        <Text onPress={this.showModalAuth} style={styles.signInText}>
+          {translate('signin')}
+        </Text>
         <View style={styles.viewFieldUser}>
           <FieldUser
             style={styles.fieldUser}
-            titleKey={'language'}
-            contentKey={'lang'}
+            title={translate('language')}
+            content={translate('lang')}
             onPress={this.showModalChooseLanguage}
           />
           <View style={styles.viewRowDarkMode}>
@@ -93,11 +91,14 @@ class UserNotLogin extends Component<any, any> {
         </View>
         <View style={styles.viewHelping}>
           <TouchableOpacity onPress={this.showModalHelping}>
-            <TraTe style={styles.textNeedHelp} i18nKey={'helping'} />
+            <Text style={styles.textNeedHelp}>{translate('helping')}</Text>
           </TouchableOpacity>
         </View>
         <ModalCustom isVisible={isShow} onBackdropPress={this.onClose}>
-          <ModalChooseLang show={isShow} />
+          <ModalChooseLang
+            hideModal={() => this.setState({isShow: false})}
+            show={isShow}
+          />
         </ModalCustom>
         <Modal
           visible={showModalHelping}
@@ -134,7 +135,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     alignSelf: 'center',
   },
-  siggUpText: {
+  signInText: {
     marginTop: hp('4'),
     fontFamily: 'roboto-slab-bold',
     color: '#FA2A00',

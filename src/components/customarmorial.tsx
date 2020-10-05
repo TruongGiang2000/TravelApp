@@ -1,6 +1,6 @@
+import {title} from 'process';
 import React, {Component} from 'react';
-import {StyleSheet, TouchableOpacity} from 'react-native';
-import TraTe from './TraTe';
+import {StyleSheet, TouchableOpacity, Text} from 'react-native';
 class CustomArmorial extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -10,10 +10,7 @@ class CustomArmorial extends Component<any, any> {
   render() {
     return (
       <TouchableOpacity style={[styles.MainContainer, this.props.style]}>
-        <TraTe
-          style={[styles.title, this.props.titleStyle]}
-          i18nKey={this.props.title}
-        />
+        <Text style={[styles.title, this.props.titleStyle]}>{title}</Text>
       </TouchableOpacity>
     );
   }

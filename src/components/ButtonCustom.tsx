@@ -1,34 +1,34 @@
 import React, {Component} from 'react';
-import {StyleSheet, TouchableOpacity} from 'react-native';
-import TraTe from './TraTe';
+import {StyleSheet, TouchableOpacity, Text} from 'react-native';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 class ButtonCustom extends Component<any, any> {
   constructor(props) {
     super(props);
-    this.state = {
-      
+    this.state = {};
   }
-}
 
   render() {
-     return (
-          <TouchableOpacity style={[styles.MainContainer, this.props.style]}>
-            <TraTe style={[styles.title,this.props.titleStyle]} i18nKey={this.props.title}/>
-          </TouchableOpacity>
-     )
+    const {title, style, titleStyle, onPress} = this.props;
+    return (
+      <TouchableOpacity
+        style={[styles.MainContainer, style]}
+        onPress={onPress}>
+        <Text style={[styles.title, titleStyle]}>{title}</Text>
+      </TouchableOpacity>
+    );
   }
 }
 const styles = StyleSheet.create({
   MainContainer: {
     backgroundColor: '#FA2A00',
-    borderRadius: 8,
-    paddingHorizontal: 14,
-    paddingVertical: 8,
+    borderRadius: wp('2'),
+    paddingHorizontal: wp('4'),
+    paddingVertical: wp('3'),
   },
   title: {
     color: '#fff',
-    fontFamily: 'roboto-slab-bold',
+    fontWeight: 'bold',
     textAlign: 'center',
-  }
+  },
 });
 export default ButtonCustom;

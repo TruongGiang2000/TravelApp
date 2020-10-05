@@ -4,11 +4,10 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import TraTe from '../../../components/TraTe';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import ButtonCustom from '../../../components/ButtonCustom';
 import ButtonFBCustom from '../../../components/ButtonFBCustom';
-
+import {translate} from '../../../components/translate';
 class index extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -18,16 +17,16 @@ class index extends Component<any, any> {
   render() {
     return (
       <View style={styles.MainContainer}>
-        <TraTe i18nKey={'welcome'} style={styles.welcomeText} />
+        <Text style={styles.welcomeText}>{translate('welcome')}</Text>
         <Text style={styles.title}> new amazing countries</Text>
         <View style={styles.viewContent}>
-          <TraTe i18nKey={'signin'} style={styles.signinText} />
+          <Text style={styles.signinText}>{translate('signin')}</Text>
           <View style={styles.textInput}>
             <FontAwesome name={'user'} size={wp('4')} color={'#A8B6C8'} />
             <TextInput
               style={styles.textInputStyle}
               placeholderTextColor={'#A8B6C8'}
-              placeholder={'Tài khoản'}
+              placeholder={translate('signin')}
             />
           </View>
           <View style={styles.textInput}>
@@ -35,22 +34,25 @@ class index extends Component<any, any> {
             <TextInput placeholder={'Mật khẩu'} secureTextEntry={true} />
           </View>
           <ButtonCustom
-            titleStyle={styles.ButtonText}
-            title="signin"
+            titleStyle={styles.buttonText}
+            title={translate('signin')}
             style={styles.buttonCustom}
           />
         </View>
-        <TraTe
-          onPress={this.props.onPressDontAccount}
+        <Text
           style={styles.dontHaveAccount}
-          i18nKey={'dont_have_an_account'}
-        />
+          onPress={this.props.onPressDontAccount}>
+          {translate('dont_have_an_account')}
+        </Text>
         <View style={styles.dash}>
           <View style={styles.dash1}></View>
-          <TraTe i18nKey={'or'} style={styles.orText} />
+          <Text style={styles.orText}>{translate('or')}</Text>
           <View style={styles.dash1}></View>
         </View>
-        <ButtonFBCustom titleStyle={styles.ButtonText} title={'facebock'} />
+        <ButtonFBCustom
+          titleStyle={styles.buttonText}
+          title={translate('facebock')}
+        />
       </View>
     );
   }
@@ -125,7 +127,7 @@ const styles = StyleSheet.create({
     marginLeft: wp('2'),
     fontSize: wp('3.8'),
   },
-  ButtonText: {
+  buttonText: {
     fontSize: wp('4'),
   },
   dontHaveAccount: {

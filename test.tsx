@@ -2,11 +2,14 @@ import React, {Component} from 'react';
 import {View} from 'react-native';
 import {Provider} from 'react-redux';
 import configureStore from './src/redux/store';
-class index extends Component<any, any> {
+import Profilecustomer from './src/booking/Profilecustomer';
+import ProfileCustomer from './src/booking/Profilecustomer';
+class test extends Component<any, any> {
+
   render() {
     return (
       <Provider store={configureStore}>
-        <View style={{flex: 1}}></View>
+        <ProfileCustomer/>
       </Provider>
     );
   }

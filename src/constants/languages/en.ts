@@ -99,8 +99,8 @@ export default {
   totalincentives: 'Total incentives',
   finalprice: 'Final price',
   textname:
-    'Khi khách đến, họ cần xuất trình giấy tờ tùy thân trùng khớp với tên được ghi ở đây. Bạn không thể thay đổi tên ở đây',
-  textemail: 'Thư xác nhận đặt phòng sẽ được gửi đến đây',
+    'When customer come, they are required to present an identification that matches the name shown here. You cannot change the name here',
+  textemail: 'A confirmation letter will be sent here',
   dont_have_an_account: "Don't have an account?",
   have_an_account: 'You have an account?',
   valid_firstName: 'First name is not valid',
@@ -108,4 +108,9 @@ export default {
   valid_email: 'Email address is not valid',
   valid_phone: 'Phone number is not valid',
   numbertyperoom: 'There are 4 types of rooms here',
+  account: 'User name',
+  password: 'Password',
+  re_password: 'Re-password',
+  customer_infomation: 'Customer infomation',
+  nofitication: 'Nofitication',
 };

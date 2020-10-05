@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, FlatList} from 'react-native';
-import TraTe from '../../../components/TraTe';
+import {View, StyleSheet, FlatList, Text} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -8,6 +7,7 @@ import {
 import ItemImage from '../../../components/ItemImage';
 import {places} from '../../../redux';
 import {connect} from 'react-redux';
+import {translate} from '../../../components/translate';
 class MountainPlace extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -29,7 +29,7 @@ class MountainPlace extends Component<any, any> {
   render() {
     return (
       <View style={this.props.style}>
-        <TraTe i18nKey={'moutainPlace'} style={styles.title} />
+        <Text style={styles.title}>{translate('moutainPlace')}</Text>
         <FlatList
           data={this.props.mountainProvinces}
           style={styles.flatList}

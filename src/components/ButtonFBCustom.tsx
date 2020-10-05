@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import {StyleSheet, TouchableOpacity} from 'react-native';
-import TraTe from './TraTe';
+import {StyleSheet, TouchableOpacity, Text} from 'react-native';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import LinearGradient from 'react-native-linear-gradient';
+import {translate} from './translate';
 class ButtonFBCustom extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -16,7 +16,7 @@ class ButtonFBCustom extends Component<any, any> {
         <LinearGradient
           colors={['#4c669f', '#3b5998', '#192f6a']}
           style={styles.linearGradient}>
-          <TraTe style={[styles.title, titleStyle]} i18nKey={title} />
+          <Text style={[styles.title, titleStyle]}>{title}</Text>
         </LinearGradient>
       </TouchableOpacity>
     );

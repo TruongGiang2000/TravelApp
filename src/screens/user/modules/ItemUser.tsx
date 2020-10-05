@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import CircleImage from '../../../components/CircleImage';
-import TraTe from '../../../components/TraTe';
+import {translate} from '../../../components/translate';
 class ItemUser extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -27,9 +27,9 @@ class ItemUser extends Component<any, any> {
             {name}
           </Text>
           <View style={styles.viewStraCore}>
-            <TraTe
-              style={[styles.core, stylecore]}
-              i18nKey={'stra_core'}>{`: ${core}`}</TraTe>
+            <Text style={[styles.core, stylecore]}>{`${translate(
+              'stra_core',
+            )}: ${core}`}</Text>
             <Image
               source={require('../../../assets/images/s_coin.png')}
               style={styles.imageCoin}

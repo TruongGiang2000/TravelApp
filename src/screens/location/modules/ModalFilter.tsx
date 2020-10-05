@@ -12,11 +12,11 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import TraTe from '../../../components/TraTe';
-import Button from '../../../components/ButtonCustom';
+import ButtonCustom from '../../../components/ButtonCustom';
 import {connect} from 'react-redux';
 import {places} from '../../../redux';
 import {forEach} from 'lodash';
+import {translate} from '../../../components/translate';
 class ModalFilter extends Component<any, any> {
   data: any;
   constructor(props) {
@@ -89,9 +89,6 @@ class ModalFilter extends Component<any, any> {
   searchProvinces = () => {
     const {activeTypesArea, keyActiveArea} = this.state;
     let array = [];
-    // Object.values(activeTypesArea).map((item) => {
-    //   array.push(item);
-    // });
     forEach(Object.values(activeTypesArea), (item) => {
       array.push(item);
     });
@@ -111,10 +108,10 @@ class ModalFilter extends Component<any, any> {
       let activeItem = this.state.keyActiveArea === item.key;
       return (
         <TouchableOpacity onPress={this.activeArea(item.key)}>
-          <TraTe
-            style={activeItem ? styles.itemFilterActive : styles.itemFilter}
-            i18nKey={item.titleKey}
-          />
+          <Text
+            style={activeItem ? styles.itemFilterActive : styles.itemFilter}>
+            {translate(item.titleKey)}
+          </Text>
         </TouchableOpacity>
       );
     };
@@ -125,10 +122,10 @@ class ModalFilter extends Component<any, any> {
       );
       return (
         <TouchableOpacity onPress={this.activeTypeArea(item.key, index)}>
-          <TraTe
-            style={activeItem ? styles.itemFilterActive : styles.itemFilter}
-            i18nKey={item.titleKey}
-          />
+          <Text
+            style={activeItem ? styles.itemFilterActive : styles.itemFilter}>
+            {translate(item.titleKey)}
+          </Text>
         </TouchableOpacity>
       );
     };
@@ -143,18 +140,18 @@ class ModalFilter extends Component<any, any> {
                 color={'#000'}
               />
             </TouchableOpacity>
-            <TraTe i18nKey={'discover'} style={styles.title} />
+            <Text style={styles.title}>{translate('discover')}</Text>
             <Text></Text>
           </View>
-          <TraTe style={styles.titleFilter} i18nKey={'title_filter'} />
-          <TraTe style={styles.textCondition} i18nKey={'area'} />
+          <Text style={styles.titleFilter}>{translate('title_filter')}</Text>
+          <Text style={styles.textCondition}>{translate('area')}</Text>
           <FlatList
             data={this.state.dataArea}
             horizontal={true}
             renderItem={renderItemArea}
             style={styles.flatListArea}
           />
-          <TraTe i18nKey={'featured'} style={styles.textCondition} />
+          <Text style={styles.textCondition}>{translate('featured')}</Text>
           <FlatList
             data={this.state.dataTypeArea}
             horizontal={true}
@@ -163,14 +160,14 @@ class ModalFilter extends Component<any, any> {
           />
         </ScrollView>
         <View style={styles.viewBottom}>
-          <Button
+          <ButtonCustom
             style={styles.styleButton}
             onPress={this.searchProvinces}
-            title={'find'}
+            title={translate('find')}
             titleStyle={styles.titleButtonStyle}
           />
           <TouchableOpacity onPress={this.setAgain}>
-            <TraTe style={styles.set_again} i18nKey={'set_again'} />
+            <Text style={styles.set_again}>{translate('set_again')}</Text>
           </TouchableOpacity>
         </View>
       </View>

@@ -5,14 +5,15 @@ import {
   Image,
   TouchableOpacity,
   FlatList,
+  Text,
 } from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import TraTe from '../../../components/TraTe';
 import ItemRow from './ItemRow';
+import {translate} from '../../../components/translate';
 class ModalHelping extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -44,7 +45,7 @@ class ModalHelping extends Component<any, any> {
   };
   onPressShowLess = () => {
     this.setState({itemCount: 5});
-  }
+  };
   render() {
     const {initData, itemCount} = this.state;
     return (
@@ -65,10 +66,12 @@ class ModalHelping extends Component<any, any> {
               color={'#ffffff'}
             />
           </TouchableOpacity>
-          <TraTe i18nKey={'description_helping'} style={styles.title} />
+          <Text style={styles.title}>{translate('description_helping')}</Text>
         </View>
         <View style={styles.viewContent}>
-          <TraTe style={styles.questionFre} i18nKey={'frequent_question'} />
+          <Text style={styles.questionFre}>
+            {translate('frequent_question')}
+          </Text>
           <FlatList
             data={initData.slice(0, itemCount)}
             renderItem={this.renderItem}
@@ -76,11 +79,11 @@ class ModalHelping extends Component<any, any> {
           />
           {itemCount ? (
             <TouchableOpacity onPress={this.onPressReadMore}>
-              <TraTe style={styles.moreAndLess} i18nKey={'read_more'} />
+              <Text style={styles.moreAndLess}>{translate('read_more')}</Text>
             </TouchableOpacity>
           ) : (
             <TouchableOpacity onPress={this.onPressShowLess}>
-              <TraTe style={styles.moreAndLess} i18nKey={'show_less'} />
+              <Text style={styles.moreAndLess}>{translate('show_less')}</Text>
             </TouchableOpacity>
           )}
         </View>

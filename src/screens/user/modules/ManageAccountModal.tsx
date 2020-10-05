@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, FlatList, TouchableOpacity, Text} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import TraTe from '../../../components/TraTe';
 import ItemUser from './ItemUser';
 import ItemRow from './ItemRow';
-import Button from '../../../components/ButtonCustom';
+import ButtonCutom from '../../../components/ButtonCustom';
+import {translate} from '../../../components/translate';
 class ManageAccountModal extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -22,7 +22,7 @@ class ManageAccountModal extends Component<any, any> {
     };
   }
   renderItem = ({item}) => {
-    return <ItemRow style={styles.itemRow} titleKey={item.key} />;
+    return <ItemRow style={styles.itemRow} title={translate(item.key)} />;
   };
   render() {
     return (
@@ -35,17 +35,17 @@ class ManageAccountModal extends Component<any, any> {
               color={'#000'}
             />
           </TouchableOpacity>
-          <TraTe style={styles.title} i18nKey={'manage_account'} />
+          <Text style={styles.title}>{translate('manage_account')}</Text>
           <ItemUser
             name={'Nguyen Vu Truong Giang'}
             source={require('../../../assets/images/Bitmap.png')}
-            core={200}
+            core={300}
           />
         </View>
         <View style={styles.viewContent}>
           <FlatList data={this.state.data} renderItem={this.renderItem} />
         </View>
-        <Button style={styles.button} title={'logout'} />
+        <ButtonCutom style={styles.button} title={translate('logout')} />
       </View>
     );
   }

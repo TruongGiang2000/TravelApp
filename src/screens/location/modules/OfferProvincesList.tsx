@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, FlatList} from 'react-native';
-import TraTe from '../../../components/TraTe';
+import {View, StyleSheet, FlatList, Text} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -8,6 +7,7 @@ import {
 import {connect} from 'react-redux';
 import {places} from '../../../redux';
 import ItemImage from '../../../components/ItemImage';
+import {translate} from '../../../components/translate';
 class OfferPlace extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -28,7 +28,7 @@ class OfferPlace extends Component<any, any> {
   render() {
     return (
       <View style={this.props.style}>
-        <TraTe i18nKey={'offer'} style={styles.title} />
+        <Text style={styles.title}>{translate('offer')}</Text>
         <FlatList
           data={this.props.offerProvinces}
           style={styles.flatList}

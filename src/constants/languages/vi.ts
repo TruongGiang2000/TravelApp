@@ -92,7 +92,7 @@ export default {
   successfullyplaced: 'Đặt thành công!',
   choosetocontinue: 'Chọn "tiếp tục" để xem các địa điểm quanh nhé!',
   offline: 'nhé!',
-  next: 'Tiếp tục',
+  next: 'Tiếp tục xem',
   close: 'Đóng',
   takeroom: 'Nhận phòng',
   payroom: 'Trả phòng',
@@ -110,5 +110,8 @@ export default {
   valid_lastName: 'Họ không hợp lệ',
   valid_email: 'Địa chỉ email không hợp lệ',
   valid_phone: 'Điện thoại không hợp lệ',
-  numbertyperoom: 'Tại đây có 4 loại phòng',
+  account: 'Tài khoản',
+  password: 'Mật khẩu',
+  re_password: 'Nhập lại mật khẩu',
+  nofitication: 'Thông báo',
 };
