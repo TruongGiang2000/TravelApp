@@ -13,9 +13,7 @@ import {translate} from '../../../components/translate';
 class ItemNotification extends Component<any, any> {
   constructor(props) {
     super(props);
-    this.state = {
-      isShow: this.props.isShow,
-    };
+    this.state = {};
   }
   render() {
     const {
@@ -27,39 +25,32 @@ class ItemNotification extends Component<any, any> {
       calendar,
       time,
       day,
-      stylecalendar,
-      styletime,
-      styleday,
-      onPress
+      onPress,
     } = this.props;
     return (
       <TouchableOpacity style={[styles.MainContainer, style]}>
-        <View style={{marginTop: wp('2')}}>
-          <CircleImage source={source} size={90} style={{}} />
-        </View>
-        <View style={styles.center}>
-          <Text style={[styles.title, styletitle]}>{title}</Text>
-          {this.state.isShow && (
-            <ButtonCustom title={titlebutton} style={{width: wp(30)}} onPress={onPress} />
+        <CircleImage source={source} size={wp('15')} />
+        <View style={styles.viewContent}>
+          <Text numberOfLines={2} style={[styles.title, styletitle]}>
+            {this.props.children || title}
+          </Text>
+          {this.props.isShow && (
+            <ButtonCustom
+              title={titlebutton}
+              style={{width: wp(30)}}
+              onPress={onPress}
+            />
           )}
-          <View >
-            <View style={styles.viewcalendar}>
-          <Fontisto
-                  name={'calendar'}
-                  size={wp('3.5')}
-                  color={'#000'}
-                />
-            <Text style={[styles.calendar, stylecalendar]}>{calendar}</Text>
+          <View style={styles.viewDate}>
+            <View style={styles.viewRow}>
+              <Fontisto name={'calendar'} size={wp('3.5')} color={'#000'} />
+              <Text style={styles.textDate}>{calendar}</Text>
             </View>
-            <View style={styles.viewtime}>
-            <Fontisto
-                  name={'clock'}
-                  size={wp('3.5')}
-                  color={'#000'}
-                />
-            <Text style={[styles.time, styletime]}>{time}</Text>
+            <View style={styles.viewRow}>
+              <Fontisto name={'clock'} size={wp('3.5')} color={'#000'} />
+              <Text style={styles.textDate}>{time}</Text>
             </View>
-            <Text style={[styles.day, styleday]}>{day}</Text>
+            <Text style={styles.textDate}>{day}</Text>
           </View>
         </View>
       </TouchableOpacity>
@@ -68,44 +59,35 @@ class ItemNotification extends Component<any, any> {
 }
 const styles = StyleSheet.create({
   MainContainer: {
-    width: wp('95'),
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FFF5F5',
+  },
+  viewContent: {
+    flex: 1,
+    marginLeft: wp('3'),
   },
   title: {
-    fontSize: wp('4'),
+    fontSize: wp('3.7'),
     color: '#00162B',
-    marginTop: wp('2'),
+    fontFamily: 'roboto-slab.regular',
   },
-  calendar: {
-    marginTop: wp('-4'),
-    fontSize: wp('3'),
+  viewDate: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingRight: wp('8'),
+    marginTop: hp('1'),
+  },
+  textDate: {
+    fontSize: wp('3.2'),
     color: '#353B50',
-    marginLeft: wp('5'),
+    marginLeft: wp('1'),
+    fontFamily: 'roboto-slab.regular',
   },
-  time: {
-    fontSize: wp('3'),
-    color: '#353B50',
-    marginLeft: wp('4'),
-    marginTop: wp('-4'),
+  viewRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
-  day: {
-    fontSize: wp('3'),
-    color: '#353B50',
-    marginLeft: wp('45'),
-    marginTop: wp('2'),
-  },
-  center: {
-    width: wp('70'),
-    alignSelf: 'flex-end',
-    marginTop: wp('2')
-  },
-  viewcalendar:{
-    marginTop: wp('2'),
-    position: 'absolute',
-  },
-  viewtime:{
-    marginTop: wp('2'),
-    marginLeft: wp('25'),
-    position: 'absolute',
-  }
 });
 export default ItemNotification;

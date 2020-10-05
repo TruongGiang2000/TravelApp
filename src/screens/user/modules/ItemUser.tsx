@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     height: '1%',
+    justifyContent: 'center',
   },
   name: {
     fontSize: wp('3'),
@@ -72,13 +73,11 @@ const styles = StyleSheet.create({
     fontFamily: 'roboto-slab.regular',
   },
   containerCirCleImage: {
-    marginLeft: wp('2'),
-    justifyContent: 'center',
+    marginTop: wp('-1'),
   },
   circleImage: {
     borderWidth: 1,
     borderColor: '#323B45',
-    marginTop: wp('-3'),
   },
   imageCoin: {
     width: wp('5.5'),

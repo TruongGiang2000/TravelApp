@@ -114,4 +114,13 @@ export default {
   password: 'Mật khẩu',
   re_password: 'Nhập lại mật khẩu',
   nofitication: 'Thông báo',
+  loading: 'Đang tải',
+  secondAgo: 'giây trước',
+  secondsAgo: 'giây trước',
+  minuteAgo: 'phút trước',
+  minutesAgo: 'phút trước',
+  hourAgo: 'giờ trước',
+  hoursAgo: 'giờ trước',
+  dayAgo: 'ngày trước',
+  daysAgo: 'ngày trước',
 };

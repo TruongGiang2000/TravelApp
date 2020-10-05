@@ -112,4 +112,13 @@ export default {
   re_password: 'Re-password',
   customer_infomation: 'Customer infomation',
   nofitication: 'Nofitication',
+  loading: 'Loading',
+  secondAgo: 'second ago',
+  secondsAgo: 'seconds ago',
+  minuteAgo: 'minute ago',
+  minutesAgo: 'minutes ago',
+  hourAgo: 'hour ago',
+  hoursAgo: 'hours ago',
+  dayAgo: 'day ago',
+  daysAgo: 'days ago',
 };
