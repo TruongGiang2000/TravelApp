@@ -18,7 +18,7 @@ class SearchingProvinces extends Component<any, any> {
     return (
       <ItemImage
         title={item.Title}
-        source={{uri: item.uriList[1]}}
+        source={{uri: item.Images[1]}}
         style={styles.itemContainer}
       />
     );

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
+import {View, StyleSheet, Text, Pressable, Image} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -17,13 +17,13 @@ class ItemNew extends Component<any, any> {
       onPress,
     } = this.props;
     return (
-      <TouchableOpacity onPress={onPress} style={[styles.MainContainer, style]}>
+      <Pressable onPress={onPress} style={[styles.MainContainer, style]}>
         <Image style={[styles.styleImage, styleImage]} source={source} />
         <View style={styles.styleview}>
           <Text style={[styles.textTitle, styleTitle]}> {title} </Text>
           <Text style={[styles.textContent, styleContent]}>{titleContent}</Text>
         </View>
-      </TouchableOpacity>
+      </Pressable>
     );
   }
 }

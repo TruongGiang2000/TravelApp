@@ -5,7 +5,7 @@ import {
   ScrollView,
   Text,
   FlatList,
-  TouchableOpacity,
+  Pressable,
 } from 'react-native';
 import {
   heightPercentageToDP as hp,

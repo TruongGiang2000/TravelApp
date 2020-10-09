@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
+import {View, StyleSheet, Text, Pressable, Image} from 'react-native';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import CircleImage from '../../../components/CircleImage';
 import {translate} from '../../../components/translate';
@@ -22,7 +22,7 @@ class ItemUser extends Component<any, any> {
     const {style, stylecore, source, stylename, core, name} = this.props;
     return (
       <View style={[styles.MainContainer, style]}>
-        <TouchableOpacity style={{width: wp('30')}} onPress={this.onPressName}>
+        <Pressable style={{width: wp('30')}} onPress={this.onPressName}>
           <Text style={[styles.name, stylename]} numberOfLines={numberOfLine}>
             {name}
           </Text>
@@ -35,7 +35,7 @@ class ItemUser extends Component<any, any> {
               style={styles.imageCoin}
             />
           </View>
-        </TouchableOpacity>
+        </Pressable>
         <CircleImage
           source={source}
           size={wp('12')}
@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     height: '1%',
+    justifyContent: 'center',
   },
   name: {
     fontSize: wp('3'),
@@ -72,13 +73,11 @@ const styles = StyleSheet.create({
     fontFamily: 'roboto-slab.regular',
   },
   containerCirCleImage: {
-    marginLeft: wp('2'),
-    justifyContent: 'center',
+    marginTop: wp('-1'),
   },
   circleImage: {
     borderWidth: 1,
     borderColor: '#323B45',
-    marginTop: wp('-3'),
   },
   imageCoin: {
     width: wp('5.5'),

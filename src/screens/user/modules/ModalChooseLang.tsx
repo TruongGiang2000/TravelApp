@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
+import {View, StyleSheet, Pressable, Text} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -46,7 +46,7 @@ class ModalChooseLang extends Component<any, any> {
         <View style={styles.modalStyle}>
           <View style={styles.formChooseLang}>
             <Text style={styles.chooseLang}>{translate('choose_lang')}</Text>
-            <TouchableOpacity
+            <Pressable
               style={styles.viewRowModal}
               onPress={this.setLanguage('vi')}>
               <Text style={styles.lang}>{translate('vi_lang')}</Text>
@@ -62,8 +62,8 @@ class ModalChooseLang extends Component<any, any> {
               ) : (
                 <View style={styles.viewCircle} />
               )}
-            </TouchableOpacity>
-            <TouchableOpacity
+            </Pressable>
+            <Pressable
               style={styles.viewRowModal}
               onPress={this.setLanguage('en')}>
               <Text style={styles.lang}>{translate('en_lang')}</Text>
@@ -79,7 +79,7 @@ class ModalChooseLang extends Component<any, any> {
               ) : (
                 <View style={styles.viewCircle} />
               )}
-            </TouchableOpacity>
+            </Pressable>
           </View>
         </View>
       )

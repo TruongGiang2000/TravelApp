@@ -5,7 +5,7 @@ import {
   Text,
   Image,
   Switch,
-  TouchableOpacity,
+  Pressable,
   Modal,
 } from 'react-native';
 import {
@@ -58,7 +58,6 @@ class UserInformation extends Component<any, any> {
     this.setState({isShow: true});
   };
   onClose = () => {
-    console.log('dadad');
     this.setState({isShow: false});
   };
 
@@ -87,7 +86,7 @@ class UserInformation extends Component<any, any> {
             size={wp('27')}
             resizeMode={'cover'}
           />
-          <TouchableOpacity
+          <Pressable
             style={styles.viewTouchIconCamera}
             onPress={this.imagePicker}>
             <EntypoIcon
@@ -96,10 +95,10 @@ class UserInformation extends Component<any, any> {
               size={wp('4')}
               style={styles.iconCamera}
             />
-          </TouchableOpacity>
+          </Pressable>
         </View>
         <Text style={styles.fullName}>Nguyễn Vũ Trường Giang</Text>
-        <TouchableOpacity
+        <Pressable
           onPress={this.showManageAccountModal}
           style={styles.touchIconThreeDot}>
           <EntypoIcon
@@ -108,7 +107,7 @@ class UserInformation extends Component<any, any> {
             size={wp('4')}
             color={'#000'}
           />
-        </TouchableOpacity>
+        </Pressable>
         <View style={styles.viewRowStraCoin}>
           <Text style={styles.textStracoin}>{`${translate(
             'stra_core',

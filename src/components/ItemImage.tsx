@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
+import {StyleSheet, Text, Pressable, Image} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -16,7 +16,7 @@ class ItemImage extends Component<any, any> {
   render() {
     const {style, styleImage, source, styletitle, title, onPress} = this.props;
     return (
-      <TouchableOpacity style={[styles.MainContainer, style]} onPress={onPress}>
+      <Pressable style={[styles.MainContainer, style]} onPress={onPress}>
         {this.state.isShow && (
           <Image
             style={[styles.styleImageAfter, styleImage]}
@@ -32,7 +32,7 @@ class ItemImage extends Component<any, any> {
         />
         <Gradient styleGradient={styles.stylegradient} />
         <Text style={[styles.text, styletitle]}>{title}</Text>
-      </TouchableOpacity>
+      </Pressable>
     );
   }
 }
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     height: hp('26'),
   },
   styleImage: {
-    borderRadius: 6, 
+    borderRadius: 6,
     width: '100%',
     height: '93%',
   },

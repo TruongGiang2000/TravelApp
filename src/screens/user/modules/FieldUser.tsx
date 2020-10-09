@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, Text, Pressable} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -13,11 +13,11 @@ class FieldUser extends Component<any, any> {
   render() {
     const {style, title, content, onPress} = this.props;
     return (
-      <TouchableOpacity style={style} onPress={onPress}>
+      <Pressable style={style} onPress={onPress}>
         <Text style={styles.title}>{title}</Text>
-          <Text style={styles.content}>{content}</Text>
+        <Text style={styles.content}>{content}</Text>
         <View style={styles.line} />
-      </TouchableOpacity>
+      </Pressable>
     );
   }
 }

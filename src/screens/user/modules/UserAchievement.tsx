@@ -5,7 +5,7 @@ import {
   Text,
   Image,
   FlatList,
-  TouchableOpacity,
+  Pressable,
   Modal,
 } from 'react-native';
 import {
@@ -115,9 +115,9 @@ class UserAchievement extends Component<any, any> {
             renderItem={this.renderItem}
             horizontal={true}
           />
-          <TouchableOpacity onPress={this.showModalHelping}>
+          <Pressable onPress={this.showModalHelping}>
             <Text style={styles.textNeedHelp}>{translate('helping')}</Text>
-          </TouchableOpacity>
+          </Pressable>
         </View>
         <Modal
           visible={showModalHelping}

@@ -45,6 +45,8 @@ class index extends Component<any, any> {
           }
         /> */}
         {/* {/* <ItemUtilities
+        />
+        {/* <ItemUtilities
           image={require('./src/assets/images/parking-ticket.png')}
           title={'Giữ xe'}
         /> */}

@@ -4,7 +4,7 @@ import {
   StyleSheet,
   ScrollView,
   Image,
-  TouchableOpacity,
+  Pressable,
   TextInput,
   Modal,
   Text,
@@ -80,21 +80,21 @@ class Hotel extends Component<any, any> {
     return (
       <ScrollView style={styles.MainContainer}>
         <View style={styles.header}>
-          <TouchableOpacity onPress={this.onPressBackSpace}>
+          <Pressable onPress={this.onPressBackSpace}>
             <MaterialIcon
               name={'keyboard-backspace'}
               size={wp('7')}
               color={'#000'}
             />
-          </TouchableOpacity>
+          </Pressable>
           <Text style={styles.title}>{translate('hotelSearching')}</Text>
-          <TouchableOpacity onPress={this.showModalFilter}>
+          <Pressable onPress={this.showModalFilter}>
             <Image
               source={require('../../assets/images/filter.png')}
               resizeMode={'contain'}
               style={styles.imgHeader}
             />
-          </TouchableOpacity>
+          </Pressable>
         </View>
         <View>
           <View style={styles.viewSearchBar}>

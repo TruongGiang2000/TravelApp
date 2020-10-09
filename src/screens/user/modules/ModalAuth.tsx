@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, ImageBackground, TouchableOpacity} from 'react-native';
+import {StyleSheet, ImageBackground, Pressable} from 'react-native';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import {
@@ -26,10 +26,7 @@ class index extends Component<any, any> {
         style={styles.MainContainer}
         resizeMode={'cover'}
         source={require('../../../assets/images/background.jpg')}>
-        <TouchableOpacity
-          onPress={this.props.onPress}
-          style={styles.viewBehind}
-        />
+        <Pressable onPress={this.props.onPress} style={styles.viewBehind} />
         {isAuth && <SignIn onPressDontAccount={this.onPressDontAccount} />}
         {!isAuth && <SignUp onPressHaveAccount={this.onPressHaveAccount} />}
       </ImageBackground>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, FlatList, TouchableOpacity, Text} from 'react-native';
+import {View, StyleSheet, FlatList, Pressable, Text} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -28,13 +28,13 @@ class ManageAccountModal extends Component<any, any> {
     return (
       <View style={styles.MainContainer}>
         <View style={styles.viewRowHeader}>
-          <TouchableOpacity onPress={this.props.onPressBackSpace}>
+          <Pressable onPress={this.props.onPressBackSpace}>
             <MaterialIcon
               name={'keyboard-backspace'}
               size={wp('7')}
               color={'#000'}
             />
-          </TouchableOpacity>
+          </Pressable>
           <Text style={styles.title}>{translate('manage_account')}</Text>
           <ItemUser
             name={'Nguyen Vu Truong Giang'}

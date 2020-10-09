@@ -1,12 +1,5 @@
 import React, {Component} from 'react';
-import {
-  View,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-  FlatList,
-  Text,
-} from 'react-native';
+import {View, StyleSheet, Image, Pressable, FlatList, Text} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -57,7 +50,7 @@ class ModalHelping extends Component<any, any> {
         />
         <View style={styles.viewBlackColor} />
         <View style={styles.viewHeader}>
-          <TouchableOpacity
+          <Pressable
             onPress={this.props.onPressBackSpace}
             style={styles.keyBoardSpace}>
             <MaterialIcon
@@ -65,7 +58,7 @@ class ModalHelping extends Component<any, any> {
               size={wp('7')}
               color={'#ffffff'}
             />
-          </TouchableOpacity>
+          </Pressable>
           <Text style={styles.title}>{translate('description_helping')}</Text>
         </View>
         <View style={styles.viewContent}>
@@ -78,13 +71,13 @@ class ModalHelping extends Component<any, any> {
             style={styles.flatList}
           />
           {itemCount ? (
-            <TouchableOpacity onPress={this.onPressReadMore}>
+            <Pressable onPress={this.onPressReadMore}>
               <Text style={styles.moreAndLess}>{translate('read_more')}</Text>
-            </TouchableOpacity>
+            </Pressable>
           ) : (
-            <TouchableOpacity onPress={this.onPressShowLess}>
+            <Pressable onPress={this.onPressShowLess}>
               <Text style={styles.moreAndLess}>{translate('show_less')}</Text>
-            </TouchableOpacity>
+            </Pressable>
           )}
         </View>
       </View>

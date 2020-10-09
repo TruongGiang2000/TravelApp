@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, TouchableOpacity, View, FlatList} from 'react-native';
+import {StyleSheet, Pressable, View, FlatList} from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -15,14 +15,12 @@ class menuList extends Component<any, any> {
       isShow: false,
     };
   }
-   
 
   render() {
     return (
       <View>
         <Icon name="downsquare" size={30} color="#000" onPress={{}} />
-        <ModalCustom >
-
+        <ModalCustom>
           <ModalChooseLang />
         </ModalCustom>
       </View>

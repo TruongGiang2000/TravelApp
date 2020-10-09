@@ -5,7 +5,7 @@ import {
   Text,
   Switch,
   Image,
-  TouchableOpacity,
+  Pressable,
   Modal,
 } from 'react-native';
 import ModalChooseLang from './ModalChooseLang';
@@ -90,9 +90,9 @@ class UserNotLogin extends Component<any, any> {
           </View>
         </View>
         <View style={styles.viewHelping}>
-          <TouchableOpacity onPress={this.showModalHelping}>
+          <Pressable onPress={this.showModalHelping}>
             <Text style={styles.textNeedHelp}>{translate('helping')}</Text>
-          </TouchableOpacity>
+          </Pressable>
         </View>
         <ModalCustom isVisible={isShow} onBackdropPress={this.onClose}>
           <ModalChooseLang

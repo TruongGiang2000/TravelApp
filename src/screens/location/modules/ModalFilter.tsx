@@ -4,7 +4,7 @@ import {
   StyleSheet,
   Text,
   FlatList,
-  TouchableOpacity,
+  Pressable,
   ScrollView,
 } from 'react-native';
 import {
@@ -107,12 +107,12 @@ class ModalFilter extends Component<any, any> {
     const renderItemArea = ({item}) => {
       let activeItem = this.state.keyActiveArea === item.key;
       return (
-        <TouchableOpacity onPress={this.activeArea(item.key)}>
+        <Pressable onPress={this.activeArea(item.key)}>
           <Text
             style={activeItem ? styles.itemFilterActive : styles.itemFilter}>
             {translate(item.titleKey)}
           </Text>
-        </TouchableOpacity>
+        </Pressable>
       );
     };
     const renderItemTypeArea = ({item, index}) => {
@@ -121,25 +121,25 @@ class ModalFilter extends Component<any, any> {
         (it) => it === item.key,
       );
       return (
-        <TouchableOpacity onPress={this.activeTypeArea(item.key, index)}>
+        <Pressable onPress={this.activeTypeArea(item.key, index)}>
           <Text
             style={activeItem ? styles.itemFilterActive : styles.itemFilter}>
             {translate(item.titleKey)}
           </Text>
-        </TouchableOpacity>
+        </Pressable>
       );
     };
     return (
       <View style={styles.MainContainer}>
         <ScrollView style={styles.viewTop}>
           <View style={styles.rowHeader}>
-            <TouchableOpacity onPress={this.backSpace}>
+            <Pressable onPress={this.backSpace}>
               <MaterialIcon
                 name={'keyboard-backspace'}
                 size={wp('7')}
                 color={'#000'}
               />
-            </TouchableOpacity>
+            </Pressable>
             <Text style={styles.title}>{translate('discover')}</Text>
             <Text></Text>
           </View>
@@ -166,9 +166,9 @@ class ModalFilter extends Component<any, any> {
             title={translate('find')}
             titleStyle={styles.titleButtonStyle}
           />
-          <TouchableOpacity onPress={this.setAgain}>
+          <Pressable onPress={this.setAgain}>
             <Text style={styles.set_again}>{translate('set_again')}</Text>
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </View>
     );

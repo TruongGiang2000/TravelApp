@@ -1,11 +1,5 @@
 import React, {Component} from 'react';
-import {
-  View,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native';
+import {View, StyleSheet, Text, Pressable, ScrollView} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -122,7 +116,7 @@ class HotelSearching extends Component<any, any> {
       <View style={styles.MainContainer}>
         <ScrollView style={styles.viewTop}>
           <View style={styles.rowHeader}>
-            <TouchableOpacity
+            <Pressable
               onPress={() =>
                 this.props.onBackSpacePress(
                   date,
@@ -140,7 +134,7 @@ class HotelSearching extends Component<any, any> {
                 size={wp('7')}
                 color={'#000'}
               />
-            </TouchableOpacity>
+            </Pressable>
             <Text style={styles.title}>{translate('hotelSearching')}</Text>
             <Text></Text>
           </View>
@@ -175,7 +169,7 @@ class HotelSearching extends Component<any, any> {
                   }}
                 />
               </View>
-              <TouchableOpacity
+              <Pressable
                 style={styles.viewRow}
                 onPress={() => this.showModal('room')}>
                 <View style={[styles.contentColumn, {marginRight: wp('4')}]}>
@@ -188,10 +182,10 @@ class HotelSearching extends Component<any, any> {
                   color={'#ffffff'}
                   style={styles.arrowDown}
                 />
-              </TouchableOpacity>
+              </Pressable>
             </View>
             <View style={[styles.viewRowSpaceBetween, {marginTop: hp('2')}]}>
-              <TouchableOpacity
+              <Pressable
                 style={styles.viewRow}
                 onPress={() => this.showModal('passengerAdult')}>
                 <View style={[styles.contentColumn, {marginRight: wp('4')}]}>
@@ -208,8 +202,8 @@ class HotelSearching extends Component<any, any> {
                   color={'#ffffff'}
                   style={styles.arrowDown}
                 />
-              </TouchableOpacity>
-              <TouchableOpacity
+              </Pressable>
+              <Pressable
                 style={styles.viewRow}
                 onPress={() => this.showModal('passengerChild')}>
                 <View style={[styles.contentColumn, {marginRight: wp('4')}]}>
@@ -226,7 +220,7 @@ class HotelSearching extends Component<any, any> {
                   color={'#ffffff'}
                   style={styles.arrowDown}
                 />
-              </TouchableOpacity>
+              </Pressable>
             </View>
           </View>
           <Text style={[styles.titlePart, {marginTop: hp('4')}]}>
@@ -285,9 +279,9 @@ class HotelSearching extends Component<any, any> {
             title={translate('find')}
             titleStyle={styles.titleButtonStyle}
           />
-          <TouchableOpacity onPress={this.setAgain}>
+          <Pressable onPress={this.setAgain}>
             <Text style={styles.set_again}>{translate('set_again')}</Text>
-          </TouchableOpacity>
+          </Pressable>
         </View>
         <CustomModal isVisible={isShowModal} onBackdropPress={this.hideModal}>
           {isShowModal && (

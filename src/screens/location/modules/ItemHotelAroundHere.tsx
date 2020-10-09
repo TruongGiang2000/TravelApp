@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
+import {View, StyleSheet, Text, Pressable, Image} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -30,7 +30,7 @@ class ItemHotelAroundHere extends Component<any, any> {
       titleUSD,
     } = this.props;
     return (
-      <TouchableOpacity style={[styles.MainContainer, style]} onPress={onPress}>
+      <Pressable style={[styles.MainContainer, style]} onPress={onPress}>
         <Image
           source={this.props.source}
           style={[styles.styleImage, imageStyle]}
@@ -55,7 +55,7 @@ class ItemHotelAroundHere extends Component<any, any> {
           </View>
           <ButtonCustom title={translate('book_room')} />
         </View>
-      </TouchableOpacity>
+      </Pressable>
     );
   }
 }
