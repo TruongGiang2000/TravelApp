@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, TouchableOpacity, Text} from 'react-native';
+import {StyleSheet, Pressable, Text} from 'react-native';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import LinearGradient from 'react-native-linear-gradient';
 import {translate} from './translate';
@@ -12,13 +12,13 @@ class ButtonFBCustom extends Component<any, any> {
   render() {
     const {onPress, title, titleStyle, style} = this.props;
     return (
-      <TouchableOpacity style={[style]} onPress={onPress}>
+      <Pressable style={[style]} onPress={onPress}>
         <LinearGradient
           colors={['#4c669f', '#3b5998', '#192f6a']}
           style={styles.linearGradient}>
           <Text style={[styles.title, titleStyle]}>{title}</Text>
         </LinearGradient>
-      </TouchableOpacity>
+      </Pressable>
     );
   }
 }

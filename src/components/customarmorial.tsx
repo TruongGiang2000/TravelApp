@@ -1,6 +1,6 @@
 import {title} from 'process';
 import React, {Component} from 'react';
-import {StyleSheet, TouchableOpacity, Text} from 'react-native';
+import {StyleSheet, Pressable, Text} from 'react-native';
 class CustomArmorial extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -9,9 +9,9 @@ class CustomArmorial extends Component<any, any> {
 
   render() {
     return (
-      <TouchableOpacity style={[styles.MainContainer, this.props.style]}>
+      <Pressable style={[styles.MainContainer, this.props.style]}>
         <Text style={[styles.title, this.props.titleStyle]}>{title}</Text>
-      </TouchableOpacity>
+      </Pressable>
     );
   }
 }

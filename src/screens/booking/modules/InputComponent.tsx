@@ -1,11 +1,5 @@
 import React, {Component} from 'react';
-import {
-  StyleSheet,
-  TouchableOpacity,
-  View,
-  TextInput,
-  Text,
-} from 'react-native';
+import {StyleSheet, Pressable, View, TextInput, Text} from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -35,7 +29,7 @@ class InputComponent extends Component<any, any> {
     const {onFocus, valid} = this.state;
     const {labelStyle, label, styleInput, style, txtError} = this.props;
     return (
-      <TouchableOpacity style={style}>
+      <Pressable style={style}>
         <Text
           style={[
             valid
@@ -43,7 +37,7 @@ class InputComponent extends Component<any, any> {
               : onFocus
               ? [styles.label, {color: '#0052A2'}]
               : styles.label,
-              labelStyle,
+            labelStyle,
           ]}>
           {label}
         </Text>
@@ -63,7 +57,7 @@ class InputComponent extends Component<any, any> {
           onChangeText={this.onChangeText}
         />
         {valid && <Text style={styles.txtError}>{txtError}</Text>}
-      </TouchableOpacity>
+      </Pressable>
     );
   }
 }

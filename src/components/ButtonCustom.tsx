@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, TouchableOpacity, Text} from 'react-native';
+import {StyleSheet, Pressable, Text} from 'react-native';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 class ButtonCustom extends Component<any, any> {
   constructor(props) {
@@ -10,11 +10,9 @@ class ButtonCustom extends Component<any, any> {
   render() {
     const {title, style, titleStyle, onPress} = this.props;
     return (
-      <TouchableOpacity
-        style={[styles.MainContainer, style]}
-        onPress={onPress}>
+      <Pressable style={[styles.MainContainer, style]} onPress={onPress}>
         <Text style={[styles.title, titleStyle]}>{title}</Text>
-      </TouchableOpacity>
+      </Pressable>
     );
   }
 }

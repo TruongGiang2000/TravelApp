@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, FlatList, Text, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, FlatList, Text, Pressable} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -27,11 +27,11 @@ class ModalChooseNumber extends Component<any, any> {
   };
   renderItem = ({item}) => {
     return (
-      <TouchableOpacity
+      <Pressable
         style={styles.itemContainer}
         onPress={() => this.onPressItem(item.key)}>
         <Text style={styles.itemText}>{item.key}</Text>
-      </TouchableOpacity>
+      </Pressable>
     );
   };
 

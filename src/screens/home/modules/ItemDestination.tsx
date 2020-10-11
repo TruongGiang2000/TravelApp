@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, Image, TouchableOpacity, StyleSheet} from 'react-native';
+import {Text, View, Image, Pressable, StyleSheet} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -20,7 +20,7 @@ export default class itemdestination extends Component<any, any> {
   render() {
     const {style, number, place, title, name, starCount, onPress} = this.props;
     return (
-      <TouchableOpacity onPress={onPress}>
+      <Pressable onPress={onPress}>
         <View style={[styles.container, style]}>
           <View>
             <Image
@@ -51,7 +51,7 @@ export default class itemdestination extends Component<any, any> {
             </View>
           </View>
         </View>
-      </TouchableOpacity>
+      </Pressable>
     );
   }
 }

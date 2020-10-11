@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, TouchableOpacity, Image} from 'react-native';
+import {StyleSheet, Pressable, Image} from 'react-native';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 class CircleImage extends Component<any, any> {
   constructor(props) {
@@ -11,7 +11,7 @@ class CircleImage extends Component<any, any> {
   render() {
     const {source, size, onPress, styleImage} = this.props;
     return (
-      <TouchableOpacity style={this.props.style} onPress={onPress}>
+      <Pressable style={this.props.style} onPress={onPress}>
         <Image
           {...this.props}
           source={source}
@@ -24,7 +24,7 @@ class CircleImage extends Component<any, any> {
             styleImage,
           ]}
         />
-      </TouchableOpacity>
+      </Pressable>
     );
   }
 }

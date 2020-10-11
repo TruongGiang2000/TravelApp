@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, TouchableOpacity, StyleSheet, Text} from 'react-native';
+import {View, Pressable, StyleSheet, Text} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -21,7 +21,7 @@ export default class ItemRating extends Component<any, any> {
       onPress,
     } = this.props;
     return (
-      <TouchableOpacity style={style} onPress={onPress}>
+      <Pressable style={style} onPress={onPress}>
         <Text style={styles.title}>{translate('rate')}</Text>
         <View style={styles.down}>
           <View style={styles.rating}>
@@ -46,7 +46,7 @@ export default class ItemRating extends Component<any, any> {
             />
           </View>
         </View>
-      </TouchableOpacity>
+      </Pressable>
     );
   }
 }

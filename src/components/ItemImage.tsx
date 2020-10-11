@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     height: hp('26'),
   },
   styleImage: {
-    borderRadius: 6, 
+    borderRadius: 6,
     width: '100%',
     height: '93%',
   },

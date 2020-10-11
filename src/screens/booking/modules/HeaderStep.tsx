@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, Pressable} from 'react-native';
 import Stepindicator from 'react-native-step-indicator';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {
@@ -10,7 +10,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import {} from 'react-native-gesture-handler';
 const renderStepIndicator = (params: any) => (
   <Icon {...getStepIndicatorIconConfig(params)} />
 );
@@ -25,9 +25,9 @@ class HeaderBooking extends Component<any, any> {
     const {title, currentPosition} = this.props;
     return (
       <View style={styles.header}>
-        <TouchableOpacity onPress={this.onPressBackSpace}>
+        <Pressable onPress={this.onPressBackSpace}>
           <Icon name="keyboard-backspace" size={wp('7')} color="#000" />
-        </TouchableOpacity>
+        </Pressable>
         <Text style={styles.title}>{title}</Text>
         <View style={styles.styleStep}>
           <Stepindicator

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, Text, Pressable} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -26,7 +26,7 @@ class ItemNotification extends Component<any, any> {
       onPress,
     } = this.props;
     return (
-      <TouchableOpacity style={[styles.MainContainer, style]}>
+      <Pressable style={[styles.MainContainer, style]}>
         <CircleImage source={source} size={wp('15')} />
         <View style={styles.viewContent}>
           <Text numberOfLines={2} style={[styles.title, styletitle]}>
@@ -55,7 +55,7 @@ class ItemNotification extends Component<any, any> {
             <Text style={styles.textDate}>{day}</Text>
           </View>
         </View>
-      </TouchableOpacity>
+      </Pressable>
     );
   }
 }

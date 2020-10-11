@@ -5,7 +5,7 @@ import {
   ScrollView,
   Text,
   FlatList,
-  TouchableOpacity,
+  Pressable,
 } from 'react-native';
 import {
   heightPercentageToDP as hp,
@@ -15,12 +15,33 @@ import ButtonCustom from '../../../components/ButtonCustom';
 import Itenassess from '../../../components/ItemRating';
 import ItemUtilities from '../../../components/ItemUtilities';
 import ItemImage from '../../../components/ItemImage';
+import SlideShow from '../../../components/SlideShow';
 import {translate} from '../../../components/translate';
 class Hotel extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
       data: [
+        {
+          srcImage: require('../../../assets/images/angiang.jpg'),
+        },
+        {
+          srcImage: require('../../../assets/images/angiang.jpg'),
+        },
+        {
+          srcImage: require('../../../assets/images/angiang.jpg'),
+        },
+        {
+          srcImage: require('../../../assets/images/angiang.jpg'),
+        },
+        {
+          srcImage: require('../../../assets/images/angiang.jpg'),
+        },
+        {
+          srcImage: require('../../../assets/images/angiang.jpg'),
+        },
+      ],
+      data1: [
         {
           Title: 'Giữ Xe',
           Icon: require('../../../assets/images/parking-ticket.png'),
@@ -31,7 +52,7 @@ class Hotel extends Component<any, any> {
         },
         {
           Title: 'Bồn Tắm',
-          Icon: require('../../../assets/images/bathtub.png'),
+          Icon: require('../../../assets/images/laundry.png'),
         },
         {
           Title: 'Máy Giặt',
@@ -88,6 +109,7 @@ class Hotel extends Component<any, any> {
     return (
       <View style={styles.MainContainer}>
         <ScrollView>
+          <SlideShow isSpot={true} data={this.state.data}></SlideShow>
           <View style={{padding: wp('5')}}>
             <Text style={styles.title}>{title}</Text>
             <Text style={styles.price}>{price}</Text>
@@ -109,7 +131,7 @@ class Hotel extends Component<any, any> {
             <Text style={styles.convenient}>{translate('convenient')}</Text>
             <FlatList
               style={styles.flatList}
-              data={this.state.data}
+              data={this.state.data1}
               renderItem={this.renderItem}
               horizontal={true}
             />
@@ -125,12 +147,11 @@ class Hotel extends Component<any, any> {
               horizontal={true}
             />
           </View>
+          <View style={styles.viewLine1} />
         </ScrollView>
         <View style={styles.viewButon}>
-          <ButtonCustom
-            style={styles.buttonStyle}
-            title={translate('choosing_room')}
-          />
+          <ButtonCustom title={'choosing_room'} />
+          <ButtonCustom title={translate('choosing_room')} />
         </View>
       </View>
     );
@@ -207,7 +228,12 @@ const styles = StyleSheet.create({
     height: hp('14'),
     padding: wp('2.5'),
   },
-
-  buttonStyle: {},
+  viewLine1: {
+    width: wp('100'),
+    height: hp('1.5'),
+    backgroundColor: '#E0E6EE',
+    alignSelf: 'center',
+    marginVertical: hp('2'),
+  },
 });
 export default Hotel;

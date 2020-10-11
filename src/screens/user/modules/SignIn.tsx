@@ -30,13 +30,8 @@ class index extends Component<any, any> {
             />
           </View>
           <View style={styles.textInput}>
-            <FontAwesome name={'lock'} size={wp('4')} color={'#A8B6C8'} />
-            <TextInput
-              style={styles.textInputStyle}
-              placeholderTextColor={'#A8B6C8'}
-              placeholder={'Mật khẩu'}
-              autoCompleteType={'password'}
-            />
+            <FontAwesome name={'lock'} size={20} style={styles.icon} />
+            <TextInput placeholder={'Mật khẩu'} secureTextEntry={true} />
           </View>
           <ButtonCustom
             titleStyle={styles.buttonText}
