@@ -6,10 +6,8 @@ import {
 } from 'react-native-responsive-screen';
 import ButtonCustom from '../../../components/ButtonCustom';
 import CircleImage from '../../../components/CircleImage';
-import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
-import {translate} from '../../../components/translate';
-
+import Ionicons from 'react-native-vector-icons/Ionicons';
 class ItemNotification extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -43,7 +41,11 @@ class ItemNotification extends Component<any, any> {
           )}
           <View style={styles.viewDate}>
             <View style={styles.viewRow}>
-              <Fontisto name={'calendar'} size={wp('3.5')} color={'#000'} />
+              <Ionicons
+                name={'md-calendar-outline'}
+                size={wp('3.5')}
+                color={'#000'}
+              />
               <Text style={styles.textDate}>{calendar}</Text>
             </View>
             <View style={styles.viewRow}>

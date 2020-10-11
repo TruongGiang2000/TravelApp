@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   circleImage: {
-    marginTop: wp('-10'),
+    marginTop: wp('15'),
   },
   viewTouchIconCamera: {
     marginTop: hp('-14'),

@@ -12,6 +12,7 @@ import Hotel from './src/screens/hotel';
 import Location from './src/screens/location';
 import Notification from './src/screens/notification';
 import User from './src/screens/user';
+import Geocoder from 'react-native-geocoding/Geocoder';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -19,7 +20,6 @@ import {
 import {configTranslation} from './src/components/translate';
 import {connect} from 'react-redux';
 const Tab = createBottomTabNavigator();
-
 function MyTabs() {
   return (
     <Tab.Navigator

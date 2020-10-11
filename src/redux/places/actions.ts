@@ -13,6 +13,9 @@ export const types = {
   SEARCH_PROVINCES_SUCCESS: 'SEARCH_PROVINCES_SUCCESS',
   SEARCH_PROVINCES_FAIL: 'SEARCH_PROVINCES_FAIL',
   MAP_PROVINCES_AGAIN: 'MAP_PROVINCES_AGAIN',
+  GET_LOCATION_BY_PROVINCE: 'GET_LOCATION_BY_PROVINCE',
+  GET_LOCATION_BY_PROVINCE_SUCCESS: 'GET_LOCATION_BY_PROVINCE_SUCCESS',
+  GET_LOCATION_BY_PROVINCE_FAIL: 'GET_LOCATION_BY_PROVINCE_FAIL',
 };
 const action = (type: string, payload?: any) => ({type, payload});
 export const placesActions = {
@@ -46,6 +49,12 @@ export const placesActions = {
       famousProvinces: mapData(payload.famousProvinces),
       searchingProvinces: mapData(payload.searchingProvinces),
     }),
+  getLocationByProvince: (payload: any) =>
+    action(types.GET_LOCATION_BY_PROVINCE, payload),
+  getLocationByProvinceSuccess: (payload: any) =>
+    action(types.GET_LOCATION_BY_PROVINCE_SUCCESS, payload),
+  getLocationProvinceFail: (payload: any) =>
+    action(types.GET_LOCATION_BY_PROVINCE_FAIL, payload),
 };
 const mapData = (data: any) => {
   return data.map((item: any) => {

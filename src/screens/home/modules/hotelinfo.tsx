@@ -12,7 +12,7 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import ButtonCustom from '../../../components/ButtonCustom';
-import Itenassess from './ItemRating';
+import Itenassess from '../../../components/ItemRating';
 import ItemUtilities from '../../../components/ItemUtilities';
 import ItemImage from '../../../components/ItemImage';
 import {translate} from '../../../components/translate';
@@ -101,9 +101,9 @@ class Hotel extends Component<any, any> {
             <Text style={styles.detail}>{translate('detail')}</Text>
             <Itenassess
               style={{marginTop: wp('3')}}
-              title={translate('rate')}
               content={translate('review')}
-              numberofreview={10}></Itenassess>
+              numberOfReview={10}
+            />
           </View>
           <View style={{paddingLeft: wp('5')}}>
             <Text style={styles.convenient}>{translate('convenient')}</Text>

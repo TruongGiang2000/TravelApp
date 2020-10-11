@@ -121,4 +121,12 @@ export default {
   hoursAgo: 'hours ago',
   dayAgo: 'day ago',
   daysAgo: 'days ago',
+  image: 'Image',
+  specialSpot: 'Special spot',
+  descriptionLikeSpot: 'of your friends like this spot',
+  community: 'Community',
+  and: 'and',
+  description_community: 'people like this',
+  highLands: 'Highlands',
+  seeAddress: 'See address',
 };

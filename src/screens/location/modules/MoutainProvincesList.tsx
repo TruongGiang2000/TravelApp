@@ -24,6 +24,7 @@ class MountainPlace extends Component<any, any> {
       source={{uri: item.Images[1]}}
       isShow={true}
       style={styles.itemImage}
+      onPress={this.props.onPress(item)}
     />
   );
   render() {
@@ -36,6 +37,7 @@ class MountainPlace extends Component<any, any> {
           renderItem={this.renderItem}
           horizontal={true}
           keyExtractor={(item) => item.Title}
+          showsHorizontalScrollIndicator={false}
         />
       </View>
     );

@@ -23,7 +23,7 @@ class Notification extends Component<any, any> {
         {
           src: require('..//..//assets/images/angiang.jpg'),
           title: 'Chúc mừng bạn vừa đạt được thành tích',
-          date: moment('10/5/2020 12:11'),
+          date: moment('10/6/2020 23:41:20'),
         },
         {
           src: require('..//..//assets/images/angiang.jpg'),
@@ -67,7 +67,11 @@ class Notification extends Component<any, any> {
           />
         </View>
         <View style={styles.line} />
-        <FlatList data={this.state.dataDummy} renderItem={this.renderItem} />
+        <FlatList
+          data={this.state.dataDummy}
+          renderItem={this.renderItem}
+          extraData={this.props.language}
+        />
       </View>
     );
   }

@@ -58,6 +58,9 @@ class Location extends Component<any, any> {
     }
     this.props.navigation.goBack();
   };
+  onPressItem = (item: any) => () => {
+    this.props.navigation.navigate('LocationDetail', {item});
+  };
   render() {
     const {
       isSearching,
@@ -65,6 +68,7 @@ class Location extends Component<any, any> {
       activeTypesArea,
       isShowModalFilter,
     } = this.state;
+    const {navigation} = this.props;
     return (
       <ScrollView style={styles.MainContainer}>
         <View style={styles.header}>
@@ -100,9 +104,18 @@ class Location extends Component<any, any> {
                 defaultValue={''}
               />
             </View>
-            <OfferPlaceList style={styles.offerList} />
-            <MoutainPlaceList style={styles.moutainList} />
-            <FamousPlaceList style={styles.famousList} />
+            <OfferPlaceList
+              onPress={this.onPressItem}
+              style={styles.offerList}
+            />
+            <MoutainPlaceList
+              onPress={this.onPressItem}
+              style={styles.moutainList}
+            />
+            <FamousPlaceList
+              onPress={this.onPressItem}
+              style={styles.famousList}
+            />
           </View>
         )}
         <Modal
@@ -117,7 +130,10 @@ class Location extends Component<any, any> {
           />
         </Modal>
         {isSearching && (
-          <SearchingProvinces onTryAgainPress={this.showModalFilter} />
+          <SearchingProvinces
+            onPress={this.onPressItem}
+            onTryAgainPress={this.showModalFilter}
+          />
         )}
       </ScrollView>
     );

@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     fontSize: wp('4'),
   },
   circleImage: {
-    marginTop: wp('-10'),
+    marginTop: wp('15'),
     position: 'absolute',
     alignSelf: 'center',
   },

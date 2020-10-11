@@ -17,48 +17,13 @@ import {connect} from 'react-redux';
 import {places} from '../../../redux';
 import {forEach} from 'lodash';
 import {translate} from '../../../components/translate';
+import {dataArea, dataTypesArea} from '../../../constants/systems/main';
 class ModalFilter extends Component<any, any> {
   data: any;
   constructor(props) {
     super(props);
     this.state = {
       keyActiveArea: this.props.keyActiveArea,
-      dataArea: [
-        {
-          key: 'North',
-          titleKey: 'north',
-        },
-        {
-          key: 'South',
-          titleKey: 'south',
-        },
-        {
-          key: 'Central',
-          titleKey: 'central',
-        },
-        {
-          key: 'West',
-          titleKey: 'western',
-        },
-      ],
-      dataTypeArea: [
-        {
-          key: 'Mountain',
-          titleKey: 'moutain',
-        },
-        {
-          key: 'Sea',
-          titleKey: 'sea',
-        },
-        {
-          key: 'Old town',
-          titleKey: 'old_town',
-        },
-        {
-          key: 'Relics',
-          titleKey: 'relics',
-        },
-      ],
       activeTypesArea: this.props.activeTypesArea,
     };
   }
@@ -146,14 +111,14 @@ class ModalFilter extends Component<any, any> {
           <Text style={styles.titleFilter}>{translate('title_filter')}</Text>
           <Text style={styles.textCondition}>{translate('area')}</Text>
           <FlatList
-            data={this.state.dataArea}
+            data={dataArea}
             horizontal={true}
             renderItem={renderItemArea}
             style={styles.flatListArea}
           />
           <Text style={styles.textCondition}>{translate('featured')}</Text>
           <FlatList
-            data={this.state.dataTypeArea}
+            data={dataTypesArea}
             horizontal={true}
             renderItem={renderItemTypeArea}
             style={styles.flatListArea}

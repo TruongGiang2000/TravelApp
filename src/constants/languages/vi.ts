@@ -123,4 +123,12 @@ export default {
   hoursAgo: 'giờ trước',
   dayAgo: 'ngày trước',
   daysAgo: 'ngày trước',
+  image: 'Hình ảnh',
+  specialSpot: 'Địa điểm nổi bật',
+  descriptionLikeSpot: 'người bạn của bạn thích địa điểm này',
+  community: 'Cộng đồng',
+  and: 'và',
+  description_community: 'người thích nơi này',
+  highLands: 'Tây nguyên',
+  seeAddress: 'Xem địa điểm',
 };

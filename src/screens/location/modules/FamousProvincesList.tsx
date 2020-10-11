@@ -23,6 +23,7 @@ class FamousPlace extends Component<any, any> {
         title={item.Title}
         source={{uri: item.Images[1]}}
         style={styles.itemContainer}
+        onPress={this.props.onPress(item)}
       />
     );
   };
@@ -35,6 +36,7 @@ class FamousPlace extends Component<any, any> {
           renderItem={this.renderItem}
           keyExtractor={(item) => item.Title}
           scrollEnabled={false}
+          showsVerticalScrollIndicator={false}
         />
       </View>
     );
