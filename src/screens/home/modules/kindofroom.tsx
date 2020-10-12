@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: hp('5'),
     marginTop: hp('20'),
+    marginHorizontal : wp('5')
   },
   down: {
     position: 'absolute',

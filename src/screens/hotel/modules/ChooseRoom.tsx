@@ -5,6 +5,7 @@ import {
   ImageBackground,
   StyleSheet,
   ScrollView,
+  FlatList
 } from 'react-native';
 import Kindofroom from '../../home/modules/kindofroom';
 import {translate} from '../../../components/translate';
@@ -84,11 +85,12 @@ class ChooseRoom extends Component<any, any> {
             color={'#FFFFFF'}
             style={styles.Icon}
           />
-          <Carousel
+          <FlatList
             data={this.state.data}
             renderItem={this.renderItem}
-            sliderWidth={wp('100')}
-            itemWidth={wp('100')}
+            horizontal={true}
+
+           
           />
 
           <View style={styles.title}>
