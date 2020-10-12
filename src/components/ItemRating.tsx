@@ -6,7 +6,7 @@ import {
 } from 'react-native-responsive-screen';
 import StarRating from 'react-native-star-rating';
 import Icon from 'react-native-vector-icons/dist/AntDesign';
-import {translate} from '../../../components/translate';
+import {translate} from './translate';
 export default class ItemRating extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -15,15 +15,14 @@ export default class ItemRating extends Component<any, any> {
   render() {
     const {
       starCount,
-      title,
       content,
-      numberofreview,
+      numberOfReview,
       style,
       onPress,
     } = this.props;
     return (
       <Pressable style={style} onPress={onPress}>
-        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.title}>{translate('rate')}</Text>
         <View style={styles.down}>
           <View style={styles.rating}>
             <StarRating
@@ -33,7 +32,7 @@ export default class ItemRating extends Component<any, any> {
               fullStarColor={'#F0C909'}
               starSize={wp('5')}
             />
-            <Text style={styles.numberofreview}>{`${numberofreview} ${translate(
+            <Text style={styles.numberofreview}>{`${numberOfReview} ${translate(
               'rate',
             )}`}</Text>
           </View>
@@ -61,7 +60,7 @@ const styles = StyleSheet.create({
     width: wp('35'),
   },
   title: {
-    fontSize: wp('5'),
+    fontSize: wp('4.2'),
     marginBottom: wp('1.5'),
     color: '#323B45',
     fontFamily: 'roboto-slab-bold',

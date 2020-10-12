@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 import HomeSlideShow from './HomeSlideShow';
-import ProvincesSlideShow from './ProvincesSlideShow';
-import SpotSlideShow from './SpotSlideShow';
+import LocationSlideShow from './LocationSlideShow';
+import HotelSlideShow from './HotelSlideShow';
 import Carousel from 'react-native-snap-carousel';
-import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 class SlideShow extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -14,19 +17,30 @@ class SlideShow extends Component<any, any> {
   }
   renderItem = ({item}) => {
     const {activeSlide} = this.state;
-    const {isHome, isProvinces, isSpot, data} = this.props;
+    const {
+      isHome,
+      isLocation,
+      isHotel,
+      title,
+      data,
+      onPressBackSpace,
+      isPagination,
+    } = this.props;
     return (
       <View>
         {isHome && <HomeSlideShow data={item} />}
-        {isProvinces && (
-          <ProvincesSlideShow
+        {isLocation && (
+          <LocationSlideShow
             data={item}
             dotsLength={data.length}
             activeDotIndex={activeSlide}
+            title={title}
+            onPressBackSpace={onPressBackSpace}
+            isPagination={isPagination}
           />
         )}
-        {isSpot && (
-          <SpotSlideShow
+        {isHotel && (
+          <HotelSlideShow
             data={item}
             dotsLength={data.length}
             activeDotIndex={activeSlide}
@@ -45,6 +59,7 @@ class SlideShow extends Component<any, any> {
           itemWidth={wp('100')}
           onSnapToItem={(index) => this.setState({activeSlide: index})}
           autoplay={true}
+          loop={true}
         />
       </View>
     );

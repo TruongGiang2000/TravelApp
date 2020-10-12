@@ -20,6 +20,7 @@ class SearchingProvinces extends Component<any, any> {
         title={item.Title}
         source={{uri: item.Images[1]}}
         style={styles.itemContainer}
+        onPress={this.props.onPress(item)}
       />
     );
   };

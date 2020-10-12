@@ -37,7 +37,7 @@ class ManageAccountModal extends Component<any, any> {
           </Pressable>
           <Text style={styles.title}>{translate('manage_account')}</Text>
           <ItemUser
-            name={'Nguyen Vu Truong Giang'}
+            name={'Nguyen Vu Truong Giang NGuyen Vinh Quang Nguyen'}
             source={require('../../../assets/images/Bitmap.png')}
             core={300}
           />

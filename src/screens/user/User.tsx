@@ -15,6 +15,7 @@ class User extends Component<any, any> {
       <ScrollView style={styles.MainContainer}>
         <UserInformation />
         <UserAchievement style={styles.userAward} />
+        {/* <UserNotLogin/> */}
       </ScrollView>
     );
   }

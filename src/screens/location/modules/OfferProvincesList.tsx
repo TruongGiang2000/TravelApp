@@ -17,12 +17,16 @@ class OfferPlace extends Component<any, any> {
     const data = {key: 'Offer', TypesArea: ['Mountain', 'Sea']};
     this.props.getOfferProvinces(data);
   }
+  onPressItem = (item: any) => () => {
+    this.props.navigation.navigate('LocationDetail', {item});
+  };
   renderItem = ({item}) => (
     <ItemImage
       title={item.Title}
       source={{uri: item.Images[1]}}
       isShow={true}
       style={styles.itemImage}
+      onPress={this.props.onPress(item)}
     />
   );
   render() {
@@ -35,6 +39,7 @@ class OfferPlace extends Component<any, any> {
           renderItem={this.renderItem}
           horizontal={true}
           keyExtractor={(item) => item.Title}
+          showsHorizontalScrollIndicator={false}
         />
       </View>
     );

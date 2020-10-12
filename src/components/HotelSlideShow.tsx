@@ -9,7 +9,7 @@ import {Pagination} from 'react-native-snap-carousel';
 import shadow from './shadow';
 import GradientOpacity from './GradientOpacity';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-class ProvincesSlideShow extends Component<any, any> {
+class HotelSlideShow extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {};
@@ -19,7 +19,7 @@ class ProvincesSlideShow extends Component<any, any> {
     const {data, dotsLength, activeDotIndex} = this.props;
     return (
       <ImageBackground
-        source={data.srcImage}
+        source={{uri: data}}
         resizeMode={'cover'}
         style={styles.MainContainer}>
         <AntDesign
@@ -75,4 +75,4 @@ const styles = StyleSheet.create({
     height: hp('10'),
   },
 });
-export default ProvincesSlideShow;
+export default HotelSlideShow;
