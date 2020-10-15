@@ -12,12 +12,12 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import shawdow from '../../../components/shadow';
+import shawdow from '../../../util/shadow';
 import Octicons from 'react-native-vector-icons/Octicons';
 import ItemArmotial from './ItemArmorial';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import ModalHelping from './ModalHelping';
-import {translate} from '../../../components/translate';
+import {translate} from '../../../util/translate';
 class UserAchievement extends Component<any, any> {
   constructor(props) {
     super(props);

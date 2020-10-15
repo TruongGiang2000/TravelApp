@@ -8,7 +8,7 @@ import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import ItemUser from './ItemUser';
 import ItemRow from './ItemRow';
 import ButtonCutom from '../../../components/ButtonCustom';
-import {translate} from '../../../components/translate';
+import {translate} from '../../../util/translate';
 class ManageAccountModal extends Component<any, any> {
   constructor(props) {
     super(props);

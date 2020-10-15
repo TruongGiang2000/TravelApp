@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Text, FlatList} from 'react-native';
-import {translate} from '../../../components/translate';
+import {translate} from '../../../util/translate';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -8,12 +8,14 @@ import {
 import ItemSpecialSpot from './ItemSpecialSpot';
 import {connect} from 'react-redux';
 import {places} from '../../../redux';
+import {actionMain} from '../../../util/mainActions';
 class SpecialSpot extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {};
   }
   componentDidMount() {
+    actionMain.loading(true);
     this.props.getLocationByProvince(this.props.idProvince);
   }
   itemPress = (item) => () => {

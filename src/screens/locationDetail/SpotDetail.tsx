@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Text, ScrollView} from 'react-native';
 import SlideShow from '../../components/SlideShow';
-import {withPages} from '../../components/withPages';
+import {withPages} from '../../util/withPages';
 import MapView from './modules/MapView';
 import Rating from '../../components/ItemRating';
 import {
@@ -9,7 +9,7 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import lodash from 'lodash';
-import {translate} from '../../components/translate';
+import {translate} from '../../util/translate';
 import CommunityPeople from '../../components/CommunityPeople';
 class SpotDetail extends Component<any, any> {
   constructor(props) {

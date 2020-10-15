@@ -16,7 +16,7 @@ import ButtonCustom from '../../../components/ButtonCustom';
 import {connect} from 'react-redux';
 import {places} from '../../../redux';
 import {forEach} from 'lodash';
-import {translate} from '../../../components/translate';
+import {translate} from '../../../util/translate';
 import {dataArea, dataTypesArea} from '../../../constants/systems/main';
 class ModalFilter extends Component<any, any> {
   data: any;

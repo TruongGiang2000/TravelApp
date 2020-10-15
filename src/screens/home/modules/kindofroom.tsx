@@ -8,7 +8,7 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome5';
 import Ionicons from 'react-native-vector-icons/dist/Ionicons';
 import AntDesign from 'react-native-vector-icons/dist/AntDesign';
 import ButtonCustom from '../../../components/ButtonCustom';
-import {translate} from '../../../components/translate';
+import {translate} from '../../../util/translate';
 
 export default class KindOfRoom extends Component<any, any> {
   render() {
@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: hp('5'),
     marginTop: hp('20'),
+    marginHorizontal : wp('5')
   },
   down: {
     position: 'absolute',

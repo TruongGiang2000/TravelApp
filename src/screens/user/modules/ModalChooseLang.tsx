@@ -4,7 +4,7 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import {translate, configTranslation} from '../../../components/translate';
+import {translate, configTranslation} from '../../../util/translate';
 import {connect} from 'react-redux';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import {system, places} from '../../../redux/';

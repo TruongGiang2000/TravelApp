@@ -6,7 +6,7 @@ import {
 } from 'react-native-responsive-screen';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import ItemRow from './ItemRow';
-import {translate} from '../../../components/translate';
+import {translate} from '../../../util/translate';
 class ModalHelping extends Component<any, any> {
   constructor(props) {
     super(props);

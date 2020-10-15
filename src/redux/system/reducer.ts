@@ -1,11 +1,16 @@
 import {types} from './actions';
 const initState = {
   language: 'vi',
+  loading: false,
 };
 export const systemReducer: any = (state = initState, actions: any) => {
-  if (actions.type === types.CHANGE_LANGUAGES) {
-    return {...state, language: actions.payload};
-  } else {
-    return state;
+  const {payload} = actions;
+  switch (actions.type) {
+    case types.CHANGE_LANGUAGES:
+      return {...state, language: payload};
+    case types.SET_LOADING:
+      return {...state, loading: payload.status};
+    default:
+      return state;
   }
 };

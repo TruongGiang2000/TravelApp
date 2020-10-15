@@ -20,8 +20,8 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import SearchingProvinces from './modules/SearchingProvinces';
-import {translate} from '../../components/translate';
-import {withPages} from '../../components/withPages';
+import {translate} from '../../util/translate';
+import {withPages} from '../../util/withPages';
 class Location extends Component<any, any> {
   constructor(props) {
     super(props);

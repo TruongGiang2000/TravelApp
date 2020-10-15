@@ -7,7 +7,7 @@ import {
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import ButtonCustom from '../../../components/ButtonCustom';
-import {translate} from '../../../components/translate';
+import {translate} from '../../../util/translate';
 class index extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -28,10 +28,6 @@ class index extends Component<any, any> {
             />
           </View>
           <View style={styles.textInput}>
-<<<<<<< HEAD
-            <FontAwesome name={'lock'} size={20} style={styles.icon} />
-            <TextInput placeholder={'Mật khẩu'} secureTextEntry={true} />
-=======
             <FontAwesome name={'lock'} size={wp('5')} color={'#A8B6C8'} />
             <TextInput
               style={styles.inputText}
@@ -39,18 +35,13 @@ class index extends Component<any, any> {
               placeholder={translate('password')}
               secureTextEntry={true}
             />
->>>>>>> 1b2c933522913770d938521e6b247d64ef215456
           </View>
           <View style={styles.textInput}>
             <FontAwesome name={'lock'} size={20} style={styles.icon} />
             <TextInput
-<<<<<<< HEAD
-              placeholder={'Nhập lại mật khẩu'}
-=======
               style={styles.inputText}
               placeholderTextColor={'#A8B6C8'}
               placeholder={translate('re_password')}
->>>>>>> 1b2c933522913770d938521e6b247d64ef215456
               secureTextEntry={true}
             />
           </View>
@@ -77,19 +68,11 @@ class index extends Component<any, any> {
           <Text style={styles.orText}>{translate('or')}</Text>
           <View style={styles.dash1}></View>
         </View>
-<<<<<<< HEAD
-        <TraTe
-          onPress={this.props.onPressHaveAccount}
-          i18nKey={'have_an_account'}
-          style={styles.haveAccount}
-        />
-=======
         <Text
           style={styles.haveAccount}
           onPress={this.props.onPressHaveAccount}>
           {translate('have_an_account')}
         </Text>
->>>>>>> 1b2c933522913770d938521e6b247d64ef215456
       </View>
     );
   }

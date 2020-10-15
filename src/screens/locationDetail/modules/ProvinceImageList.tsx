@@ -5,7 +5,7 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import ItemImage from '../../../components/ItemImage';
-import {translate} from '../../../components/translate';
+import {translate} from '../../../util/translate';
 class ProvinceImageList extends Component<any, any> {
   constructor(props) {
     super(props);

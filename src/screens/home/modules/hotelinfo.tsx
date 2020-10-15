@@ -16,7 +16,7 @@ import Itenassess from '../../../components/ItemRating';
 import ItemUtilities from '../../../components/ItemUtilities';
 import ItemImage from '../../../components/ItemImage';
 import SlideShow from '../../../components/SlideShow';
-import {translate} from '../../../components/translate';
+import {translate} from '../../../util/translate';
 class Hotel extends Component<any, any> {
   constructor(props) {
     super(props);

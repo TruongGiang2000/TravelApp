@@ -7,17 +7,17 @@ import {
 import ItemImage from '../../../components/ItemImage';
 import {places} from '../../../redux';
 import {connect} from 'react-redux';
-import {translate} from '../../../components/translate';
+import {translate} from '../../../util/translate';
 class MountainPlace extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {};
   }
-  componentDidMount() {
-    const {getMountainProvinces} = this.props;
-    const data = {key: 'Mountain', TypesArea: ['Mountain']};
-    getMountainProvinces(data);
-  }
+  // componentDidMount() {
+  //   const {getMountainProvinces} = this.props;
+  //   const data = {key: 'Mountain', TypesArea: ['Mountain']};
+  //   getMountainProvinces(data);
+  // }
   renderItem = ({item}) => (
     <ItemImage
       title={item.Title}

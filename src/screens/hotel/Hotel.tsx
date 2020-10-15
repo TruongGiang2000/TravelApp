@@ -17,8 +17,8 @@ import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import HotelSearchingModal from './modules/HotelSearching';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import moment from 'moment';
-import {translate} from '../../components/translate';
-import {withPages} from '../../components/withPages';
+import {translate} from '../../util/translate';
+import {withPages} from '../../util/withPages';
 class Hotel extends Component<any, any> {
   constructor(props) {
     super(props);

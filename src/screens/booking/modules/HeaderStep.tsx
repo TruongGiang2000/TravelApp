@@ -13,7 +13,7 @@ import {
 import {} from 'react-native-gesture-handler';
 const renderStepIndicator = (params: any) => (
   <Icon {...getStepIndicatorIconConfig(params)} />
-);
+);  
 class HeaderBooking extends Component<any, any> {
   constructor(props) {
     super(props);

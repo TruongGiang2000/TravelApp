@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, StyleSheet, Image} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import 'react-native-gesture-handler';
@@ -7,18 +7,19 @@ import 'react-native-gesture-handler';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import SimpleIcon from 'react-native-vector-icons/SimpleLineIcons';
 import SimpleLineIcon from 'react-native-vector-icons/SimpleLineIcons';
-import Home from './src/screens/home';
-import Hotel from './src/screens/hotel';
-import Location from './src/screens/location';
-import Notification from './src/screens/notification';
-import User from './src/screens/user';
-import Geocoder from 'react-native-geocoding/Geocoder';
-import {
-  heightPercentageToDP as hp,
-  widthPercentageToDP as wp,
-} from 'react-native-responsive-screen';
-import {configTranslation} from './src/components/translate';
+import Home from '../screens/home';
+import Hotel from '../screens/hotel';
+import Location from '../screens/location';
+import Notification from '../screens/notification';
+import User from '../screens/user';
+import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import {configTranslation} from '../util/translate';
+import {actionInit} from '../util/mainActions';
 import {connect} from 'react-redux';
+import SplashScreen from '../screens/Splash';
+import {places, system} from '../redux';
+import {dataFetchProvince} from '../constants/systems/main';
+import lodash from 'lodash';
 const Tab = createBottomTabNavigator();
 function MyTabs() {
   return (
@@ -37,7 +38,7 @@ function MyTabs() {
           tabBarIcon: ({focused}) => (
             <View style={styles.view}>
               <Image
-                source={require('./src/assets/images/Stroke1.png')}
+                source={require('../assets/images/Stroke1.png')}
                 style={styles.img}
               />
               <View style={focused ? styles.active : undefined} />
@@ -52,7 +53,7 @@ function MyTabs() {
           tabBarIcon: ({focused}) => (
             <View style={styles.view}>
               <Image
-                source={require('./src/assets/images/YourBooking.png')}
+                source={require('../assets/images/YourBooking.png')}
                 style={styles.img}
               />
               <View style={focused ? styles.active : undefined} />
@@ -100,23 +101,56 @@ function MyTabs() {
   );
 }
 
-class App extends Component<any, any> {
-  componentDidMount() {
-    configTranslation(this.props.language);
-  }
-  componentDidUpdate(preProps: any) {
-    if (this.props.language != preProps) {
-      configTranslation(this.props.language);
+const App = (props: any) => {
+  const [loading, setLoading] = useState(true);
+  const {
+    famousProvinces,
+    mountainProvinces,
+    offerProvinces,
+    language,
+    getOfferProvinces,
+    getMountainProvinces,
+    getFamousProvinces,
+  } = props;
+  useEffect(() => {
+    actionInit(props);
+  });
+  useEffect(() => {
+    if (lodash.isEmpty(offerProvinces)) {
+      getOfferProvinces(dataFetchProvince[2]);
     }
+  }, []);
+  useEffect(() => {
+    if (lodash.isEmpty(mountainProvinces)) {
+      getMountainProvinces(dataFetchProvince[1]);
+    }
+  }, []);
+  useEffect(() => {
+    if (lodash.isEmpty(famousProvinces)) {
+      getFamousProvinces(dataFetchProvince[0]);
+    }
+  }, []);
+  useEffect(() => {
+    if (
+      !lodash.isEmpty(famousProvinces) &&
+      !lodash.isEmpty(mountainProvinces) &&
+      !lodash.isEmpty(offerProvinces)
+    ) {
+      setLoading(false);
+    }
+  }, [famousProvinces, mountainProvinces, offerProvinces]);
+  useEffect(() => {
+    configTranslation(language);
+  }, [language]);
+  if (loading) {
+    return <SplashScreen />;
   }
-  render() {
-    return (
-      <NavigationContainer>
-        <MyTabs />
-      </NavigationContainer>
-    );
-  }
-}
+  return (
+    <NavigationContainer>
+      <MyTabs />
+    </NavigationContainer>
+  );
+};
 const styles = StyleSheet.create({
   active: {
     backgroundColor: '#FA2A00',
@@ -135,6 +169,9 @@ const styles = StyleSheet.create({
 const mapStateFromProps = (state) => {
   return {
     language: state.system.language,
+    famousProvinces: state.places.famousProvinces,
+    mountainProvinces: state.places.mountainProvinces,
+    offerProvinces: state.places.offerProvinces,
   };
 };
-export default connect(mapStateFromProps, null)(App);
+export default connect(mapStateFromProps, {...places, ...system})(App);
