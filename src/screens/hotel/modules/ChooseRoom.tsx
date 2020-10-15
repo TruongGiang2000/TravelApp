@@ -7,7 +7,7 @@ import {
   ScrollView,
   FlatList
 } from 'react-native';
-import Kindofroom from '../../home/modules/kindofroom';
+import Kindofroom from '../../home/modules/KindOfRoom';
 import {translate} from '../../../util/translate';
 import {
   heightPercentageToDP as hp,
