@@ -5,10 +5,10 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {withPages} from '../../components/withPages';
+import {withPages} from '../../util/withPages';
 import ProvinceImageList from './modules/ProvinceImageList';
 import Rating from '../../components/ItemRating';
-import {translate} from '../../components/translate';
+import {translate} from '../../util/translate';
 import SpecialSpot from './modules/SpecialSpot';
 import CommunityPeople from '../../components/CommunityPeople';
 class ProvinceDetail extends Component<any, any> {

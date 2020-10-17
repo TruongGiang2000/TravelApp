@@ -7,16 +7,16 @@ import {
 import {connect} from 'react-redux';
 import {places} from '../../../redux';
 import ItemImage from '../../../components/ItemImage';
-import {translate} from '../../../components/translate';
+import {translate} from '../../../util/translate';
 class OfferPlace extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {};
   }
-  componentDidMount() {
-    const data = {key: 'Offer', TypesArea: ['Mountain', 'Sea']};
-    this.props.getOfferProvinces(data);
-  }
+  // componentDidMount() {
+  //   const data = {key: 'Offer', TypesArea: ['Mountain', 'Sea']};
+  //   this.props.getOfferProvinces(data);
+  // }
   onPressItem = (item: any) => () => {
     this.props.navigation.navigate('LocationDetail', {item});
   };

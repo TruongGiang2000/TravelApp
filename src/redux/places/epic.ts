@@ -3,7 +3,7 @@ import {$axios} from '../../constants/config/api';
 import {ofType} from 'redux-observable';
 import {mergeMap} from 'rxjs/operators';
 import store from '../store';
-import {sys} from 'typescript';
+import {actionMain} from '../../util/mainActions';
 export const getProvinces = (action$: any) => {
   return action$.pipe(
     ofType(
@@ -78,6 +78,9 @@ export const getLocationByProvince = ($action: any) => {
         })
         .catch((err: any) => {
           return placesActions.getLocationProvinceFail(err);
+        })
+        .finally(() => {
+          actionMain.loading(false);
         });
     }),
   );

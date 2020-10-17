@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Text} from 'react-native';
-import StraAcitiIndi from '../../components/StraActivityIndicator';
+import StraActivityIndicator from '../../components/StraActivityIndicator';
 class Home extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -9,15 +9,14 @@ class Home extends Component<any, any> {
   render() {
     return (
       <View style={styles.MainContainer}>
-        <StraAcitiIndi/>
+        <StraActivityIndicator />
       </View>
     );
   }
 }
 const styles = StyleSheet.create({
   MainContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    flex: 1,
   },
 });
 export default Home;

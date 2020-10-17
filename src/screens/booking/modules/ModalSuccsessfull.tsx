@@ -5,7 +5,7 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import ButtonCustom from '../../../components/ButtonCustom';
-import {translate} from '../../../components/translate';
+import {translate} from '../../../util/translate';
 class ModalSuccessFully extends Component<any, any> {
   constructor(props) {
     super(props);

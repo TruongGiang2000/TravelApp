@@ -7,7 +7,7 @@ import {
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import ButtonCustom from '../../../components/ButtonCustom';
 import ButtonFBCustom from '../../../components/ButtonFBCustom';
-import {translate} from '../../../components/translate';
+import {translate} from '../../../util/translate';
 class index extends Component<any, any> {
   constructor(props) {
     super(props);

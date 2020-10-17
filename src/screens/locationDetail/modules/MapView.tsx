@@ -7,7 +7,7 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
-import {translate} from '../../../components/translate';
+import {translate} from '../../../util/translate';
 import getDirection from 'react-native-google-maps-directions';
 import GeoLocation from 'react-native-get-location';
 class Map extends Component<any, any> {

@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'; // remove PROVIDER_GOOGLE import if not using Google Maps
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
 
-
-class index extends Component<any, any> {
+class   index extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {};
@@ -34,7 +37,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   map:{
-    
+    width: '100%',
+    height: hp('20')
   }
 });
 export default index;

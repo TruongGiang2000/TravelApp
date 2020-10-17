@@ -6,7 +6,7 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import {Pagination} from 'react-native-snap-carousel';
-import shadow from './shadow';
+import shadow from '../util/shadow';
 import GradientOpacity from './GradientOpacity';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 class HotelSlideShow extends Component<any, any> {

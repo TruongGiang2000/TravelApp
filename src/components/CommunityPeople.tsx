@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Text} from 'react-native';
-import {translate} from './translate';
+import {translate} from '../util/translate';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,

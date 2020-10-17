@@ -8,7 +8,7 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome5';
 import Ionicons from 'react-native-vector-icons/dist/Ionicons';
 import AntDesign from 'react-native-vector-icons/dist/AntDesign';
 import ButtonCustom from '../../../components/ButtonCustom';
-import {translate} from '../../../components/translate';
+import {translate} from '../../../util/translate';
 
 export default class KindOfRoom extends Component<any, any> {
   render() {

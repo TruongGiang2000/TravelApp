@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {StyleSheet, Pressable, Text} from 'react-native';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import LinearGradient from 'react-native-linear-gradient';
-import {translate} from './translate';
 class ButtonFBCustom extends Component<any, any> {
   constructor(props) {
     super(props);

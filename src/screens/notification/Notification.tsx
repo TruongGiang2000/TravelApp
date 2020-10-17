@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Text, FlatList} from 'react-native';
-import {translate} from '../../components/translate';
-import {dateFormat} from '../../components/dateFormatAgo';
+import {translate} from '../../util/translate';
+import {dateFormat} from '../../util/dateFormatAgo';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import ItemNotification from './modules/ItemNotification';
-import {withPages} from '../../components/withPages';
+import {withPages} from '../../util/withPages';
 import ItemUser from '../user/modules/ItemUser';
 import moment from 'moment';
 class Notification extends Component<any, any> {

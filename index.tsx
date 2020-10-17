@@ -15,7 +15,7 @@ const app = () => (
       barStyle={'dark-content'}
       animated={true}
     />
-    <MapView />
+    <App />
   </Provider>
 );
 

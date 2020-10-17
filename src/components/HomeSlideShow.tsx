@@ -6,9 +6,9 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import ButtonCustom from './ButtonCustom';
-import shadow from './shadow';
+import shadow from '../util/shadow';
 import GradientOpacity from './GradientOpacity';
-import {translate} from '../components/translate';
+import {translate} from '../util/translate';
 class HomeSlideShow extends Component<any, any> {
   constructor(props) {
     super(props);

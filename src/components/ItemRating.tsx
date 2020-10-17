@@ -6,7 +6,7 @@ import {
 } from 'react-native-responsive-screen';
 import StarRating from 'react-native-star-rating';
 import Icon from 'react-native-vector-icons/dist/AntDesign';
-import {translate} from './translate';
+import {translate} from '../util/translate';
 export default class ItemRating extends Component<any, any> {
   constructor(props) {
     super(props);
