@@ -130,4 +130,7 @@ export default {
   description_community: 'people like this',
   highLands: 'Highlands',
   seeAddress: 'See address',
+  question : "You can't find some info believe ?",
+  yes : 'Yes',
+  no : 'No'
 };

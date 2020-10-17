@@ -16,6 +16,8 @@ import Itenassess from '../../../components/ItemRating';
 import ItemUtilities from '../../../components/ItemUtilities';
 import ItemImage from '../../../components/ItemImage';
 import SlideShow from '../../../components/SlideShow';
+import Feather from 'react-native-vector-icons/Feather'
+import AntDesign from 'react-native-vector-icons/AntDesign'
 import {translate} from '../../../util/translate';
 class Hotel extends Component<any, any> {
   constructor(props) {
@@ -148,9 +150,22 @@ class Hotel extends Component<any, any> {
             />
           </View>
           <View style={styles.viewLine1} />
+          <View style={styles.question}>
+            <Feather name ={'x'} size={wp('7')} color ={'#A8B6C8'} style={styles.iconX}/>
+            <View style={styles.question1}>
+                <AntDesign name={'questioncircleo'} size={wp('4.5')} color={'#050505'} style={styles.iconQuestioncircleo}/>
+                <View style={styles.textContent}>
+                <Text style={styles.textQuestion}>{translate('question')}</Text>
+                <View style={styles.yesOrNo}>
+                  <Text style={[styles.textyesOrno,{marginRight : wp('6')}]}>{translate('yes')}</Text>
+                  <Text style={styles.textyesOrno}>{translate('no')}</Text>
+                </View>
+                </View>
+            </View>
+            <View style={styles.viewLine1} />
+          </View>
         </ScrollView>
         <View style={styles.viewButon}>
-          <ButtonCustom title={'choosing_room'} />
           <ButtonCustom title={translate('choosing_room')} />
         </View>
       </View>
@@ -225,15 +240,50 @@ const styles = StyleSheet.create({
   },
   viewButon: {
     width: wp('100'),
-    height: hp('14'),
-    padding: wp('2.5'),
+    height: hp('15'),
+    padding: wp('2.0'),
+    
   },
   viewLine1: {
     width: wp('100'),
     height: hp('1.5'),
     backgroundColor: '#E0E6EE',
     alignSelf: 'center',
-    marginVertical: hp('2'),
+    marginTop: hp('2')
   },
+  question:{
+    height : hp('15'),
+    width : '100%',
+    
+  },
+  iconX:{
+    alignSelf:'flex-end',
+    marginTop: hp('1')
+  },
+  question1:{
+    flexDirection:'row'
+  },
+  textQuestion:{
+    color : '#353B50',
+    fontSize : wp('5'),
+    fontFamily: 'roboto-slab-bold',
+
+  },
+  iconQuestioncircleo:{
+    marginHorizontal : wp('2'),
+  },
+  textContent:{
+    flexDirection:'column',
+  },
+  yesOrNo:{
+    flexDirection:'row',
+    marginTop: hp('2')
+  },
+  textyesOrno:{
+    color:'#FA2A00',
+    fontSize : wp('4.5'),
+    fontFamily: 'roboto-slab-bold',
+
+  }
 });
 export default Hotel;

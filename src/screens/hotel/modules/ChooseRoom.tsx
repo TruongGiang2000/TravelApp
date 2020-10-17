@@ -133,6 +133,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: hp('3'),
-    paddingHorizontal: wp('4'),
   },
 });
