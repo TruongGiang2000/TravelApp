@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {View, StyleSheet, Image} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import 'react-native-gesture-handler';
@@ -16,10 +16,8 @@ import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import {configTranslation} from '../util/translate';
 import {actionInit} from '../util/mainActions';
 import {connect} from 'react-redux';
-import SplashScreen from '../screens/Splash';
 import {places, system} from '../redux';
 import {dataFetchProvince} from '../constants/systems/main';
-import lodash from 'lodash';
 const Tab = createBottomTabNavigator();
 function MyTabs() {
   return (
@@ -102,54 +100,14 @@ function MyTabs() {
 }
 
 const App = (props: any) => {
-  const [loading, setLoading] = useState(true);
-  const {
-    famousProvinces,
-    mountainProvinces,
-    offerProvinces,
-    language,
-    getOfferProvinces,
-    getMountainProvinces,
-    getFamousProvinces,
-  } = props;
+  const {language} = props;
   useEffect(() => {
     actionInit(props);
   });
   useEffect(() => {
-    if (lodash.isEmpty(offerProvinces)) {
-      getOfferProvinces(dataFetchProvince[2]);
-    }
-  }, []);
-  useEffect(() => {
-    if (lodash.isEmpty(mountainProvinces)) {
-      getMountainProvinces(dataFetchProvince[1]);
-    }
-  }, []);
-  useEffect(() => {
-    if (lodash.isEmpty(famousProvinces)) {
-      getFamousProvinces(dataFetchProvince[0]);
-    }
-  }, []);
-  useEffect(() => {
-    if (
-      !lodash.isEmpty(famousProvinces) &&
-      !lodash.isEmpty(mountainProvinces) &&
-      !lodash.isEmpty(offerProvinces)
-    ) {
-      setLoading(false);
-    }
-  }, [famousProvinces, mountainProvinces, offerProvinces]);
-  useEffect(() => {
     configTranslation(language);
   }, [language]);
-  if (loading) {
-    return <SplashScreen />;
-  }
-  return (
-    <NavigationContainer>
-      <MyTabs />
-    </NavigationContainer>
-  );
+  return <MyTabs />;
 };
 const styles = StyleSheet.create({
   active: {
@@ -169,9 +127,6 @@ const styles = StyleSheet.create({
 const mapStateFromProps = (state) => {
   return {
     language: state.system.language,
-    famousProvinces: state.places.famousProvinces,
-    mountainProvinces: state.places.mountainProvinces,
-    offerProvinces: state.places.offerProvinces,
   };
 };
 export default connect(mapStateFromProps, {...places, ...system})(App);
