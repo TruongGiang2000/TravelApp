@@ -132,5 +132,11 @@ export default {
   highLands: 'Tây nguyên',
   seeAddress: 'Xem địa điểm',
   numbertyperoom: 'Tại đây có {0} loại phòng',
+<<<<<<< HEAD
   Review: 'Đánh giá',
+=======
+  question : 'Bạn không tìm thấy một số thông tin ?',
+  yes : 'Có',
+  no : 'Không'
+>>>>>>> d9d895ca6989e7224281113a0de7b34a013edfd4
 };
