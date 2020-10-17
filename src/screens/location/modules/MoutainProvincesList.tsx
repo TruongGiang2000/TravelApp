@@ -7,23 +7,24 @@ import {
 import ItemImage from '../../../components/ItemImage';
 import {places} from '../../../redux';
 import {connect} from 'react-redux';
-import {translate} from '../../../components/translate';
+import {translate} from '../../../util/translate';
 class MountainPlace extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {};
   }
-  componentDidMount() {
-    const {getMountainProvinces} = this.props;
-    const data = {key: 'Mountain', TypesArea: ['Mountain']};
-    getMountainProvinces(data);
-  }
+  // componentDidMount() {
+  //   const {getMountainProvinces} = this.props;
+  //   const data = {key: 'Mountain', TypesArea: ['Mountain']};
+  //   getMountainProvinces(data);
+  // }
   renderItem = ({item}) => (
     <ItemImage
       title={item.Title}
       source={{uri: item.Images[1]}}
       isShow={true}
       style={styles.itemImage}
+      onPress={this.props.onPress(item)}
     />
   );
   render() {
@@ -36,6 +37,7 @@ class MountainPlace extends Component<any, any> {
           renderItem={this.renderItem}
           horizontal={true}
           keyExtractor={(item) => item.Title}
+          showsHorizontalScrollIndicator={false}
         />
       </View>
     );

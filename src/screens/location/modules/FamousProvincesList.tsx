@@ -7,22 +7,23 @@ import {
 import ItemImage from '../../../components/ItemImage';
 import {connect} from 'react-redux';
 import {places} from '../../../redux';
-import {translate} from '../../../components/translate';
+import {translate} from '../../../util/translate';
 class FamousPlace extends Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {};
   }
-  componentDidMount() {
-    const data = {key: 'Famous', TypesArea: ['Relics']};
-    this.props.getFamousProvinces(data);
-  }
+  // componentDidMount() {
+  //   const data = {key: 'Famous', TypesArea: ['Relics']};
+  //   this.props.getFamousProvinces(data);
+  // }
   renderItem = ({item}) => {
     return (
       <ItemImage
         title={item.Title}
         source={{uri: item.Images[1]}}
         style={styles.itemContainer}
+        onPress={this.props.onPress(item)}
       />
     );
   };
@@ -35,6 +36,7 @@ class FamousPlace extends Component<any, any> {
           renderItem={this.renderItem}
           keyExtractor={(item) => item.Title}
           scrollEnabled={false}
+          showsVerticalScrollIndicator={false}
         />
       </View>
     );

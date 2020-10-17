@@ -8,7 +8,7 @@ import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import ItemUser from './ItemUser';
 import ItemRow from './ItemRow';
 import ButtonCutom from '../../../components/ButtonCustom';
-import {translate} from '../../../components/translate';
+import {translate} from '../../../util/translate';
 class ManageAccountModal extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -37,7 +37,7 @@ class ManageAccountModal extends Component<any, any> {
           </Pressable>
           <Text style={styles.title}>{translate('manage_account')}</Text>
           <ItemUser
-            name={'Nguyen Vu Truong Giang'}
+            name={'Nguyen Vu Truong Giang NGuyen Vinh Quang Nguyen'}
             source={require('../../../assets/images/Bitmap.png')}
             core={300}
           />

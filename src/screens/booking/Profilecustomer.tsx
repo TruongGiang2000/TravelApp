@@ -13,8 +13,8 @@ import {
   validPhone,
 } from '../../constants/systems/validate';
 import Header from './modules/HeaderStep';
-import {translate} from '../../components/translate';
-import {withPages} from '../../components/withPages';
+import {translate} from '../../util/translate';
+import {withPages} from '../../util/withPages';
 class ProfileCustomer extends Component<any, any> {
   constructor(props) {
     super(props);

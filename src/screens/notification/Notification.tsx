@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Text, FlatList} from 'react-native';
-import {translate} from '../../components/translate';
-import {dateFormat} from '../../components/dateFormatAgo';
+import {translate} from '../../util/translate';
+import {dateFormat} from '../../util/dateFormatAgo';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import ItemNotification from './modules/ItemNotification';
-import {withPages} from '../../components/withPages';
+import {withPages} from '../../util/withPages';
 import ItemUser from '../user/modules/ItemUser';
 import moment from 'moment';
 class Notification extends Component<any, any> {
@@ -23,7 +23,7 @@ class Notification extends Component<any, any> {
         {
           src: require('..//..//assets/images/angiang.jpg'),
           title: 'Chúc mừng bạn vừa đạt được thành tích',
-          date: moment('10/5/2020 12:11'),
+          date: moment('10/6/2020 23:41:20'),
         },
         {
           src: require('..//..//assets/images/angiang.jpg'),
@@ -67,7 +67,11 @@ class Notification extends Component<any, any> {
           />
         </View>
         <View style={styles.line} />
-        <FlatList data={this.state.dataDummy} renderItem={this.renderItem} />
+        <FlatList
+          data={this.state.dataDummy}
+          renderItem={this.renderItem}
+          extraData={this.props.language}
+        />
       </View>
     );
   }

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {View, StyleSheet, Text, Pressable, Image} from 'react-native';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import CircleImage from '../../../components/CircleImage';
-import {translate} from '../../../components/translate';
+import {translate} from '../../../util/translate';
 class ItemUser extends Component<any, any> {
   constructor(props) {
     super(props);

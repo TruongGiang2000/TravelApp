@@ -18,7 +18,7 @@ import CircleImage from '../../../components/CircleImage';
 import ModalCustom from 'react-native-modal';
 import ModalHelping from './ModalHelping';
 import ModalAuth from './ModalAuth';
-import {translate} from '../../../components/translate';
+import {translate} from '../../../util/translate';
 class UserNotLogin extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     fontSize: wp('4'),
   },
   circleImage: {
-    marginTop: wp('-10'),
+    marginTop: wp('15'),
     position: 'absolute',
     alignSelf: 'center',
   },

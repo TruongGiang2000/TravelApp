@@ -7,8 +7,8 @@ import {
 import ItemImage from '../../../components/ItemImage';
 import {connect} from 'react-redux';
 import ButtonCustom from '../../../components/ButtonCustom';
-import shadow from '../../../components/shadow';
-import {translate} from '../../../components/translate';
+import shadow from '../../../util/shadow';
+import {translate} from '../../../util/translate';
 class SearchingProvinces extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -20,6 +20,7 @@ class SearchingProvinces extends Component<any, any> {
         title={item.Title}
         source={{uri: item.Images[1]}}
         style={styles.itemContainer}
+        onPress={this.props.onPress(item)}
       />
     );
   };

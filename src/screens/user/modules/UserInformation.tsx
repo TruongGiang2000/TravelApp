@@ -19,7 +19,7 @@ import ImagePicker from 'react-native-image-picker';
 import ModalCustom from 'react-native-modal';
 import ManageAccountModal from './ManageAccountModal';
 import ModalChooseLang from './ModalChooseLang';
-import {translate} from '../../../components/translate';
+import {translate} from '../../../util/translate';
 class UserInformation extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   circleImage: {
-    marginTop: wp('-10'),
+    marginTop: wp('15'),
   },
   viewTouchIconCamera: {
     marginTop: hp('-14'),

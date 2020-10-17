@@ -6,7 +6,7 @@ import {
 } from 'react-native-responsive-screen';
 import ButtonCustom from '../../../components/ButtonCustom';
 import StarRating from 'react-native-star-rating';
-import {translate} from '../../../components/translate';
+import {translate} from '../../../util/translate';
 class ItemHotelAroundHere extends Component<any, any> {
   constructor(props) {
     super(props);

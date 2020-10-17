@@ -4,6 +4,7 @@ const initState = {
   offerProvinces: [],
   famousProvinces: [],
   searchingProvinces: [],
+  location: [],
 };
 export const placesReducer: any = (state = initState, actions: any) => {
   const {payload} = actions;
@@ -40,6 +41,12 @@ export const placesReducer: any = (state = initState, actions: any) => {
         famousProvinces: payload.famousProvinces,
         searchingProvinces: payload.searchingProvinces,
       };
+    case types.GET_LOCATION_BY_PROVINCE:
+      return {...state, location: []};
+    case types.GET_LOCATION_BY_PROVINCE_SUCCESS:
+      return {...state, location: payload};
+    case types.GET_LOCATION_BY_PROVINCE_FAIL:
+      return {...state, location: []};
     default:
       return state;
   }

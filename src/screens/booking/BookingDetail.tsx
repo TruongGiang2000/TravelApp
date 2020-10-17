@@ -10,10 +10,10 @@ import RowCustom from './modules/RowCustom';
 import Header from './modules/HeaderStep';
 import {ScrollView} from 'react-native-gesture-handler';
 import ModalCustom from 'react-native-modal';
-import shadow from '../../components/shadow';
+import shadow from '../../util/shadow';
 import ModalSuccessfull from './modules/ModalSuccsessfull';
-import {translate} from '../../components/translate';
-import {withPages} from '../../components/withPages';
+import {translate} from '../../util/translate';
+import {withPages} from '../../util/withPages';
 class BookingDetail extends Component<any, any> {
   constructor(props) {
     super(props);

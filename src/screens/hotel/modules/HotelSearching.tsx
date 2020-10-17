@@ -13,9 +13,8 @@ import CustomModal from 'react-native-modal';
 import ModalChooseNumber from './ModalChooseNumber';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import Octicons from 'react-native-vector-icons/Octicons';
-import shawdow from '../../../components/shadow';
-import {max} from 'lodash';
-import {translate} from '../../../components/translate';
+import shawdow from '../../../util/shadow';
+import {translate} from '../../../util/translate';
 class HotelSearching extends Component<any, any> {
   constructor(props) {
     super(props);
