@@ -12,6 +12,12 @@ export default class ItemRating extends Component<any, any> {
     super(props);
     this.state = {};
   }
+  onStartRating(rating){
+    this.setState({
+      starCount: rating,
+      
+    })
+  }
   render() {
     const {
       starCount,
@@ -19,7 +25,10 @@ export default class ItemRating extends Component<any, any> {
       numberOfReview,
       style,
       onPress,
+      selectedStart
     } = this.props;
+    const {showstarCount } = this.state;
+
     return (
       <Pressable style={style} onPress={onPress}>
         <Text style={styles.title}>{translate('rate')}</Text>
@@ -28,8 +37,9 @@ export default class ItemRating extends Component<any, any> {
             <StarRating
               disabled={false}
               maxStars={5}
-              rating={starCount}
+              rating={[ showstarCount ,starCount]}
               fullStarColor={'#F0C909'}
+              selectStar={(rating) => this.onStartRating(rating)}
               starSize={wp('5')}
             />
             <Text style={styles.numberofreview}>{`${numberOfReview} ${translate(

@@ -130,4 +130,5 @@ export default {
   description_community: 'people like this',
   highLands: 'Highlands',
   seeAddress: 'See address',
+  Review: 'Add a review',
 };
