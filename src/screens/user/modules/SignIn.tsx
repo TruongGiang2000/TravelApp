@@ -8,10 +8,13 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import ButtonCustom from '../../../components/ButtonCustom';
 import ButtonFBCustom from '../../../components/ButtonFBCustom';
 import {translate} from '../../../util/translate';
-class index extends Component<any, any> {
+import { withPages } from '../../../util/withPages';
+class SignIn extends Component<any, any> {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+
+    };
   }
 
   render() {
@@ -138,4 +141,4 @@ const styles = StyleSheet.create({
     marginTop: hp('2'),
   },
 });
-export default index;
+export default withPages(SignIn);

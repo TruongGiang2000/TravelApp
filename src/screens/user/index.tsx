@@ -1,12 +1,28 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import User from './User';
+import SignIn from './modules/SignIn';
+import ManageAccountModal from './modules/ManageAccountModal';
 const UserStack = {
   User: {
     screen: User,
     path: 'User',
     navigationOptions: {
       title: 'User',
+    },
+  },
+  SignIn: {
+    screen: SignIn,
+    path: 'SignIn',
+    navigationOptions: {
+      title: 'SignIn',
+    },
+  },
+  ManageAccountModal: {
+    screen: ManageAccountModal,
+    path: 'ManageAccountModal',
+    navigationOptions: {
+      title: 'ManageAccountModal',
     },
   },
 };

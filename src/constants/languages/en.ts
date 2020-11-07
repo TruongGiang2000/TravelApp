@@ -130,11 +130,9 @@ export default {
   description_community: 'people like this',
   highLands: 'Highlands',
   seeAddress: 'See address',
-<<<<<<< HEAD
   Review: 'Add a review',
-=======
   question : "You can't find some info believe ?",
   yes : 'Yes',
   no : 'No'
->>>>>>> d9d895ca6989e7224281113a0de7b34a013edfd4
+
 };
