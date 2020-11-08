@@ -9,6 +9,7 @@ import MapView from './src/screens/hotel/modules/MapView';
 import {AppRegistry, StatusBar} from 'react-native';
 import {name as appName} from './app.json';
 import User from './src/screens/user/User';
+import SignIn from './src/screens/user/modules/SignIn';
 const app = () => (
   <Provider store={configureStore}>
     <StatusBar
@@ -16,7 +17,7 @@ const app = () => (
       barStyle={'dark-content'}
       animated={true}
     />
-    <User />
+    <SignIn />
   </Provider>
 );
 
