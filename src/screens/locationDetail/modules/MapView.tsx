@@ -74,6 +74,9 @@ class Map extends Component<any, any> {
           customMapStyle={mapStyle}
           zoomEnabled={false}
           scrollEnabled={false}
+          onRegionChangeComplete={(region) => {
+            console.log('region', region)
+          }}
           style={styles.container}>
           <Marker
             coordinate={this.latLng}

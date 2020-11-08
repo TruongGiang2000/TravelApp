@@ -15,7 +15,11 @@ class ItemUtilities extends Component<any, any> {
     const {source, title} = this.props;
     return (
       <View style={[styles.MainContainer, this.props.style]}>
-        <Image source={source} style={styles.ImageStyle}></Image>
+        <Image
+          source={source}
+          resizeMode={'contain'}
+          style={styles.ImageStyle}
+        />
         <Text style={styles.title}>{title}</Text>
       </View>
     );
@@ -28,21 +32,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#F2F2F2',
     marginRight: wp('3'),
     alignItems: 'center',
-    width: wp('20'),
-    height: hp('11'),
-    paddingTop: hp('2'),
-    paddingBottom: hp('1'),
+    paddingHorizontal: wp('1'),
+    paddingBottom: wp('0.5'),
   },
   title: {
     color: '#353B50',
     textAlign: 'center',
     fontFamily: 'roboto-slab.regular',
-    marginTop: hp('1'),
-    fontSize: wp('2.5'),
+    fontSize: wp('2.4'),
+    width: wp('20'),
   },
   ImageStyle: {
-    height: hp('5'),
-    width: wp('10'),
+    height: wp('13'),
+    width: wp('13'),
   },
 });
 export default ItemUtilities;

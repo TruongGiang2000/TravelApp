@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Text, ImageBackground} from 'react-native';
-import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {View, StyleSheet, Pressable, ImageBackground} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -16,18 +15,20 @@ class HotelSlideShow extends Component<any, any> {
   }
 
   render() {
-    const {data, dotsLength, activeDotIndex} = this.props;
+    const {data, dotsLength, activeDotIndex, onPress} = this.props;
     return (
       <ImageBackground
         source={{uri: data}}
         resizeMode={'cover'}
         style={styles.MainContainer}>
-        <AntDesign
-          name={'close'}
-          size={wp('8')}
-          color={'#ffffff'}
-          style={{marginLeft: wp('4')}}
-        />
+        <Pressable onPress={onPress}>
+          <AntDesign
+            name={'close'}
+            size={wp('8')}
+            color={'#ffffff'}
+            style={{marginLeft: wp('4')}}
+          />
+        </Pressable>
         <View style={styles.viewPagination}>
           <GradientOpacity styleGradient={styles.gradientOpacity} />
           <Pagination
@@ -61,6 +62,7 @@ const styles = StyleSheet.create({
     borderRadius: wp('1.5'),
     backgroundColor: 'rgba(255, 255, 255, 0.92)',
     ...shadow(10),
+    marginRight: wp('-3'),
   },
   inactiveDotStyle: {
     width: wp('3'),

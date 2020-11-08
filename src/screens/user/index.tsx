@@ -1,8 +1,7 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import User from './User';
-import SignIn from './modules/SignIn';
-import ManageAccountModal from './modules/ManageAccountModal';
+import UserNotLogin from './UserNotLogin';
 const UserStack = {
   User: {
     screen: User,
@@ -11,18 +10,11 @@ const UserStack = {
       title: 'User',
     },
   },
-  SignIn: {
-    screen: SignIn,
-    path: 'SignIn',
+  UserNotLogin: {
+    screen: UserNotLogin,
+    path: 'UserNotLogin',
     navigationOptions: {
-      title: 'SignIn',
-    },
-  },
-  ManageAccountModal: {
-    screen: ManageAccountModal,
-    path: 'ManageAccountModal',
-    navigationOptions: {
-      title: 'ManageAccountModal',
+      title: 'UserNotLogin',
     },
   },
 };

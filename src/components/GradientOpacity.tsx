@@ -8,13 +8,13 @@ class GradientOpacity extends Component<any, any> {
     this.state = {};
   }
   render() {
-    const {start, end, color} = this.props;
+    const {start, end, color, styleGradient} = this.props;
     let startState = start || {x: 0, y: 1.5};
     let endState = end || {x: 0, y: 0};
     let colorState = color || ['#000', '#0007', '#0000', '#0000'];
     return (
       <LinearGradient
-        style={[this.props.styleGradient, styles.styleGradient]}
+        style={[styleGradient, styles.styleGradient]}
         colors={colorState}
         start={startState}
         end={endState}

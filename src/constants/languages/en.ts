@@ -133,6 +133,13 @@ export default {
   Review: 'Add a review',
   question : "You can't find some info believe ?",
   yes : 'Yes',
-  no : 'No'
-
+  no : 'No',
+  descriptionHome:
+    'Discover the special culture of northeast mountain peoples Viet Nam',
+  hotel_best_price: 'Hotel best price',
+  highlightSpot: 'Highlight Spot',
+  description_spot_home: 'the best favorite spot',
+  travel_news: 'Travel news',
+  night: 'night',
+  hotelAround: 'Hotels Around',
 };

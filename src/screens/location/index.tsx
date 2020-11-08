@@ -8,14 +8,6 @@ const LocationStack = {
     screen: Location,
     path: 'Location',
   },
-  LocationDetail: {
-    screen: LocationDetail,
-    path: 'LocationDetail',
-  },
-  SpotDetail: {
-    screen: SpotDetail,
-    path: 'SpotDetail',
-  },
 };
 
 const Stack = createStackNavigator();

@@ -67,6 +67,10 @@ class UserInformation extends Component<any, any> {
   hideManageAccountModal = () => {
     this.setState({isShowManageAccModal: false});
   };
+  onPressLogout = () => {
+    this.hideManageAccountModal();
+    this.props.navigation.navigate('UserNotLogin');
+  };
   render() {
     const {style} = this.props;
     const {isEnabled, avatarSource, isShow, isShowManageAccModal} = this.state;
@@ -163,7 +167,10 @@ class UserInformation extends Component<any, any> {
           visible={isShowManageAccModal}
           animated={true}
           animationType={'slide'}>
-          <ManageAccountModal onPressBackSpace={this.hideManageAccountModal} />
+          <ManageAccountModal
+            onPressBackSpace={this.hideManageAccountModal}
+            onPressLogout={this.onPressLogout}
+          />
         </Modal>
       </View>
     );

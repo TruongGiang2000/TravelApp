@@ -29,6 +29,7 @@ class ManageAccountModal extends Component<any, any> {
     this.props.navigation.navigate('SignIn');
   };
   render() {
+    const {onPressLogout} = this.props;
     return (
       <View style={styles.MainContainer}>
         <View style={styles.viewRowHeader}>
@@ -51,6 +52,12 @@ class ManageAccountModal extends Component<any, any> {
         </View>
         <ButtonCutom style={styles.button} title={translate('logout')} 
         onPress={this.onLogout}/>
+
+        <ButtonCutom
+          style={styles.button}
+          title={translate('logout')}
+          onPress={onPressLogout}
+        />
       </View>
     );
   }

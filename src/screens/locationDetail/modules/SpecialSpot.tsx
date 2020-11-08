@@ -19,7 +19,6 @@ class SpecialSpot extends Component<any, any> {
     this.props.getLocationByProvince(this.props.idProvince);
   }
   itemPress = (item) => () => {
-    console.log('navigation', this.props.navigation);
     this.props.navigation.navigate('SpotDetail', {item});
   };
   renderItem = ({item, index}) => {
