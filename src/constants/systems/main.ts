@@ -224,6 +224,7 @@ export const mapStyle = [
 ];
 export const GOOGLE_API_KEY = 'AIzaSyAJSR-Gxrus4WCIuquRBtCS2BYOztP7n4A';
 export const fiveDots = ['one', 'two', 'three', 'four', 'five'];
+export const threeDots = ['one', 'two', 'three'];
 export const dataFetchProvince = [
   {key: 'Famous', TypesArea: ['Relics']},
   {key: 'Mountain', TypesArea: ['Mountain']},

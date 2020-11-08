@@ -25,6 +25,7 @@ class ManageAccountModal extends Component<any, any> {
     return <ItemRow style={styles.itemRow} title={translate(item.key)} />;
   };
   render() {
+    const {onPressLogout} = this.props;
     return (
       <View style={styles.MainContainer}>
         <View style={styles.viewRowHeader}>
@@ -45,7 +46,11 @@ class ManageAccountModal extends Component<any, any> {
         <View style={styles.viewContent}>
           <FlatList data={this.state.data} renderItem={this.renderItem} />
         </View>
-        <ButtonCutom style={styles.button} title={translate('logout')} />
+        <ButtonCutom
+          style={styles.button}
+          title={translate('logout')}
+          onPress={onPressLogout}
+        />
       </View>
     );
   }

@@ -17,7 +17,6 @@ import {configTranslation} from '../util/translate';
 import {actionInit} from '../util/mainActions';
 import {connect} from 'react-redux';
 import {places, system} from '../redux';
-import {dataFetchProvince} from '../constants/systems/main';
 const Tab = createBottomTabNavigator();
 function MyTabs() {
   return (

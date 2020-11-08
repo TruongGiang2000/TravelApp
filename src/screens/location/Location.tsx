@@ -22,6 +22,7 @@ import {
 import SearchingProvinces from './modules/SearchingProvinces';
 import {translate} from '../../util/translate';
 import {withPages} from '../../util/withPages';
+import shadow from '../../util/shadow';
 class Location extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -163,6 +164,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     marginBottom: hp('2'),
+    ...shadow(5),
+    backgroundColor: '#fff',
+    borderRadius: wp('2'),
+    paddingHorizontal: wp('2'),
   },
   textInput: {
     width: wp('70'),

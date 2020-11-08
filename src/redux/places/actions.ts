@@ -16,6 +16,9 @@ export const types = {
   GET_LOCATION_BY_PROVINCE: 'GET_LOCATION_BY_PROVINCE',
   GET_LOCATION_BY_PROVINCE_SUCCESS: 'GET_LOCATION_BY_PROVINCE_SUCCESS',
   GET_LOCATION_BY_PROVINCE_FAIL: 'GET_LOCATION_BY_PROVINCE_FAIL',
+  GET_ALL_PROVINCES: 'GET_ALL_PROVINCES',
+  GET_ALL_PROVINCES_SUCCESS: 'GET_ALL_PROVINCES_SUCCESS',
+  GET_ALL_PROVINCES_FAIL: 'GET_ALL_PROVINCES_FAIL',
 };
 const action = (type: string, payload?: any) => ({type, payload});
 export const placesActions = {
@@ -55,20 +58,16 @@ export const placesActions = {
     action(types.GET_LOCATION_BY_PROVINCE_SUCCESS, payload),
   getLocationProvinceFail: (payload: any) =>
     action(types.GET_LOCATION_BY_PROVINCE_FAIL, payload),
+  getAllProvinces: (payload: any) => action(types.GET_ALL_PROVINCES, payload),
+  getAllProvincesSuccess: (payload: any) =>
+    action(types.GET_ALL_PROVINCES_SUCCESS, payload),
+  getAllProvincesFail: (payload: any) =>
+    action(types.GET_ALL_PROVINCES_FAIL, payload),
 };
 const mapData = (data: any) => {
   return data.map((item: any) => {
     const {system}: any = store.getState();
     const {language} = system;
-    let uriList = [];
-    item.Images.map((uri) => {
-      uriList.push(
-        `https://stravelapp.herokuapp.com/${uri
-          .toString()
-          .replace('public', '')}`,
-      );
-    });
-    item.uriList = uriList;
     if (language === 'vi') {
       item.Title = item.vi.Title;
       item.Content = item.vi.Content;

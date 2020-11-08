@@ -25,19 +25,23 @@ class SearchingProvinces extends Component<any, any> {
     );
   };
   renderItemEmpty = () => {
+    const {loading} = this.props;
+    console.log('loading', loading);
     return (
-      <View style={styles.viewEmpty}>
-        <Image source={require('../../../assets/images/sleep.png')} />
-        <Text style={styles.textDescription}>
-          {translate('description_null')}
-        </Text>
-        <ButtonCustom
-          title={translate('try_again')}
-          style={styles.styleButton}
-          titleStyle={styles.titleButtonStyle}
-          onPress={this.props.onTryAgainPress}
-        />
-      </View>
+      !loading && (
+        <View style={styles.viewEmpty}>
+          <Image source={require('../../../assets/images/sleep.png')} />
+          <Text style={styles.textDescription}>
+            {translate('description_null')}
+          </Text>
+          <ButtonCustom
+            title={translate('try_again')}
+            style={styles.styleButton}
+            titleStyle={styles.titleButtonStyle}
+            onPress={this.props.onTryAgainPress}
+          />
+        </View>
+      )
     );
   };
   render() {
@@ -94,6 +98,7 @@ const styles = StyleSheet.create({
 const mapStateFromProps = (state: any) => {
   return {
     searchingProvinces: state.places.searchingProvinces,
+    loading: state.system.loading,
   };
 };
 export default connect(mapStateFromProps, null)(SearchingProvinces);

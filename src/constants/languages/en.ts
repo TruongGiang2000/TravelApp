@@ -130,7 +130,16 @@ export default {
   description_community: 'people like this',
   highLands: 'Highlands',
   seeAddress: 'See address',
-  question : "You can't find some info believe ?",
-  yes : 'Yes',
-  no : 'No'
+  question: "You can't find some info believe ?",
+  yes: 'Yes',
+  no: 'No',
+  descriptionHome:
+    'Discover the special culture of northeast mountain peoples Viet Nam',
+  hotel_best_price: 'Hotel best price',
+  highlightSpot: 'Highlight Spot',
+  description_spot_home: 'the best favorite spot',
+  travel_news: 'Travel news',
+  night: 'night',
+  hotelAround: 'Hotels Around',
+  Review: 'Add a review',
 };

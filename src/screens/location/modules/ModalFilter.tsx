@@ -18,6 +18,7 @@ import {places} from '../../../redux';
 import {forEach} from 'lodash';
 import {translate} from '../../../util/translate';
 import {dataArea, dataTypesArea} from '../../../constants/systems/main';
+import {actionMain} from '../../../util/mainActions';
 class ModalFilter extends Component<any, any> {
   data: any;
   constructor(props) {
@@ -61,6 +62,7 @@ class ModalFilter extends Component<any, any> {
       Area: keyActiveArea,
       TypesArea: array,
     };
+    actionMain.loading(true);
     this.props.searchProvinces(this.data);
     this.props.onFindPress(keyActiveArea, activeTypesArea);
   };

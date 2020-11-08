@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
   },
   title: {
     color: '#fff',
-    fontWeight: 'bold',
     textAlign: 'center',
+    fontFamily: 'roboto-slab.regular',
   },
 });
 export default ButtonCustom;

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, ScrollView, View, Text, CheckBox} from 'react-native';
+import {StyleSheet, ScrollView, View, Text} from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -15,6 +15,7 @@ import {
 import Header from './modules/HeaderStep';
 import {translate} from '../../util/translate';
 import {withPages} from '../../util/withPages';
+import CheckBox from '@react-native-community/checkbox';
 class ProfileCustomer extends Component<any, any> {
   constructor(props) {
     super(props);

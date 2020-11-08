@@ -1,5 +1,12 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Text, Pressable, Image} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Text,
+  Pressable,
+  Image,
+  ImageBackground,
+} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -16,79 +23,72 @@ class ItemHotel extends Component<any, any> {
       style,
       onPress,
       imageStyle,
-      titleStyle,
       contentStyle,
       source,
-      titleplace,
-      titlehotel,
+      titlePlace,
+      titleHotel,
     } = this.props;
     return (
-      <Pressable style={[styles.MainContainer, style]} onPress={onPress}>
-        <View>
-          <Image style={[styles.styleImage, imageStyle]} source={source} />
-          <View style={styles.styleBackground}></View>
-          <View style={styles.styleBackground1}>
+      <Pressable style={[styles.container, style]} onPress={onPress}>
+        <ImageBackground
+          style={[styles.styleImage, imageStyle]}
+          source={source}
+          resizeMode={'cover'}
+          borderRadius={wp('1.5')}>
+          <View style={styles.styleBackground}>
             <Image
-              source={require('../../assets/images/ngoisao.png')}
-              style={styles.styleitem}
+              source={require('../../../assets/images/ngoisao.png')}
+              style={styles.starStyle}
             />
           </View>
+        </ImageBackground>
 
-          <Text style={[styles.texthotel, titleStyle]}>{titlehotel}</Text>
-          <Text style={[styles.textplace, contentStyle]}>{titleplace}</Text>
-        </View>
+        <Text numberOfLines={1} style={styles.txtHotel}>
+          {titleHotel}
+        </Text>
+        <Text style={[styles.textplace, contentStyle]}>{titlePlace}</Text>
       </Pressable>
     );
   }
 }
 const styles = StyleSheet.create({
-  MainContainer: {
-    borderRadius: 8,
+  container: {
     width: wp('35'),
-    height: hp('38'),
   },
   styleImage: {
-    borderRadius: 5,
-    width: '100%',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-end',
     height: hp('30'),
   },
-  texthotel: {
+  txtHotel: {
     color: '#353b50',
-    fontSize: wp('3'),
-    fontFamily: 'RobotoSlab-Regular',
+    fontSize: wp('3.6'),
+    fontFamily: 'roboto-slab.regular',
+    fontWeight: '700',
+    marginTop: wp('2'),
     opacity: 0.6,
   },
   textplace: {
     color: '#353b50',
     fontSize: wp('3'),
-    fontFamily: 'RobotoSlab-Regular',
+    fontFamily: 'roboto-slab.regular',
     opacity: 0.6,
   },
   styleBackground: {
-    width: wp('12'),
-    height: hp('10'),
-    backgroundColor: '#292929',
-    opacity: 0.74,
-    borderRadius: 5,
-    position: 'absolute',
+    width: '35%',
+    height: '35%',
+    borderRadius: wp('1'),
     marginTop: hp('17'),
-    marginLeft: wp('3'),
+    marginLeft: wp('2'),
+    marginBottom: hp('1'),
+    backgroundColor: 'rgba(41, 41, 41, 0.74)',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
   },
-  styleBackground1: {
-    width: wp('12'),
-    height: hp('10'),
-    borderRadius: 5,
-    position: 'absolute',
-    marginTop: hp('17'),
-    marginLeft: wp('3'),
-  },
-  styleitem: {
-    position: 'absolute',
+  starStyle: {
     width: wp('5'),
-    height: hp('3'),
-    borderRadius: 1,
-    marginTop: hp('5'),
-    marginLeft: wp('3'),
+    height: wp('5'),
+    marginBottom: hp('2'),
   },
 });
 export default ItemHotel;

@@ -59,6 +59,9 @@ export const searchProvinces = (action$: any) => {
         .catch((err: any) => {
           console.log('Error', err);
           return placesActions.searchProvincesFail(err);
+        })
+        .finally(() => {
+          actionMain.loading(false);
         });
     }),
   );
@@ -81,6 +84,23 @@ export const getLocationByProvince = ($action: any) => {
         })
         .finally(() => {
           actionMain.loading(false);
+        });
+    }),
+  );
+};
+export const getAllProvinces = ($action: any) => {
+  return $action.pipe(
+    ofType(types.GET_ALL_PROVINCES),
+    mergeMap((act: any) => {
+      return $axios.api
+        .get('api/getAllProvince')
+        .then((rs: any) => {
+          const {data} = rs;
+          console.log('getAllProvinces', data);
+          return placesActions.getAllProvincesSuccess(data);
+        })
+        .catch((err: any) => {
+          return placesActions.getAllProvincesFail(err);
         });
     }),
   );

@@ -8,17 +8,17 @@ import {
   Pressable,
   Modal,
 } from 'react-native';
-import ModalChooseLang from './ModalChooseLang';
-import FieldUser from './FieldUser';
+import ModalChooseLang from './modules/ModalChooseLang';
+import FieldUser from './modules/FieldUser';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import CircleImage from '../../../components/CircleImage';
+import CircleImage from '../../components/CircleImage';
 import ModalCustom from 'react-native-modal';
-import ModalHelping from './ModalHelping';
-import ModalAuth from './ModalAuth';
-import {translate} from '../../../util/translate';
+import ModalHelping from './modules/ModalHelping';
+import ModalAuth from './modules/ModalAuth';
+import {translate} from '../../util/translate';
 class UserNotLogin extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -49,6 +49,7 @@ class UserNotLogin extends Component<any, any> {
   };
   hideModalAuth = () => {
     this.setState({showModaAuth: false});
+    console.log('hideModalAuth');
   };
   render() {
     const {style} = this.props;
@@ -56,14 +57,14 @@ class UserNotLogin extends Component<any, any> {
     return (
       <View style={[styles.MainContainer, style]}>
         <Image
-          source={require('../../../assets/images/congtamquan.jpg')}
+          source={require('../../assets/images/congtamquan.jpg')}
           style={styles.headerImage}
           resizeMode={'cover'}
           blurRadius={7}
         />
         <Text style={styles.personal}>{translate('personal')}</Text>
         <CircleImage
-          source={require('../../../assets/images/Bitmap.png')}
+          source={require('../../assets/images/Bitmap.png')}
           style={styles.circleImage}
           size={wp('27')}
           resizeMode={'cover'}

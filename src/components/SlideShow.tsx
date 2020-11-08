@@ -8,6 +8,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import {translate} from '../util/translate';
 class SlideShow extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -25,6 +26,7 @@ class SlideShow extends Component<any, any> {
       data,
       onPressBackSpace,
       isPagination,
+      onPressClose,
     } = this.props;
     return (
       <View>
@@ -44,6 +46,7 @@ class SlideShow extends Component<any, any> {
             data={item}
             dotsLength={data.length}
             activeDotIndex={activeSlide}
+            onPress={onPressClose}
           />
         )}
       </View>

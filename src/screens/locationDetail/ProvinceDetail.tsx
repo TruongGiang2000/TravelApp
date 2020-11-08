@@ -11,12 +11,16 @@ import Rating from '../../components/ItemRating';
 import {translate} from '../../util/translate';
 import SpecialSpot from './modules/SpecialSpot';
 import CommunityPeople from '../../components/CommunityPeople';
+import HotelAroundList from './modules/HotelAroundList';
 class ProvinceDetail extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
       data: this.props.route.params.item,
     };
+  }
+  componentDidMount(){
+    
   }
   onPressBackSpace = () => {
     this.props.navigation.navigate('Location');
@@ -60,6 +64,7 @@ class ProvinceDetail extends Component<any, any> {
             style={styles.marginTop}
             idProvince={data.ID}
           />
+          <HotelAroundList navigation={navigation} style={styles.marginTop} />
         </View>
       </ScrollView>
     );
@@ -85,4 +90,9 @@ const styles = StyleSheet.create({
     marginTop: hp('3'),
   },
 });
+const mapStateFromProps = (state: any) => {
+  return {
+
+  }
+}
 export default withPages(ProvinceDetail);

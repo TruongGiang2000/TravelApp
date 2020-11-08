@@ -9,18 +9,25 @@ import CodePush from 'react-native-code-push';
 import {connect} from 'react-redux';
 import lodash from 'lodash';
 import {dataFetchProvince} from '../../constants/systems/main';
-import {places} from '../../redux';
+import {places, hotels, system} from '../../redux';
 const SplashScreen = (props: any) => {
   const [isActiveItem, setActiveItem] = useState(0);
   const [syncMessage, setSyncMessage] = useState('');
   const [codePushSuccess, setCodePushSuccess] = useState(false);
-  const {offerProvinces, mountainProvinces, famousProvinces} = props;
   const [cacheActive, setCacheActive] = useState(false);
-  let timeOut;
   const {
     getOfferProvinces,
+    offerProvinces,
     getMountainProvinces,
+    mountainProvinces,
     getFamousProvinces,
+    famousProvinces,
+    getAllProvinces,
+    allProvinces,
+    getAllHotel,
+    allHotel,
+    getAllNews,
+    allNews,
   } = props;
   useEffect(() => {
     CodePush.sync(
@@ -34,7 +41,7 @@ const SplashScreen = (props: any) => {
     if (cacheActive) {
       return;
     }
-    timeOut = setTimeout(() => {
+    setTimeout(() => {
       if (isActiveItem === 4) {
         return setActiveItem(0);
       }
@@ -49,19 +56,30 @@ const SplashScreen = (props: any) => {
       !lodash.isEmpty(offerProvinces) &&
       !lodash.isEmpty(mountainProvinces) &&
       !lodash.isEmpty(famousProvinces) &&
+      !lodash.isEmpty(allProvinces) &&
+      !lodash.isEmpty(allHotel) &&
+      !lodash.isEmpty(allNews) &&
       codePushSuccess
     ) {
       setTimeout(() => {
-        console.log('navigate');
         props.navigation.navigate('MainScreen');
         setCacheActive(true);
       }, 2000);
     }
-  }, [offerProvinces, mountainProvinces, famousProvinces, codePushSuccess]);
+  }, [
+    offerProvinces,
+    mountainProvinces,
+    famousProvinces,
+    codePushSuccess,
+    allNews,
+  ]);
   useEffect(() => {
     getOfferProvinces(dataFetchProvince[2]);
     getFamousProvinces(dataFetchProvince[0]);
     getMountainProvinces(dataFetchProvince[1]);
+    getAllProvinces();
+    getAllHotel();
+    getAllNews();
   }, []);
   const codePushStatusDidChange = (syncStatus: any) => {
     switch (syncStatus) {
@@ -94,7 +112,7 @@ const SplashScreen = (props: any) => {
         break;
       case CodePush.SyncStatus.UP_TO_DATE:
       default:
-        setSyncMessage('version ɚ 1.1');
+        setSyncMessage('ɚ 1.1');
         loadingApp();
         break;
     }
@@ -196,6 +214,11 @@ const mapStateFromProps = (state: any) => {
     offerProvinces: state.places.offerProvinces,
     mountainProvinces: state.places.mountainProvinces,
     famousProvinces: state.places.famousProvinces,
+    allProvinces: state.places.allProvinces,
+    allHotel: state.hotel.allHotel,
+    allNews: state.system.allNews,
   };
 };
-export default connect(mapStateFromProps, {...places})(SplashScreen);
+export default connect(mapStateFromProps, {...places, ...hotels, ...system})(
+  SplashScreen,
+);

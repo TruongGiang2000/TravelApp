@@ -1,12 +1,20 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import User from './User';
+import UserNotLogin from './UserNotLogin';
 const UserStack = {
   User: {
     screen: User,
     path: 'User',
     navigationOptions: {
       title: 'User',
+    },
+  },
+  UserNotLogin: {
+    screen: UserNotLogin,
+    path: 'UserNotLogin',
+    navigationOptions: {
+      title: 'UserNotLogin',
     },
   },
 };
