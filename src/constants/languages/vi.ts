@@ -146,4 +146,5 @@ export default {
   travel_news: 'Tin tức du lịch',
   night: 'đêm',
   hotelAround: 'Khách sạn quanh đây',
+  google: 'Tiếp tục với Google',
 };

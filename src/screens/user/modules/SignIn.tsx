@@ -9,54 +9,36 @@ import ButtonCustom from '../../../components/ButtonCustom';
 import ButtonFBCustom from '../../../components/ButtonFBCustom';
 import {translate} from '../../../util/translate';
 import { withPages } from '../../../util/withPages';
-import { AccessToken, GraphRequest,
+import { GraphRequest,
   GraphRequestManager, LoginManager } from "react-native-fbsdk"
-import { ShareDialog } from 'react-native-fbsdk';
-//const [loggedIn, setLoggedIn] = useState(false);
-      //if(loggedIn)
+import FBSDK  from 'react-native-fbsdk';
+  const {
+    AccessToken,
+  } = FBSDK;
+  import {
+  GoogleSignin,
+  statusCodes,
+} from '@react-native-community/google-signin';
+GoogleSignin.configure(); 
 class SignIn extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
       userName: '',
       imageUrl: '',
-      phone: '',
-      email: '',
+      id: '',
       userInfo: {}
     };
 
   }
-
- 
-    getInfoFromToken = token => {
-      const PROFILE_REQUEST_PARAMS = {
-        fields: {
-          string: 'id, name,  first_name, last_name',
-        },
-      };
-      const profileRequest = new GraphRequest(
-        '/me',
-        {token, parameters: PROFILE_REQUEST_PARAMS},
-        (error, result) => {
-          if (error) {
-            console.log('login info has error: ' + error);
-          } else {
-            this.setState({userInfo: result});
-            console.log('result:', result);
-          }
-        },
-      );
-      //new GraphRequestManager().addRequest(profileRequest).start();
-    };
-  logout=()=>{
-    LoginManager.logOut();
-    //setLoggedIn(false);
-    console.log('logOut');
-    
-  }
+     
   SignInFB = () =>{
     //signin
-    LoginManager.logInWithPermissions(["public_profile, name"]).then(
+    //const [loggedIn, setLoggedIn] = useState(false);
+    //const [avatar, setAvatar] = useState(null);
+    //const [name, setName] = useState('');
+    
+    LoginManager.logInWithPermissions(["public_profile"]).then(
       function(result) {
         if (result.isCancelled) {
           console.log("Login cancelled");
@@ -66,14 +48,49 @@ class SignIn extends Component<any, any> {
               result.grantedPermissions.toString()
               
           );
-          this.getInfoFromToken()
+         // this.props.navigation.navigate('User');
+          //this.getInfoFromToken()
           //setLoggedIn(true);
-          // let token = result.credential.accessToken;
-
-          // token.getCurrentAccessToken().then(data =>{
-          //   const { accessToken } = data;
-          //   console.log(data.accessToken.toString())
-          // })
+          //let token = result.credential.accessToken;
+          AccessToken.getCurrentAccessToken().then(data =>{
+            const { accessToken } = data;
+            console.log("data" + data)
+            let graphRequest = new GraphRequest('/me', {
+              accessToken,
+              parameters: {
+                  fields: {
+                      string: 'picture.type(large),name',
+                  }
+              }
+          }, (error, result): void => {
+              const {
+                  picture: {
+                      data
+                  },
+                  name,
+              } = result;
+              console.log(result);
+              this.setState({
+                userName: result.name,
+                id: result.id,
+                imageUrl: result.url
+            })
+              
+              //console.log(userName);
+              
+              if (error) {
+                  console.log('error'+ error);
+              } else {
+                  console.log('result'+result);
+                  //setAvatar(data);
+                  //setName(name);
+              }
+          });
+  
+          const graphRequestManager = new GraphRequestManager();
+          graphRequestManager.addRequest(graphRequest).start();
+      });
+            
         }
       },
       function(error) {
@@ -118,7 +135,48 @@ class SignIn extends Component<any, any> {
 // }
 // ShareDialog.show(tmp.state.sharePhotoContent);
   }
-
+  logout=()=>{
+    LoginManager.logOut();
+    //setLoggedIn(false);
+    console.log('logOut');
+    
+  }
+  //login google
+  signIngg = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+      this.setState({ userInfo });
+    } catch (error) {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        // user cancelled the login flow
+        console.log("error: "+ error);
+        
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        // operation (e.g. sign in) is in progress already
+        console.log("errorcode: " + error);
+        
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        // play services not available or outdated
+        console.log("errorcodes: " + error);
+      } else {
+        // some other error happened
+        console.log("code: " + error);
+      }
+    }
+  };
+  getCurrentUserInfo = async () => {
+    try {
+      const userInfo = await GoogleSignin.signInSilently();
+      this.setState({ userInfo });
+    } catch (error) {
+      if (error.code === statusCodes.SIGN_IN_REQUIRED) {
+        // user has not signed in yet
+      } else {
+        // some other error
+      }
+    }
+  };
   render() {
     
     return (
@@ -162,8 +220,8 @@ class SignIn extends Component<any, any> {
         />
         <ButtonFBCustom
           titleStyle={styles.buttonText}
-          title={translate('facebock')}
-          onPress={this.logout}
+          title={translate('google')}
+          onPress={this.signIngg}
         />
       </View>
     );

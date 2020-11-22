@@ -142,4 +142,5 @@ export default {
   travel_news: 'Travel news',
   night: 'night',
   hotelAround: 'Hotels Around',
+  google: 'Continue with Google',
 };
