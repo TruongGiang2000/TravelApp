@@ -5,15 +5,32 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import {translate} from '../../../util/translate';
+import ItemHotelAround from './ItemHotelAroundHere';
 const HotelAroundList = (props: any) => {
-  const {style} = props;
+  const renderItem = ({item}) => {
+    console.log('item', item);
+    const {language} = props;
+    let isVi = language == 'vi';
+    return (
+      <ItemHotelAround
+        source={{uri: item.Images[0]}}
+        title={isVi ? item.vi.Name : item.en.Name}
+        starCount={4}
+        content={'Cách thành phố Đà Lạt 45km'}
+        price={'1000'}
+        style={{marginRight: wp('3')}}
+      />
+    );
+  };
+  const {style, hotelByProvince} = props;
+  console.log('hotelByProvince', hotelByProvince);
   return (
     <View style={style}>
       <Text style={styles.title}>{translate('hotelAround')}</Text>
       <FlatList
-        data={location}
-        renderItem={this.renderItem}
-        extraData={this.props.language}
+        data={hotelByProvince}
+        renderItem={renderItem}
+        extraData={props.language}
       />
     </View>
   );

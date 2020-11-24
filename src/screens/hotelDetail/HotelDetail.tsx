@@ -34,6 +34,12 @@ class HotelDetail extends Component<any, any> {
   renderItem = ({item}) => {
     return <ItemUtilities title={item.Vi_name} source={{uri: item.Icon}} />;
   };
+  _navigateChooseRoom = () => {
+    this.props.navigation.navigate('ChooseRoom', {
+      idHotel: this.state.data._id,
+      imageHotel: this.state.data.Images[0],
+    });
+  };
   renderItemImage = ({item}) => {
     return (
       <ItemImage
@@ -142,6 +148,7 @@ class HotelDetail extends Component<any, any> {
           <ButtonCustom
             title={translate('choosing_room')}
             titleStyle={styles.titleButtonStyle}
+            onPress={this._navigateChooseRoom}
           />
         </View>
       </View>

@@ -144,4 +144,7 @@ export default {
   night: 'đêm',
   hotelAround: 'Khách sạn quanh đây',
   Review: 'Đánh giá',
+  desc_empty_room: 'Còn {0} phòng trống',
+  desc_empties_room: 'Còn {0} phòng trống',
+  policy_cancel: 'Chính sách huỷ phòng',
 };

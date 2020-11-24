@@ -44,18 +44,41 @@ export const getConvebyId = ($action: any) => {
 };
 export const getHotelByPro = ($action: any) => {
   return $action.pipe(
-    ofType(types.GET_ALL_HOTEL),
+    ofType(types.GET_HOTEL_BY_PROVINCE),
     mergeMap((act: any) => {
       const {payload} = act;
+      console.log('payloadgetHotelByPro', payload);
       return $axios.api
-        .get('api/getHotelByPro', payload)
+        .get('api/getHotelByPro/?provinceID=' + payload)
         .then((rs: any) => {
           const {data} = rs;
           console.log('getHotelByPro-->', data);
-          return hotelAction.getAllHotelSuccess(data);
+          return hotelAction.getHotelByProvinceSuccess(data);
         })
         .catch((err: any) => {
-          return hotelAction.getAllHotelFail(err);
+          return hotelAction.getHotelByProvinceFail(err);
+        });
+    }),
+  );
+};
+export const getTypeRoomByHotel = ($action: any) => {
+  return $action.pipe(
+    ofType(types.GET_TYPE_ROOM_BY_HOL),
+    mergeMap((act: any) => {
+      const {payload} = act;
+      console.log('payloadgetHotelByPro', payload);
+      return $axios.api
+        .get('api/getTypeRoomByHotel/?idHotel=' + payload)
+        .then((rs: any) => {
+          const {data} = rs;
+          console.log('getHotelByPro-->', data);
+          return hotelAction.getTypeRoomByHolSuccess(data);
+        })
+        .catch((err: any) => {
+          return hotelAction.getTypeRoomByHolFail(err);
+        })
+        .finally(() => {
+          actionMain.loading(false);
         });
     }),
   );

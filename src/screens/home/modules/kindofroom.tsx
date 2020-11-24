@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, StyleSheet, Pressable, Image, FlatList} from 'react-native';
+import {Text, View, StyleSheet, Pressable, Image} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -22,9 +22,10 @@ export default class KindOfRoom extends Component<any, any> {
       policy,
       quantum,
       internet,
+      containerStyle,
     } = this.props;
     return (
-      <Pressable style={styles.MainItem}>
+      <Pressable style={[styles.MainItem, containerStyle]}>
         <View style={styles.down}>
           <View style={styles.down1}>
             <View style={[styles.viewRow, {marginRight: wp('2')}]}>
@@ -75,8 +76,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
     marginBottom: hp('5'),
-    marginTop: hp('20'),
-    marginHorizontal : wp('4.7')
+    marginHorizontal: wp('4.7'),
+    height: hp('80'),
   },
   down: {
     position: 'absolute',

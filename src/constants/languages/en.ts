@@ -142,4 +142,7 @@ export default {
   night: 'night',
   hotelAround: 'Hotels Around',
   Review: 'Add a review',
+  desc_empty_room: 'room available',
+  desc_empties_room: 'rooms available',
+  policy_cancel: 'Cancellation policy',
 };

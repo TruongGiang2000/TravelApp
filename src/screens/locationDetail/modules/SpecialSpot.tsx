@@ -6,18 +6,12 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import ItemSpecialSpot from './ItemSpecialSpot';
-import {connect} from 'react-redux';
-import {places} from '../../../redux';
-import {actionMain} from '../../../util/mainActions';
 class SpecialSpot extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {};
   }
-  componentDidMount() {
-    actionMain.loading(true);
-    this.props.getLocationByProvince(this.props.idProvince);
-  }
+  componentDidMount() {}
   itemPress = (item) => () => {
     this.props.navigation.navigate('SpotDetail', {item});
   };
@@ -56,8 +50,4 @@ const styles = StyleSheet.create({
     marginBottom: hp('0.5'),
   },
 });
-const mapStateFromProps = (state: any) => ({
-  location: state.places.location,
-  language: state.system.language,
-});
-export default connect(mapStateFromProps, {...places})(SpecialSpot);
+export default SpecialSpot;

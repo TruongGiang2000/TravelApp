@@ -10,8 +10,7 @@ i18n.translations = {
   vi,
 };
 export type Keys = keyof typeof vi | string;
-export const translate: any = memoize((_key: Keys) => {
-  let key = _key;
+export const translate: any = memoize((key: Keys) => {
   if (!key) {
     return '';
   }

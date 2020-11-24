@@ -45,7 +45,7 @@ class Map extends Component<any, any> {
     });
   };
   render() {
-    const {style, latitude, longitude, addRess, title, onPress} = this.props;
+    const {style, latitude, longitude, addRess, title} = this.props;
     this.latLng = {
       latitude: latitude,
       longitude: longitude,
@@ -75,7 +75,7 @@ class Map extends Component<any, any> {
           zoomEnabled={false}
           scrollEnabled={false}
           onRegionChangeComplete={(region) => {
-            console.log('region', region)
+            console.log('region', region);
           }}
           style={styles.container}>
           <Marker

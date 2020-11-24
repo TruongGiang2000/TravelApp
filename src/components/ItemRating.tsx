@@ -37,7 +37,7 @@ export default class ItemRating extends Component<any, any> {
             <StarRating
               disabled={false}
               maxStars={5}
-              rating={[ showstarCount ,starCount]}
+              rating={starCount}
               fullStarColor={'#F0C909'}
               selectStar={(rating) => this.onStartRating(rating)}
               starSize={wp('5')}
