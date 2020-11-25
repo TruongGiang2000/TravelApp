@@ -337,8 +337,4 @@ const styles = StyleSheet.create({
     marginTop: hp('2'),
   },
 });
-<<<<<<< HEAD
 export default connect(null, auth)(SignIn);
-=======
-export default withPages(SignIn);
->>>>>>> a729f38fd3afb212252ce0803372a642839814fe
