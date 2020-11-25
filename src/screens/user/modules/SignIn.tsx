@@ -8,12 +8,32 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import ButtonCustom from '../../../components/ButtonCustom';
 import ButtonFBCustom from '../../../components/ButtonFBCustom';
 import {translate} from '../../../util/translate';
-class index extends Component<any, any> {
+import {connect} from 'react-redux';
+import {auth} from '../../../redux';
+import {actionMain} from '../../../util/mainActions';
+class SignIn extends Component<any, any> {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      Email: '',
+      Password: '',
+    };
   }
-
+  login = () => {
+    const {Email, Password} = this.state;
+    const data = {
+      Email: Email,
+      Password: Password,
+    };
+    actionMain.loading(true);
+    this.props.signIn(data);
+  };
+  onChangeEmail = (value) => {
+    this.setState({Email: value});
+  };
+  onChangePassword = (value) => {
+    this.setState({Password: value});
+  };
   render() {
     return (
       <View style={styles.MainContainer}>
@@ -26,17 +46,24 @@ class index extends Component<any, any> {
             <TextInput
               style={styles.textInputStyle}
               placeholderTextColor={'#A8B6C8'}
-              placeholder={translate('signin')}
+              placeholder={translate('email')}
+              onChangeText={this.onChangeEmail}
             />
           </View>
           <View style={styles.textInput}>
-            <FontAwesome name={'lock'} size={20} style={styles.icon} />
-            <TextInput placeholder={'Mật khẩu'} secureTextEntry={true} />
+            <FontAwesome name={'lock'} size={wp('4.4')} style={styles.icon} />
+            <TextInput
+              style={[styles.textInputStyle, {marginLeft: 0}]}
+              placeholder={translate('password')}
+              secureTextEntry={true}
+              onChangeText={this.onChangePassword}
+            />
           </View>
           <ButtonCustom
             titleStyle={styles.buttonText}
             title={translate('signin')}
             style={styles.buttonCustom}
+            onPress={this.login}
           />
         </View>
         <Text
@@ -45,9 +72,9 @@ class index extends Component<any, any> {
           {translate('dont_have_an_account')}
         </Text>
         <View style={styles.dash}>
-          <View style={styles.dash1}></View>
+          <View style={styles.dash1} />
           <Text style={styles.orText}>{translate('or')}</Text>
-          <View style={styles.dash1}></View>
+          <View style={styles.dash1} />
         </View>
         <ButtonFBCustom
           titleStyle={styles.buttonText}
@@ -138,4 +165,4 @@ const styles = StyleSheet.create({
     marginTop: hp('2'),
   },
 });
-export default index;
+export default connect(null, auth)(SignIn);

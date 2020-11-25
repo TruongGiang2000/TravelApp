@@ -23,7 +23,7 @@ class InputComponent extends Component<any, any> {
     const {regex} = this.props;
     const valid = regex.test(value);
     this.setState({valid: !valid});
-    // this.props.onChangeText(value);
+    this.props.onChangeText(value);
   };
   render() {
     const {onFocus, valid} = this.state;

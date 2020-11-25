@@ -59,7 +59,7 @@ class ChooseRoom extends Component<any, any> {
           />
           <View style={styles.title}>
             <Text style={styles.NumberTyperoom}>
-              {translate('numbertyperoom').format(typeRoom.length)}
+              {translate('numbertyperoom').format(typeRoom?.length)}
             </Text>
           </View>
         </View>
