@@ -9,6 +9,7 @@ import ItemUser from './ItemUser';
 import ItemRow from './ItemRow';
 import ButtonCutom from '../../../components/ButtonCustom';
 import {translate} from '../../../util/translate';
+import { withPages } from '../../../util/withPages';
 class ManageAccountModal extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -34,6 +35,9 @@ class ManageAccountModal extends Component<any, any> {
       />
     );
   };
+  onLogout = ()=> {
+    this.props.navigation.navigate('SignIn');
+  };
   render() {
     const {onPressLogout, userInfo} = this.props;
     return (
@@ -56,6 +60,9 @@ class ManageAccountModal extends Component<any, any> {
         <View style={styles.viewContent}>
           <FlatList data={this.state.data} renderItem={this.renderItem} />
         </View>
+        <ButtonCutom style={styles.button} title={translate('logout')} 
+        onPress={this.onLogout}/>
+
         <ButtonCutom
           style={styles.button}
           title={translate('logout')}
@@ -98,4 +105,4 @@ const styles = StyleSheet.create({
     marginTop: hp('3.3'),
   },
 });
-export default ManageAccountModal;
+export default withPages(ManageAccountModal);

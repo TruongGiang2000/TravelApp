@@ -132,9 +132,12 @@ export default {
   highLands: 'Tây nguyên',
   seeAddress: 'Xem địa điểm',
   numbertyperoom: 'Tại đây có {0} loại phòng',
-  question: 'Bạn không tìm thấy một số thông tin ?',
-  yes: 'Có',
-  no: 'Không',
+  Review: 'Đánh giá',
+  question : 'Bạn không tìm thấy một số thông tin ?',
+  yes : 'Có',
+  no : 'Không',
+
+ 
   descriptionHome:
     'Khám phá nền văn hoá độc đáo của dân tộc miền núi đông bắc Việt Nam',
   hotel_best_price: 'Khách sạn giá tốt',
@@ -143,7 +146,7 @@ export default {
   travel_news: 'Tin tức du lịch',
   night: 'đêm',
   hotelAround: 'Khách sạn quanh đây',
-  Review: 'Đánh giá',
+  google: 'Tiếp tục với Google',
   desc_empty_room: 'Còn {0} phòng trống',
   desc_empties_room: 'Còn {0} phòng trống',
   policy_cancel: 'Chính sách huỷ phòng',

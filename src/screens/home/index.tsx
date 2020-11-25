@@ -1,10 +1,20 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import Home from './Home';
+import HotelDetail from '../hotelDetail/HotelDetail';
+import ProvinceDetail from '../locationDetail/ProvinceDetail';
 const HomeStack = {
   Home: {
     screen: Home,
     path: 'Home',
+  },
+  HotelDetail: {
+    screen: HotelDetail,
+    path: 'HotelDetail',
+  },
+  ProvinceDetail: {
+    screen: ProvinceDetail,
+    path: 'ProvinceDetail',
   },
 };
 

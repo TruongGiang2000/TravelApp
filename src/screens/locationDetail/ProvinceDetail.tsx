@@ -30,7 +30,7 @@ class ProvinceDetail extends Component<any, any> {
     getHotelByProvince(data.ID);
   }
   onPressBackSpace = () => {
-    this.props.navigation.navigate('Location');
+    this.props.navigation.goBack()
   };
   render() {
     const {data} = this.state;
