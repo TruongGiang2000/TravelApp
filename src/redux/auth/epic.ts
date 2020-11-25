@@ -36,7 +36,6 @@ export const getProfile = ($action: any) => {
           return authAction.getProfileSuccess(data);
         })
         .catch((err: any) => {
-          console.log('err', err?.response);
           return authAction.getProfileFail(err);
         })
         .finally(() => {
@@ -75,11 +74,9 @@ export const updateProfile = ($action: any) => {
       return $axios.api
         .post('api/updateProfile', act?.payload)
         .then((rs: any) => {
-          const {data} = rs;
           const {auth}: any = store.getState();
           const {token} = auth;
-          console.log('token', token);
-          return authAction.getProfile(token);
+          return authAction.getProfile({token: token});
         })
         .catch((err: any) => {
           actionMain.loading(false);

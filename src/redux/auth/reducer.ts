@@ -1,3 +1,4 @@
+import {stat} from 'fs/promises';
 import {types} from './actions';
 const initState = {
   token: '',
@@ -27,6 +28,17 @@ export const authReducer: any = (state = initState, actions: any) => {
       return {...state, token: payload.idUser};
     case types.SIGN_IN_FAIL:
       return {...state, token: '', message: payload};
+    case types.GET_PROFILE_SUCCESS:
+      return {
+        ...state,
+        message: 'GetProfileSuccess',
+      };
+    case types.GET_PROFILE_FAIL:
+      return {
+        ...state,
+        message: 'GetProfileFail',
+      };
+
     default:
       return state;
   }

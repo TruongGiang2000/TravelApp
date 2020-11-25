@@ -8,7 +8,6 @@ import {withPages} from '../../util/withPages';
 import {connect} from 'react-redux';
 import {translate} from '../../util/translate';
 import {auth} from '../../redux';
-import {userInfo} from 'os';
 const User = (props) => {
   const {token, message, navigation, userInfo} = props;
   React.useEffect(() => {

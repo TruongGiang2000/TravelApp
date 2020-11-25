@@ -152,4 +152,5 @@ export default {
   update_info: 'Cập nhật thông tin cá nhân',
   full_name: 'Họ và tên',
   update: 'Cập nhật',
+  free_internet: 'Miễn Phí Internet',
 };

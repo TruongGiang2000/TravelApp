@@ -166,6 +166,7 @@ class UserInformation extends Component<any, any> {
             onPressLogout={onPressLogout}
             navigation={this.props.navigation}
             forceClose={this.hideManageAccountModal}
+            userInfo={userInfo}
           />
         </Modal>
       </View>

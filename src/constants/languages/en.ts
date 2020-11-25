@@ -150,4 +150,5 @@ export default {
   update_info: 'Update Personal Information',
   full_name: 'Full name',
   update: 'Update',
+  free_internet: 'Free internet',
 };

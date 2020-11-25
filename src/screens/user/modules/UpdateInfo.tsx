@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {View, StyleSheet, Text, Pressable} from 'react-native';
 import {
   widthPercentageToDP as wp,
@@ -20,25 +20,23 @@ const UpdateInfo = (props: any) => {
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
   const [phone, setPhone] = useState('');
+  const {userInfo, token} = props;
+  const [userValue, setUserValue] = useState({...userInfo});
   const onPressBackSpace = () => {
     props.navigation.goBack();
   };
   const onChangeName = (value) => {
-    setName(value);
+    setUserValue({...userValue, Name: value});
   };
   const onChangeAddress = (value) => {
-    setAddress(value);
+    setUserValue({...userValue, Address: value});
   };
   const onChangePhone = (value) => {
-    setPhone(value);
+    setUserValue({...userValue, Phone: value});
   };
   const onPress = () => {
-    const data = {
-      Name: name,
-      Address: address,
-      Phone: phone,
-      token: props.token,
-    };
+    console.log('userValue', userValue);
+    const data = {...userValue, token: token};
     actionMain.loading(true);
     props.updateProfile(data);
   };
@@ -61,12 +59,14 @@ const UpdateInfo = (props: any) => {
         regex={validName}
         txtError={translate('valid_firstName')}
         onChangeText={onChangeName}
+        defaultValue={userValue?.Name}
       />
       <InputComponent
         style={styles.inputComponent}
         label={translate('address')}
         regex={validNotEmpty}
         onChangeText={onChangeAddress}
+        defaultValue={userValue?.Address}
       />
       <InputComponent
         style={styles.inputComponent}
@@ -74,6 +74,7 @@ const UpdateInfo = (props: any) => {
         regex={validPhone}
         txtError={translate('valid_phone')}
         onChangeText={onChangePhone}
+        defaultValue={userValue?.Phone + ''}
       />
       <ButtonCustom
         style={styles.btnStyle}
@@ -110,6 +111,8 @@ const styles = StyleSheet.create({
 const mapStateFromProps = (state: any) => {
   return {
     token: state.auth.token,
+    userInfo: state.auth.userInfo,
+    message: state.auth.message,
   };
 };
 export default connect(mapStateFromProps, auth)(UpdateInfo);
