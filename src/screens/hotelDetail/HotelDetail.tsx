@@ -175,9 +175,16 @@ class HotelDetail extends Component<any, any> {
             onPress={this._navigateChooseRoom}
           />
         </View>
-        <ModalCustom isVisible={isShow} onBackdropPress={this.onClose} >
+        <ModalCustom isVisible={isShow} onBackdropPress={this.onClose}>
+        <Pressable onPress={this.onClose}>
+          <AntDesign
+            name={'close'}
+            size={wp('8')}
+            color={'#ffffff'}
+            style={{marginLeft: wp('70')}}
+          />
+        </Pressable>
         <FlatList
-              style={styles.flatListItemImage}
               data={data.Images}
               renderItem={this.renderModalImage}
               horizontal={true}
@@ -324,9 +331,10 @@ const styles = StyleSheet.create({
     fontSize: wp('4.2'),
   },
   modalItemImage:{
-    //width: wp('18'),
-    //height: hp('11.5'),
+    width: wp('90'),
+    height: hp('60'),
     marginRight: wp('3.2'),
+    borderRadius: wp('5')
   }
 });
 const mapStateFromProps = (state: any) => {
