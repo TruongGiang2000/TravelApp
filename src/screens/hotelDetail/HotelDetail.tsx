@@ -67,6 +67,8 @@ class HotelDetail extends Component<any, any> {
   };
   showModalImage = () => {
     this.setState({isShow: true});
+    console.log("push code");
+    
   };
   onClose = () => {
     this.setState({isShow: false});
