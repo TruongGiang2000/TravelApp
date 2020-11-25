@@ -8,6 +8,10 @@ import {translate} from '../../../util/translate';
 import ItemDestination from './ItemDestination';
 const SpecialSpot = (props: any) => {
   const {style, data, language} = props;
+  const onPress = (item) => {
+    props.navigation.navigate('LocationDetail', {item});
+    
+  };
   const renderItem = ({item}) => {
     let isVi = language == 'vi';
     return (
@@ -18,6 +22,7 @@ const SpecialSpot = (props: any) => {
         title={isVi ? item.vi.Title : item.en.Title}
         place={item.Province_Name}
         starCount={3.5}
+        onPress={() => onPress(item)}
       />
     );
   };

@@ -69,7 +69,6 @@ class Location extends Component<any, any> {
       activeTypesArea,
       isShowModalFilter,
     } = this.state;
-    const {navigation} = this.props;
     return (
       <ScrollView style={styles.MainContainer}>
         <View style={styles.header}>

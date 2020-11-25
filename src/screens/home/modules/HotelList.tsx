@@ -9,6 +9,10 @@ import ItemHotel from './ItemHotel';
 const HotelList = (props: any) => {
   const {style, data} = props;
   const {language} = props;
+  const onPress = (item) => {
+      props.navigation.navigate('HotelDetail', {item});
+      
+    };
   const renderItem = ({item}) => {
     const isVi = language == 'vi';
     return (
@@ -17,6 +21,7 @@ const HotelList = (props: any) => {
         source={{uri: item.Images[1]}}
         titleHotel={isVi ? item.vi.Name : item.en.Name}
         titlePlace={isVi ? item.Province_Name : item.Province_Name}
+        onPress={() => onPress(item)}
       />
     );
   };
@@ -29,6 +34,7 @@ const HotelList = (props: any) => {
         horizontal={true}
         extraData={language}
         showsHorizontalScrollIndicator={false}
+        
       />
     </View>
   );

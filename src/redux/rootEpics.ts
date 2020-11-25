@@ -5,7 +5,12 @@ import {
   getLocationByProvince,
   getAllProvinces,
 } from './places/epic';
-import {getAllHotel, getConvebyId} from './hotel/epic';
+import {
+  getAllHotel,
+  getConvebyId,
+  getHotelByPro,
+  getTypeRoomByHotel,
+} from './hotel/epic';
 import {getAllNews} from './system/epic';
 const rootEpics = combineEpics(
   getProvinces,
@@ -15,5 +20,7 @@ const rootEpics = combineEpics(
   getAllHotel,
   getAllNews,
   getConvebyId,
+  getHotelByPro,
+  getTypeRoomByHotel,
 );
 export default rootEpics;

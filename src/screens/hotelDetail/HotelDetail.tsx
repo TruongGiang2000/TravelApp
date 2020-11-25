@@ -23,16 +23,36 @@ import {withPages} from '../../util/withPages';
 import {connect} from 'react-redux';
 import {hotels} from '../../redux';
 import {actionMain} from '../../util/mainActions';
+
+import ModalCustom from 'react-native-modal';
+import ModalImage from './ModalImage';
+
 class HotelDetail extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
       data: props.route.params.item,
       lineOfContent: 5,
+      isShow: false,
+
     };
   }
   renderItem = ({item}) => {
     return <ItemUtilities title={item.Vi_name} source={{uri: item.Icon}} />;
+  };
+  _navigateChooseRoom = () => {
+    this.props.navigation.navigate('ChooseRoom', {
+      idHotel: this.state.data._id,
+      imageHotel: this.state.data.Images[0],
+    });
+  };
+  renderModalImage = ({item}) => {
+    return(
+    <ModalImage
+    style={styles.modalItemImage}
+    source={{uri: item.toString()}}
+    />
+    );
   };
   renderItemImage = ({item}) => {
     return (
@@ -40,8 +60,16 @@ class HotelDetail extends Component<any, any> {
         style={styles.itemImage}
         source={{uri: item.toString()}}
         isShow={true}
+        onPress = {this.showModalImage}
       />
+      
     );
+  };
+  showModalImage = () => {
+    this.setState({isShow: true});
+  };
+  onClose = () => {
+    this.setState({isShow: false});
   };
   onPressDetail = () => {
     if (this.state.lineOfContent == 50) {
@@ -55,11 +83,11 @@ class HotelDetail extends Component<any, any> {
     this.props.getCoveById({idConve: data.ID_Convenient});
   }
   onPressClose = () => {
-    this.props.navigation.navigate('Hotel');
+    this.props.navigation.goBack()
   };
   render() {
     const {language, conveById} = this.props;
-    const {data, lineOfContent} = this.state;
+    const {data, lineOfContent, isShow} = this.state;
     let isVi = language == 'vi';
     let isMaxNumberOfLine = lineOfContent == 50;
     return (
@@ -142,8 +170,18 @@ class HotelDetail extends Component<any, any> {
           <ButtonCustom
             title={translate('choosing_room')}
             titleStyle={styles.titleButtonStyle}
+            onPress={this._navigateChooseRoom}
           />
         </View>
+        <ModalCustom isVisible={isShow} onBackdropPress={this.onClose} >
+        <FlatList
+              style={styles.flatListItemImage}
+              data={data.Images}
+              renderItem={this.renderModalImage}
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+            />
+        </ModalCustom>
       </View>
     );
   }
@@ -283,6 +321,11 @@ const styles = StyleSheet.create({
     fontFamily: 'roboto-slab-bold',
     fontSize: wp('4.2'),
   },
+  modalItemImage:{
+    //width: wp('18'),
+    //height: hp('11.5'),
+    marginRight: wp('3.2'),
+  }
 });
 const mapStateFromProps = (state: any) => {
   return {

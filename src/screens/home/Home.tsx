@@ -15,21 +15,25 @@ class Home extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {};
+    
   }
   componentDidMount() {
     this.props.getLocationByProvince(38);
   }
+  
   render() {
     const {allProvinces, allHotel, location, allNews, language} = this.props;
     return (
       <ScrollView style={styles.MainContainer}>
-        <SlideShow isHome={true} data={allProvinces} />
+        <SlideShow isHome={true} data={allProvinces} navigation = {this.props.navigation}/>
         <View style={styles.viewBelow}>
-          <HotelList style={styles.spaceTop} data={allHotel} />
+          <HotelList style={styles.spaceTop} data={allHotel} 
+          navigation = {this.props.navigation}/>
           <SpecialSpot
             data={location}
             style={styles.spaceTop}
             language={language}
+            navigation = {this.props.navigation}
           />
           <NewsList
             data={allNews}

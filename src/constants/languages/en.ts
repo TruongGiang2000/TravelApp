@@ -143,4 +143,7 @@ export default {
   night: 'night',
   hotelAround: 'Hotels Around',
   google: 'Continue with Google',
+  desc_empty_room: 'room available',
+  desc_empties_room: 'rooms available',
+  policy_cancel: 'Cancellation policy',
 };

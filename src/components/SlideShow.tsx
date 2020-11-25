@@ -18,6 +18,9 @@ class SlideShow extends Component<any, any> {
   }
   renderItem = ({item}) => {
     const {activeSlide} = this.state;
+    const onPress = (item) =>{
+      this.props.navigation.navigate('LocationDetail', {item});
+    }
     const {
       isHome,
       isLocation,
@@ -30,7 +33,9 @@ class SlideShow extends Component<any, any> {
     } = this.props;
     return (
       <View>
-        {isHome && <HomeSlideShow data={item} />}
+        {isHome && <HomeSlideShow data={item}
+          onPress = {()=> onPress(item)}
+        />}
         {isLocation && (
           <LocationSlideShow
             data={item}

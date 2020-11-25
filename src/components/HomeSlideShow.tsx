@@ -15,9 +15,10 @@ class HomeSlideShow extends Component<any, any> {
     super(props);
     this.state = {};
   }
-
+   
   render() {
-    const {style, data, language} = this.props;
+    const {style, data, language, onPress} = this.props;
+    
     let isVi = language === 'vi';
     return (
       <ImageBackground
@@ -52,6 +53,7 @@ class HomeSlideShow extends Component<any, any> {
           <ButtonCustom
             style={styles.buttonStyle}
             title={translate('discover')}
+            onPress = {onPress}
           />
         </View>
       </ImageBackground>

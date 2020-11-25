@@ -9,9 +9,12 @@ import {withPages} from '../../util/withPages';
 import ProvinceImageList from './modules/ProvinceImageList';
 import Rating from '../../components/ItemRating';
 import {translate} from '../../util/translate';
+import {actionMain} from '../../util/mainActions';
 import SpecialSpot from './modules/SpecialSpot';
 import CommunityPeople from '../../components/CommunityPeople';
 import HotelAroundList from './modules/HotelAroundList';
+import {places, hotels} from '../../redux';
+import {connect} from 'react-redux';
 class ProvinceDetail extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -19,15 +22,19 @@ class ProvinceDetail extends Component<any, any> {
       data: this.props.route.params.item,
     };
   }
-  componentDidMount(){
-    
+  componentDidMount() {
+    const {data} = this.state;
+    const {getHotelByProvince, getLocationByProvince} = this.props;
+    actionMain.loading(true);
+    getLocationByProvince(data.ID);
+    getHotelByProvince(data.ID);
   }
   onPressBackSpace = () => {
-    this.props.navigation.navigate('Location');
+    this.props.navigation.goBack()
   };
   render() {
     const {data} = this.state;
-    const {language, navigation} = this.props;
+    const {language, navigation, location, hotelByProvince} = this.props;
     let isVi = language === 'vi';
     return (
       <ScrollView style={styles.MainContainer}>
@@ -62,9 +69,15 @@ class ProvinceDetail extends Component<any, any> {
           <SpecialSpot
             navigation={navigation}
             style={styles.marginTop}
-            idProvince={data.ID}
+            location={location}
+            language={language}
           />
-          <HotelAroundList navigation={navigation} style={styles.marginTop} />
+          <HotelAroundList
+            navigation={navigation}
+            style={styles.marginTop}
+            language={language}
+            hotelByProvince={hotelByProvince}
+          />
         </View>
       </ScrollView>
     );
@@ -92,7 +105,10 @@ const styles = StyleSheet.create({
 });
 const mapStateFromProps = (state: any) => {
   return {
-
-  }
-}
-export default withPages(ProvinceDetail);
+    location: state.places.location,
+    hotelByProvince: state.hotel.hotelByProvince,
+  };
+};
+export default connect(mapStateFromProps, {...places, ...hotels})(
+  withPages(ProvinceDetail),
+);

@@ -8,7 +8,7 @@ import UserNotLogin from './src/screens/user/User';
 import SignIn from './src/screens/user/modules/SignIn';
 const app = () => (
   <Provider store={configureStore}>
-    <SignIn />
+    <App />
   </Provider>
 );
 AppRegistry.registerComponent(appName, () => app);
