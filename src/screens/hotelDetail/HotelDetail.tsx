@@ -34,7 +34,6 @@ class HotelDetail extends Component<any, any> {
       data: props.route.params.item,
       lineOfContent: 5,
       isShow: false,
-
     };
   }
   renderItem = ({item}) => {
@@ -47,11 +46,12 @@ class HotelDetail extends Component<any, any> {
     });
   };
   renderModalImage = ({item}) => {
-    return(
-    <ModalImage
-    style={styles.modalItemImage}
-    source={{uri: item.toString()}}
-    />
+    return (
+      <ModalImage
+        style={styles.modalItemImage}
+        source={{uri: item.toString()}}
+        onPressItem={this.onClose}
+      />
     );
   };
   renderItemImage = ({item}) => {
@@ -60,15 +60,12 @@ class HotelDetail extends Component<any, any> {
         style={styles.itemImage}
         source={{uri: item.toString()}}
         isShow={true}
-        onPress = {this.showModalImage}
+        onPress={this.showModalImage}
       />
-      
     );
   };
   showModalImage = () => {
     this.setState({isShow: true});
-    console.log("push code");
-    
   };
   onClose = () => {
     this.setState({isShow: false});
@@ -85,7 +82,7 @@ class HotelDetail extends Component<any, any> {
     this.props.getCoveById({idConve: data.ID_Convenient});
   }
   onPressClose = () => {
-    this.props.navigation.goBack()
+    this.props.navigation.goBack();
   };
   render() {
     const {language, conveById} = this.props;
@@ -175,14 +172,14 @@ class HotelDetail extends Component<any, any> {
             onPress={this._navigateChooseRoom}
           />
         </View>
-        <ModalCustom isVisible={isShow} onBackdropPress={this.onClose} >
-        <FlatList
-              style={styles.flatListItemImage}
-              data={data.Images}
-              renderItem={this.renderModalImage}
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}
-            />
+        <ModalCustom isVisible={isShow} onBackdropPress={this.onClose}>
+          <FlatList
+            style={styles.flatListItemImage}
+            data={data.Images}
+            renderItem={this.renderModalImage}
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+          />
         </ModalCustom>
       </View>
     );
@@ -323,11 +320,11 @@ const styles = StyleSheet.create({
     fontFamily: 'roboto-slab-bold',
     fontSize: wp('4.2'),
   },
-  modalItemImage:{
+  modalItemImage: {
     //width: wp('18'),
     //height: hp('11.5'),
     marginRight: wp('3.2'),
-  }
+  },
 });
 const mapStateFromProps = (state: any) => {
   return {

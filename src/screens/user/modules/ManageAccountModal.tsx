@@ -60,8 +60,8 @@ class ManageAccountModal extends Component<any, any> {
         <View style={styles.viewContent}>
           <FlatList data={this.state.data} renderItem={this.renderItem} />
         </View>
-        <ButtonCutom style={styles.button} title={translate('logout')} 
-        onPress={this.onLogout}/>
+        {/* <ButtonCutom style={styles.button} title={translate('logout')} 
+        onPress={this.onLogout}/> */}
 
         <ButtonCutom
           style={styles.button}
