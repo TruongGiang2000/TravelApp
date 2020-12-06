@@ -23,7 +23,7 @@ import {withPages} from '../../util/withPages';
 import {connect} from 'react-redux';
 import {hotels} from '../../redux';
 import {actionMain} from '../../util/mainActions';
-
+import DatePicker from 'react-native-calendar-datepicker';
 import ModalCustom from 'react-native-modal';
 import ModalImage from './ModalImage';
 
@@ -34,6 +34,7 @@ class HotelDetail extends Component<any, any> {
       data: props.route.params.item,
       lineOfContent: 5,
       isShow: false,
+      date: '',
     };
   }
   renderItem = ({item}) => {
@@ -83,6 +84,9 @@ class HotelDetail extends Component<any, any> {
   }
   onPressClose = () => {
     this.props.navigation.goBack();
+  };
+  selectDate = (date: Date) => {
+    this.setState({date: date});
   };
   render() {
     const {language, conveById} = this.props;
