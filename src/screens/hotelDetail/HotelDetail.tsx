@@ -174,7 +174,7 @@ class HotelDetail extends Component<any, any> {
             onPress={this._navigateChooseRoom}
           />
         </View>
-        <ModalCustom isVisible={isShowModal} onBackdropPress={this.onClose} style={{backgroundColor: '#000'}}>
+        <ModalCustom isVisible={isShowModal} onBackdropPress={this.onClose} >
         {/* <Pressable onPress={this.onClose}>
           <AntDesign
             name={'close'}
