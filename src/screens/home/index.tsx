@@ -5,16 +5,17 @@ const HomeStack = {
   Home: {
     screen: Home,
     path: 'Home',
-    navigationOptions: {
-      title: 'Home',
-    },
   },
 };
 
 const Stack = createStackNavigator();
 const HomeRouter = () => {
   return (
-    <Stack.Navigator initialRouteName="Home">
+    <Stack.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        headerShown: false,
+      }}>
       {Object.keys(HomeStack).map((key) => {
         return (
           <Stack.Screen

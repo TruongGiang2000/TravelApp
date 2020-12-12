@@ -1,18 +1,15 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
-import Itemdestination from './src/home/module/itemdestination';
-import Itemhotel1 from './src/home/module/itemhotel1';
-import Itemassess from './src/home/module/itemassess';
-import Kindofroom from './src/home/module/kindofroom';
-import {Provider} from 'react-redux';
-import configureStore from './src/redux/store';
-
+import {View} from 'react-native';
+// import Itemdestination from './src/home/module/itemdestination';
+// import Itemhotel1 from './src/home/module/itemhotel1';
+// import Kindofroom from './src/home/module/kindofroom';
+ import Hotel from './src/screens/home/modules/hotelinfo';
+import ChooseRoom from './src/screens/hotel/modules/ChooseRoom';
 class index extends Component<any, any> {
   render() {
     return (
-      <Provider store={configureStore}>
-        <View style={{flex: 1}}>
-          {/* <Itemdestination
+      <View style={{flex: 1}}>
+        {/* <Itemdestination
           title={'Nhà Hát Nón Lá'}
           source={require('./src/assets/images/images.jpg')}
           number={'18'}
@@ -20,7 +17,7 @@ class index extends Component<any, any> {
           place={'địa điểm ưa thích nhất'}
           starCount={4.5}
         /> */}
-          {/* <Itemhotel1
+        {/* <Itemhotel1
           source={require('./src/assets/images/hotel.jpg')}
           title={'Cen Hotel'}
           price={'đ379.00'}
@@ -28,8 +25,8 @@ class index extends Component<any, any> {
           votes={'230 đánh giá'}
           starCount={'4'}
         /> */}
-          {/* <Itemassess review={'review'} starCount={4.5} title={'rate'} /> */}
-          <Kindofroom
+        {/* <Itemassess review={'review'} starCount={4.5} title={'rate'} /> */}
+        {/* <Kindofroom
             source={require('./src/assets/images/room.png')}
             size={'27m2'}
             bed={'1 giường đôi'}
@@ -39,9 +36,25 @@ class index extends Component<any, any> {
             quantum={'Còn 4 phòng trống'}
             internet={'Miễn Phí Internet'}
             iconinternet={require('./src/assets/images/shape.png')}
-          />
-        </View>
-      </Provider>
+          /> */}
+        <Hotel
+          title={'BB Villa Vung Tau'}
+          price={'đ4.495.000/đêm'}
+          content={
+            'Tọa lạc ở thành phố Vũng Tàu, cách Bãi Sau chưa đầy 1 km và Bãi Trước 13 phút đi bộ, O Dau Day Boutique Hotel cung cấp chỗ nghỉ với khu vườn, WiFi miễn phí cũng như chỗ đỗ xe riêng miễn phí cho khách lái xe. Khách sạn này có các phòng gia đình và sân hiên. Chỗ nghỉ cũng cung cấp dịch vụ lễ tân 24 giờ và dịch vụ phòng cho khách.'
+          }
+        />
+        {/* {/* <ItemUtilities
+        />
+        {/* <ItemUtilities
+          image={require('./src/assets/images/parking-ticket.png')}
+          title={'Giữ xe'}
+        /> */}
+        {/* <ChooseRoom
+          image={require('./src/assets/images/chooseroom.jpg')}
+          title={'Standard'}
+        /> */}
+      </View>
     );
   }
 }

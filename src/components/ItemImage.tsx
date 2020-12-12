@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
-import PropTypes from 'prop-types';
-import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import {StyleSheet, Text, Pressable, Image} from 'react-native';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
 import Gradient from './GradientOpacity';
 
 class ItemImage extends Component<any, any> {
@@ -9,62 +11,63 @@ class ItemImage extends Component<any, any> {
     super(props);
     this.state = {
       isShow: this.props.isShow,
-      
+    };
   }
-}
   render() {
-    const {style, styleImage, source, styletitle, title}= this.props;
-     return (
-          <TouchableOpacity style={[styles.MainContainer, style]}>
-            
-             {( this.state.isShow && <Image 
-                style={[styles.styleImageAfter, styleImage]}
-                source={source}
-              />)}
-              
-              <Image 
-                style={[styles.styleImage, styleImage]}
-                source={source}
-              />
-               <Gradient 
-               styleGradient = {styles.stylegradient}
-              />
-              <Text style={[styles.text, styletitle] }>
-                    {title}
-              </Text>
-          </TouchableOpacity>
-     )
+    const {style, styleImage, source, styletitle, title, onPress} = this.props;
+    return (
+      <Pressable style={[styles.MainContainer, style]} onPress={onPress}>
+        {this.state.isShow && (
+          <Image
+            style={[styles.styleImageAfter, styleImage]}
+            source={source}
+            resizeMode={'cover'}
+          />
+        )}
+
+        <Image
+          style={[styles.styleImage, styleImage]}
+          source={source}
+          resizeMode={'cover'}
+        />
+        <Gradient styleGradient={styles.stylegradient} />
+        <Text style={[styles.text, styletitle]}>{title}</Text>
+      </Pressable>
+    );
   }
 }
 const styles = StyleSheet.create({
   MainContainer: {
-    width: wp('35'),
-    height: hp('32'),
+    width: wp('36'),
+    height: hp('26'),
   },
-  styleImage:{
-    borderRadius: 10,
+  styleImage: {
+    borderRadius: 6,
     width: '100%',
-    height: hp('30'),
+    height: '93%',
   },
-  stylegradient:{
-    borderRadius: 10,
+  stylegradient: {
+    borderRadius: 6,
     width: '100%',
-    height: hp('30'),
+    height: '93%',
   },
-  text:{
+  text: {
     color: '#FFFFFF',
-    fontSize: wp('4'),
+    fontSize: wp('3.3'),
     marginHorizontal: wp('3'),
-    marginVertical: hp('25'),
-    position:'absolute',
-    fontFamily: 'RobotoSlab-Regular',
-  },
-  styleImageAfter:{
+    height: '100%',
+    textAlignVertical: 'bottom',
+    paddingBottom: hp('3.5'),
     position: 'absolute',
-    borderRadius: 8,
-    width: wp('30'),
-    height: hp('30'),
-    margin: wp('2')
+    fontFamily: 'roboto-slab-bold',
+  },
+  styleImageAfter: {
+    position: 'absolute',
+    borderRadius: 6,
+    width: '85%',
+    height: '92%',
+    margin: wp('2'),
+    alignSelf: 'center',
   },
 });
 export default ItemImage;

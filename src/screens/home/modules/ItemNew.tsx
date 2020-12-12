@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
+import {View, StyleSheet, Text, Pressable, Image} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
+import shadow from '../../../util/shadow';
 class ItemNew extends Component<any, any> {
   render() {
     const {
@@ -12,37 +13,49 @@ class ItemNew extends Component<any, any> {
       styleTitle,
       styleContent,
       title,
-      titleContent,
+      content,
       source,
       onPress,
     } = this.props;
     return (
-      <TouchableOpacity onPress={onPress} style={[styles.MainContainer, style]}>
+      <Pressable onPress={onPress} style={[styles.MainContainer, style]}>
         <Image style={[styles.styleImage, styleImage]} source={source} />
         <View style={styles.styleview}>
-          <Text style={[styles.textTitle, styleTitle]}> {title} </Text>
-          <Text style={[styles.textContent, styleContent]}>
-            {titleContent}
+          <Text style={[styles.textTitle, styleTitle]} numberOfLines={1}>
+            {title}
+          </Text>
+          <Text style={[styles.textContent, styleContent]} numberOfLines={3}>
+            {content}
           </Text>
         </View>
-      </TouchableOpacity>
+      </Pressable>
     );
   }
 }
 const styles = StyleSheet.create({
-  MainContainer: {borderRadius: 8, width: wp('90'), height: hp('15')},
-  styleImage: {borderRadius: 3, width: wp('25'), height: hp('15')},
+  MainContainer: {
+    flexDirection: 'row',
+    height: hp('10'),
+  },
+  styleImage: {
+    width: '30%',
+    height: '100%',
+    borderRadius: wp('1'),
+  },
   textTitle: {
     color: '#00162b',
-    fontSize: wp('4'),
-    fontFamily: 'RobotoSlab-Regular',
-    height: hp('6'),
+    fontSize: wp('3.7'),
+    fontFamily: 'roboto-slab-bold',
   },
   textContent: {
     color: '#353b50',
-    fontSize: wp('3'),
-    fontFamily: 'RobotoSlab-Regular',
+    fontSize: wp('3.4'),
+    fontFamily: 'roboto-slab.regular',
   },
-  styleview: {position: 'absolute', marginLeft: wp('30'), marginTop: wp('1')},
+  styleview: {
+    marginLeft: wp('2'),
+    flex: 1,
+    justifyContent: 'flex-start',
+  },
 });
 export default ItemNew;

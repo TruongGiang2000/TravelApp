@@ -122,18 +122,17 @@ def enableHermes = project.ext.react.get("enableHermes", false);
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
     defaultConfig {
         applicationId "com.travelapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
     }
     splits {
         abi {
@@ -150,17 +149,31 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            storeFile file('stravel_key.keystore')
+            storePassword 'stravelapp'
+            keyAlias 'stravel_key_alias'
+            keyPassword 'stravelapp'
     }
+}   
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
+            resValue "string", "CodePushDeploymentKey", '"RiQayzLABgdEK0gtcNmlFxSj2fFVcmsMrEQ8b"'
+        }
+        releaseStaging {
+            resValue "string", "CodePushDeploymentKey", '"RiQayzLABgdEK0gtcNmlFxSj2fFVcmsMrEQ8b"'
+            // Note: It is a good idea to provide matchingFallbacks for the new buildType you create to prevent build issues
+            // Add the following line if not already there
+            matchingFallbacks = ['release']
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            resValue "string", "CodePushDeploymentKey", '"Y5G_h-xlgeuzs2NbY2Jj0GbFDHkgd4m5pmrTT"'
         }
     }
 
@@ -184,6 +197,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation 'com.facebook.android:facebook-android-sdk:[5,6)'
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
     implementation project(':react-native-vector-icons')
@@ -220,4 +234,5 @@ apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 project.ext.vectoricons = [
     iconFontNames: [ 'AntDesign.ttf', 'EvilIcons.ttf' ] // Name of the font files you want to copy
 ]
+apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
 

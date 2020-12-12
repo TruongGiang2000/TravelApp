@@ -1,20 +1,17 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
-import PropTypes from 'prop-types';
+import {View, StyleSheet, Text, Pressable} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import Gradient from '../../../components/GradientOpacity';
-import ButtonCustom from '../../../components/custombutton';
-import CustomCirle from '../../../components/CustomCircle';
-
-class ItemImage extends Component<any, any> {
+import ButtonCustom from '../../../components/ButtonCustom';
+import CircleImage from '../../../components/CircleImage';
+import Fontisto from 'react-native-vector-icons/Fontisto';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+class ItemNotification extends Component<any, any> {
   constructor(props) {
     super(props);
-    this.state = {
-      isShow: this.props.isShow,
-    };
+    this.state = {};
   }
   render() {
     const {
@@ -26,68 +23,73 @@ class ItemImage extends Component<any, any> {
       calendar,
       time,
       day,
-      stylecalendar,
-      styletime,
-      styleday,
+      onPress,
     } = this.props;
     return (
-      <TouchableOpacity style={[styles.MainContainer, style]}>
-        <View style={{marginTop:wp('2')}}>
-        <CustomCirle
-          source={source}
-          size={100}
-          style={{}}
-        />
-        </View>
-        <View style={styles.center}>
-          <Text style={[styles.title, styletitle]}>{title}</Text>
-          {this.state.isShow && (
-            <ButtonCustom title={titlebutton} style={{width: wp(30)}} />
+      <Pressable style={[styles.MainContainer, style]}>
+        <CircleImage source={source} size={wp('15')} />
+        <View style={styles.viewContent}>
+          <Text numberOfLines={2} style={[styles.title, styletitle]}>
+            {this.props.children || title}
+          </Text>
+          {this.props.isShow && (
+            <ButtonCustom
+              title={titlebutton}
+              style={{width: wp(30)}}
+              onPress={onPress}
+            />
           )}
-          <View>
-            <Text style={[styles.calendar, stylecalendar]}>{calendar}</Text>
-            <Text style={[styles.time, styletime]}>{time}</Text>
-            <Text style={[styles.day, styleday]}>{day}</Text>
+          <View style={styles.viewDate}>
+            <View style={styles.viewRow}>
+              <Ionicons
+                name={'md-calendar-outline'}
+                size={wp('3.5')}
+                color={'#000'}
+              />
+              <Text style={styles.textDate}>{calendar}</Text>
+            </View>
+            <View style={styles.viewRow}>
+              <Fontisto name={'clock'} size={wp('3.5')} color={'#000'} />
+              <Text style={styles.textDate}>{time}</Text>
+            </View>
+            <Text style={styles.textDate}>{day}</Text>
           </View>
         </View>
-        
-      </TouchableOpacity>
+      </Pressable>
     );
   }
 }
 const styles = StyleSheet.create({
   MainContainer: {
-    width: wp('100'),
-    height: hp('20'),
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FFF5F5',
+  },
+  viewContent: {
+    flex: 1,
+    marginLeft: wp('3'),
   },
   title: {
-    fontSize: wp('5'),
+    fontSize: wp('3.7'),
     color: '#00162B',
-    marginTop:wp('2')
+    fontFamily: 'roboto-slab.regular',
   },
-  calendar: {
-    marginTop: wp('2'),
-    fontSize: wp('3'),
+  viewDate: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingRight: wp('8'),
+    marginTop: hp('1'),
+  },
+  textDate: {
+    fontSize: wp('3.2'),
     color: '#353B50',
-    position: 'absolute',
+    marginLeft: wp('1'),
+    fontFamily: 'roboto-slab.regular',
   },
-  time: {
-    marginTop: wp('2'),
-    fontSize: wp('3'),
-    color: '#353B50',
-    position: 'absolute',
-    marginLeft: wp('20'),
+  viewRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
-  day: {
-    marginTop: wp('2'),
-    fontSize: wp('3'),
-    color: '#353B50',
-    marginLeft: wp('40'),
-  },
-  center: {
-    width: wp('70'),
-    alignSelf:'flex-end',  
-  },
-  
 });
-export default ItemImage;
+export default ItemNotification;
