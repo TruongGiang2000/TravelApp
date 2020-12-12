@@ -1,6 +1,6 @@
+import { title } from 'process';
 import React, {Component} from 'react';
 import {View, StyleSheet, Text, TouchableOpacity, Button} from 'react-native';
-import TraTe from './TraTe';
 class ButtonCustom extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -10,9 +10,12 @@ class ButtonCustom extends Component<any, any> {
 }
 
   render() {
+    const {title} = this.props;
      return (
           <TouchableOpacity style={[styles.MainContainer, this.props.style]}>
-            <TraTe style={[styles.title,this.props.titleStyle]} i18nKey={this.props.title}/>
+            <Text style={[styles.title,this.props.titleStyle]} >
+              {title}
+            </Text>
           </TouchableOpacity>
      )
   }
