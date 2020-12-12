@@ -20,7 +20,11 @@ class Home extends Component<any, any> {
   componentDidMount() {
     this.props.getLocationByProvince(38);
   }
-  
+  showAllNewList = () => {
+    this.props.navigation.navigate('newListDetail');
+    console.log('new');
+    
+  };
   render() {
     const {allProvinces, allHotel, location, allNews, language} = this.props;
     return (
@@ -39,6 +43,9 @@ class Home extends Component<any, any> {
             data={allNews}
             style={styles.spaceTop}
             language={language}
+            onPressShowAll={this.showAllNewList}
+            initialNumToRender={3}
+            maxToRenderPerBatch={allNews}
           />
           <View style={styles.line} />
         </View>

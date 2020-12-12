@@ -33,7 +33,7 @@ class HotelDetail extends Component<any, any> {
     this.state = {
       data: props.route.params.item,
       lineOfContent: 5,
-      isShow: false,
+      isShowModal: false,
 
     };
   }
@@ -66,11 +66,11 @@ class HotelDetail extends Component<any, any> {
     );
   };
   showModalImage = () => {
-    this.setState({isShow: true});
+    this.setState({isShowModal: true});
     
   };
   onClose = () => {
-    this.setState({isShow: false});
+    this.setState({isShowModal: false});
   };
   onPressDetail = () => {
     if (this.state.lineOfContent == 50) {
@@ -88,7 +88,7 @@ class HotelDetail extends Component<any, any> {
   };
   render() {
     const {language, conveById} = this.props;
-    const {data, lineOfContent, isShow} = this.state;
+    const {data, lineOfContent, isShowModal} = this.state;
     let isVi = language == 'vi';
     let isMaxNumberOfLine = lineOfContent == 50;
     return (
@@ -174,15 +174,15 @@ class HotelDetail extends Component<any, any> {
             onPress={this._navigateChooseRoom}
           />
         </View>
-        <ModalCustom isVisible={isShow} onBackdropPress={this.onClose}>
-        <Pressable onPress={this.onClose}>
+        <ModalCustom isVisible={isShowModal} onBackdropPress={this.onClose} style={{backgroundColor: '#000'}}>
+        {/* <Pressable onPress={this.onClose}>
           <AntDesign
             name={'close'}
             size={wp('8')}
             color={'#ffffff'}
             style={{marginLeft: wp('70')}}
           />
-        </Pressable>
+        </Pressable> */}
         <FlatList
               data={data.Images}
               renderItem={this.renderModalImage}
@@ -190,6 +190,7 @@ class HotelDetail extends Component<any, any> {
               showsHorizontalScrollIndicator={false}
             />
         </ModalCustom>
+        
       </View>
     );
   }

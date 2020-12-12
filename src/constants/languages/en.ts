@@ -146,4 +146,5 @@ export default {
   desc_empty_room: 'room available',
   desc_empties_room: 'rooms available',
   policy_cancel: 'Cancellation policy',
+  see_all: 'See all',
 };

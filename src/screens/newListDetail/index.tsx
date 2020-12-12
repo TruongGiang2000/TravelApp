@@ -1,29 +1,29 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import Home from './Home';
-const HomeStack = {
-  Home: {
-    screen: Home,
-    path: 'Home',
-  },
+import NewListDetail from './NewListDetail';
+const NewDetailStack = {
+  NewListDetail:{
+    screen: NewListDetail,
+    path: 'newListDetail',
+  }
 };
 
 const Stack = createStackNavigator();
-const HomeRouter = () => {
+const NewDetailRouter = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName="newListDetail"
       screenOptions={{
         headerShown: false,
       }}>
-      {Object.keys(HomeStack).map((key) => {
+      {Object.keys(NewDetailStack).map((key) => {
         return (
           <Stack.Screen
             key={key}
             name={key}
-            component={HomeStack[key].screen}
+            component={NewDetailStack[key].screen}
             options={{
-              ...HomeStack[key].navigationOptions,
+              ...NewDetailStack[key].navigationOptions,
             }}
           />
         );
@@ -32,4 +32,4 @@ const HomeRouter = () => {
   );
 };
 
-export default HomeRouter;
+export default NewDetailRouter;
