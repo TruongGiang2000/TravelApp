@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   textInput: {
     fontSize: wp('4'),
     color: '#00162b',
-    fontFamily: 'roboto-slab-bold',
+    fontFamily: 'roboto-slab.regular',
     borderBottomWidth: 2,
     borderBottomColor: 'rgba(0, 0, 0, 0.541176)',
     height: hp('5'),
