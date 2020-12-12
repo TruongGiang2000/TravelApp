@@ -110,6 +110,7 @@ export default {
   valid_lastName: 'Họ không hợp lệ',
   valid_email: 'Địa chỉ email không hợp lệ',
   valid_phone: 'Điện thoại không hợp lệ',
+  valid_id: 'CMND không hợp lệ',
   account: 'Tài khoản',
   password: 'Mật khẩu',
   re_password: 'Nhập lại mật khẩu',
@@ -133,24 +134,23 @@ export default {
   seeAddress: 'Xem địa điểm',
   numbertyperoom: 'Tại đây có {0} loại phòng',
   Review: 'Đánh giá',
-  question : 'Bạn không tìm thấy một số thông tin ?',
-  yes : 'Có',
-  no : 'Không',
+  question: 'Bạn không tìm thấy một số thông tin ?',
+  yes: 'Có',
+  no: 'Không',
 
- 
   descriptionHome:
     'Khám phá nền văn hoá độc đáo của dân tộc miền núi đông bắc Việt Nam',
   hotel_best_price: 'Khách sạn giá tốt',
   highlightSpot: 'Địa điểm nổi bật',
   description_spot_home: 'địa điểm ưa thích nhất',
   travel_news: 'Tin tức du lịch',
-  night: 'đêm',
+  night: '{0} đêm',
+  nights: '{0} sđêm',
   hotelAround: 'Khách sạn quanh đây',
   google: 'Tiếp tục với Google',
   desc_empty_room: 'Còn {0} phòng trống',
   desc_empties_room: 'Còn {0} phòng trống',
   policy_cancel: 'Chính sách huỷ phòng',
-
 
   pass_not_match: 'Mật khẩu không trùng khớp',
   CreateAccountSuccess: 'Tạo tài khoản thành công',
@@ -158,4 +158,10 @@ export default {
   full_name: 'Họ và tên',
   update: 'Cập nhật',
   free_internet: 'Miễn Phí Internet',
+  start_date: 'Ngày đến',
+  end_date: 'Ngày đi',
+  description_fail_date: 'Ngày đi phải lớn hơn ngày đến',
+  id_card: 'CMND',
+  valid_info: 'Thông tin không hợp lệ',
+  see_all: 'Xem thêm',
 };

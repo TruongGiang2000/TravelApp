@@ -9,7 +9,7 @@ import ItemDestination from './ItemDestination';
 const SpecialSpot = (props: any) => {
   const {style, data, language} = props;
   const onPress = (item) => {
-    props.navigation.navigate('LocationDetail', {item});
+    props.navigation.navigate('SpotDetail', {item});
     
   };
   const renderItem = ({item}) => {

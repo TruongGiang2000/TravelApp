@@ -35,7 +35,7 @@ class ItemNotification extends Component<any, any> {
           {this.props.isShow && (
             <ButtonCustom
               title={titlebutton}
-              style={{width: wp(30)}}
+              style={{width: wp(30), padding: wp(0)}}
               onPress={onPress}
             />
           )}

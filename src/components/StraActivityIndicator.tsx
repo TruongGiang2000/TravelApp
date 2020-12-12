@@ -41,7 +41,6 @@ const StraActivityIndicator = (props) => {
       />
     );
   };
-  console.log('dotsActive', dotsActive);
   return (
     <ModalCustom isVisible={true}>
       <View style={styles.mainContainer}>

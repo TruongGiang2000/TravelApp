@@ -14,24 +14,55 @@ import shadow from '../../util/shadow';
 import ModalSuccessfull from './modules/ModalSuccsessfull';
 import {translate} from '../../util/translate';
 import {withPages} from '../../util/withPages';
+import {connect} from 'react-redux';
+import {hotels} from '../../redux';
+import {actionMain} from '../../util/mainActions';
 class BookingDetail extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
       isShow: false,
+      dataBooking: this.props.route.params.dataBooking,
     };
+  }
+  componentDidMount() {
+    const {dataBooking} = this.state;
+    const {dataRoom} = dataBooking;
+    actionMain.loading(true);
+    this.props.getHotelById(dataRoom.ID_Hotel);
   }
   onBack = () => {
     this.props.navigation.goBack();
   };
   showModalSuccessfully = () => {
+    const {dataBooking} = this.state;
+    const {dataRoom} = dataBooking;
+    const {token} = this.props;
+    const dataBookingFinal = {
+      ID_Room: dataRoom._id,
+      Token: token,
+      User_Name: dataBooking?.lastName + dataBooking?.name,
+      Phone: dataBooking?.phone,
+      Identity_Card: dataBooking?.idCard,
+      Price: dataRoom?.Price + (dataRoom?.Price * 10) / 100,
+      Booking_Date: dataBooking?.startDate,
+      Check_Out_Date: dataBooking?.endDate,
+      Booking_Status: 'booking',
+    };
+    this.props.booking(dataBookingFinal);
     this.setState({isShow: true});
   };
   onClose = () => {
     this.setState({isShow: false});
   };
   render() {
-    const {isShow} = this.state;
+    const {isShow, dataBooking} = this.state;
+    const {hotelById, language} = this.props;
+    let isVi = language == 'vi';
+    const {dataRoom} = dataBooking;
+    console.log('dataBooking', dataBooking);
+    let nights = +dataBooking.endDate.diff(dataBooking.startDate, 'days');
+    console.log('nights', nights);
     return (
       <View style={[styles.MainContainer, this.props.style]}>
         <ScrollView>
@@ -44,7 +75,9 @@ class BookingDetail extends Component<any, any> {
           <View style={styles.content}>
             <View style={styles.viewRowTopContent}>
               <View>
-                <Text style={styles.namehotel}>BB vila Vũng tàu</Text>
+                <Text style={styles.namehotel}>
+                  {isVi ? hotelById?.vi?.Name : hotelById?.en?.Name}
+                </Text>
                 <StarRating
                   containerStyle={styles.starRating}
                   disabled={false}
@@ -61,45 +94,50 @@ class BookingDetail extends Component<any, any> {
               </View>
               <View style={[styles.image, {...shadow(10)}]}>
                 <Image
-                  source={require('../../assets/images/angiang.jpg')}
+                  source={{uri: hotelById?.Images ? hotelById.Images[0] : ''}}
                   style={styles.image}
                 />
               </View>
             </View>
             <View style={styles.viewLine} />
             <Text style={[styles.address]}>
-              Số 03 Đường Huỳnh Thúc Kháng, Phường 4, Thành phố Đà Lạt, Lâm Đồng
-              66000
+              {isVi ? hotelById?.vi?.Address : hotelById?.en?.Address}
             </Text>
             <View style={styles.viewLine} />
             <RowCustom
               style={styles.rowCustom}
               title={translate('takeroom')}
-              content="Th6/04/09/2020"
+              content={dataBooking.startDate.format('ddd/DD/MM/YYYY')}
             />
             <View style={styles.viewLine} />
             <RowCustom
               style={styles.rowCustom}
               title={translate('payroom')}
-              content="CN/02/09/2020"
+              content={dataBooking.endDate.format('ddd/DD/MM/YYYY')}
             />
             <View style={styles.viewLine} />
             <RowCustom
               style={styles.rowCustom}
               title={translate('nightnumber')}
-              content="2 đêm, 1 phòng"
+              content={translate(nights > 1 ? 'nights' : 'night').format(
+                nights,
+              )}
             />
             <View style={styles.viewLine} />
             <RowCustom
               style={styles.rowCustom}
-              title={translate('standardroompillowbed')}
-              content="VNĐ 4.017.033"
+              title={
+                isVi
+                  ? `${dataRoom?.vi?.Name} ${dataRoom?.vi?.Bed}`
+                  : `${dataRoom?.en?.Name} ${dataRoom?.en?.Bed}`
+              }
+              content={`VNĐ ${dataRoom?.Price}`}
               styleContent={styles.priceStandRoom}
               styleTitle={styles.standRoom}
             />
             <RowCustom
               title={translate('taxesandfees')}
-              content="+VNĐ 477.967"
+              content={`+VNĐ ${(dataRoom?.Price * 10) / 100}`}
               styleContent={[
                 styles.standRoom,
                 {fontFamily: 'roboto-slab.regular'},
@@ -112,7 +150,7 @@ class BookingDetail extends Component<any, any> {
             <RowCustom
               style={styles.rowCustom}
               title={translate('totalincentives')}
-              content="-VNĐ 400.000"
+              content="-VNĐ 0"
               styleContent={[
                 styles.standRoom,
                 {fontFamily: 'roboto-slab.regular', color: '#00B92A'},
@@ -126,7 +164,7 @@ class BookingDetail extends Component<any, any> {
           <RowCustom
             style={styles.customRowGreen}
             title={translate('finalprice')}
-            content="VNĐ 4.095.000"
+            content={`VNĐ ${dataRoom?.Price + (dataRoom?.Price * 10) / 100}`}
             styleContent={styles.finalPrice}
             styleTitle={styles.finalPrice}
           />
@@ -135,7 +173,9 @@ class BookingDetail extends Component<any, any> {
 
         <View style={[styles.footer]}>
           <View>
-            <Text style={styles.priceFooter}>đ1.000.000</Text>
+            <Text style={styles.priceFooter}>{`đ ${
+              dataRoom?.Price + (dataRoom?.Price * 10) / 100
+            }`}</Text>
             <Text style={styles.taxesAndFee}>
               {translate('includingtaxesandfees')}
             </Text>
@@ -265,4 +305,10 @@ const styles = StyleSheet.create({
     paddingVertical: hp('2'),
   },
 });
-export default withPages(BookingDetail);
+const mapStateFromProps = (state: any) => {
+  return {
+    hotelById: state.hotel.hotelById,
+    token: state.auth.token,
+  };
+};
+export default connect(mapStateFromProps, hotels)(withPages(BookingDetail));

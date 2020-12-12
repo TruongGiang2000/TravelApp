@@ -41,6 +41,7 @@ class Notification extends Component<any, any> {
   renderItem = ({item, index}) => {
     const {dataDummy} = this.state;
     let isLine = index === dataDummy.length - 1;
+    let isShow = index == dataDummy.length - 1;
     return (
       <View>
         <ItemNotification
@@ -50,6 +51,8 @@ class Notification extends Component<any, any> {
           calendar={moment(item.date).format('DD/MM/yyyy')}
           time={moment(item.date).format('HH:mm:00')}
           day={dateFormat(item.date)}
+          isShow={isShow ? true : undefined}
+          titlebutton={translate('start')}
         />
         {!isLine && <View style={[styles.line, {width: wp('85')}]} />}
       </View>

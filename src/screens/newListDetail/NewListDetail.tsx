@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Text, Pressable, Image} from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
-import { withPages } from '../../util/withPages';
+import {ScrollView} from 'react-native-gesture-handler';
+import {withPages} from '../../util/withPages';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
   heightPercentageToDP as hp,
@@ -9,8 +9,8 @@ import {
 } from 'react-native-responsive-screen';
 import {translate} from '../../util/translate';
 import NewsList from './modules/NewsList';
-import { connect } from 'react-redux';
-import { places } from '../../redux';
+import {connect} from 'react-redux';
+import {places} from '../../redux';
 
 class NewListDetail extends Component<any, any> {
   constructor(props) {
@@ -18,7 +18,7 @@ class NewListDetail extends Component<any, any> {
     this.state = {};
   }
   onPressBackSpace = () => {
-    this.props.navigation.goBack()
+    this.props.navigation.goBack();
   };
   render() {
     const {allProvinces, allHotel, location, allNews, language} = this.props;
@@ -34,22 +34,16 @@ class NewListDetail extends Component<any, any> {
             />
           </Pressable>
           <Text style={styles.title}>{translate('travel_news')}</Text>
-          <Pressable >
-            <Image
-              source={require('../../assets/images/baseline_more_vert.png')}
-              resizeMode={'contain'}
-              style={styles.imgHeader}
-            />
-          </Pressable>
+          <Text></Text>
         </View>
-        <View>
-        <NewsList
+        <View style={{paddingHorizontal: wp('4')}}>
+          <NewsList
             data={allNews}
             style={styles.spaceTop}
             language={language}
           />
-          </View>
-          <View style={styles.line} />
+        </View>
+        <View style={styles.line} />
       </ScrollView>
     );
   }
@@ -92,5 +86,6 @@ const mapStateFromProps = (state: any) => {
     allNews: state.system.allNews,
   };
 };
-export default connect(mapStateFromProps, {...places})(withPages(NewListDetail));
-
+export default connect(mapStateFromProps, {...places})(
+  withPages(NewListDetail),
+);
