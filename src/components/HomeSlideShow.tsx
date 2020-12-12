@@ -15,29 +15,16 @@ class HomeSlideShow extends Component<any, any> {
     super(props);
     this.state = {};
   }
-   
+
   render() {
     const {style, data, language, onPress} = this.props;
-    
+
     let isVi = language === 'vi';
     return (
       <ImageBackground
         resizeMode={'cover'}
         source={{uri: data.Images[0]}}
         style={[styles.MainContainer, style]}>
-        <View style={styles.searchBarView}>
-          <MaterialIcons
-            name={'location-on'}
-            color={'#353B50'}
-            size={wp('6')}
-          />
-          <TextInput
-            placeholder={translate('search')}
-            placeholderTextColor={'#A8B6C8'}
-            style={styles.textInputStyle}
-          />
-        </View>
-
         <View style={styles.viewBottom}>
           <GradientOpacity
             start={{x: 0.1, y: 0.1}}
@@ -45,7 +32,7 @@ class HomeSlideShow extends Component<any, any> {
             styleGradient={styles.gradientOpacity}
           />
           <Text style={styles.titleStyle}>
-            {isVi ? data.vi.Title : data.en.Title}
+            {isVi ? data.vi.Title : `${data.en.Title} Provinces`}
           </Text>
           <Text style={styles.content} numberOfLines={2}>
             {isVi ? data.vi.Content : data.en.Content}
@@ -53,7 +40,7 @@ class HomeSlideShow extends Component<any, any> {
           <ButtonCustom
             style={styles.buttonStyle}
             title={translate('discover')}
-            onPress = {onPress}
+            onPress={onPress}
           />
         </View>
       </ImageBackground>
@@ -62,18 +49,11 @@ class HomeSlideShow extends Component<any, any> {
 }
 const styles = StyleSheet.create({
   MainContainer: {
-    paddingVertical: hp('3'),
+    height: hp('35'),
+    justifyContent: 'flex-end',
+    paddingBottom: hp('2'),
   },
-  searchBarView: {
-    flexDirection: 'row',
-    backgroundColor: '#ffffff',
-    width: wp('90'),
-    borderRadius: wp('3'),
-    ...shadow(3),
-    alignItems: 'center',
-    paddingHorizontal: wp('4'),
-    alignSelf: 'center',
-  },
+
   textInputStyle: {
     width: '75%',
     fontSize: wp('3.8'),
@@ -85,13 +65,14 @@ const styles = StyleSheet.create({
   },
   titleStyle: {
     fontFamily: 'roboto-slab-bold',
-    fontSize: wp('6'),
+    fontSize: wp('8'),
     color: '#ffffff',
   },
   content: {
     fontFamily: 'roboto-slab-bold',
     color: '#F7F3F3',
     fontSize: wp('3.4'),
+    marginRight: wp('15'),
   },
   buttonStyle: {
     width: wp('40'),

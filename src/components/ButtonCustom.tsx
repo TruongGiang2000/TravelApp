@@ -1,3 +1,4 @@
+import {title} from 'process';
 import React, {Component} from 'react';
 import {StyleSheet, Pressable, Text} from 'react-native';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
