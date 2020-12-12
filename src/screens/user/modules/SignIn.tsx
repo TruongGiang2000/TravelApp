@@ -247,11 +247,11 @@ class SignIn extends Component<any, any> {
           title={translate('facebock')}
           // onPress={this.SignInFB}
         />
-        <ButtonFBCustom
+        {/* <ButtonFBCustom
           titleStyle={styles.buttonText}
           title={translate('google')}
           // onPress={this.signIngg}
-        />
+        /> */}
       </View>
     );
   }

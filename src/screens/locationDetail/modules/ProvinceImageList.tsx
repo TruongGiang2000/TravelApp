@@ -14,7 +14,6 @@ class ProvinceImageList extends Component<any, any> {
     super(props);
     this.state = {
       isShowModal: false,
-
     };
   }
   showModalImage = () => {
@@ -22,13 +21,14 @@ class ProvinceImageList extends Component<any, any> {
   };
   onClose = () => {
     this.setState({isShowModal: false});
+    console.log('aloalo');
   };
   renderModalImage = ({item}) => {
-    return(
-    <ModalImage
-    style={styles.modalItemImage}
-    source={{uri: item.toString()}}
-    />
+    return (
+      <ModalImage
+        style={styles.modalItemImage}
+        source={{uri: item.toString()}}
+      />
     );
   };
   renderItem = ({item}) => {
@@ -54,23 +54,17 @@ class ProvinceImageList extends Component<any, any> {
           showsHorizontalScrollIndicator={false}
         />
         {isShowModal && (
-        <ModalCustom isVisible={isShowModal} onBackdropPress={this.onClose}>
-        {/* <Pressable onPress={this.onClose}>
-          <AntDesign
-            name={'close'}
-            size={wp('8')}
-            color={'#ffffff'}
-            style={{marginLeft: wp('70')}}
-          />
-        </Pressable> */}
-        <FlatList
+          <ModalCustom onBackdropPress={this.onClose} isVisible={isShowModal}>
+            <View>
+            <FlatList
               data={data}
               renderItem={this.renderModalImage}
               horizontal={true}
               showsHorizontalScrollIndicator={false}
             />
-        </ModalCustom>
-  )}
+            </View>
+          </ModalCustom>
+        )}
       </View>
     );
   }
@@ -87,11 +81,11 @@ const styles = StyleSheet.create({
     width: wp('15'),
     height: hp('10'),
   },
-  modalItemImage:{
+  modalItemImage: {
     width: wp('90'),
     height: hp('60'),
     marginRight: wp('3.2'),
-    borderRadius: wp('5')
-  }
+    borderRadius: wp('5'),
+  },
 });
 export default ProvinceImageList;

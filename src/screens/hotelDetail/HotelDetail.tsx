@@ -23,7 +23,7 @@ import {withPages} from '../../util/withPages';
 import {connect} from 'react-redux';
 import {hotels} from '../../redux';
 import {actionMain} from '../../util/mainActions';
-
+import DatePicker from 'react-native-calendar-datepicker';
 import ModalCustom from 'react-native-modal';
 import ModalImage from './ModalImage';
 
@@ -33,8 +33,9 @@ class HotelDetail extends Component<any, any> {
     this.state = {
       data: props.route.params.item,
       lineOfContent: 5,
+      isShow: false,
+      date: '',
       isShowModal: false,
-
     };
   }
   renderItem = ({item}) => {
@@ -47,11 +48,11 @@ class HotelDetail extends Component<any, any> {
     });
   };
   renderModalImage = ({item}) => {
-    return(
-    <ModalImage
-    style={styles.modalItemImage}
-    source={{uri: item.toString()}}
-    />
+    return (
+      <ModalImage
+        style={styles.modalItemImage}
+        source={{uri: item.toString()}}
+      />
     );
   };
   renderItemImage = ({item}) => {
@@ -60,14 +61,13 @@ class HotelDetail extends Component<any, any> {
         style={styles.itemImage}
         source={{uri: item.toString()}}
         isShow={true}
-        onPress = {this.showModalImage}
+        onPress={this.showModalImage}
       />
-      
     );
   };
   showModalImage = () => {
+    this.setState({isShow: true});
     this.setState({isShowModal: true});
-    
   };
   onClose = () => {
     this.setState({isShowModal: false});
@@ -84,7 +84,10 @@ class HotelDetail extends Component<any, any> {
     this.props.getCoveById({idConve: data.ID_Convenient});
   }
   onPressClose = () => {
-    this.props.navigation.goBack()
+    this.props.navigation.goBack();
+  };
+  selectDate = (date: Date) => {
+    this.setState({date: date});
   };
   render() {
     const {language, conveById} = this.props;
@@ -174,23 +177,19 @@ class HotelDetail extends Component<any, any> {
             onPress={this._navigateChooseRoom}
           />
         </View>
-        <ModalCustom isVisible={isShowModal} onBackdropPress={this.onClose} >
-        {/* <Pressable onPress={this.onClose}>
-          <AntDesign
-            name={'close'}
-            size={wp('8')}
-            color={'#ffffff'}
-            style={{marginLeft: wp('70')}}
-          />
-        </Pressable> */}
-        <FlatList
-              data={data.Images}
-              renderItem={this.renderModalImage}
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}
-            />
-        </ModalCustom>
-        
+        {isShowModal && (
+          <ModalCustom isVisible={isShowModal} onBackdropPress={this.onClose}>
+            <View>
+              <FlatList
+                style={styles.flatListItemImage}
+                data={data.Images}
+                renderItem={this.renderModalImage}
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+              />
+            </View>
+          </ModalCustom>
+        )}
       </View>
     );
   }
@@ -330,12 +329,12 @@ const styles = StyleSheet.create({
     fontFamily: 'roboto-slab-bold',
     fontSize: wp('4.2'),
   },
-  modalItemImage:{
+  modalItemImage: {
     width: wp('90'),
     height: hp('60'),
     marginRight: wp('3.2'),
-    borderRadius: wp('5')
-  }
+    borderRadius: wp('5'),
+  },
 });
 const mapStateFromProps = (state: any) => {
   return {

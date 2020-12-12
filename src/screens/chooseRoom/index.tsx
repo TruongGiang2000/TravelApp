@@ -6,6 +6,7 @@ import {
   StyleSheet,
   FlatList,
   Pressable,
+  ToastAndroid,
 } from 'react-native';
 import Kindofroom from '../home/modules/kindofroom';
 import {translate} from '../../util/translate';
@@ -17,6 +18,9 @@ import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import {connect} from 'react-redux';
 import {hotels} from '../../redux';
 import {actionMain} from '../../util/mainActions';
+import DatePicker from 'react-native-datepicker';
+import moment from 'moment';
+import Fontisto from 'react-native-vector-icons/Fontisto';
 import shadow from '../../util/shadow';
 class ChooseRoom extends Component<any, any> {
   constructor(prop) {
@@ -24,15 +28,44 @@ class ChooseRoom extends Component<any, any> {
     this.state = {
       idHotel: this.props.route.params.idHotel,
       imageHotel: this.props.route.params.imageHotel,
+      startDate: moment(),
+      endDate: moment().add(1, 'days'),
     };
   }
   componentDidMount() {
     actionMain.loading(true);
     this.props.getTypeRoomByHol(this.state.idHotel);
   }
-  onPressItem = (_id) => () => {
-    this.props.navigation.navigate('Booking', {_id});
+  onPressItem = (item) => () => {
+    if (!this.props.token) {
+      this.props.navigation.navigate('User');
+      return;
+    }
+    const {startDate, endDate} = this.state;
+    this.props.navigation.navigate('CustomerForm', {
+      item,
+      startDate: startDate,
+      endDate: endDate,
+    });
   };
+  selecStarttDate = (date: Date) => {
+    const {endDate} = this.state;
+    let subDay = +moment(endDate).diff(date, 'days');
+    this.setState({startDate: date});
+    if (subDay < 0) {
+      this.setState({endDate: moment(date).add(1, 'days')});
+    }
+  };
+  selectEndDate = (date: Date) => {
+    const {startDate} = this.state;
+    let subDay = +moment(date).diff(startDate, 'days');
+    if (subDay <= 0) {
+      ToastAndroid.show(translate('description_fail_date'), ToastAndroid.SHORT);
+      return;
+    }
+    this.setState({endDate: date});
+  };
+  componentDidUpdate() {}
   renderItem = ({item}) => (
     <Kindofroom
       source={{uri: item.Images[0]}}
@@ -46,12 +79,12 @@ class ChooseRoom extends Component<any, any> {
       iconinternet={require('../../assets/images/shape.png')}
       isShow={true}
       containerStyle={{marginTop: hp('-10')}}
-      onPress={this.onPressItem(item._id)}
+      onPress={this.onPressItem(item)}
     />
   );
   render() {
     const {typeRoom} = this.props;
-    const {imageHotel} = this.state;
+    const {imageHotel, startDate, endDate} = this.state;
     return (
       <ImageBackground
         source={{uri: imageHotel}}
@@ -72,7 +105,68 @@ class ChooseRoom extends Component<any, any> {
             renderItem={this.renderItem}
             horizontal={true}
           />
+
           <View style={styles.title}>
+            <View style={styles.viewRowContainer}>
+              <View style={styles.viewRow}>
+                <Fontisto
+                  name={'date'}
+                  size={wp('6')}
+                  color={'#1A1919'}
+                  style={{marginTop: wp('2')}}
+                />
+                <View style={[styles.contentColumn, {marginLeft: wp('2')}]}>
+                  <Text style={styles.titleEachField}>
+                    {translate('start_date')}
+                  </Text>
+                  <Text style={styles.contentEachField}>
+                    {moment(startDate).format('DD MMM, YYYY')}
+                  </Text>
+                </View>
+                <DatePicker
+                  hideText={true}
+                  showIcon={false}
+                  date={startDate}
+                  onDateChange={this.selecStarttDate}
+                  mode={'date'}
+                  style={{
+                    with: '100%',
+                    height: '100%',
+                    position: 'absolute',
+                  }}
+                  minDate={moment()}
+                />
+              </View>
+              <View style={styles.viewRow}>
+                <Fontisto
+                  name={'date'}
+                  size={wp('6')}
+                  color={'#1A1919'}
+                  style={{marginTop: wp('2')}}
+                />
+                <View style={[styles.contentColumn, {marginLeft: wp('2')}]}>
+                  <Text style={styles.titleEachField}>
+                    {translate('end_date')}
+                  </Text>
+                  <Text style={styles.contentEachField}>
+                    {moment(endDate).format('DD MMM, YYYY')}
+                  </Text>
+                </View>
+                <DatePicker
+                  hideText={true}
+                  showIcon={false}
+                  date={endDate}
+                  onDateChange={this.selectEndDate}
+                  mode={'date'}
+                  style={{
+                    with: '100%',
+                    height: '100%',
+                    position: 'absolute',
+                  }}
+                  minDate={moment().add(1, 'days')}
+                />
+              </View>
+            </View>
             <Text style={styles.NumberTyperoom}>
               {translate('numbertyperoom').format(typeRoom?.length)}
             </Text>
@@ -111,10 +205,41 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: hp('3'),
   },
+  viewRowContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#cccccc',
+    paddingHorizontal: wp('4'),
+    paddingVertical: hp('1'),
+    ...shadow(4),
+    marginBottom: hp('1'),
+  },
+  viewRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginRight: wp('5'),
+  },
+  contentColumn: {
+    marginTop: wp('2'),
+    justifyContent: 'center',
+  },
+  titleEachField: {
+    fontFamily: 'roboto-slab.regular',
+    fontSize: wp('3'),
+    color: '#353B50',
+    opacity: 0.5,
+  },
+  contentEachField: {
+    fontFamily: 'roboto-slab.regular',
+    fontSize: wp('3.6'),
+    color: '#353B50',
+  },
 });
 const mapStateFromProps = (state: any) => {
   return {
     typeRoom: state.hotel.typeRoom,
+    token: state.auth.token,
   };
 };
 export default connect(mapStateFromProps, hotels)(ChooseRoom);

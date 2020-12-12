@@ -83,3 +83,48 @@ export const getTypeRoomByHotel = ($action: any) => {
     }),
   );
 };
+export const booking = ($action: any) => {
+  return $action.pipe(
+    ofType(types.BOOKING),
+    mergeMap((act: any) => {
+      const {payload} = act;
+      console.log('booking', payload);
+      return $axios.api
+        .post('api/booking_create', payload)
+        .then((rs: any) => {
+          const {data} = rs;
+          console.log('booking-->', data);
+          return hotelAction.bookingSuccess(data);
+        })
+        .catch((err: any) => {
+          return hotelAction.bookingFail(err);
+        })
+        .finally(() => {
+          actionMain.loading(false);
+        });
+    }),
+  );
+};
+export const getHotelById = ($action: any) => {
+  return $action.pipe(
+    ofType(types.GET_HOTEL_BY_ID),
+    mergeMap((act: any) => {
+      const {payload} = act;
+      console.log('payload', payload);
+      return $axios.api
+        .get('api/getHotelById?idHotel=' + payload)
+        .then((rs: any) => {
+          const {data} = rs;
+          console.log('getHotelById-->', data);
+          return hotelAction.getHotelByIdSuccess(data);
+        })
+        .catch((err: any) => {
+          console.log('err', err.response);
+          return hotelAction.getHotelByIdFail(err);
+        })
+        .finally(() => {
+          actionMain.loading(false);
+        });
+    }),
+  );
+};

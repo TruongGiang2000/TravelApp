@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, ScrollView, View, Text} from 'react-native';
+import {StyleSheet, ScrollView, View, Text, ToastAndroid} from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -20,15 +20,73 @@ class ProfileCustomer extends Component<any, any> {
     super(props);
     this.state = {
       name: '',
-      lastname: '',
+      lastName: '',
       email: '',
       phone: '',
+      idCard: '',
+      validName: false,
+      validLastName: false,
+      validEmail: false,
+      validPhone: false,
+      validIdCard: false,
+      dataRoom: this.props.route.params.item,
     };
   }
-  onPressBookingDetal = () => {
-    this.props.navigation.navigate('BookingDetail');
+  onPressBookingDetail = () => {
+    const {
+      validName,
+      validLastName,
+      validEmail,
+      validPhone,
+      validIdCard,
+      name,
+      lastName,
+      email,
+      phone,
+      idCard,
+      dataRoom,
+    } = this.state;
+    const {startDate, endDate} = this.props.route?.params;
+    const valid = {
+      validName: validName,
+      validLastName: validLastName,
+      validEmail: validEmail,
+      validPhone: validPhone,
+      validIdCard: validIdCard,
+    };
+    if (Object.values(valid).some((it) => !it)) {
+      return ToastAndroid.show(translate('valid_info'), ToastAndroid.SHORT);
+    }
+    const dataBooking = {
+      dataRoom: dataRoom,
+      startDate: startDate,
+      endDate: endDate,
+      name: name,
+      lastName: lastName,
+      email: email,
+      phone: phone,
+      idCard: idCard,
+    };
+    this.props.navigation.navigate('BookingDetail', {dataBooking});
+  };
+  onChangeName = (value, valid) => {
+    this.setState({name: value, validName: valid});
+  };
+  onChangeLastName = (value, valid) => {
+    this.setState({lastName: value, validLastName: valid});
+  };
+  onChangeEmail = (value, valid) => {
+    this.setState({email: value, validEmail: valid});
+  };
+  onChangePhone = (value, valid) => {
+    this.setState({phone: value, validPhone: valid});
+  };
+  onChangeCMND = (value, valid) => {
+    this.setState({idCard: value, validIdCard: valid});
   };
   render() {
+    const {dataRoom} = this.state;
+    let priceTax = dataRoom?.Price + dataRoom?.Price * 10;
     return (
       <View style={[styles.MainContainer, this.props.style]}>
         <ScrollView>
@@ -47,12 +105,22 @@ class ProfileCustomer extends Component<any, any> {
               label={translate('customername')}
               regex={validName}
               txtError={translate('valid_firstName')}
+              onChangeText={this.onChangeName}
             />
             <InputComponent
               style={styles.inputComponent}
               label={translate('customersurname')}
               regex={validName}
               txtError={translate('valid_lastName')}
+              onChangeText={this.onChangeLastName}
+            />
+            <InputComponent
+              style={styles.inputComponent}
+              label={translate('id_card')}
+              keyboardType={'numeric'}
+              regex={validPhone}
+              txtError={translate('valid_id')}
+              onChangeText={this.onChangeCMND}
             />
             <Text style={styles.description}>{translate('textname')}</Text>
             <InputComponent
@@ -60,6 +128,7 @@ class ProfileCustomer extends Component<any, any> {
               label={translate('emailaddress')}
               regex={validEmail}
               txtError={translate('valid_email')}
+              onChangeText={this.onChangeEmail}
             />
             <Text style={styles.description}>{translate('textemail')}</Text>
             <InputComponent
@@ -68,6 +137,7 @@ class ProfileCustomer extends Component<any, any> {
               keyboardType={'numeric'}
               regex={validPhone}
               txtError={translate('valid_phone')}
+              onChangeText={this.onChangePhone}
             />
             <View style={styles.viewCheckBox}>
               <CheckBox />
@@ -79,7 +149,7 @@ class ProfileCustomer extends Component<any, any> {
         </ScrollView>
         <View style={styles.footer}>
           <View>
-            <Text style={styles.price}>đ1.000.000</Text>
+            <Text style={styles.price}>{`đ${priceTax}`}</Text>
             <Text style={styles.descriptionFooter}>
               {translate('includingtaxesandfees')}
             </Text>
@@ -88,7 +158,7 @@ class ProfileCustomer extends Component<any, any> {
             style={styles.buttonStyle}
             title={translate('nextstep')}
             titleStyle={styles.buttonText}
-            onPress={this.onPressBookingDetal}
+            onPress={this.onPressBookingDetail}
           />
         </View>
       </View>

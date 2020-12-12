@@ -15,9 +15,14 @@ import {
 class ItemHotel extends Component<any, any> {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      
+    };
   }
-
+  Random(){
+  
+    
+  }
   render() {
     const {
       style,
@@ -27,7 +32,9 @@ class ItemHotel extends Component<any, any> {
       source,
       titlePlace,
       titleHotel,
+      starts
     } = this.props;
+    const {random} = this.state;
     return (
       <Pressable style={[styles.container, style]} onPress={onPress}>
         <ImageBackground
@@ -35,10 +42,15 @@ class ItemHotel extends Component<any, any> {
           source={source}
           resizeMode={'cover'}
           borderRadius={wp('1.5')}>
-          <View style={styles.styleBackground}>
+              
+          <View style={styles.styleBackground} >
+          <Text style={styles.stylerandom}>
+                  {starts}
+              </Text>
             <Image
               source={require('../../../assets/images/ngoisao.png')}
               style={styles.starStyle}
+              
             />
           </View>
         </ImageBackground>
@@ -90,5 +102,11 @@ const styles = StyleSheet.create({
     height: wp('5'),
     marginBottom: hp('2'),
   },
+  stylerandom:{
+    fontFamily: 'roboto-slab.regular',
+    fontSize: wp('3.5'),
+    color: '#FFF',
+    marginBottom: hp('1')
+  }
 });
 export default ItemHotel;

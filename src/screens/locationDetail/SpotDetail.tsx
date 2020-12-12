@@ -19,7 +19,7 @@ class SpotDetail extends Component<any, any> {
     };
   }
   onPressBackSpace = () => {
-    this.props.navigation.navigate('LocationDetail');
+    this.props.navigation.goBack();
   };
   render() {
     const {language} = this.props;
@@ -41,7 +41,9 @@ class SpotDetail extends Component<any, any> {
         />
 
         <View style={styles.contentView}>
-          <Text style={styles.content}>{isVi ? data.vi.Content : data.en.Content}</Text>
+          <Text style={styles.content}>
+            {isVi ? data.vi.Content : data.en.Content}
+          </Text>
           <Rating
             style={styles.marginTop}
             numberOfReview={100}

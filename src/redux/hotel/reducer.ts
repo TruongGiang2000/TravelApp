@@ -4,6 +4,8 @@ const initState = {
   conveById: [],
   hotelByProvince: [],
   typeRoom: [],
+  message: '',
+  hotelById: [],
 };
 export const hotelsReducer: any = (state = initState, actions: any) => {
   const {payload} = actions;
@@ -32,6 +34,26 @@ export const hotelsReducer: any = (state = initState, actions: any) => {
       return {...state, typeRoom: payload};
     case types.GET_TYPE_ROOM_BY_HOL_FAIL:
       return {...state, typeRoom: []};
+    case types.BOOKING:
+      return {
+        ...state,
+        message: payload.message,
+      };
+    case types.GET_HOTEL_BY_ID:
+      return {
+        ...state,
+        hotelById: [],
+      };
+    case types.GET_HOTEL_BY_ID_SUCCESS:
+      return {
+        ...state,
+        hotelById: payload,
+      };
+    case types.GET_HOTEL_BY_ID_FAIL:
+      return {
+        ...state,
+        hotelById: [],
+      };
     default:
       return state;
   }

@@ -11,6 +11,12 @@ export const types = {
   GET_TYPE_ROOM_BY_HOL: 'GET_TYPE_ROOM_BY_HOL',
   GET_TYPE_ROOM_BY_HOL_SUCCESS: 'GET_TYPE_ROOM_BY_HOL_SUCCESS',
   GET_TYPE_ROOM_BY_HOL_FAIL: 'GET_TYPE_ROOM_BY_HOL_FAIL',
+  BOOKING: 'BOOKING',
+  BOOKING_SUCCESS: 'BOOKING_SUCCESS',
+  BOOKING_FAIL: 'BOOKING_FAIL',
+  GET_HOTEL_BY_ID: 'GET_HOTEL_BY_ID',
+  GET_HOTEL_BY_ID_SUCCESS: 'GET_HOTEL_BY_ID_SUCCESS',
+  GET_HOTEL_BY_ID_FAIL: 'GET_HOTEL_BY_ID_FAIL',
 };
 const action = (type: string, payload?: any) => ({type, payload});
 export const hotelAction = {
@@ -35,4 +41,12 @@ export const hotelAction = {
     action(types.GET_TYPE_ROOM_BY_HOL_SUCCESS, payload),
   getTypeRoomByHolFail: (payload: any) =>
     action(types.GET_TYPE_ROOM_BY_HOL_FAIL, payload),
+  booking: (payload: any) => action(types.BOOKING, payload),
+  bookingSuccess: (payload: any) => action(types.BOOKING_SUCCESS, payload),
+  bookingFail: (payload: any) => action(types.BOOKING_FAIL, payload),
+  getHotelById: (payload: any) => action(types.GET_HOTEL_BY_ID, payload),
+  getHotelByIdSuccess: (payload: any) =>
+    action(types.GET_HOTEL_BY_ID_SUCCESS, payload),
+  getHotelByIdFail: (payload: any) =>
+    action(types.GET_HOTEL_BY_ID_FAIL, payload),
 };
