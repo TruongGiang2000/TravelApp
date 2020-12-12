@@ -35,6 +35,7 @@ class HotelDetail extends Component<any, any> {
       lineOfContent: 5,
       isShow: false,
       date: '',
+      isShowModal: false,
     };
   }
   renderItem = ({item}) => {
@@ -67,9 +68,10 @@ class HotelDetail extends Component<any, any> {
   };
   showModalImage = () => {
     this.setState({isShow: true});
+    this.setState({isShowModal: true});
   };
   onClose = () => {
-    this.setState({isShow: false});
+    this.setState({isShowModal: false});
   };
   onPressDetail = () => {
     if (this.state.lineOfContent == 50) {
@@ -90,7 +92,7 @@ class HotelDetail extends Component<any, any> {
   };
   render() {
     const {language, conveById} = this.props;
-    const {data, lineOfContent, isShow} = this.state;
+    const {data, lineOfContent, isShowModal} = this.state;
     let isVi = language == 'vi';
     let isMaxNumberOfLine = lineOfContent == 50;
     return (
@@ -176,15 +178,17 @@ class HotelDetail extends Component<any, any> {
             onPress={this._navigateChooseRoom}
           />
         </View>
-        <ModalCustom isVisible={isShow} onBackdropPress={this.onClose}>
-          <FlatList
-            style={styles.flatListItemImage}
-            data={data.Images}
-            renderItem={this.renderModalImage}
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-          />
-        </ModalCustom>
+        {isShowModal && (
+          <ModalCustom isVisible={isShowModal} onBackdropPress={this.onClose}>
+            <FlatList
+              style={styles.flatListItemImage}
+              data={data.Images}
+              renderItem={this.renderModalImage}
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+            />
+          </ModalCustom>
+        )}
       </View>
     );
   }
@@ -325,9 +329,10 @@ const styles = StyleSheet.create({
     fontSize: wp('4.2'),
   },
   modalItemImage: {
-    //width: wp('18'),
-    //height: hp('11.5'),
+    width: wp('90'),
+    height: hp('60'),
     marginRight: wp('3.2'),
+    borderRadius: wp('5'),
   },
 });
 const mapStateFromProps = (state: any) => {

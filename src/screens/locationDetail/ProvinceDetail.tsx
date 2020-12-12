@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, ScrollView, Text} from 'react-native';
+import {View, StyleSheet, ScrollView, Text, FlatList} from 'react-native';
 import SlideShow from '../../components/SlideShow';
 import {
   widthPercentageToDP as wp,
@@ -15,13 +15,16 @@ import CommunityPeople from '../../components/CommunityPeople';
 import HotelAroundList from './modules/HotelAroundList';
 import {places, hotels} from '../../redux';
 import {connect} from 'react-redux';
+
 class ProvinceDetail extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
       data: this.props.route.params.item,
+
     };
   }
+  
   componentDidMount() {
     const {data} = this.state;
     const {getHotelByProvince, getLocationByProvince} = this.props;
@@ -79,7 +82,9 @@ class ProvinceDetail extends Component<any, any> {
             hotelByProvince={hotelByProvince}
           />
         </View>
+        
       </ScrollView>
+      
     );
   }
 }

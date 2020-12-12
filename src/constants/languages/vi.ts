@@ -151,6 +151,7 @@ export default {
   desc_empty_room: 'Còn {0} phòng trống',
   desc_empties_room: 'Còn {0} phòng trống',
   policy_cancel: 'Chính sách huỷ phòng',
+
   pass_not_match: 'Mật khẩu không trùng khớp',
   CreateAccountSuccess: 'Tạo tài khoản thành công',
   update_info: 'Cập nhật thông tin cá nhân',
@@ -162,4 +163,5 @@ export default {
   description_fail_date: 'Ngày đi phải lớn hơn ngày đến',
   id_card: 'CMND',
   valid_info: 'Thông tin không hợp lệ',
+  see_all: 'Xem thêm',
 };

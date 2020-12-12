@@ -1,7 +1,5 @@
-import {request} from 'http';
-import {url} from 'inspector';
 import React, {Component} from 'react';
-import {View, StyleSheet, Image, Pressable} from 'react-native';
+import {StyleSheet, Image, Pressable} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
