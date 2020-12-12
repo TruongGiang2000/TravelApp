@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Text, TouchableOpacity, Button} from 'react-native';
-import PropTypes from 'prop-types';
-import TraTe from '../components/TraTe';
+import TraTe from './TraTe';
 class ButtonCustom extends Component<any, any> {
   constructor(props) {
     super(props);
