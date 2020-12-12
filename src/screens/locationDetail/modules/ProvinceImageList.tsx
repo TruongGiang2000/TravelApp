@@ -53,7 +53,7 @@ class ProvinceImageList extends Component<any, any> {
           horizontal={true}
           showsHorizontalScrollIndicator={false}
         />
-
+        {isShowModal && (
         <ModalCustom isVisible={isShowModal} onBackdropPress={this.onClose}>
         {/* <Pressable onPress={this.onClose}>
           <AntDesign
@@ -70,8 +70,7 @@ class ProvinceImageList extends Component<any, any> {
               showsHorizontalScrollIndicator={false}
             />
         </ModalCustom>
-
-        
+  )}
       </View>
     );
   }
