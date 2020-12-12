@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Text, TextInput} from 'react-native';
+import {View, StyleSheet, Text, TextInput, ToastAndroid} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -8,43 +8,45 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import ButtonCustom from '../../../components/ButtonCustom';
 import {translate} from '../../../util/translate';
-class index extends Component<any, any> {
+import {auth} from '../../../redux';
+import {connect} from 'react-redux';
+import {actionMain} from '../../../util/mainActions';
+class SignUp extends Component<any, any> {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      valueSignUp: {},
+      Email: '',
+      Password: '',
+      RePassword: '',
+    };
   }
-
+  onChangeEmail = (value) => {
+    this.setState({Email: value});
+  };
+  onChangePassword = (value) => {
+    this.setState({Password: value});
+  };
+  onChangeRePassword = (value) => {
+    this.setState({RePassword: value});
+  };
+  onPressButton = () => {
+    const {Password, RePassword, Email} = this.state;
+    if (Password != RePassword) {
+      return ToastAndroid.show(translate('pass_not_match'), ToastAndroid.SHORT);
+    }
+    const data = {
+      Email: Email,
+      Password: Password,
+    };
+    actionMain.loading(true);
+    this.props.signUp(data);
+  };
   render() {
     return (
       <View style={styles.MainContainer}>
         <View style={styles.viewContent}>
           <Text style={styles.signupText}>{translate('signup')}</Text>
-          <View style={styles.textInput}>
-            <FontAwesome name={'user'} size={wp('5')} color={'#A8B6C8'} />
-            <TextInput
-              style={styles.inputText}
-              placeholder={translate('account')}
-              placeholderTextColor={'#A8B6C8'}
-            />
-          </View>
-          <View style={styles.textInput}>
-            <FontAwesome name={'lock'} size={wp('5')} color={'#A8B6C8'} />
-            <TextInput
-              style={styles.inputText}
-              placeholderTextColor={'#A8B6C8'}
-              placeholder={translate('password')}
-              secureTextEntry={true}
-            />
-          </View>
-          <View style={styles.textInput}>
-            <FontAwesome name={'lock'} size={20} style={styles.icon} />
-            <TextInput
-              style={styles.inputText}
-              placeholderTextColor={'#A8B6C8'}
-              placeholder={translate('re_password')}
-              secureTextEntry={true}
-            />
-          </View>
           <View style={styles.textInput}>
             <MaterialCommunityIcons
               name={'email'}
@@ -55,12 +57,34 @@ class index extends Component<any, any> {
               placeholderTextColor={'#A8B6C8'}
               style={styles.inputText}
               placeholder={translate('email')}
-              secureTextEntry={true}
+              onChangeText={this.onChangeEmail}
             />
           </View>
+          <View style={styles.textInput}>
+            <FontAwesome name={'lock'} size={wp('5')} color={'#A8B6C8'} />
+            <TextInput
+              style={styles.inputText}
+              placeholderTextColor={'#A8B6C8'}
+              placeholder={translate('password')}
+              secureTextEntry={true}
+              onChangeText={this.onChangePassword}
+            />
+          </View>
+          <View style={styles.textInput}>
+            <FontAwesome name={'lock'} size={20} style={styles.icon} />
+            <TextInput
+              style={styles.inputText}
+              placeholderTextColor={'#A8B6C8'}
+              placeholder={translate('re_password')}
+              secureTextEntry={true}
+              onChangeText={this.onChangeRePassword}
+            />
+          </View>
+
           <ButtonCustom
             title={translate('createaccount')}
             style={styles.buttonCustom}
+            onPress={this.onPressButton}
           />
         </View>
         <View style={styles.dash}>
@@ -141,4 +165,4 @@ const styles = StyleSheet.create({
   },
   icon: {},
 });
-export default index;
+export default connect(null, auth)(SignUp);

@@ -23,6 +23,7 @@ export default class KindOfRoom extends Component<any, any> {
       quantum,
       internet,
       containerStyle,
+      onPress,
     } = this.props;
     return (
       <Pressable style={[styles.MainItem, containerStyle]}>
@@ -61,6 +62,7 @@ export default class KindOfRoom extends Component<any, any> {
                 title={translate('book_room')}
                 style={styles.buttonCustom}
                 titleStyle={{fontSize: wp('3.7')}}
+                onPress={onPress}
               />
             </View>
           </View>

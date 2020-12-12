@@ -6,7 +6,7 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-class index extends Component<any, any> {
+class ModalAuth extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
@@ -48,4 +48,4 @@ const styles = StyleSheet.create({
     opacity: 0.7,
   },
 });
-export default index;
+export default ModalAuth;

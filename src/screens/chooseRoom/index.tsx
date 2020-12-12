@@ -1,5 +1,12 @@
 import React, {Component} from 'react';
-import {Text, View, ImageBackground, StyleSheet, FlatList} from 'react-native';
+import {
+  Text,
+  View,
+  ImageBackground,
+  StyleSheet,
+  FlatList,
+  Pressable,
+} from 'react-native';
 import Kindofroom from '../home/modules/kindofroom';
 import {translate} from '../../util/translate';
 import {
@@ -23,6 +30,9 @@ class ChooseRoom extends Component<any, any> {
     actionMain.loading(true);
     this.props.getTypeRoomByHol(this.state.idHotel);
   }
+  onPressItem = (_id) => () => {
+    this.props.navigation.navigate('Booking', {_id});
+  };
   renderItem = ({item}) => (
     <Kindofroom
       source={{uri: item.Images[0]}}
@@ -32,10 +42,11 @@ class ChooseRoom extends Component<any, any> {
       title={item.vi.Name}
       policy={translate('policy_cancel')}
       quantum={translate('desc_empty_room').format(item.Empty_Room)}
-      internet={'Miễn Phí Internet'}
+      internet={translate('free_internet')}
       iconinternet={require('../../assets/images/shape.png')}
       isShow={true}
       containerStyle={{marginTop: hp('-10')}}
+      onPress={this.onPressItem(item._id)}
     />
   );
   render() {
@@ -46,12 +57,16 @@ class ChooseRoom extends Component<any, any> {
         source={{uri: imageHotel}}
         style={styles.ImageBackground}>
         <View style={styles.container}>
-          <MaterialIcon
-            name={'keyboard-backspace'}
-            size={wp('7')}
-            color={'#000'}
+          <Pressable
             style={styles.Icon}
-          />
+            onPress={() => this.props.navigation.goBack()}>
+            <MaterialIcon
+              name={'keyboard-backspace'}
+              size={wp('7')}
+              color={'#000'}
+            />
+          </Pressable>
+
           <FlatList
             data={typeRoom}
             renderItem={this.renderItem}
@@ -59,7 +74,7 @@ class ChooseRoom extends Component<any, any> {
           />
           <View style={styles.title}>
             <Text style={styles.NumberTyperoom}>
-              {translate('numbertyperoom').format(typeRoom.length)}
+              {translate('numbertyperoom').format(typeRoom?.length)}
             </Text>
           </View>
         </View>

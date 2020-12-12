@@ -67,12 +67,8 @@ class UserInformation extends Component<any, any> {
   hideManageAccountModal = () => {
     this.setState({isShowManageAccModal: false});
   };
-  onPressLogout = () => {
-    this.hideManageAccountModal();
-    this.props.navigation.navigate('UserNotLogin');
-  };
   render() {
-    const {style} = this.props;
+    const {style, userInfo, onPressLogout} = this.props;
     const {isEnabled, avatarSource, isShow, isShowManageAccModal} = this.state;
     return (
       <View style={[styles.MainContainer, style]}>
@@ -101,7 +97,7 @@ class UserInformation extends Component<any, any> {
             />
           </Pressable>
         </View>
-        <Text style={styles.fullName}>Nguyễn Vũ Trường Giang</Text>
+        <Text style={styles.fullName}>{userInfo?.Name || 'Unknown'}</Text>
         <Pressable
           onPress={this.showManageAccountModal}
           style={styles.touchIconThreeDot}>
@@ -125,19 +121,17 @@ class UserInformation extends Component<any, any> {
           <FieldUser
             style={styles.fieldUser}
             title={translate('address')}
-            content={
-              '201/26 ấp Phú Hiệp, xã Phú Hoà Đông, huyện Củ Chi, TP.HCM'
-            }
+            content={userInfo?.Address}
           />
           <FieldUser
             style={styles.fieldUser}
             title={translate('email')}
-            content={'stella.summers@gmail.com'}
+            content={userInfo?.Email}
           />
           <FieldUser
             style={styles.fieldUser}
             title={translate('phone')}
-            content={'097.123.1131'}
+            content={userInfo?.Phone}
           />
 
           <FieldUser
@@ -169,7 +163,10 @@ class UserInformation extends Component<any, any> {
           animationType={'slide'}>
           <ManageAccountModal
             onPressBackSpace={this.hideManageAccountModal}
-            onPressLogout={this.onPressLogout}
+            onPressLogout={onPressLogout}
+            navigation={this.props.navigation}
+            forceClose={this.hideManageAccountModal}
+            userInfo={userInfo}
           />
         </Modal>
       </View>

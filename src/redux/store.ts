@@ -6,10 +6,11 @@ import {createWhitelistFilter} from 'redux-persist-transform-filter';
 import rootReducers from './reducer';
 import rootEpic from './rootEpics';
 const lang = createWhitelistFilter('system', ['language']);
+const token = createWhitelistFilter('auth', ['token']);
 const epicMiddleware = createEpicMiddleware();
 const persistConfig: any = {
   key: 'root',
-  transforms: [lang],
+  transforms: [lang, token],
   storage: AsyncStorage,
   timeout: 0,
 };

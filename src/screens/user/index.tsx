@@ -2,6 +2,7 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import User from './User';
 import UserNotLogin from './UserNotLogin';
+import UpdateInfo from './modules/UpdateInfo';
 const UserStack = {
   User: {
     screen: User,
@@ -15,6 +16,13 @@ const UserStack = {
     path: 'UserNotLogin',
     navigationOptions: {
       title: 'UserNotLogin',
+    },
+  },
+  UpdateInfo: {
+    screen: UpdateInfo,
+    path: 'UpdateInfo',
+    navigationOptions: {
+      title: 'UpdateInfo',
     },
   },
 };

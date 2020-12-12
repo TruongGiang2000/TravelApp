@@ -23,11 +23,11 @@ class InputComponent extends Component<any, any> {
     const {regex} = this.props;
     const valid = regex.test(value);
     this.setState({valid: !valid});
-    // this.props.onChangeText(value);
+    this.props.onChangeText(value);
   };
   render() {
     const {onFocus, valid} = this.state;
-    const {labelStyle, label, styleInput, style, txtError} = this.props;
+    const {labelStyle, label, styleInput, style, txtError, defaultValue} = this.props;
     return (
       <Pressable style={style}>
         <Text
@@ -55,6 +55,7 @@ class InputComponent extends Component<any, any> {
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           onChangeText={this.onChangeText}
+          defaultValue={defaultValue}
         />
         {valid && <Text style={styles.txtError}>{txtError}</Text>}
       </Pressable>

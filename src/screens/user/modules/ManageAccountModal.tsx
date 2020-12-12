@@ -15,21 +15,31 @@ class ManageAccountModal extends Component<any, any> {
     super(props);
     this.state = {
       data: [
-        {key: 'update_personalInfo'},
+        {key: 'update_personalInfo', route: 'UpdateInfo'},
         {key: 'history_points'},
         {key: 'change_password'},
         {key: 'history_booking'},
       ],
     };
   }
+  onPressItem = (route) => () => {
+    this.props.navigation.navigate(route);
+    this.props.forceClose();
+  };
   renderItem = ({item}) => {
-    return <ItemRow style={styles.itemRow} title={translate(item.key)} />;
+    return (
+      <ItemRow
+        style={styles.itemRow}
+        title={translate(item.key)}
+        onPress={this.onPressItem(item.route)}
+      />
+    );
   };
   onLogout = ()=> {
     this.props.navigation.navigate('SignIn');
   };
   render() {
-    const {onPressLogout} = this.props;
+    const {onPressLogout, userInfo} = this.props;
     return (
       <View style={styles.MainContainer}>
         <View style={styles.viewRowHeader}>
@@ -42,7 +52,7 @@ class ManageAccountModal extends Component<any, any> {
           </Pressable>
           <Text style={styles.title}>{translate('manage_account')}</Text>
           <ItemUser
-            name={'Nguyen Vu Truong Giang NGuyen Vinh Quang Nguyen'}
+            name={userInfo?.Name || 'Unkown'}
             source={require('../../../assets/images/Bitmap.png')}
             core={300}
           />

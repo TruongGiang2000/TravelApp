@@ -53,7 +53,7 @@ class UserAchievement extends Component<any, any> {
     this.setState({showModalHelping: false});
   };
   render() {
-    const {style} = this.props;
+    const {style, userInfo} = this.props;
     const {showModalHelping} = this.state;
     return (
       <View style={[styles.MainContainer, style]}>
@@ -102,7 +102,10 @@ class UserAchievement extends Component<any, any> {
             <Text style={styles.textCoinStraNormal}>
               {translate('you_achieve')}
             </Text>
-            <Text style={styles.textCoinStraBold}> 7.000 S-tra</Text>
+            <Text
+              style={
+                styles.textCoinStraBold
+              }>{` ${userInfo?.Stra_Core} S-tra`}</Text>
           </View>
         </View>
         <View style={styles.viewArmorial}>

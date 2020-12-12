@@ -147,4 +147,10 @@ export default {
   desc_empties_room: 'rooms available',
   policy_cancel: 'Cancellation policy',
   see_all: 'See all',
+  pass_not_match: 'Password do not match',
+  CreateAccountSuccess: 'Create account success',
+  update_info: 'Update Personal Information',
+  full_name: 'Full name',
+  update: 'Update',
+  free_internet: 'Free internet',
 };

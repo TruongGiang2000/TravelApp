@@ -8,174 +8,196 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import ButtonCustom from '../../../components/ButtonCustom';
 import ButtonFBCustom from '../../../components/ButtonFBCustom';
 import {translate} from '../../../util/translate';
-import { withPages } from '../../../util/withPages';
-import { GraphRequest,
-  GraphRequestManager, LoginManager } from "react-native-fbsdk"
-import FBSDK  from 'react-native-fbsdk';
-  const {
-    AccessToken,
-  } = FBSDK;
-  import {
-  GoogleSignin,
-  statusCodes,
-} from '@react-native-community/google-signin';
-GoogleSignin.configure(); 
+import {connect} from 'react-redux';
+import {auth} from '../../../redux';
+import {actionMain} from '../../../util/mainActions';
+// =======
+// import { withPages } from '../../../util/withPages';
+// import { GraphRequest,
+//   GraphRequestManager, LoginManager } from "react-native-fbsdk"
+// import FBSDK  from 'react-native-fbsdk';
+//   const {
+//     AccessToken,
+//   } = FBSDK;
+//   import {
+//   GoogleSignin,
+//   statusCodes,
+// } from '@react-native-community/google-signin';
+// GoogleSignin.configure(); 
 class SignIn extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
-      userName: '',
-      imageUrl: '',
-      id: '',
-      userInfo: {}
+      Email: '',
+      Password: '',
     };
-
   }
-     
-  SignInFB = () =>{
-    //signin
-    //const [loggedIn, setLoggedIn] = useState(false);
-    //const [avatar, setAvatar] = useState(null);
-    //const [name, setName] = useState('');
-    
-    LoginManager.logInWithPermissions(["public_profile"]).then(
-      function(result) {
-        if (result.isCancelled) {
-          console.log("Login cancelled");
-        } else {
-          console.log(
-            "Login success with permissions: " +
-              result.grantedPermissions.toString()
-              
-          );
-         // this.props.navigation.navigate('User');
-          //this.getInfoFromToken()
-          //setLoggedIn(true);
-          //let token = result.credential.accessToken;
-          AccessToken.getCurrentAccessToken().then(data =>{
-            const { accessToken } = data;
-            console.log("data" + data)
-            let graphRequest = new GraphRequest('/me', {
-              accessToken,
-              parameters: {
-                  fields: {
-                      string: 'picture.type(large),name',
-                  }
-              }
-          }, (error, result): void => {
-              const {
-                  picture: {
-                      data
-                  },
-                  name,
-              } = result;
-              console.log(result);
-              this.setState({
-                userName: result.name,
-                id: result.id,
-                imageUrl: result.url
-            })
-              
-              //console.log(userName);
-              
-              if (error) {
-                  console.log('error'+ error);
-              } else {
-                  console.log('result'+result);
-                  //setAvatar(data);
-                  //setName(name);
-              }
-          });
-  
-          const graphRequestManager = new GraphRequestManager();
-          graphRequestManager.addRequest(graphRequest).start();
-      });
-            
-        }
-      },
-      function(error) {
-        console.log("Login fail with error: " + error);
-      }
-    );
-    
-//       // sharelink
-//     const shareLinkContent = {
-//       contentType: 'link',
-//       contentUrl: "https://facebook.com",
-//       contentDescription: 'Wow, check out this great site!',
-//     };
-//     var tmp = this;
-//   ShareDialog.canShow(this.state.shareLinkContent).then(
-//     function(canShow) {
-//       if (canShow) {
-//         return ShareDialog.show(tmp.state.shareLinkContent);
-//       }
-//     }
-//   ).then(
-//     function(result) {
-//       if (result.isCancelled) {
-//         console.log('Share cancelled');
-//       } else {
-//         console.log('Share success with postId: '
-//           + result.postId);
-//       }
-//     },
-//     function(error) {
-//       console.log('Share fail with error: ' + error);
-//     }
-//   );
-//     // share image
-//     const FBSDK = require('react-native-fbsdk');
-//     const {
-//       ShareApi,
-//     } = FBSDK;
-//     const photoUri = 'file://' + '/path/of/photo.png'
-// const sharePhotoContent =  contentType = 'photo',
-//   photos: [{ imageUrl: photoUri }],
-// }
-// ShareDialog.show(tmp.state.sharePhotoContent);
-  }
-  logout=()=>{
-    LoginManager.logOut();
-    //setLoggedIn(false);
-    console.log('logOut');
-    
-  }
-  //login google
-  signIngg = async () => {
-    try {
-      await GoogleSignin.hasPlayServices();
-      const userInfo = await GoogleSignin.signIn();
-      this.setState({ userInfo });
-    } catch (error) {
-      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-        // user cancelled the login flow
-        console.log("error: "+ error);
-        
-      } else if (error.code === statusCodes.IN_PROGRESS) {
-        // operation (e.g. sign in) is in progress already
-        console.log("errorcode: " + error);
-        
-      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-        // play services not available or outdated
-        console.log("errorcodes: " + error);
-      } else {
-        // some other error happened
-        console.log("code: " + error);
-      }
-    }
+  login = () => {
+    const {Email, Password} = this.state;
+    const data = {
+      Email: Email,
+      Password: Password,
+    };
+    actionMain.loading(true);
+    this.props.signIn(data);
   };
-  getCurrentUserInfo = async () => {
-    try {
-      const userInfo = await GoogleSignin.signInSilently();
-      this.setState({ userInfo });
-    } catch (error) {
-      if (error.code === statusCodes.SIGN_IN_REQUIRED) {
-        // user has not signed in yet
-      } else {
-        // some other error
-      }
-    }
+  onChangeEmail = (value) => {
+    this.setState({Email: value});
+  };
+  onChangePassword = (value) => {
+    this.setState({Password: value});
+//       userName: '',
+//       imageUrl: '',
+//       id: '',
+//       userInfo: {}
+//     };
+
+//   }
+     
+//   SignInFB = () =>{
+//     //signin
+//     //const [loggedIn, setLoggedIn] = useState(false);
+//     //const [avatar, setAvatar] = useState(null);
+//     //const [name, setName] = useState('');
+    
+//     LoginManager.logInWithPermissions(["public_profile"]).then(
+//       function(result) {
+//         if (result.isCancelled) {
+//           console.log("Login cancelled");
+//         } else {
+//           console.log(
+//             "Login success with permissions: " +
+//               result.grantedPermissions.toString()
+              
+//           );
+//          // this.props.navigation.navigate('User');
+//           //this.getInfoFromToken()
+//           //setLoggedIn(true);
+//           //let token = result.credential.accessToken;
+//           AccessToken.getCurrentAccessToken().then(data =>{
+//             const { accessToken } = data;
+//             console.log("data" + data)
+//             let graphRequest = new GraphRequest('/me', {
+//               accessToken,
+//               parameters: {
+//                   fields: {
+//                       string: 'picture.type(large),name',
+//                   }
+//               }
+//           }, (error, result): void => {
+//               const {
+//                   picture: {
+//                       data
+//                   },
+//                   name,
+//               } = result;
+//               console.log(result);
+//               this.setState({
+//                 userName: result.name,
+//                 id: result.id,
+//                 imageUrl: result.url
+//             })
+              
+//               //console.log(userName);
+              
+//               if (error) {
+//                   console.log('error'+ error);
+//               } else {
+//                   console.log('result'+result);
+//                   //setAvatar(data);
+//                   //setName(name);
+//               }
+//           });
+  
+//           const graphRequestManager = new GraphRequestManager();
+//           graphRequestManager.addRequest(graphRequest).start();
+//       });
+            
+//         }
+//       },
+//       function(error) {
+//         console.log("Login fail with error: " + error);
+//       }
+//     );
+    
+// //       // sharelink
+// //     const shareLinkContent = {
+// //       contentType: 'link',
+// //       contentUrl: "https://facebook.com",
+// //       contentDescription: 'Wow, check out this great site!',
+// //     };
+// //     var tmp = this;
+// //   ShareDialog.canShow(this.state.shareLinkContent).then(
+// //     function(canShow) {
+// //       if (canShow) {
+// //         return ShareDialog.show(tmp.state.shareLinkContent);
+// //       }
+// //     }
+// //   ).then(
+// //     function(result) {
+// //       if (result.isCancelled) {
+// //         console.log('Share cancelled');
+// //       } else {
+// //         console.log('Share success with postId: '
+// //           + result.postId);
+// //       }
+// //     },
+// //     function(error) {
+// //       console.log('Share fail with error: ' + error);
+// //     }
+// //   );
+// //     // share image
+// //     const FBSDK = require('react-native-fbsdk');
+// //     const {
+// //       ShareApi,
+// //     } = FBSDK;
+// //     const photoUri = 'file://' + '/path/of/photo.png'
+// // const sharePhotoContent =  contentType = 'photo',
+// //   photos: [{ imageUrl: photoUri }],
+// // }
+// // ShareDialog.show(tmp.state.sharePhotoContent);
+//   }
+//   logout=()=>{
+//     LoginManager.logOut();
+//     //setLoggedIn(false);
+//     console.log('logOut');
+    
+//   }
+//   //login google
+//   signIngg = async () => {
+//     try {
+//       await GoogleSignin.hasPlayServices();
+//       const userInfo = await GoogleSignin.signIn();
+//       this.setState({ userInfo });
+//     } catch (error) {
+//       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+//         // user cancelled the login flow
+//         console.log("error: "+ error);
+        
+//       } else if (error.code === statusCodes.IN_PROGRESS) {
+//         // operation (e.g. sign in) is in progress already
+//         console.log("errorcode: " + error);
+        
+//       } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+//         // play services not available or outdated
+//         console.log("errorcodes: " + error);
+//       } else {
+//         // some other error happened
+//         console.log("code: " + error);
+//       }
+//     }
+//   };
+//   getCurrentUserInfo = async () => {
+//     try {
+//       const userInfo = await GoogleSignin.signInSilently();
+//       this.setState({ userInfo });
+//     } catch (error) {
+//       if (error.code === statusCodes.SIGN_IN_REQUIRED) {
+//         // user has not signed in yet
+//       } else {
+//         // some other error
+//       }
+//     }
   };
   render() {
     
@@ -190,17 +212,24 @@ class SignIn extends Component<any, any> {
             <TextInput
               style={styles.textInputStyle}
               placeholderTextColor={'#A8B6C8'}
-              placeholder={translate('signin')}
+              placeholder={translate('email')}
+              onChangeText={this.onChangeEmail}
             />
           </View>
           <View style={styles.textInput}>
-            <FontAwesome name={'lock'} size={20} style={styles.icon} />
-            <TextInput placeholder={'Mật khẩu'} secureTextEntry={true} />
+            <FontAwesome name={'lock'} size={wp('4.4')} style={styles.icon} />
+            <TextInput
+              style={[styles.textInputStyle, {marginLeft: 0}]}
+              placeholder={translate('password')}
+              secureTextEntry={true}
+              onChangeText={this.onChangePassword}
+            />
           </View>
           <ButtonCustom
             titleStyle={styles.buttonText}
             title={translate('signin')}
             style={styles.buttonCustom}
+            onPress={this.login}
           />
         </View>
         <Text
@@ -209,19 +238,19 @@ class SignIn extends Component<any, any> {
           {translate('dont_have_an_account')}
         </Text>
         <View style={styles.dash}>
-          <View style={styles.dash1}></View>
+          <View style={styles.dash1} />
           <Text style={styles.orText}>{translate('or')}</Text>
-          <View style={styles.dash1}></View>
+          <View style={styles.dash1} />
         </View>
         <ButtonFBCustom
           titleStyle={styles.buttonText}
           title={translate('facebock')}
-          onPress={this.SignInFB}
+          // onPress={this.SignInFB}
         />
         <ButtonFBCustom
           titleStyle={styles.buttonText}
           title={translate('google')}
-          onPress={this.signIngg}
+          // onPress={this.signIngg}
         />
       </View>
     );
@@ -308,4 +337,4 @@ const styles = StyleSheet.create({
     marginTop: hp('2'),
   },
 });
-export default withPages(SignIn);
+export default connect(null, auth)(SignIn);

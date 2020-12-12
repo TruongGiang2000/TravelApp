@@ -12,6 +12,7 @@ import {
   getTypeRoomByHotel,
 } from './hotel/epic';
 import {getAllNews} from './system/epic';
+import {signUp, getProfile, signIn, updateProfile} from './auth/epic';
 const rootEpics = combineEpics(
   getProvinces,
   searchProvinces,
@@ -22,5 +23,9 @@ const rootEpics = combineEpics(
   getConvebyId,
   getHotelByPro,
   getTypeRoomByHotel,
+  signUp,
+  getProfile,
+  signIn,
+  updateProfile,
 );
 export default rootEpics;

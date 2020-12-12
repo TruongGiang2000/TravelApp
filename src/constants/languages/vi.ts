@@ -150,5 +150,12 @@ export default {
   desc_empty_room: 'Còn {0} phòng trống',
   desc_empties_room: 'Còn {0} phòng trống',
   policy_cancel: 'Chính sách huỷ phòng',
-  see_all: 'xem tất cả',
+
+
+  pass_not_match: 'Mật khẩu không trùng khớp',
+  CreateAccountSuccess: 'Tạo tài khoản thành công',
+  update_info: 'Cập nhật thông tin cá nhân',
+  full_name: 'Họ và tên',
+  update: 'Cập nhật',
+  free_internet: 'Miễn Phí Internet',
 };

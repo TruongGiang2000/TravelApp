@@ -4,8 +4,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import InputComponent from './modules/InputComponent';
+import InputComponent from '../../components/InputComponent';
 import ButtonCustom from '../../components/ButtonCustom';
 import {
   validName,
