@@ -12,6 +12,7 @@ class ModalSuccessFully extends Component<any, any> {
     this.state = {};
   }
   render() {
+    const {onPress} = this.props;
     return (
       this.props.show && (
         <View style={styles.modalStyle}>
@@ -25,12 +26,13 @@ class ModalSuccessFully extends Component<any, any> {
                 title={translate('next')}
                 titleStyle={{fontSize: wp('4')}}
                 style={styles.buttonNext}
+                onPress={onPress}
               />
               <ButtonCustom
                 title={translate('close')}
                 style={styles.buttonClose}
                 titleStyle={styles.closeText}
-                onPress={this.props.onPressClose}
+                onPress={onPress}
               />
             </View>
           </View>

@@ -24,10 +24,12 @@ class ItemNotification extends Component<any, any> {
       time,
       day,
       onPress,
+      size,
     } = this.props;
+    let sizeThis = size || wp('12');
     return (
       <Pressable style={[styles.MainContainer, style]}>
-        <CircleImage source={source} size={wp('15')} />
+        <CircleImage source={source} size={sizeThis} />
         <View style={styles.viewContent}>
           <Text numberOfLines={2} style={[styles.title, styletitle]}>
             {this.props.children || title}
@@ -35,7 +37,7 @@ class ItemNotification extends Component<any, any> {
           {this.props.isShow && (
             <ButtonCustom
               title={titlebutton}
-              style={{width: wp(30), padding: wp(0)}}
+              style={styles.buttonStyle}
               onPress={onPress}
             />
           )}
@@ -73,6 +75,7 @@ const styles = StyleSheet.create({
     fontSize: wp('3.7'),
     color: '#00162B',
     fontFamily: 'roboto-slab.regular',
+    width: wp('70'),
   },
   viewDate: {
     flexDirection: 'row',
@@ -90,6 +93,12 @@ const styles = StyleSheet.create({
   viewRow: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  buttonStyle: {
+    paddingHorizontal: wp('1'),
+    width: wp('30'),
+    paddingVertical: hp('0.7'),
+    marginTop: hp('0.5'),
   },
 });
 export default ItemNotification;

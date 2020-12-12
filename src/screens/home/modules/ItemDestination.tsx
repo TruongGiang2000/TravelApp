@@ -8,6 +8,7 @@ import StarRating from 'react-native-star-rating';
 import Icon from 'react-native-vector-icons/dist/AntDesign';
 import GradientOpacity from '../../../components/GradientOpacity';
 import {translate} from '../../../util/translate';
+import shadow from '../../../util/shadow';
 export default class itemdestination extends Component<any, any> {
   constructor(prop) {
     super(prop);
@@ -68,6 +69,9 @@ const styles = StyleSheet.create({
     flex: 1,
     width: wp('65'),
     height: hp('50'),
+    borderWidth: 0.5,
+    borderColor: '#cccccc',
+    borderRadius: wp('2'),
   },
   viewImage: {
     width: '100%',

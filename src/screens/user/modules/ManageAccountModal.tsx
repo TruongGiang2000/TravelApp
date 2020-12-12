@@ -1,5 +1,12 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, FlatList, Pressable, Text} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  FlatList,
+  Pressable,
+  Text,
+  ToastAndroid,
+} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -9,7 +16,7 @@ import ItemUser from './ItemUser';
 import ItemRow from './ItemRow';
 import ButtonCutom from '../../../components/ButtonCustom';
 import {translate} from '../../../util/translate';
-import { withPages } from '../../../util/withPages';
+import {withPages} from '../../../util/withPages';
 class ManageAccountModal extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -23,7 +30,11 @@ class ManageAccountModal extends Component<any, any> {
     };
   }
   onPressItem = (route) => () => {
-    this.props.navigation.navigate(route);
+    if (!route) {
+      ToastAndroid.show(translate('developing'), ToastAndroid.SHORT);
+      return;
+    }
+    route && this.props.navigation.navigate(route);
     this.props.forceClose();
   };
   renderItem = ({item}) => {
@@ -35,7 +46,7 @@ class ManageAccountModal extends Component<any, any> {
       />
     );
   };
-  onLogout = ()=> {
+  onLogout = () => {
     this.props.navigation.navigate('SignIn');
   };
   render() {

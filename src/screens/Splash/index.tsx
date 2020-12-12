@@ -112,7 +112,7 @@ const SplashScreen = (props: any) => {
         break;
       case CodePush.SyncStatus.UP_TO_DATE:
       default:
-        setSyncMessage('ɚ 1.5');
+        setSyncMessage('ɚ 1.6');
         loadingApp();
         break;
     }

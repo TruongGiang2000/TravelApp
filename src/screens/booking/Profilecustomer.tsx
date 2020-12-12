@@ -209,6 +209,7 @@ const styles = StyleSheet.create({
   },
   inputComponent: {
     marginTop: hp('1'),
+    fontFamily: 'roboto-slab.regular',
   },
   viewCheckBox: {
     flexDirection: 'row',

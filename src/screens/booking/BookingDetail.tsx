@@ -52,6 +52,9 @@ class BookingDetail extends Component<any, any> {
     this.props.booking(dataBookingFinal);
     this.setState({isShow: true});
   };
+  onPress = () => {
+    this.props.navigation.navigate('Home');
+  };
   onClose = () => {
     this.setState({isShow: false});
   };
@@ -188,7 +191,7 @@ class BookingDetail extends Component<any, any> {
           />
         </View>
         <ModalCustom isVisible={isShow} onBackdropPress={this.onClose}>
-          <ModalSuccessfull onPressClose={this.onClose} show={isShow} />
+          <ModalSuccessfull onPress={this.onPress} show={isShow} />
         </ModalCustom>
       </View>
     );

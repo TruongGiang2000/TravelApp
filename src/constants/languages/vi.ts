@@ -144,8 +144,8 @@ export default {
   highlightSpot: 'Địa điểm nổi bật',
   description_spot_home: 'địa điểm ưa thích nhất',
   travel_news: 'Tin tức du lịch',
-  night: '{0} đêm',
-  nights: '{0} sđêm',
+  night: 'đêm',
+  nights: 'đêm',
   hotelAround: 'Khách sạn quanh đây',
   google: 'Tiếp tục với Google',
   desc_empty_room: 'Còn {0} phòng trống',
@@ -164,4 +164,7 @@ export default {
   id_card: 'CMND',
   valid_info: 'Thông tin không hợp lệ',
   see_all: 'Xem thêm',
+  start: 'Bắt đầu',
+  developing: 'Tính năng này đang phát triển',
+  updateSuccess: 'Cập nhật thông tin thành công',
 };

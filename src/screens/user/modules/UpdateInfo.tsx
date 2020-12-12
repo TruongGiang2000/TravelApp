@@ -1,5 +1,5 @@
-import React, {useRef, useState} from 'react';
-import {View, StyleSheet, Text, Pressable} from 'react-native';
+import React, {useState} from 'react';
+import {View, StyleSheet, Text, Pressable, ToastAndroid} from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -17,9 +17,6 @@ import {connect} from 'react-redux';
 import {auth} from '../../../redux';
 import {actionMain} from '../../../util/mainActions';
 const UpdateInfo = (props: any) => {
-  const [name, setName] = useState('');
-  const [address, setAddress] = useState('');
-  const [phone, setPhone] = useState('');
   const {userInfo, token} = props;
   const [userValue, setUserValue] = useState({...userInfo});
   const onPressBackSpace = () => {
@@ -35,10 +32,11 @@ const UpdateInfo = (props: any) => {
     setUserValue({...userValue, Phone: value});
   };
   const onPress = () => {
-    console.log('userValue', userValue);
     const data = {...userValue, token: token};
     actionMain.loading(true);
     props.updateProfile(data);
+    props.navigation.popToTop();
+    ToastAndroid.show(translate('updateSuccess'), ToastAndroid.SHORT);
   };
   return (
     <View style={styles.MainContainer}>

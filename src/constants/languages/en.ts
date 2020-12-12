@@ -142,8 +142,8 @@ export default {
   highlightSpot: 'Highlight Spot',
   description_spot_home: 'the best favorite spot',
   travel_news: 'Travel news',
-  night: '{0} night',
-  nights: '{0} night',
+  night: 'night',
+  nights: 'night',
   hotelAround: 'Hotels Around',
   google: 'Continue with Google',
   desc_empty_room: 'room available',
@@ -160,4 +160,7 @@ export default {
   end_date: 'End date',
   description_fail_date: 'End date must more than start date',
   id_card: 'Identity card',
+  start: 'Start',
+  developing: 'This feature is developing',
+  updateSuccess: 'Update info success',
 };
