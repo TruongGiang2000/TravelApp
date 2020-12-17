@@ -3,7 +3,7 @@ import {View} from 'react-native';
 // import Itemdestination from './src/home/module/itemdestination';
 // import Itemhotel1 from './src/home/module/itemhotel1';
 // import Kindofroom from './src/home/module/kindofroom';
- import Hotel from './src/screens/home/modules/hotelinfo';
+import Hotel from './src/screens/home/modules/hotelinfo';
 import ChooseRoom from './src/screens/hotel/modules/ChooseRoom';
 class index extends Component<any, any> {
   render() {
