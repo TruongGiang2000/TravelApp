@@ -11,18 +11,14 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
+import Icon from 'react-native-vector-icons/dist/AntDesign';
 
 class ItemHotel extends Component<any, any> {
   constructor(props) {
     super(props);
-    this.state = {
-      
-    };
+    this.state = {};
   }
-  Random(){
-  
-    
-  }
+  Random() {}
   render() {
     const {
       style,
@@ -32,7 +28,7 @@ class ItemHotel extends Component<any, any> {
       source,
       titlePlace,
       titleHotel,
-      starts
+      starts,
     } = this.props;
     const {random} = this.state;
     return (
@@ -42,15 +38,13 @@ class ItemHotel extends Component<any, any> {
           source={source}
           resizeMode={'cover'}
           borderRadius={wp('1.5')}>
-              
-          <View style={styles.styleBackground} >
-          <Text style={styles.stylerandom}>
-                  {starts}
-              </Text>
-            <Image
-              source={require('../../../assets/images/ngoisao.png')}
-              style={styles.starStyle}
-              
+          <View style={styles.styleBackground}>
+            <Text style={styles.stylerandom}>{starts}</Text>
+            <Icon
+              name="star"
+              size={wp('5.5')}
+              color="#FFFFFF"
+              style={[styles.starStyle]}
             />
           </View>
         </ImageBackground>
@@ -98,15 +92,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   starStyle: {
-    width: wp('5'),
-    height: wp('5'),
     marginBottom: hp('2'),
   },
-  stylerandom:{
+  stylerandom: {
     fontFamily: 'roboto-slab.regular',
     fontSize: wp('3.5'),
     color: '#FFF',
-    marginBottom: hp('1')
-  }
+    marginBottom: hp('1'),
+  },
 });
 export default ItemHotel;
