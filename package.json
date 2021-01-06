@@ -30,7 +30,7 @@
     "appcenter": "3.1.2",
     "appcenter-analytics": "3.1.2",
     "appcenter-crashes": "3.1.2",
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "from": "^0.1.7",
     "i18n-js": "^3.7.1",
     "import": "^0.0.6",
